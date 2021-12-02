@@ -44,4 +44,3 @@
 		-job.php (cotenu)
 		-job.css
 		-job.js
-	DG
