@@ -1,0 +1,82 @@
+header{
+  background-color : var(--color-primary);
+}
+.nav-contain-left{
+  display: inline-block;
+}
+.nav-contain-right{
+  display: inline-block;
+  float: right;
+}
+.nav-logo{
+  display: inline-block;
+}
+.nav-link-block{
+  display: inline-block;
+  padding-left: 0;
+  position: relative;
+}
+.nav-contain-right li, .nav-link-block li, .nav-contain-right a, .nav-link-block a{
+  display: inline-block;
+  color: var(--nav-text-color);
+  padding: 0 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav-contain-right li:hover, .nav-link-block li:hover, .nav-contain-right a:hover, .nav-link-block a:hover{
+  color: var(--nav-text-hover-color) !important;
+}
+.link-hover{
+  color: var(--nav-text-hover-color) !important;
+}
+.nav-contain-right li:hover ul, .nav-link-block li:hover ul{
+  display: block;
+}
+ul li ul{
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: rgba(255,255,255,1);
+  cursor: default;
+  display: none;
+}
+ul li ul a{
+  color: var(--subNav-text-color) !important;
+}
+
+
+/***** Media Query *****/
+
+/* Mobile */
+@media (min-width: 320px) {
+  .nav-container{
+    height: 65px;
+    padding: 0 10px;
+  }
+  .nav-logo img{
+    height: 40px;
+    margin-top: 10px;
+  }
+}
+
+/* Tablette */
+@media (min-width: 576px) {
+}
+
+/* Laptop */
+@media (min-width: 992px) {
+  .nav-container{
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 70px;
+  }
+  .nav-logo img{
+    height: 40px;
+    vertical-align: bottom;
+    margin-bottom: -5px;
+  }
+}
+
+/* TV */
+@media (min-width: 1441px) {
+}

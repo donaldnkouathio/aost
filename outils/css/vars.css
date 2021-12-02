@@ -1,0 +1,11 @@
+:root{
+  --color-primary : #003068;
+  --color-secondary : #66BFDE;
+  --color-tertiaire : #001935;
+
+  /* Nav */
+  --nav-text-color : white;
+  --nav-text-hover-color: var(--color-secondary);
+  --subNav-text-color: var(--color-primary);
+  --subNav-text-hover-color: var(--color-tertiaire);
+}
