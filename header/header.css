@@ -1,8 +1,9 @@
 header{
-  background-color : var(--color-primary);
+  background-color : var(--nav-bg-color);
 }
 .nav-contain-left{
   display: inline-block;
+  padding-left: 0;
 }
 .nav-contain-right{
   display: inline-block;
@@ -11,38 +12,29 @@ header{
 .nav-logo{
   display: inline-block;
 }
-.nav-link-block{
-  display: inline-block;
-  padding-left: 0;
-  position: relative;
-}
-.nav-contain-right li, .nav-link-block li, .nav-contain-right a, .nav-link-block a{
+.nav-contain-right li, .nav-contain-left li, .nav-contain-right a, .nav-contain-left a{
   display: inline-block;
   color: var(--nav-text-color);
   padding: 0 10px;
   text-decoration: none;
   cursor: pointer;
 }
-.nav-contain-right li:hover, .nav-link-block li:hover, .nav-contain-right a:hover, .nav-link-block a:hover{
+.nav-contain-right li:hover, .nav-contain-left li:hover, .nav-contain-right a:hover, .nav-contain-left a:hover{
   color: var(--nav-text-hover-color) !important;
 }
 .link-hover{
   color: var(--nav-text-hover-color) !important;
 }
-.nav-contain-right li:hover ul, .nav-link-block li:hover ul{
+.nav-contain-right li:hover ul, .nav-contain-left li:hover ul{
   display: block;
 }
-ul li ul{
-  position: absolute;
-  left: 0;
-  right: 0;
-  background-color: rgba(255,255,255,1);
-  cursor: default;
-  display: none;
+.nav-contain-right li:hover ul li, .nav-contain-left li:hover ul li{
+  border-bottom: none;
 }
-ul li ul a{
-  color: var(--subNav-text-color) !important;
+.nav-contain-right li:hover, .nav-contain-left li:hover{
+  border-bottom: 4px solid var(--nav-text-hover-color);
 }
+
 
 
 /***** Media Query *****/
@@ -65,15 +57,44 @@ ul li ul a{
 
 /* Laptop */
 @media (min-width: 992px) {
+  header{
+    padding: 0;
+  }
   .nav-container{
     margin-left: 10%;
     margin-right: 10%;
-    height: 70px;
+    padding: 0;
+    position: relative;
+    height: 65px;
   }
   .nav-logo img{
     height: 40px;
+    margin-bottom: 25px;
+    display: inline-block;
+  }
+  .nav-contain-right, .nav-contain-left{
+    height: 65px;
     vertical-align: bottom;
-    margin-bottom: -5px;
+    margin-top: 0px;
+  }
+  .nav-contain-right li, .nav-contain-left li{
+    padding-top: 15px;
+    padding-bottom: 0px;
+    height: 70% !important;
+  }
+  .nav-contain-left li ul, .nav-contain-right li ul{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 65px;
+    background-color: var(--nav-text-color);
+    box-shadow: 2px 2px 6px #555;
+    padding-bottom: 15px;
+    cursor: default;
+    display: none;
+  }
+  .nav-contain-left li ul a, .nav-contain-right li ul a{
+    color: var(--subNav-text-color) !important;
   }
 }
 
