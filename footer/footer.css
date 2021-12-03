@@ -1,0 +1,80 @@
+footer{
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+  padding-top: 15px;
+}
+.footer-logo{
+
+}
+.footer-logo h1{
+  display: inline-block;
+  margin-left: 15px;
+}
+.footer-logo img{
+  height: 40px;
+}
+.footer-container{
+  margin-top: 15px;
+}
+.footer-contain{
+  display: inline-block;
+}
+.footer-contain:first-child{
+  margin-left: 0;
+}
+.footer-bottom{
+  background-color: var(--footer-bg-color-dark);
+  padding: 15px 0;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+
+/***** Media Query *****/
+
+/* Mobile */
+@media (min-width: 320px) {
+  .footer-logo h1{
+    font-size: 1.1em;
+  }
+  .footer-logo img{
+    margin-bottom: -12px;
+  }
+  .footer-body{
+    padding: 15px;
+  }
+  .footer-contain p{
+    font-size: 0.9em;
+  }
+}
+
+/* Tablette */
+@media (min-width: 576px) {
+}
+
+/* Laptop */
+@media (min-width: 992px) {
+  .footer-contain{
+    width: 48%;
+    vertical-align: top;
+    margin-left: 2%;
+  }
+  .footer-body{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 0;
+  }
+  .footer-logo h1{
+    font-size: 1.6em;
+  }
+  .footer-contain p{
+    font-size: 1em;
+  }
+  .footer-logo img{
+    margin-bottom: -8px;
+  }
+}
+
+/* TV */
+@media (min-width: 1441px) {
+}

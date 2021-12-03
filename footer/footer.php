@@ -1,8 +1,34 @@
   <footer class="" style="">
-    <div class="" style="width: 100%; background-color: #333; height: 50px">
+    <div class="footer-body">
+      <div class="footer-logo">
+        <img src="/aost/img/logo.jpg" alt="Logo AOST">
+        <h1>Alpha Omega Solutions Travail Inc</h1>
+      </div>
 
+      <div class="footer-container">
+
+        <div class="footer-contain">
+          <h2>A propos</h2>
+          <p>
+            AOST est une agence de recrutement, de formation et de placement
+            du personnel pour les entreprises québécoises et canadiennes enregistrée
+            sous le NEQ 1173599367 au Registraire des entreprises du Québec.
+          </p>
+        </div>
+
+        <div class="footer-contain">
+          <h2>Contactez-nous</h2>
+          <p>
+            2232 Rue Noel, H4M1R9 Montréal <br>
+            tel : 438-289-5095 <br>
+            tel : 438-938-8292
+          </p>
+        </div>
+
+      </div>
     </div>
-    <div class="" style="width: 100%; background-color: #222; padding: 20px 0 20px 0; color: #999; font-weight: bold; font-size: 0.8em">
+
+    <div class="footer-bottom">
       <span style="padding: 15px">Copyright © 2021 AOST</span>
     </div>
   </footer>

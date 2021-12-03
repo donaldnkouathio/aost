@@ -7,5 +7,6 @@
     <!-- <link rel="shortcut icon" href="/joma/img/icon.png"/> -->
 
     <link rel="stylesheet" href="/aost/outils/css/vars.css">
-    <link rel="stylesheet" href="/aost/header/header.css">
     <link rel="stylesheet" href="/aost/outils/css/global.css">
+    <link rel="stylesheet" href="/aost/header/header.css">
+    <link rel="stylesheet" href="/aost/footer/footer.css">
