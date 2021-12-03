@@ -40,11 +40,14 @@ a:hover{
 
 body {
   margin: 0;
-  font-family: roboto-regular;
   font-size: 1em;
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
+}
+
+.vertical-align-bottom{
+  vertical-align: bottom !important;
 }
 
 

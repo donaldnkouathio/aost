@@ -7,7 +7,7 @@
     <ul class="nav-contain-left hide-on-mobile" style="">
       <li><a href="/aost/" class="<?php if($_SESSION["currentPage"]="home"){echo "link-hover";} ?>">Accueil</a></li>
       <li>
-        <span>Emploi</span>
+        <span>Emploi <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></span>
 
         <ul>
           <li><a href="#">Offres d'emploi</a></li>
@@ -21,7 +21,7 @@
       </li>
 
       <li>
-        <span>Domaines</span>
+        <span>Domaines <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></span>
 
         <ul>
           <?php
@@ -33,12 +33,12 @@
               <div><?php echo $domaineTab[$i].""; ?></div>
             </a>
           <?php } ?>
-          
+
         </ul>
       </li>
       <li>Partenaires</li>
-      <li>Contactez nous</li>
-      <li>A propos de nous</li>
+      <li>Contactez nous <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></li>
+      <li>A propos de nous <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></li>
     </ul>
 
     <ul class="nav-contain-right" style="">

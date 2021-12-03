@@ -6,6 +6,7 @@
 
     <!-- <link rel="shortcut icon" href="/joma/img/icon.png"/> -->
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/aost/outils/css/vars.css">
     <link rel="stylesheet" href="/aost/outils/css/global.css">
     <link rel="stylesheet" href="/aost/header/header.css">
