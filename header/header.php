@@ -24,12 +24,16 @@
         <span>Domaines</span>
 
         <ul>
-          <li><a href="#">Informatique</a></li>
-          <li><a href="#">Ressources humaines</a></li>
-          <li><a href="#">Education</a></li>
-          <li><a href="#">Informatique</a></li>
-          <li><a href="#">Sécurité</a></li>
-          <li><a href="#">Ressources humaines</a></li>
+          <?php
+            $domaineTab= ["Informatique", "Ressources humaines humaines","Education", "Informatique", "Sécurité", "Ressources humaines", "Ressources humaines","Education"];
+            $imgTab= ["dom", "dom2","dom", "dom2", "dom", "dom2", "dom","dom2"];
+            for($i=0; $i<8; $i++){
+          ?>
+            <a href="#" class="domain-block" style="background-image: url('/aost/img/<?php echo $imgTab[$i]; ?>.jpg')">
+              <div><?php echo $domaineTab[$i].""; ?></div>
+            </a>
+          <?php } ?>
+          
         </ul>
       </li>
       <li>Partenaires</li>

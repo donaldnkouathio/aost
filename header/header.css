@@ -36,7 +36,6 @@ header{
 }
 
 
-
 /***** Media Query *****/
 
 /* Mobile */
@@ -95,6 +94,33 @@ header{
   }
   .nav-contain-left li ul a, .nav-contain-right li ul a{
     color: var(--subNav-text-color) !important;
+  }
+  .domain-block{
+    display: inline-block;
+    position: relative;
+    width: 195px;
+    height: 100px;
+    vertical-align: top;
+    margin-top: 15px;
+    padding: 0;
+    margin-left: 10px;
+    background-position: center;
+    background-size: cover;
+  }
+  .domain-block div{
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    bottom: 0;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    left: 0;
+    color: white;
+    background-color: rgba(0,0,0,0.7);
+  }
+  .domain-block div:hover{
+    height: 100px !important;
   }
 }
 
