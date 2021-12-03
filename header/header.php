@@ -7,7 +7,7 @@
     <ul class="nav-contain-left hide-on-mobile" style="">
       <li><a href="/aost/" class="<?php if($_SESSION["currentPage"]="home"){echo "link-hover";} ?>">Accueil</a></li>
       <li>
-        <span>Emploi</span>
+        <span>Emploi <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></span>
 
         <ul>
           <li><a href="#">Offres d'emploi</a></li>
@@ -21,20 +21,24 @@
       </li>
 
       <li>
-        <span>Domaines</span>
+        <span>Domaines <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></span>
 
         <ul>
-          <li><a href="#">Informatique</a></li>
-          <li><a href="#">Ressources humaines</a></li>
-          <li><a href="#">Education</a></li>
-          <li><a href="#">Informatique</a></li>
-          <li><a href="#">Sécurité</a></li>
-          <li><a href="#">Ressources humaines</a></li>
+          <?php
+            $domaineTab= ["Informatique", "Ressources humaines humaines","Education", "Informatique", "Sécurité", "Ressources humaines", "Ressources humaines","Education"];
+            $imgTab= ["dom", "dom2","dom", "dom2", "dom", "dom2", "dom","dom2"];
+            for($i=0; $i<8; $i++){
+          ?>
+            <a href="#" class="domain-block" style="background-image: url('/aost/img/<?php echo $imgTab[$i]; ?>.jpg')">
+              <div><?php echo $domaineTab[$i].""; ?></div>
+            </a>
+          <?php } ?>
+
         </ul>
       </li>
       <li>Partenaires</li>
-      <li>Contactez nous</li>
-      <li>A propos de nous</li>
+      <li>Contactez nous <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></li>
+      <li>A propos de nous <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></li>
     </ul>
 
     <ul class="nav-contain-right" style="">
