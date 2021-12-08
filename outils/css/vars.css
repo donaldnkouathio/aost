@@ -4,6 +4,8 @@
   --color-tertiary : #001935;
   --color-shadow : #eee; /* Utilisé pour les ombres et les couleurs grises */
 
+  --border-radius-size : 5px;
+
   /* Nav */
   --nav-text-color : white;
   --nav-bg-color : var(--color-primary);

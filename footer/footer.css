@@ -50,15 +50,15 @@ footer{
 
 /* Tablette */
 @media (min-width: 576px) {
-}
-
-/* Laptop */
-@media (min-width: 992px) {
   .footer-contain{
     width: 48%;
     vertical-align: top;
     margin-left: 2%;
   }
+}
+
+/* Laptop */
+@media (min-width: 992px) {
   .footer-body{
     padding: 0;
   }
