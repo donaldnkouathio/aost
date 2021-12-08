@@ -8,11 +8,12 @@
 }
 
 a{
-  color: #dc3545;
+  color: var(--color-primary);
   cursor: pointer;
+  text-decoration: none;
 }
 a:hover{
-  color: #dc3545;
+  color: var(--color-tertiary);
 }
 
 body {
@@ -36,6 +37,7 @@ body {
   width:100%;
   padding: 0!important;
   margin-bottom:1px;
+  display: block;
 }
 .container-box-shadow{
   height: 100%;
