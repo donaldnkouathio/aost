@@ -3,31 +3,8 @@
 	src: url('/aost/outils/fonts/Roboto-Regular.ttf');
 }
 
-html {
-  font-family: sans-serif;
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent;
-}
-
 @-ms-viewport {
   width: device-width;
-}
-
-article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
-  display: block;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
 }
 
 a{
@@ -49,7 +26,42 @@ body {
 .vertical-align-bottom{
   vertical-align: bottom !important;
 }
+.cursor-pointer{
+  cursor: pointer;
+}
 
+.container-box{
+  background-position: center;
+  background-size: cover;
+  width:100%;
+  padding: 0!important;
+  margin-bottom:1px;
+}
+.container-box-shadow{
+  height: 100%;
+  margin: 0;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+}
+.container-box-body{
+  margin: 0;
+  height: 100%;
+  color: white;
+}
+
+.btn{
+  border: none;
+  padding: 5px 10px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.btn-primary{
+  color: var(--btn-primary-text-color);
+  background-color: var(--btn-primary-bg-color);
+}
+.btn-primary:hover{
+  background-color: var(--btn-primary-bg-hover-color);
+}
 
 /***** Media Query *****/
 
@@ -60,6 +72,34 @@ body {
   }
   .hide-on-laptop{
       display: inline-block !important;
+  }
+  .container-title{
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  .container-text_1{
+    font-size: 1.3em;
+  }
+  .container-box{
+    /*height: 250px;*/
+  }
+  .container-box-body{
+    text-align: center;
+    padding: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .container-box-body input{
+      width: 300px;
+      padding: 15px;
+      border-radius: 25px;
+      border: none;
+      box-sizing: border-box;
+      margin-top: 15px;
+  }
+  .container-box-body button{
+      padding: 5px 15px;
+      margin-top: 15px;
   }
 }
 
@@ -75,6 +115,39 @@ body {
   .hide-on-laptop{
       display: none !important;
   }
+  .offset-10-laptop{
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+  }
+  .container-title{
+    font-size: 2.5em;
+    font-weight: bold;
+  }
+  .container-text_1{
+    font-size: 2em;
+  }
+  .container-box-body{
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  .container-box{
+    /*height: 400px;*/
+  }
+  .container-box-body input{
+    width: 500px;
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    box-sizing: border-box;
+    margin-top: 15px;
+  }
+  .container-box-body button{
+    width: 100px;
+    padding: 5px;
+    margin-top: 15px;
+  }
+
 }
 
 /* TV */

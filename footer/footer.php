@@ -1,5 +1,5 @@
   <footer class="" style="">
-    <div class="footer-body">
+    <div class="footer-body offset-10-laptop">
       <div class="footer-logo">
         <img src="/aost/img/logo.jpg" alt="Logo AOST">
         <h1>Alpha Omega Solutions Travail Inc</h1>
