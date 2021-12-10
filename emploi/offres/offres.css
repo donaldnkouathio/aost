@@ -1,0 +1,66 @@
+.offres-stats{
+  padding: 15px 15px 0 15px;
+}
+
+
+/***** Media Query *****/
+
+/* Mobile */
+@media (min-width: 320px) {
+  .offres-block{
+  }
+  .offres-filtres{
+    background-color: white;
+    padding: 15px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100;
+    height: 100%;
+    z-index: 10;
+    width: 100%;
+    display: none;
+  }
+  .offres-contain{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+}
+
+/* Tablette */
+@media (min-width: 576px) {
+  .offres-contain{
+    padding: 15px 0 15px 15px;
+  }
+}
+
+/* Laptop */
+@media (min-width: 992px) {
+  .offres-filtres{
+    vertical-align: top;
+    box-shadow: 4px 4px 6px var(--color-shadow);
+    margin-top: 15px;
+    display: inline-block;
+    width: 20%;
+    box-sizing: border-box;
+    padding: 15px;
+    position: relative;
+  }
+  .offres-contain{
+    margin-left: 15px;
+    display: inline-block;
+    width: 78%;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+  .offres-stats{
+    margin-left: 20%;
+    padding-left: 35px;
+  }
+}
+
+/* TV */
+@media (min-width: 1441px) {
+}
