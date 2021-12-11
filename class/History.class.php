@@ -107,53 +107,101 @@
 
     /*METHODES FONCTIONNELLES*/
 
-    public function getLastHistory(){
-        $query=$this->_db->prepare("SELECT * FROM history WHERE id=(SELECT MAX(id) FROM history)");
-        if($query->execute() && $query->rowCount()==1){
-            $data=$query->fetch();
-            return (new History($data)); 
-        }else{
-            return false;
-        }
-    }
 
+    public function addHistory(History $history){
+        $query=$history->_db->prepare("INSERT INTO history VALUES (?,?,?,?,?,?)");
 
+        $id=0;
+        $id_admin=$history->getId_admin();
+        $id_target=$history->getId_target();
+        $action=$history->getAction();
+        $description=$history->getDescription();
+        $added_at=$history->getAdded_at();
 
+        $query->bindParam(1,$id);
+        $query->bindParam(2,$id_admin);
+        $query->bindParam(3,$id_target);
+        $query->bindParam(4,$action);
+        $query->bindParam(5,$action);
+        $query->bindParam(6,$added_at);
 
-    public function getHistory($id){
-        if(is_int($id)){
-            $query=$this->_db->prepare("SELECT * FROM history WHERE id=?");
-            $query->bindParam(1,$id);
-            if($query->execute() && $query->rowCount()==1){
-                $data=$query->fetch();
-                return (new History($data));   
-            }else{
-                return false;
-            }
-        }else{
-            return false;
-        }
-
-    }
-
-
-
-
-    public function getHistory() {
-
-        $query=$this->_db->prepare("SELECT * FROM history ORDER BY id ASC");
-
-        $history=[];
 
         if($query->execute()){
-            while($data=$query->fetch()){
-                $history[]=new History($data);
-            }
-            return $history;
+          return true;
+      }else{
+          return false;
+      }
+  }
+
+
+
+
+  public function removeHistory($id_history){
+    if(is_int($id_history)){
+        $req=$this->_db->prepare("DELETE FROM history WHERE id=?");
+
+        $req->bindParam(1,$id_history);
+
+        if($req->execute()){
+            return true;
         }else{
             return false;
         }
+    }else{
+        return false;
     }
+    
+}
+
+
+
+public function getLastHistory(){
+    $query=$this->_db->prepare("SELECT * FROM history WHERE id=(SELECT MAX(id) FROM history)");
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new History($data)); 
+    }else{
+        return false;
+    }
+}
+
+
+
+
+public function getHistory($id){
+    if(is_int($id)){
+        $query=$this->_db->prepare("SELECT * FROM history WHERE id=?");
+        $query->bindParam(1,$id);
+        if($query->execute() && $query->rowCount()==1){
+            $data=$query->fetch();
+            return (new History($data));   
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+
+}
+
+
+
+
+public function getHistory() {
+
+    $query=$this->_db->prepare("SELECT * FROM history ORDER BY id ASC");
+
+    $history=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $history[]=new History($data);
+        }
+        return $history;
+    }else{
+        return false;
+    }
+}
 
 
 

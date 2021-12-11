@@ -7,8 +7,10 @@
     private $_id;
     private $_id_compagny;
     private $_id_user;
-    private $_category;
+    private $_id_domain;
+    private $_id_offer;
     private $_profession;
+    private $_city;
     private $_image;
     private $_description;
     private $_missions;
@@ -72,14 +74,25 @@
     }
 
     
-    public function setCategory($category){
-        if(is_string($category)){
-            $this->_id=$category;
+    public function setId_domain($id_domain){
+        if(is_int($id_domain)){
+            $this->_id=$id_domain;
         }
     }
     
-    public function getCategory(){
-        return $this->_category;
+    public function getId_domain(){
+        return $this->_id_domain;
+    }
+
+    
+    public function setId_offer($id_offer){
+        if(is_int($id_offer)){
+            $this->_id=$id_offer;
+        }
+    }
+    
+    public function getId_offer(){
+        return $this->_id_offer;
     }
 
     
@@ -91,6 +104,17 @@
     
     public function getProfession(){
         return $this->_profession;
+    }
+
+    
+    public function setCity($city){
+        if(is_string($city)){
+            $this->_id=$city;
+        }
+    }
+    
+    public function getCity(){
+        return $this->_city;
     }
 
     
@@ -239,41 +263,132 @@
 
     /*METHODES FONCTIONNELLES*/
 
-    public function getLastOffer(){
-        $query=$this->_db->prepare("SELECT * FROM offers WHERE id=(SELECT MAX(id) FROM offers)");
+    public function addOffer(Offer $offer){
+        $query=$offer->_db->prepare("INSERT INTO offers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+        $id=0;
+        $id_compagny=$offer->getId_compagny();
+        $id_user=$offer->getId_user();
+        $id_domain=$offer->getId_domain();
+        $profession=$offer->getProfession();
+        $city=$offer->getCity();
+        $image=$offer->getImage();
+        $description=$offer->getDescription();
+        $missions=$offer->getMissions();
+        $skill=$offer->getSkill();
+        $candidate_profile=$offer->getCandidate_profile();
+        $cv=$offer->getCv();
+        $motivation=$offer->getMotivation();
+        $validated=$offer->getValidated();
+        $deleted=$offer->getDeleted();
+        $expired=$offer->getExpired();
+        $deadline=$offer->getDeadline();
+        $added_at=$offer->getAdded_at();
+
+        $query->bindParam(1,$id);
+        $query->bindParam(2,$id_compagny);
+        $query->bindParam(3,$id_user);
+        $query->bindParam(4,$id_domain);
+        $query->bindParam(5,$profession);
+        $query->bindParam(6,$city);
+        $query->bindParam(7,$image);
+        $query->bindParam(8,$description);
+        $query->bindParam(9,$missions);
+        $query->bindParam(10,$skill);
+        $query->bindParam(11,$candidate_profile);
+        $query->bindParam(12,$cv);
+        $query->bindParam(13,$motivation);
+        $query->bindParam(14,$validated);
+        $query->bindParam(15,$deleted);
+        $query->bindParam(16,$expired);
+        $query->bindParam(17,$deadline);
+        $query->bindParam(18,$added_at);
+
+        if($query->execute()){
+          return true;
+      }else{
+          return false;
+      }
+  }
+
+
+
+
+
+  public function removeOffer($id_offer){
+    if(is_int($id_offer)){
+        $req=$this->_db->prepare("DELETE FROM offers WHERE id=?");
+
+        $req->bindParam(1,$id_offer);
+
+        if($req->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+    
+}
+
+
+
+public function getLastOffer(){
+    $query=$this->_db->prepare("SELECT * FROM offers WHERE id=(SELECT MAX(id) FROM offers)");
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new Offer($data)); 
+    }else{
+        return false;
+    }
+}
+
+
+
+
+public function getOffer($id){
+    if(is_int($id)){
+        $query=$this->_db->prepare("SELECT * FROM offers WHERE id=?");
+        $query->bindParam(1,$id);
         if($query->execute() && $query->rowCount()==1){
             $data=$query->fetch();
-            return (new Offer($data)); 
+            return (new Offer($data));   
         }else{
             return false;
         }
+    }else{
+        return false;
     }
 
+}
 
 
 
-    public function getOffer($id){
-        if(is_int($id)){
-            $query=$this->_db->prepare("SELECT * FROM offers WHERE id=?");
-            $query->bindParam(1,$id);
-            if($query->execute() && $query->rowCount()==1){
-                $data=$query->fetch();
-                return (new Offer($data));   
-            }else{
-                return false;
-            }
-        }else{
-            return false;
+
+public function getOffers() {
+
+    $query=$this->_db->prepare("SELECT * FROM offers ORDER BY id ASC");
+
+    $offers=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $offers[]=new Offer($data);
         }
-
+        return $offers;
+    }else{
+        return false;
     }
+}
 
 
 
 
-    public function getOffers() {
-
-        $query=$this->_db->prepare("SELECT * FROM offers ORDER BY id ASC");
+public function getOffersLimit($start) {
+    if(is_int($start)){
+        $end=$start+10;
+        $query=$this->_db->prepare("SELECT * FROM offers ORDER BY id DESC LIMIT $start,$end");
 
         $offers=[];
 
@@ -285,71 +400,79 @@
         }else{
             return false;
         }
+    }else{
+        return false;
     }
 
 
+}
 
 
 
 
 
-    public function editOffer(Offer $offer) {
-        $query=$offer->_db->prepare("UPDATE offers
-            SET category=?,
-            profession=?,
-            image=?,
-            description=?,
-            missions=?,
-            skill=?,
-            candidate_profile=?,
-            cv=?,
-            motivation=?,
-            validated=?,
-            deleted=?,
-            expired=?,
-            deadline=?
-            WHERE id=?
 
-            ");
 
-        $id=$offer->getId();
-        $category=$offer->getCategory();
-        $profession=$offer->getProfession();
-        $image=$offer->getImage();
-        $description=$offer->getdescription();
-        $missions=$offer->getMissions();
-        $skill=$offer->getSkill();
-        $candidate_profile=$offer->getCandidate_profile();
-        $cv=$offer->getCv();
-        $motivation=$offer->getMotivation();
-        $validated=$offer->getValidated();
-        $deleted=$offer->getDeleted();
-        $expired=$offer->getExpired();
-        $deadline=$offer->getDeadline();
-        
-        $query->bindParam(1,$category);
-        $query->bindParam(2,$profession);
-        $query->bindParam(3,$image);
-        $query->bindParam(4,$description);
-        $query->bindParam(5,$missions);
-        $query->bindParam(6,$skill);
-        $query->bindParam(7,$candidate_profile);
-        $query->bindParam(8,$cv);
-        $query->bindParam(9,$motivation);
-        $query->bindParam(10,$validated);
-        $query->bindParam(11,$deleted);
-        $query->bindParam(12,$expired);
-        $query->bindParam(13,$deadline);
-        $query->bindParam(14,$id);
+public function editOffer(Offer $offer) {
+    $query=$offer->_db->prepare("UPDATE offers
+        SET id_domain=?,
+        profession=?,
+        city=?,
+        image=?,
+        description=?,
+        missions=?,
+        skill=?,
+        candidate_profile=?,
+        cv=?,
+        motivation=?,
+        validated=?,
+        deleted=?,
+        expired=?,
+        deadline=?
+        WHERE id=?
 
-        if($query->execute()){
+        ");
 
-            return true;
+    $id=$offer->getId();
+    $id_domain=$offer->getId_domain();
+    $profession=$offer->getProfession();
+    $city=$offer->getCity();
+    $image=$offer->getImage();
+    $description=$offer->getDescription();
+    $missions=$offer->getMissions();
+    $skill=$offer->getSkill();
+    $candidate_profile=$offer->getCandidate_profile();
+    $cv=$offer->getCv();
+    $motivation=$offer->getMotivation();
+    $validated=$offer->getValidated();
+    $deleted=$offer->getDeleted();
+    $expired=$offer->getExpired();
+    $deadline=$offer->getDeadline();
 
-        }else{
-            return false;
-        }
+    $query->bindParam(1,$id_domain);
+    $query->bindParam(2,$profession);
+    $query->bindParam(3,$city);
+    $query->bindParam(4,$image);
+    $query->bindParam(5,$description);
+    $query->bindParam(6,$missions);
+    $query->bindParam(7,$skill);
+    $query->bindParam(8,$candidate_profile);
+    $query->bindParam(9,$cv);
+    $query->bindParam(10,$motivation);
+    $query->bindParam(11,$validated);
+    $query->bindParam(12,$deleted);
+    $query->bindParam(13,$expired);
+    $query->bindParam(14,$deadline);
+    $query->bindParam(15,$id);
+
+    if($query->execute()){
+
+        return true;
+
+    }else{
+        return false;
     }
+}
 
 
 

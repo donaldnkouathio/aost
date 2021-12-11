@@ -6,12 +6,12 @@
     /*PROPRIETES*/
     private $_id;
     private $_id_user;
+    private $_id_compagny;
+    private $_other_compagny;
     private $_name;
     private $_country;
     private $_city;
     private $_address;
-    private $_main_domain;
-    private $_other_domain;
     private $_added_at;
 
     /*CONSTRUCTEUR*/
@@ -50,6 +50,29 @@
     
     public function getId_user(){
         return $this->_id_user;
+    }
+
+
+    
+    public function setId_compagny($id_compagny){
+        if(is_int($id_compagny)){
+            $this->_id=$id_compagny;
+        }
+    }
+    
+    public function getId_compagny(){
+        return $this->_id_compagny;
+    }
+
+    
+    public function setOther_compagny($other_compagny){
+        if(is_string($other_compagny)){
+            $this->_id=$other_compagny;
+        }
+    }
+    
+    public function getOther_compagny(){
+        return $this->_other_compagny;
     }
 
     
@@ -95,28 +118,6 @@
     public function getAddress(){
         return $this->_address;
     }
-
-    
-    public function setMain_domain($main_domain){
-        if(is_string($main_domain)){
-            $this->_id=$main_domain;
-        }
-    }
-    
-    public function getMain_domain(){
-        return $this->_main_domain;
-    }
-
-    
-    public function setOther_domain($other_domain){
-        if(is_string($other_domain)){
-            $this->_id=$other_domain;
-        }
-    }
-    
-    public function getOther_domain(){
-        return $this->_other_domain;
-    }
     
 
     public function setAdded_at($added_at){
@@ -143,96 +144,154 @@
 
     /*METHODES FONCTIONNELLES*/
 
-    public function getLastCompagny(){
-        $query=$this->_db->prepare("SELECT * FROM compagny WHERE id=(SELECT MAX(id) FROM compagny)");
-        if($query->execute() && $query->rowCount()==1){
-            $data=$query->fetch();
-            return (new Compagny($data)); 
-        }else{
-            return false;
-        }
-    }
 
+    public function addCompagny(Compagny $compagny){
+        $query=$compagny->_db->prepare("INSERT INTO compagny VALUES (?,?,?,?,?,?,?,?,?)");
 
-
-
-    public function getCompagny($id){
-        if(is_int($id)){
-            $query=$this->_db->prepare("SELECT * FROM compagny WHERE id=?");
-            $query->bindParam(1,$id);
-            if($query->execute() && $query->rowCount()==1){
-                $data=$query->fetch();
-                return (new Compagny($data));   
-            }else{
-                return false;
-            }
-        }else{
-            return false;
-        }
-
-    }
-
-
-
-
-    public function getCompagny() {
-
-        $query=$this->_db->prepare("SELECT * FROM compagny ORDER BY id ASC");
-
-        $compagny=[];
-
-        if($query->execute()){
-            while($data=$query->fetch()){
-                $compagny[]=new Compagny($data);
-            }
-            return $compagny;
-        }else{
-            return false;
-        }
-    }
-
-
-
-
-
-
-
-    public function editCompagny(Compagny $compagny) {
-        $query=$compagny->_db->prepare("UPDATE compagny
-            SET name=?,
-            country=?,
-            city=?,
-            address=?,
-            main_domain=?,
-            other_domain=?
-            WHERE id=?
-
-            ");
-
-        $id=$compagny->getId();
+        $id=0;
+        $id_user=$compagny->getId_user();
+        $id_compagny=$compagny->getId_compagny();
+        $other_compagny=$compagny->getOther_compagny();
         $name=$compagny->getName();
         $country=$compagny->getCountry();
         $city=$compagny->getCity();
         $address=$compagny->getAddress();
-        $main_domain=$compagny->getMain_domain();
-        $other_domain=$compagny->getOther_domain();
-        
-        $query->bindParam(1,$name);
-        $query->bindParam(2,$country);
-        $query->bindParam(3,$city);
-        $query->bindParam(4,$address);
-        $query->bindParam(5,$main_domain);
-        $query->bindParam(6,$other_domain);
-        $query->bindParam(7,$id);
+        $added_at=$compagny->getAdded_at();
+
+        $query->bindParam(1,$id);
+        $query->bindParam(2,$id_user);
+        $query->bindParam(3,$id_compagny);
+        $query->bindParam(4,$other_compagny);
+        $query->bindParam(5,$name);
+        $query->bindParam(6,$country);
+        $query->bindParam(7,$city);
+        $query->bindParam(8,$address);
+        $query->bindParam(9,$added_at);
+
 
         if($query->execute()){
+          return true;
+      }else{
+          return false;
+      }
+  }
 
+
+
+
+
+
+
+  public function removeCompagny($id_compagny){
+    if(is_int($id_compagny)){
+        $req=$this->_db->prepare("DELETE FROM compagny WHERE id=?");
+
+        $req->bindParam(1,$id_compagny);
+
+        if($req->execute()){
             return true;
-
         }else{
             return false;
         }
+    }else{
+        return false;
     }
+    
+}
+
+
+
+
+public function getLastCompagny(){
+    $query=$this->_db->prepare("SELECT * FROM compagny WHERE id=(SELECT MAX(id) FROM compagny)");
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new Compagny($data)); 
+    }else{
+        return false;
+    }
+}
+
+
+
+
+public function getCompagny($id){
+    if(is_int($id)){
+        $query=$this->_db->prepare("SELECT * FROM compagny WHERE id=?");
+        $query->bindParam(1,$id);
+        if($query->execute() && $query->rowCount()==1){
+            $data=$query->fetch();
+            return (new Compagny($data));   
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+
+}
+
+
+
+
+public function getCompagny() {
+
+    $query=$this->_db->prepare("SELECT * FROM compagny ORDER BY id ASC");
+
+    $compagny=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $compagny[]=new Compagny($data);
+        }
+        return $compagny;
+    }else{
+        return false;
+    }
+}
+
+
+
+
+
+
+
+public function editCompagny(Compagny $compagny) {
+    $query=$compagny->_db->prepare("UPDATE compagny
+        SET name=?,
+        country=?,
+        city=?,
+        address=?,
+        id_compagny=?,
+        other_compagny=?
+        WHERE id=?
+
+        ");
+
+    $id=$compagny->getId();
+    $name=$compagny->getName();
+    $country=$compagny->getCountry();
+    $city=$compagny->getCity();
+    $address=$compagny->getAddress();
+    $id_compagny=$compagny->getid_compagny();
+    $other_compagny=$compagny->getOther_compagny();
+
+    $query->bindParam(1,$name);
+    $query->bindParam(2,$country);
+    $query->bindParam(3,$city);
+    $query->bindParam(4,$address);
+    $query->bindParam(5,$id_compagny);
+    $query->bindParam(6,$other_compagny);
+    $query->bindParam(7,$id);
+
+    if($query->execute()){
+
+        return true;
+
+    }else{
+        return false;
+    }
+}
 
 
 

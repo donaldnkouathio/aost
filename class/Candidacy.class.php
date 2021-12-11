@@ -8,7 +8,7 @@
     private $_id_candidacy;
     private $_id_customer;
     private $_id_user;
-    private $_category;
+    private $_id_candidacy;
     private $_cv_file;
     private $_motivation_file;
     private $_deleted;
@@ -75,14 +75,14 @@
     }
 
     
-    public function setCategory($category){
-        if(is_string($category)){
-            $this->_id=$category;
+    public function setId_candidacy($id_candidacy){
+        if(is_int($id_candidacy)){
+            $this->_id=$id_candidacy;
         }
     }
     
-    public function getCategory(){
-        return $this->_category;
+    public function getId_candidacy(){
+        return $this->_id_candidacy;
     }
 
     
@@ -144,90 +144,149 @@
 
     /*METHODES FONCTIONNELLES*/
 
-    public function getLastCandidacy(){
-        $query=$this->_db->prepare("SELECT * FROM candidacy WHERE id=(SELECT MAX(id) FROM candidacy)");
-        if($query->execute() && $query->rowCount()==1){
-            $data=$query->fetch();
-            return (new Candidacy($data)); 
-        }else{
-            return false;
-        }
-    }
 
 
+    public function addCandidacy(Candidacy $candidacy){
+        $query=$candidacy->_db->prepare("INSERT INTO candidacy VALUES (?,?,?,?,?,?,?,?,?)");
 
-
-    public function getCandidacy($id){
-        if(is_int($id)){
-            $query=$this->_db->prepare("SELECT * FROM candidacy WHERE id=?");
-            $query->bindParam(1,$id);
-            if($query->execute() && $query->rowCount()==1){
-                $data=$query->fetch();
-                return (new Candidacy($data));   
-            }else{
-                return false;
-            }
-        }else{
-            return false;
-        }
-
-    }
-
-
-
-
-    public function getCandidacy() {
-
-        $query=$this->_db->prepare("SELECT * FROM candidacy ORDER BY id ASC");
-
-        $candidacy=[];
-
-        if($query->execute()){
-            while($data=$query->fetch()){
-                $candidacy[]=new Candidacy($data);
-            }
-            return $candidacy;
-        }else{
-            return false;
-        }
-    }
-
-
-
-
-
-
-
-    public function editCandidacy(Candidacy $candidacy) {
-        $query=$candidacy->_db->prepare("UPDATE candidacy
-            SET category=?,
-            cv_file=?,
-            motivation_file=?,
-            deleted=?
-            WHERE id=?
-
-            ");
-
-        $id=$candidacy->getId();
-        $category=$candidacy->getCategory();
+        $id=0;
+        $id_offer=$candidacy->getId_offer();
+        $id_customer=$candidacy->getId_customer();
+        $id_user=$candidacy->getId_user();
+        $id_candidacy=$candidacy->getId_candidacy();
         $cv_file=$candidacy->getCv_file();
         $motivation_file=$candidacy->getMotivation_file();
         $deleted=$candidacy->getDeleted();
-        
-        $query->bindParam(1,$category);
-        $query->bindParam(2,$cv_file);
-        $query->bindParam(3,$motivation_file);
-        $query->bindParam(4,$deleted);
-        $query->bindParam(5,$id);
+        $added_at=$candidacy->getAdded_at();
+
+        $query->bindParam(1,$id);
+        $query->bindParam(2,$id_offer);
+        $query->bindParam(3,$id_customer);
+        $query->bindParam(4,$id_user);
+        $query->bindParam(5,$id_candidacy);
+        $query->bindParam(6,$cv_file);
+        $query->bindParam(7,$motivation_file);
+        $query->bindParam(8,$deleted);
+        $query->bindParam(9,$added_at);
+
 
         if($query->execute()){
+          return true;
+      }else{
+          return false;
+      }
+  }
 
+
+
+
+
+
+
+  public function removeCandidacy($id_candidacy){
+    if(is_int($id_candidacy)){
+        $req=$this->_db->prepare("DELETE FROM candidacy WHERE id=?");
+
+        $req->bindParam(1,$id_candidacy);
+
+        if($req->execute()){
             return true;
-
         }else{
             return false;
         }
+    }else{
+        return false;
     }
+    
+}
+
+
+
+
+public function getLastCandidacy(){
+    $query=$this->_db->prepare("SELECT * FROM candidacy WHERE id=(SELECT MAX(id) FROM candidacy)");
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new Candidacy($data)); 
+    }else{
+        return false;
+    }
+}
+
+
+
+
+public function getCandidacy($id){
+    if(is_int($id)){
+        $query=$this->_db->prepare("SELECT * FROM candidacy WHERE id=?");
+        $query->bindParam(1,$id);
+        if($query->execute() && $query->rowCount()==1){
+            $data=$query->fetch();
+            return (new Candidacy($data));   
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+
+}
+
+
+
+
+public function getCandidacy() {
+
+    $query=$this->_db->prepare("SELECT * FROM candidacy ORDER BY id ASC");
+
+    $candidacy=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $candidacy[]=new Candidacy($data);
+        }
+        return $candidacy;
+    }else{
+        return false;
+    }
+}
+
+
+
+
+
+
+
+public function editCandidacy(Candidacy $candidacy) {
+    $query=$candidacy->_db->prepare("UPDATE candidacy
+        SET id_candidacy=?,
+        cv_file=?,
+        motivation_file=?,
+        deleted=?
+        WHERE id=?
+
+        ");
+
+    $id=$candidacy->getId();
+    $id_candidacy=$candidacy->getId_candidacy();
+    $cv_file=$candidacy->getCv_file();
+    $motivation_file=$candidacy->getMotivation_file();
+    $deleted=$candidacy->getDeleted();
+
+    $query->bindParam(1,$id_candidacy);
+    $query->bindParam(2,$cv_file);
+    $query->bindParam(3,$motivation_file);
+    $query->bindParam(4,$deleted);
+    $query->bindParam(5,$id);
+
+    if($query->execute()){
+
+        return true;
+
+    }else{
+        return false;
+    }
+}
 
 
 
