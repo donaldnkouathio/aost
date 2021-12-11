@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 09 déc. 2021 à 23:01
+-- Généré le :  sam. 11 déc. 2021 à 12:49
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `candidacy` (
   `id_offer` bigint(20) NOT NULL,
   `id_customer` bigint(20) NOT NULL,
   `id_user` bigint(20) NOT NULL,
-  `category` varchar(200) NOT NULL,
+  `id_domain` bigint(11) NOT NULL,
   `cv_file` varchar(255) DEFAULT NULL,
   `motivation_file` varchar(255) DEFAULT NULL,
   `deleted` int(2) NOT NULL DEFAULT '0' COMMENT 'Vaudra 1 si supprimé par un admin',
@@ -60,7 +60,8 @@ CREATE TABLE IF NOT EXISTS `candidacy` (
   PRIMARY KEY (`id`),
   KEY `id_job` (`id_offer`),
   KEY `id_customer` (`id_customer`),
-  KEY `id_user` (`id_user`)
+  KEY `id_user` (`id_user`),
+  KEY `fk_domain` (`id_domain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table contenant les candidatures des clients';
 
 -- --------------------------------------------------------
@@ -73,15 +74,16 @@ DROP TABLE IF EXISTS `compagny`;
 CREATE TABLE IF NOT EXISTS `compagny` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_user` bigint(20) NOT NULL,
+  `id_domain` bigint(20) NOT NULL,
+  `other_domain` varchar(20) NOT NULL,
   `name` varchar(100) NOT NULL,
   `country` varchar(50) NOT NULL,
   `city` varchar(100) NOT NULL,
   `address` varchar(200) NOT NULL,
-  `main_domain` varchar(150) NOT NULL COMMENT 'Domaine / catégorie principale',
-  `other_domain` varchar(255) DEFAULT NULL COMMENT 'Autres domaines',
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `id_user` (`id_user`)
+  KEY `id_user` (`id_user`),
+  KEY `fk_domain_1` (`id_domain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table contenant les entreprises';
 
 -- --------------------------------------------------------
@@ -129,6 +131,24 @@ CREATE TABLE IF NOT EXISTS `customers` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `domains`
+--
+
+DROP TABLE IF EXISTS `domains`;
+CREATE TABLE IF NOT EXISTS `domains` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_admin` bigint(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `color` varchar(100) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `id_admin` (`id_admin`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `history`
 --
 
@@ -155,8 +175,9 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_compagny` bigint(20) NOT NULL COMMENT 'id de l''entreprise qui publie l''offre',
   `id_user` bigint(20) NOT NULL COMMENT 'id de l''utilisateur qui publie l''offre',
-  `category` varchar(150) NOT NULL,
+  `id_domain` bigint(20) NOT NULL,
   `profession` varchar(100) NOT NULL COMMENT 'Poste demandé',
+  `City` varchar(100) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `description` longtext COMMENT 'Description globale de la demande',
   `missions` longtext COMMENT 'description détaillée (par mission) de la demande',
@@ -171,8 +192,25 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`),
-  KEY `id_compagny` (`id_compagny`)
+  KEY `id_compagny` (`id_compagny`),
+  KEY `fk_domain` (`id_domain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table qui contient les differentes offres';
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `subdomains`
+--
+
+DROP TABLE IF EXISTS `subdomains`;
+CREATE TABLE IF NOT EXISTS `subdomains` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_domain` bigint(20) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `id_domain` (`id_domain`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
