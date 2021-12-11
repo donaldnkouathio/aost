@@ -1,5 +1,9 @@
  <?php
 
+
+ include("../bd/server-connect.php");
+
+ 
  class User
  {
  	
@@ -15,8 +19,6 @@
 
  	/*CONSTRUCTEUR*/
  	private function __construct(array $data){
-
- 		$this->_db=new pdo('mysql:host=localhost;dbname=bd_aost','root','');
 
  		foreach ($data as $key => $value) {
  			$method='set'.ucfirst($key);
@@ -132,7 +134,7 @@
  	/*METHODES FONCTIONNELLES*/
 
  	public function getLastUser(){
- 		$query=$this->_db->prepare("SELECT * FROM users WHERE id=(SELECT MAX(id) FROM users)");
+ 		$query=$db->prepare("SELECT * FROM users WHERE id=(SELECT MAX(id) FROM users)");
  		if($query->execute() && $query->rowCount()==1){
  			$data=$query->fetch();
  			return (new User($data)); 
@@ -146,7 +148,7 @@
 
  	public function getUser($id){
  		if(is_int($id)){
- 			$query=$this->_db->prepare("SELECT * FROM users WHERE id=?");
+ 			$query=$db->prepare("SELECT * FROM users WHERE id=?");
  			$query->bindParam(1,$id);
  			if($query->execute() && $query->rowCount()==1){
  				$data=$query->fetch();
@@ -165,7 +167,7 @@
 
  	public function getUsers() {
 
- 		$query=$this->_db->prepare("SELECT * FROM users ORDER BY id ASC");
+ 		$query=$db->prepare("SELECT * FROM users ORDER BY id ASC");
 
  		$users=[];
 
@@ -185,7 +187,7 @@
 
  	public function blockUser($id){
  		if(is_int($id)){
- 			$query=$this->_db->prepare("DELETE FROM users WHERE id=?");
+ 			$query=$db->prepare("DELETE FROM users WHERE id=?");
  			$query->bindParam(1,$id);
  			if($query->execute()){
  				return true;	
@@ -203,7 +205,7 @@
 
 
  	public function editUser(User $user) {
- 		$query=$user->_db->prepare("UPDATE users
+ 		$query=$db->prepare("UPDATE users
  			SET email=?,
  			password=?,
  			profile=?,
@@ -245,7 +247,7 @@
  		$blocked=0;
 
  		/* Recherche de l'utilisateur */
- 		$query=$this->_db->prepare("SELECT * FROM users WHERE email=? AND password=UNHEX(SHA1(?))");
+ 		$query=$db->prepare("SELECT * FROM users WHERE email=? AND password=UNHEX(SHA1(?))");
 
  		$email=$user->getEmail();
  		$password=$user->getPassword();
@@ -266,11 +268,11 @@
  					$_SESSION['id']=$user_found->getId();
  					$_SESSION['email']=$user_found->getEmail();
 
- 					$query_is_customer=$this->_db->prepare("SELECT id FROM customers WHERE id_user=?");
+ 					$query_is_customer=$db->prepare("SELECT id FROM customers WHERE id_user=?");
  					$query_is_customer->bindParam(1,$user_found->getId());
  					$query_is_customer->execute();
 
- 					$query_is_compagny=$this->_db->prepare("SELECT id FROM compagny WHERE id_user=?");
+ 					$query_is_compagny=$db->prepare("SELECT id FROM compagny WHERE id_user=?");
  					$query_is_compagny->bindParam(1,$user_found->getId());
  					$query_is_compagny->execute();
 

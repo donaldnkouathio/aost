@@ -1,5 +1,9 @@
  <?php
 
+
+ include("../bd/server-connect.php");
+
+ 
  class Customer
  {
 
@@ -20,8 +24,6 @@
 
     /*CONSTRUCTEUR*/
     private function __construct(array $data){
-
-        $this->_db=new pdo('mysql:host=localhost;dbname=bd_aost','root','');
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -191,77 +193,13 @@
 
     /*METHODES FONCTIONNELLES*/
 
-    public function getLastCustomer(){
-        $query=$this->_db->prepare("SELECT * FROM customers WHERE id=(SELECT MAX(id) FROM customers)");
-        if($query->execute() && $query->rowCount()==1){
-            $data=$query->fetch();
-            return (new Customer($data)); 
-        }else{
-            return false;
-        }
-    }
 
 
+    public function addCustomer(Customer $customer){
+        $query=$db->prepare("INSERT INTO customers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
-
-    public function getCustomer($id){
-        if(is_int($id)){
-            $query=$this->_db->prepare("SELECT * FROM customers WHERE id=?");
-            $query->bindParam(1,$id);
-            if($query->execute() && $query->rowCount()==1){
-                $data=$query->fetch();
-                return (new Customer($data));   
-            }else{
-                return false;
-            }
-        }else{
-            return false;
-        }
-
-    }
-
-
-
-
-    public function getCustomers() {
-
-        $query=$this->_db->prepare("SELECT * FROM customers ORDER BY id ASC");
-
-        $customers=[];
-
-        if($query->execute()){
-            while($data=$query->fetch()){
-                $customers[]=new Customer($data);
-            }
-            return $customers;
-        }else{
-            return false;
-        }
-    }
-
-
-
-
-
-
-
-    public function editcustomer(Customer $customer) {
-        $query=$customer->_db->prepare("UPDATE customers
-            SET name=?,
-            phone_1=?,
-            phone_2=?,
-            first_name=?,
-            date_birth=?,
-            country=?,
-            city=?,
-            address=?,
-            sex=?,
-            about=?
-            WHERE id=?
-
-            ");
-
-        $id=$customer->getId();
+        $id=0;
+        $id_user=$customer->getId_user();
         $name=$customer->getName();
         $phone_1=$customer->getPhone_1();
         $phone_2=$customer->getPhone_2();
@@ -272,28 +210,158 @@
         $address=$customer->getAddress();
         $sex=$customer->getSex();
         $about=$customer->getAbout();
-        
-        $query->bindParam(1,$id_customer);
-        $query->bindParam(2,$name);
-        $query->bindParam(3,$phone_1);
-        $query->bindParam(4,$phone_2);
-        $query->bindParam(5,$first_name);
-        $query->bindParam(6,$date_birth);
-        $query->bindParam(7,$country);
-        $query->bindParam(8,$city);
-        $query->bindParam(9,$address);
-        $query->bindParam(10,$sex);
-        $query->bindParam(11,$about);
-        $query->bindParam(12,$id);
+        $added_at=$customer->getAdded_at();
+
+        $query->bindParam(1,$id);
+        $query->bindParam(2,$id_user);
+        $query->bindParam(3,$name);
+        $query->bindParam(4,$phone_1);
+        $query->bindParam(5,$phone_2);
+        $query->bindParam(6,$first_name);
+        $query->bindParam(7,$date_birth);
+        $query->bindParam(8,$country);
+        $query->bindParam(9,$city);
+        $query->bindParam(10,$address);
+        $query->bindParam(11,$sex);
+        $query->bindParam(12,$about);
+        $query->bindParam(13,$added_at);
+
 
         if($query->execute()){
+          return true;
+      }else{
+          return false;
+      }
+  }
 
+
+
+
+
+
+
+  public function removeCustomer($id_customer){
+    if(is_int($id_customer)){
+        $req=$db->prepare("DELETE FROM customers WHERE id=?");
+
+        $req->bindParam(1,$id_customer);
+
+        if($req->execute()){
             return true;
-
         }else{
             return false;
         }
+    }else{
+        return false;
     }
+    
+}
+
+
+
+public function getLastCustomer(){
+    $query=$db->prepare("SELECT * FROM customers WHERE id=(SELECT MAX(id) FROM customers)");
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new Customer($data)); 
+    }else{
+        return false;
+    }
+}
+
+
+
+
+public function getCustomer($id){
+    if(is_int($id)){
+        $query=$db->prepare("SELECT * FROM customers WHERE id=?");
+        $query->bindParam(1,$id);
+        if($query->execute() && $query->rowCount()==1){
+            $data=$query->fetch();
+            return (new Customer($data));   
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+
+}
+
+
+
+
+public function getCustomers() {
+
+    $query=$db->prepare("SELECT * FROM customers ORDER BY id ASC");
+
+    $customers=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $customers[]=new Customer($data);
+        }
+        return $customers;
+    }else{
+        return false;
+    }
+}
+
+
+
+
+
+
+
+public function editcustomer(Customer $customer) {
+    $query=$db->prepare("UPDATE customers
+        SET name=?,
+        phone_1=?,
+        phone_2=?,
+        first_name=?,
+        date_birth=?,
+        country=?,
+        city=?,
+        address=?,
+        sex=?,
+        about=?
+        WHERE id=?
+
+        ");
+
+    $id=$customer->getId();
+    $name=$customer->getName();
+    $phone_1=$customer->getPhone_1();
+    $phone_2=$customer->getPhone_2();
+    $first_name=$customer->getFirst_name();
+    $date_birth=$customer->getDate_birth();
+    $country=$customer->getCountry();
+    $city=$customer->getCity();
+    $address=$customer->getAddress();
+    $sex=$customer->getSex();
+    $about=$customer->getAbout();
+
+    $query->bindParam(1,$id_customer);
+    $query->bindParam(2,$name);
+    $query->bindParam(3,$phone_1);
+    $query->bindParam(4,$phone_2);
+    $query->bindParam(5,$first_name);
+    $query->bindParam(6,$date_birth);
+    $query->bindParam(7,$country);
+    $query->bindParam(8,$city);
+    $query->bindParam(9,$address);
+    $query->bindParam(10,$sex);
+    $query->bindParam(11,$about);
+    $query->bindParam(12,$id);
+
+    if($query->execute()){
+
+        return true;
+
+    }else{
+        return false;
+    }
+}
 
 
 
