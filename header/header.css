@@ -22,8 +22,12 @@ header{
 .nav-contain-right li:hover, .nav-contain-left li:hover, .nav-contain-right a:hover, .nav-contain-left a:hover{
   color: var(--nav-text-hover-color) !important;
 }
-.link-hover{
+.link-hover, .sub-link-hover{
   color: var(--nav-text-hover-color) !important;
+}
+.link-mobile-hover{
+  color: var(--nav-mobile-hover-text-color) !important;
+  background-color: var(--nav-mobile-hover-bg-color);
 }
 .nav-contain-right li:hover ul, .nav-contain-left li:hover ul{
   display: block;
@@ -45,6 +49,7 @@ header{
   top: 0;
   left: 0;
   display: none;
+  z-index: 15;
 }
 .nav-mobile-header{
   background-color: var(--color-primary);
@@ -126,6 +131,7 @@ header{
     left: 0;
     right: 0;
     top: 75px;
+    z-index: 20;
     background-color: var(--nav-text-color);
     box-shadow: 2px 2px 6px #555;
     padding-bottom: 15px;
@@ -133,7 +139,7 @@ header{
     display: none;
   }
   .nav-contain-left li ul a, .nav-contain-right li ul a{
-    color: var(--subNav-text-color) !important;
+    color: var(--subNav-text-color);
   }
   .domain-block{
     display: inline-block;

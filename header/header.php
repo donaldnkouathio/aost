@@ -5,12 +5,12 @@
     </div>
 
     <ul class="nav-contain-left hide-on-mobile" style="">
-      <li><a href="/aost/" class="<?php if($_SESSION["currentPage"]="home"){echo "link-hover";} ?>">Accueil</a></li>
-      <li>
+      <li><a href="/aost/" class="<?php if($_SESSION["currentPage"]=="home"){echo "link-hover";} ?>">Accueil</a></li>
+      <li class="<?php if($_SESSION["currentPage"]=="Offres d'emplois"){echo "link-hover";} ?>">
         <span>Emploi <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></span>
 
         <ul>
-          <li><a href="#">Offres d'emploi</a></li>
+          <li><a href="/aost/emploi/offres" class="<?php if($_SESSION["currentPage"]=="Offres d'emplois"){echo "sub-link-hover";} ?>">Offres d'emploi</a></li>
           <li><a href="#">Candidat</a></li>
           <li><a href="#">Candidature spontanée</a></li>
           <li><a href="#">Processus d'embauche</a></li>
@@ -19,15 +19,14 @@
           <li><a href="#">T4 & Relevé</a></li>
         </ul>
       </li>
-
       <li>
         <span>Domaines <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></span>
 
         <ul>
           <?php
-            $domaineTab= ["Informatique", "Ressources humaines humaines","Education", "Informatique", "Sécurité", "Ressources humaines", "Ressources humaines","Education"];
-            $imgTab= ["dom", "dom2","dom", "dom2", "dom", "dom2", "dom","dom2"];
-            for($i=0; $i<8; $i++){
+            $domaineTab= ["Informatique", "Ressources humaines humaines","Education", "Ressources humaines humaines","Education", "Informatique", "Sécurité", "Ressources humaines", "Ressources humaines","Education"];
+            $imgTab= ["dom", "dom2","dom", "dom2", "dom", "dom2", "dom","dom2", "dom","dom2"];
+            for($i=0; $i<10; $i++){
           ?>
             <a href="#" class="domain-block" style="background-image: url('/aost/img/domain/<?php echo $imgTab[$i]; ?>.jpg')">
               <div><?php echo $domaineTab[$i].""; ?></div>
@@ -54,9 +53,9 @@
         <i class="material-icons vertical-align-bottom cursor-pointer" id="navMobileBtnClose" style="float:right"> close</i>
       </div>
       <ul class="nav-mobile-body">
-        <li><a href="#">Accueil</a></li>
+        <li><a href="/aost/" class="<?php if($_SESSION["currentPage"]=="home"){echo "link-mobile-hover";} ?>">Accueil</a></li>
 
-        <li id="subNavEmploiBtn"><a>
+        <li id="subNavEmploiBtn"><a  class="<?php if($_SESSION["currentPage"]=="Offres d'emplois"){echo "link-mobile-hover";} ?>">
           Emploi
           <i class="material-icons vertical-align-bottom" style="float:right"> chevron_right </i>
         </a></li>
@@ -90,7 +89,7 @@
         <span style="margin-left: 15px;">Emploi</span>
       </div>
       <ul class="nav-mobile-body">
-        <li><a href="#">Offres d'emploi</a></li>
+        <li><a href="/aost/emploi/offres"  class="<?php if($_SESSION["currentPage"]=="Offres d'emplois"){echo "link-mobile-hover";} ?>">Offres d'emploi</a></li>
         <li><a href="#">Candidat</a></li>
         <li><a href="#">Candidature spontanée</a></li>
         <li><a href="#">Processus d'embauche</a></li>
