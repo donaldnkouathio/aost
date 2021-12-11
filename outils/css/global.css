@@ -36,6 +36,10 @@ body {
 .float-right{
   float: right !important;
 }
+.padding-vertical{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
 
 .container-box{
   background-position: center;

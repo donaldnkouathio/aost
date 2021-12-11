@@ -36,7 +36,13 @@
         </ul>
       </li>
       <li>Partenaires</li>
-      <li>Contactez nous <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></li>
+      <li class="<?php if($_SESSION["currentPage"]=="contactez-nous"){echo "sub-link-hover";} ?>">
+        Contactez nous <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i>
+        <ul>
+          <li><a href="/aost/contacteznous/contacteznous" class="<?php if($_SESSION["currentPage"]=="contactez-nous"){echo "sub-link-hover";} ?>">Contactez-nous</a></li>
+          <li><a href="#">Informez nous de tout changement</a></li>
+        </ul>
+      </li>
       <li>A propos de nous <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></li>
     </ul>
 
@@ -67,7 +73,7 @@
 
         <li><a href="#">Partenaires</a></li>
 
-        <li><a href="#">
+        <li id="subNavContactBtn"><a class="<?php if($_SESSION["currentPage"]=="contactez-nous"){echo "link-mobile-hover";} ?>">
           Contactez-nous
           <i class="material-icons vertical-align-bottom" style="float:right"> chevron_right </i>
         </a></li>
@@ -89,7 +95,7 @@
         <span style="margin-left: 15px;">Emploi</span>
       </div>
       <ul class="nav-mobile-body">
-        <li><a href="/aost/emploi/offres"  class="<?php if($_SESSION["currentPage"]=="Offres d'emplois"){echo "link-mobile-hover";} ?>">Offres d'emploi</a></li>
+        <li><a href="/aost/emploi/offres" class="<?php if($_SESSION["currentPage"]=="Offres d'emplois"){echo "link-mobile-hover";} ?>">Offres d'emploi</a></li>
         <li><a href="#">Candidat</a></li>
         <li><a href="#">Candidature spontanée</a></li>
         <li><a href="#">Processus d'embauche</a></li>
@@ -103,13 +109,25 @@
     <div class="nav-mobile" id="subNavDomaines">
       <div class="nav-mobile-header" style="">
         <i class="material-icons vertical-align-bottom cursor-pointer" id="subNavDomainesBtnClose"> chevron_left </i>
-        <span style="margin-left: 15px;">Emploi</span>
+        <span style="margin-left: 15px;">Domaines</span>
       </div>
       <ul class="nav-mobile-body">
         <li><a href="#">Informatique</a></li>
         <li><a href="#">Ressources humaines</a></li>
         <li><a href="#">Education</a></li>
         <li><a href="#">Sécurité</a></li>
+      </ul>
+    </div>
+
+    <!-- Sous menu -Contactez-nous- pour mobile -->
+    <div class="nav-mobile" id="subNavContact">
+      <div class="nav-mobile-header" style="">
+        <i class="material-icons vertical-align-bottom cursor-pointer" id="subNavContactBtnClose"> chevron_left </i>
+        <span style="margin-left: 15px;">Contactez-nous</span>
+      </div>
+      <ul class="nav-mobile-body">
+        <li><a href="/aost/Contacteznous/Contacteznous/" class="<?php if($_SESSION["currentPage"]=="contactez-nous"){echo "link-mobile-hover";} ?>">Contactez-nous</a></li>
+        <li><a href="#">Informez nous de tout changement</a></li>
       </ul>
     </div>
 
