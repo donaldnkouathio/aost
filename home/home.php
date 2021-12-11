@@ -2,8 +2,15 @@
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body" style="">
       <div class="container-title">L'agence qui facilite votre recherche d'emploi</div>
-      <div class="">
-        <input type="text" name="" value="" placeholder="Chercher un emploi...">
+      <div class="form-offres-block">
+        <div class="input-search">
+          <input type="text" id="inputSearchInput" placeholder="Chercher un emploi...">
+
+          <!-- Auto Suggest -->
+          <div class="autoSuggest-block" id="autoSuggest-block">
+
+          </div>
+        </div>
         <br>
         <button type="button" class="btn btn-primary" name="button">Chercher</button>
       </div>

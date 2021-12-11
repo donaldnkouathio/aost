@@ -1,5 +1,6 @@
 <?php
   session_start();
+  require_once $_SERVER["DOCUMENT_ROOT"].'/aost/outils/php/functions.php';
 
   function redirection($title, $pageContain, $currentPage, $css, $js){
     //$title : titre de la page

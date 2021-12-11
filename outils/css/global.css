@@ -30,6 +30,16 @@ body {
 .cursor-pointer{
   cursor: pointer;
 }
+.position-relative{
+  position: relative !important;
+}
+.float-right{
+  float: right !important;
+}
+.padding-vertical{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
 
 .container-box{
   background-position: center;
@@ -91,18 +101,6 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
   }
-  .container-box-body input{
-      width: 300px;
-      padding: 15px;
-      border-radius: 25px;
-      border: none;
-      box-sizing: border-box;
-      margin-top: 15px;
-  }
-  .container-box-body button{
-      padding: 5px 15px;
-      margin-top: 15px;
-  }
 }
 
 /* Tablette */
@@ -135,19 +133,6 @@ body {
   }
   .container-box{
     /*height: 400px;*/
-  }
-  .container-box-body input{
-    width: 500px;
-    padding: 15px;
-    border-radius: 25px;
-    border: none;
-    box-sizing: border-box;
-    margin-top: 15px;
-  }
-  .container-box-body button{
-    width: 100px;
-    padding: 5px;
-    margin-top: 15px;
   }
 
 }

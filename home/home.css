@@ -27,87 +27,12 @@
   color: var(--color-primary);
 }
 
-.emplois-populaires{
-  margin-bottom: 15px;
-}
-.emplois-populaires-container{
-}
-.ep-contain{
-  display: inline-block;
-  box-sizing: border-box;
-  margin-bottom: 15px;
-  vertical-align: top;
-  border: 1px solid var(--color-shadow);
-  border-radius: var(--border-radius-size);
-  box-shadow: 2px 2px 3px var(--color-shadow);
-}
-.ep-header{
-  background-position: center;
-  border-radius: var(--border-radius-size) var(--border-radius-size) 0 0;
-  background-size: cover;
-  /*background-image: url('/aost/img/bg/bg5.jpg');*/
-  position: relative;
-}
-.ep-poste{
-  display: inline-block;
-  padding: 25px 15px;
-  width: 100%;
-  box-sizing: border-box;
-  color: white;
-  font-size: 1.4em;
-  text-align: center;
-  border-radius: var(--border-radius-size) var(--border-radius-size) 0 0;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.ep-domaine{
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 2px 5px;
-  color: white;
-  border-radius: var(--border-radius-size) 0 0 0;
-  /*background-color: rgba(230, 50, 50, 1);*/
-}
-.ep-voir-plus{
-  margin-top: 15px;
-}
-.ep-footer{
-  border: 1px solid #999;
-  padding: 15px 15px 5px 15px;
-  color: #555;
-  border-radius: 0 0 var(--border-radius-size) var(--border-radius-size);
-}
-.ep-footer i{
-  font-size: 1em;
-  color: var(--color-primary);
-  vertical-align:text-top !important;
-}
-.ep-footer-top{
-  margin-bottom: 5px;
-}
-.ep-footer-bottom{
-
-}
-.ep-footer-left{
-}
-.ep-footer-right{
-  float: right;
-}
-
 /***** Media Query *****/
 
 /* Mobile */
 @media (min-width: 320px) {
   .about-contain{
     width: 100%;
-  }
-  .ep-contain{
-    width: 100%;
-  }
-  .emplois-populaires{
-    padding: 15px;
-    box-sizing: border-box;
   }
 }
 
@@ -116,21 +41,12 @@
   .about-contain{
     width: 49%;
   }
-  .ep-contain{
-    width: 48%;
-    margin-right: 10px;
-  }
 }
 
 /* Laptop */
 @media (min-width: 992px) {
   .about-contain h2{
-    text-align: center;
     padding: 0 10%;
-  }
-  .ep-contain{
-    width: 24%;
-    margin-right: 5px;
   }
 }
 
