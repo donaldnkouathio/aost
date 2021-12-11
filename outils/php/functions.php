@@ -1,24 +1,21 @@
 <?php 
 
-function get_french_month($month){
-	$tab_month=array("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aougt","Septembre","Octobre","Novembre","Décembre");
+$tab_month=array("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aougt","Septembre","Octobre","Novembre","Décembre");
 
+function get_french_month($month){
 	return $tab_month[$month-1];
 }
 
 function get_french_date($date){
 
-	$tab_month=array("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aougt","Septembre","Octobre","Novembre","Décembre");
 	$date_convert_in_seconde = strtotime($date);
 	$month=date('m',$date_convert_in_seconde);
-	$month=$tab_month[$month-1];
+	$month=get_french_month($month);
 	return (date('d', $date_convert_in_seconde)." ".$month." ".date('Y', $date_convert_in_seconde));
 }
 
 
 function get_elapsed_time($datetime){
-
-	$tab_mois=array("janvier","février","mars","avril","mai","juin","juillet","aougt","septembre","octobre","novembre","décembre");
 
 	$date_convert_in_seconde = strtotime($datetime);
 	if(date('Ymd', $date_convert_in_seconde) == date('Ymd')){
@@ -129,7 +126,7 @@ function get_elapsed_time($datetime){
 
 	}else{
 		$mois=date('m',$date_convert_in_seconde);
-		$mois=$tab_mois[$mois-1];
+		$mois=$tab_month[$mois-1];
 		echo 'depuis le '.date('d', $date_convert_in_seconde)." ".$mois;
 	}
 
