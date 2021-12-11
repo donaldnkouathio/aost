@@ -1,5 +1,9 @@
  <?php
 
+
+ include("../bd/server-connect.php");
+
+ 
  class History
  {
 
@@ -13,8 +17,6 @@
 
     /*CONSTRUCTEUR*/
     private function __construct(array $data){
-
-        $this->_db=new pdo('mysql:host=localhost;dbid_target=bd_aost','root','');
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -109,7 +111,7 @@
 
 
     public function addHistory(History $history){
-        $query=$history->_db->prepare("INSERT INTO history VALUES (?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO history VALUES (?,?,?,?,?,?)");
 
         $id=0;
         $id_admin=$history->getId_admin();
@@ -138,7 +140,7 @@
 
   public function removeHistory($id_history){
     if(is_int($id_history)){
-        $req=$this->_db->prepare("DELETE FROM history WHERE id=?");
+        $req=$db->prepare("DELETE FROM history WHERE id=?");
 
         $req->bindParam(1,$id_history);
 
@@ -156,7 +158,7 @@
 
 
 public function getLastHistory(){
-    $query=$this->_db->prepare("SELECT * FROM history WHERE id=(SELECT MAX(id) FROM history)");
+    $query=$db->prepare("SELECT * FROM history WHERE id=(SELECT MAX(id) FROM history)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
         return (new History($data)); 
@@ -170,7 +172,7 @@ public function getLastHistory(){
 
 public function getHistory($id){
     if(is_int($id)){
-        $query=$this->_db->prepare("SELECT * FROM history WHERE id=?");
+        $query=$db->prepare("SELECT * FROM history WHERE id=?");
         $query->bindParam(1,$id);
         if($query->execute() && $query->rowCount()==1){
             $data=$query->fetch();
@@ -189,7 +191,7 @@ public function getHistory($id){
 
 public function getHistory() {
 
-    $query=$this->_db->prepare("SELECT * FROM history ORDER BY id ASC");
+    $query=$db->prepare("SELECT * FROM history ORDER BY id ASC");
 
     $history=[];
 

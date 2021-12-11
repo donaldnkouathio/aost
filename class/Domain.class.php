@@ -1,5 +1,9 @@
   <?php
 
+
+  include("../bd/server-connect.php");
+
+  
   class domain
   {
 
@@ -13,8 +17,6 @@
 
     /*CONSTRUCTEUR*/
     private function __construct(array $data){
-
-        $this->_db=new pdo('mysql:host=localhost;dbname=bd_aost','root','');
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -109,7 +111,7 @@
     /*METHODES FONCTIONNELLES*/
 
     public function addDomain(Domain $domain){
-        $query=$domain->_db->prepare("INSERT INTO domains VALUES (?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO domains VALUES (?,?,?,?,?,?)");
 
         $id=0;
         $id_admin=$domain->getId_admin();
@@ -140,7 +142,7 @@
 
   public function removeDomain($id_domain){
     if(is_int($id_domain)){
-        $req=$this->_db->prepare("DELETE FROM domains WHERE id=?");
+        $req=$db->prepare("DELETE FROM domains WHERE id=?");
 
         $req->bindParam(1,$id_domain);
 
@@ -157,7 +159,7 @@
 
 
 public function getLastDomain(){
-    $query=$this->_db->prepare("SELECT * FROM domains WHERE id=(SELECT MAX(id) FROM domain)");
+    $query=$db->prepare("SELECT * FROM domains WHERE id=(SELECT MAX(id) FROM domain)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
         return (new Domain($data)); 
@@ -171,7 +173,7 @@ public function getLastDomain(){
 
 public function getDomain($id){
     if(is_int($id)){
-        $query=$this->_db->prepare("SELECT * FROM domains WHERE id=?");
+        $query=$db->prepare("SELECT * FROM domains WHERE id=?");
         $query->bindParam(1,$id);
         if($query->execute() && $query->rowCount()==1){
             $data=$query->fetch();
@@ -190,7 +192,7 @@ public function getDomain($id){
 
 public function getDomain() {
 
-    $query=$this->_db->prepare("SELECT * FROM domains ORDER BY id ASC");
+    $query=$db->prepare("SELECT * FROM domains ORDER BY id ASC");
 
     $domain=[];
 
@@ -211,7 +213,7 @@ public function getDomain() {
 
 
 public function editDomain(Domain $domain) {
-    $query=$domain->_db->prepare("UPDATE domains
+    $query=$db->prepare("UPDATE domains
         SET name=?,
         color=?,
         image=?

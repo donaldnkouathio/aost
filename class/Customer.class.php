@@ -1,5 +1,9 @@
  <?php
 
+
+ include("../bd/server-connect.php");
+
+ 
  class Customer
  {
 
@@ -20,8 +24,6 @@
 
     /*CONSTRUCTEUR*/
     private function __construct(array $data){
-
-        $this->_db=new pdo('mysql:host=localhost;dbname=bd_aost','root','');
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -194,7 +196,7 @@
 
 
     public function addCustomer(Customer $customer){
-        $query=$customer->_db->prepare("INSERT INTO customers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO customers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $id=0;
         $id_user=$customer->getId_user();
@@ -240,7 +242,7 @@
 
   public function removeCustomer($id_customer){
     if(is_int($id_customer)){
-        $req=$this->_db->prepare("DELETE FROM customers WHERE id=?");
+        $req=$db->prepare("DELETE FROM customers WHERE id=?");
 
         $req->bindParam(1,$id_customer);
 
@@ -258,7 +260,7 @@
 
 
 public function getLastCustomer(){
-    $query=$this->_db->prepare("SELECT * FROM customers WHERE id=(SELECT MAX(id) FROM customers)");
+    $query=$db->prepare("SELECT * FROM customers WHERE id=(SELECT MAX(id) FROM customers)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
         return (new Customer($data)); 
@@ -272,7 +274,7 @@ public function getLastCustomer(){
 
 public function getCustomer($id){
     if(is_int($id)){
-        $query=$this->_db->prepare("SELECT * FROM customers WHERE id=?");
+        $query=$db->prepare("SELECT * FROM customers WHERE id=?");
         $query->bindParam(1,$id);
         if($query->execute() && $query->rowCount()==1){
             $data=$query->fetch();
@@ -291,7 +293,7 @@ public function getCustomer($id){
 
 public function getCustomers() {
 
-    $query=$this->_db->prepare("SELECT * FROM customers ORDER BY id ASC");
+    $query=$db->prepare("SELECT * FROM customers ORDER BY id ASC");
 
     $customers=[];
 
@@ -312,7 +314,7 @@ public function getCustomers() {
 
 
 public function editcustomer(Customer $customer) {
-    $query=$customer->_db->prepare("UPDATE customers
+    $query=$db->prepare("UPDATE customers
         SET name=?,
         phone_1=?,
         phone_2=?,

@@ -1,5 +1,9 @@
  <?php
 
+
+ include("../bd/server-connect.php");
+
+ 
  class Contact
  {
 
@@ -13,8 +17,6 @@
 
     /*CONSTRUCTEUR*/
     private function __construct(array $data){
-
-        $this->_db=new pdo('mysql:host=localhost;dbemail=bd_aost','root','');
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -111,7 +113,7 @@
 
 
     public function addContact(Contact $contact){
-        $query=$contact->_db->prepare("INSERT INTO contact VALUES (?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO contact VALUES (?,?,?,?,?,?)");
 
         $id=0;
         $role=$contact->getRole();
@@ -142,7 +144,7 @@
 
   public function removeContact($id_contact){
     if(is_int($id_contact)){
-        $req=$this->_db->prepare("DELETE FROM contact WHERE id=?");
+        $req=$db->prepare("DELETE FROM contact WHERE id=?");
 
         $req->bindParam(1,$id_contact);
 
@@ -160,7 +162,7 @@
 
 
 public function getLastContact(){
-    $query=$this->_db->prepare("SELECT * FROM contact WHERE id=(SELECT MAX(id) FROM contact)");
+    $query=$db->prepare("SELECT * FROM contact WHERE id=(SELECT MAX(id) FROM contact)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
         return (new Contact($data)); 
@@ -174,7 +176,7 @@ public function getLastContact(){
 
 public function getContact($id){
     if(is_int($id)){
-        $query=$this->_db->prepare("SELECT * FROM contact WHERE id=?");
+        $query=$db->prepare("SELECT * FROM contact WHERE id=?");
         $query->bindParam(1,$id);
         if($query->execute() && $query->rowCount()==1){
             $data=$query->fetch();
@@ -193,7 +195,7 @@ public function getContact($id){
 
 public function getContact() {
 
-    $query=$this->_db->prepare("SELECT * FROM contact ORDER BY id ASC");
+    $query=$db->prepare("SELECT * FROM contact ORDER BY id ASC");
 
     $contact=[];
 
@@ -214,7 +216,7 @@ public function getContact() {
 
 
 public function editContact(Contact $contact) {
-    $query=$contact->_db->prepare("UPDATE contact
+    $query=$db->prepare("UPDATE contact
         SET role=?,
         email=?,
         name=?,

@@ -1,5 +1,9 @@
  <?php
 
+
+ include("../bd/server-connect.php");
+
+ 
  class Candidacy
  {
 
@@ -16,8 +20,6 @@
 
     /*CONSTRUCTEUR*/
     private function __construct(array $data){
-
-        $this->_db=new pdo('mysql:host=localhost;dbid_customer=bd_aost','root','');
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -147,7 +149,7 @@
 
 
     public function addCandidacy(Candidacy $candidacy){
-        $query=$candidacy->_db->prepare("INSERT INTO candidacy VALUES (?,?,?,?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO candidacy VALUES (?,?,?,?,?,?,?,?,?)");
 
         $id=0;
         $id_offer=$candidacy->getId_offer();
@@ -185,7 +187,7 @@
 
   public function removeCandidacy($id_candidacy){
     if(is_int($id_candidacy)){
-        $req=$this->_db->prepare("DELETE FROM candidacy WHERE id=?");
+        $req=$db->prepare("DELETE FROM candidacy WHERE id=?");
 
         $req->bindParam(1,$id_candidacy);
 
@@ -204,7 +206,7 @@
 
 
 public function getLastCandidacy(){
-    $query=$this->_db->prepare("SELECT * FROM candidacy WHERE id=(SELECT MAX(id) FROM candidacy)");
+    $query=$db->prepare("SELECT * FROM candidacy WHERE id=(SELECT MAX(id) FROM candidacy)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
         return (new Candidacy($data)); 
@@ -218,7 +220,7 @@ public function getLastCandidacy(){
 
 public function getCandidacy($id){
     if(is_int($id)){
-        $query=$this->_db->prepare("SELECT * FROM candidacy WHERE id=?");
+        $query=$db->prepare("SELECT * FROM candidacy WHERE id=?");
         $query->bindParam(1,$id);
         if($query->execute() && $query->rowCount()==1){
             $data=$query->fetch();
@@ -237,7 +239,7 @@ public function getCandidacy($id){
 
 public function getCandidacy() {
 
-    $query=$this->_db->prepare("SELECT * FROM candidacy ORDER BY id ASC");
+    $query=$db->prepare("SELECT * FROM candidacy ORDER BY id ASC");
 
     $candidacy=[];
 
@@ -258,7 +260,7 @@ public function getCandidacy() {
 
 
 public function editCandidacy(Candidacy $candidacy) {
-    $query=$candidacy->_db->prepare("UPDATE candidacy
+    $query=$db->prepare("UPDATE candidacy
         SET id_candidacy=?,
         cv_file=?,
         motivation_file=?,

@@ -1,5 +1,9 @@
  <?php
 
+
+ include("../bd/server-connect.php");
+
+ 
  class Compagny
  {
 
@@ -16,8 +20,6 @@
 
     /*CONSTRUCTEUR*/
     private function __construct(array $data){
-
-        $this->_db=new pdo('mysql:host=localhost;dbname=bd_aost','root','');
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -146,7 +148,7 @@
 
 
     public function addCompagny(Compagny $compagny){
-        $query=$compagny->_db->prepare("INSERT INTO compagny VALUES (?,?,?,?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO compagny VALUES (?,?,?,?,?,?,?,?,?)");
 
         $id=0;
         $id_user=$compagny->getId_user();
@@ -184,7 +186,7 @@
 
   public function removeCompagny($id_compagny){
     if(is_int($id_compagny)){
-        $req=$this->_db->prepare("DELETE FROM compagny WHERE id=?");
+        $req=$db->prepare("DELETE FROM compagny WHERE id=?");
 
         $req->bindParam(1,$id_compagny);
 
@@ -203,7 +205,7 @@
 
 
 public function getLastCompagny(){
-    $query=$this->_db->prepare("SELECT * FROM compagny WHERE id=(SELECT MAX(id) FROM compagny)");
+    $query=$db->prepare("SELECT * FROM compagny WHERE id=(SELECT MAX(id) FROM compagny)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
         return (new Compagny($data)); 
@@ -217,7 +219,7 @@ public function getLastCompagny(){
 
 public function getCompagny($id){
     if(is_int($id)){
-        $query=$this->_db->prepare("SELECT * FROM compagny WHERE id=?");
+        $query=$db->prepare("SELECT * FROM compagny WHERE id=?");
         $query->bindParam(1,$id);
         if($query->execute() && $query->rowCount()==1){
             $data=$query->fetch();
@@ -236,7 +238,7 @@ public function getCompagny($id){
 
 public function getCompagny() {
 
-    $query=$this->_db->prepare("SELECT * FROM compagny ORDER BY id ASC");
+    $query=$db->prepare("SELECT * FROM compagny ORDER BY id ASC");
 
     $compagny=[];
 
@@ -257,7 +259,7 @@ public function getCompagny() {
 
 
 public function editCompagny(Compagny $compagny) {
-    $query=$compagny->_db->prepare("UPDATE compagny
+    $query=$db->prepare("UPDATE compagny
         SET name=?,
         country=?,
         city=?,

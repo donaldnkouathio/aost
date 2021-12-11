@@ -1,5 +1,9 @@
  <?php
 
+
+ include("../bd/server-connect.php");
+
+ 
  class Offer
  {
 
@@ -26,8 +30,6 @@
 
     /*CONSTRUCTEUR*/
     private function __construct(array $data){
-
-        $this->_db=new pdo('mysql:host=localhost;dbid_user=bd_aost','root','');
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -264,7 +266,7 @@
     /*METHODES FONCTIONNELLES*/
 
     public function addOffer(Offer $offer){
-        $query=$offer->_db->prepare("INSERT INTO offers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO offers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $id=0;
         $id_compagny=$offer->getId_compagny();
@@ -317,7 +319,7 @@
 
   public function removeOffer($id_offer){
     if(is_int($id_offer)){
-        $req=$this->_db->prepare("DELETE FROM offers WHERE id=?");
+        $req=$db->prepare("DELETE FROM offers WHERE id=?");
 
         $req->bindParam(1,$id_offer);
 
@@ -335,7 +337,7 @@
 
 
 public function getLastOffer(){
-    $query=$this->_db->prepare("SELECT * FROM offers WHERE id=(SELECT MAX(id) FROM offers)");
+    $query=$db->prepare("SELECT * FROM offers WHERE id=(SELECT MAX(id) FROM offers)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
         return (new Offer($data)); 
@@ -349,7 +351,7 @@ public function getLastOffer(){
 
 public function getOffer($id){
     if(is_int($id)){
-        $query=$this->_db->prepare("SELECT * FROM offers WHERE id=?");
+        $query=$db->prepare("SELECT * FROM offers WHERE id=?");
         $query->bindParam(1,$id);
         if($query->execute() && $query->rowCount()==1){
             $data=$query->fetch();
@@ -368,7 +370,7 @@ public function getOffer($id){
 
 public function getOffers() {
 
-    $query=$this->_db->prepare("SELECT * FROM offers ORDER BY id ASC");
+    $query=$db->prepare("SELECT * FROM offers ORDER BY id ASC");
 
     $offers=[];
 
@@ -388,7 +390,7 @@ public function getOffers() {
 public function getOffersLimit($start) {
     if(is_int($start)){
         $end=$start+10;
-        $query=$this->_db->prepare("SELECT * FROM offers ORDER BY id DESC LIMIT $start,$end");
+        $query=$db->prepare("SELECT * FROM offers ORDER BY id DESC LIMIT $start,$end");
 
         $offers=[];
 
@@ -414,7 +416,7 @@ public function getOffersLimit($start) {
 
 
 public function editOffer(Offer $offer) {
-    $query=$offer->_db->prepare("UPDATE offers
+    $query=$db->prepare("UPDATE offers
         SET id_domain=?,
         profession=?,
         city=?,

@@ -1,5 +1,7 @@
  <?php
 
+ include("../bd/server-connect.php");
+
  class Admin
  {
 
@@ -13,8 +15,6 @@
 
     /*CONSTRUCTEUR*/
     private function __construct(array $data){
-
-        $this->_db=new pdo('mysql:host=localhost;dbpassword=bd_aost','root','');
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -108,7 +108,7 @@
     /*METHODES FONCTIONNELLES*/
 
     public function addAdmin(Admin $admin){
-        $query=$admin->_db->prepare("INSERT INTO admins VALUES (?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO admins VALUES (?,?,?,?,?,?)");
 
         $id=0;
         $email=$admin->getEmail();
@@ -140,7 +140,7 @@
 
   public function removeAdmin($id_admin){
     if(is_int($id_admin)){
-        $req=$this->_db->prepare("DELETE FROM admins WHERE id=?");
+        $req=$db->prepare("DELETE FROM admins WHERE id=?");
 
         $req->bindParam(1,$id_admin);
 
@@ -157,7 +157,7 @@
 
 
 public function getLastAdmin(){
-    $query=$this->_db->prepare("SELECT * FROM admins WHERE id=(SELECT MAX(id) FROM admins)");
+    $query=$db->prepare("SELECT * FROM admins WHERE id=(SELECT MAX(id) FROM admins)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
         return (new Admin($data)); 
@@ -171,7 +171,7 @@ public function getLastAdmin(){
 
 public function getAdmin($id){
     if(is_int($id)){
-        $query=$this->_db->prepare("SELECT * FROM admins WHERE id=?");
+        $query=$db->prepare("SELECT * FROM admins WHERE id=?");
         $query->bindParam(1,$id);
         if($query->execute() && $query->rowCount()==1){
             $data=$query->fetch();
@@ -190,7 +190,7 @@ public function getAdmin($id){
 
 public function getAdmins() {
 
-    $query=$this->_db->prepare("SELECT * FROM admins ORDER BY id ASC");
+    $query=$db->prepare("SELECT * FROM admins ORDER BY id ASC");
 
     $admins=[];
 
@@ -211,7 +211,7 @@ public function getAdmins() {
 
 
 public function editAdmin(Admin $admin) {
-    $query=$admin->_db->prepare("UPDATE admins
+    $query=$db->prepare("UPDATE admins
         SET email=?,
         password=?,
         role=?,
@@ -249,7 +249,7 @@ public function logIn(Admin $admin) {
     $blocked=0;
 
     /* Recherche de l'administrateur */
-    $query=$this->_db->prepare("SELECT * FROM admins WHERE email=? AND password=UNHEX(SHA1(?))");
+    $query=$db->prepare("SELECT * FROM admins WHERE email=? AND password=UNHEX(SHA1(?))");
 
     $email=$admin->getEmail();
     $password=$admin->getPassword();

@@ -1,5 +1,9 @@
   <?php
 
+
+  include("../bd/server-connect.php");
+
+  
   class Subdomain
   {
 
@@ -11,8 +15,6 @@
 
   	/*CONSTRUCTEUR*/
   	private function __construct(array $data){
-
-  		$this->_db=new pdo('mysql:host=localhost;dbname=bd_aost','root','');
 
   		foreach ($data as $key => $value) {
   			$method='set'.ucfirst($key);
@@ -85,7 +87,7 @@
   	/*METHODES FONCTIONNELLES*/
 
     public function addSubdomain(Subdomain $subdomain){
-        $query=$subdomain->_db->prepare("INSERT INTO subdomains VALUES (?,?,?,?)");
+        $query=$db->prepare("INSERT INTO subdomains VALUES (?,?,?,?)");
 
         $id=0;
         $id_domain=$subdomain->getId_domain();
@@ -113,7 +115,7 @@
 
   public function removeSubdomain($id_subdomain){
     if(is_int($id_subdomain)){
-        $req=$this->_db->prepare("DELETE FROM subdomains WHERE id=?");
+        $req=$db->prepare("DELETE FROM subdomains WHERE id=?");
 
         $req->bindParam(1,$id_subdomain);
 
@@ -125,14 +127,14 @@
     }else{
         return false;
     }
-    
+
 }
 
 
 
 
 public function getLastSubdomain(){
-    $query=$this->_db->prepare("SELECT * FROM subdomains WHERE id=(SELECT MAX(id) FROM subdomain)");
+    $query=$db->prepare("SELECT * FROM subdomains WHERE id=(SELECT MAX(id) FROM subdomain)");
     if($query->execute() && $query->rowCount()==1){
        $data=$query->fetch();
        return (new subdomain($data)); 
@@ -146,7 +148,7 @@ public function getLastSubdomain(){
 
 public function getSubdomain($id){
     if(is_int($id)){
-     $query=$this->_db->prepare("SELECT * FROM subdomains WHERE id=?");
+     $query=$db->prepare("SELECT * FROM subdomains WHERE id=?");
      $query->bindParam(1,$id);
      if($query->execute() && $query->rowCount()==1){
       $data=$query->fetch();
@@ -165,7 +167,7 @@ public function getSubdomain($id){
 
 public function getSubdomain() {
 
-    $query=$this->_db->prepare("SELECT * FROM subdomains ORDER BY id ASC");
+    $query=$db->prepare("SELECT * FROM subdomains ORDER BY id ASC");
 
     $subdomain=[];
 
@@ -186,7 +188,7 @@ public function getSubdomain() {
 
 
 public function editSubdomain(Subdomain $subdomain) {
-    $query=$subdomain->_db->prepare("UPDATE subdomains
+    $query=$db->prepare("UPDATE subdomains
        SET name=?
        WHERE id=?
 
