@@ -1,11 +1,10 @@
- <?php
+<?php
+
+include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
 
 
- include("../bd/server-connect.php");
-
- 
- class Candidacy
- {
+class Candidacy
+{
 
     /*PROPRIETES*/
     private $_id;
@@ -46,7 +45,7 @@
 
     public function setId_candidacy($id_candidacy){
         if(is_int($id_candidacy)){
-            $this->_id=$id_candidacy;
+            $this->_id_candidacy=$id_candidacy;
         }
     }
     
@@ -57,7 +56,7 @@
     
     public function setId_customer($id_customer){
         if(is_int($id_customer)){
-            $this->_id=$id_customer;
+            $this->_id_customer=$id_customer;
         }
     }
     
@@ -68,7 +67,7 @@
     
     public function setId_user($id_user){
         if(is_int($id_user)){
-            $this->_id=$id_user;
+            $this->_id_user=$id_user;
         }
     }
     
@@ -79,7 +78,7 @@
     
     public function setId_candidacy($id_candidacy){
         if(is_int($id_candidacy)){
-            $this->_id=$id_candidacy;
+            $this->_id_candidacy=$id_candidacy;
         }
     }
     
@@ -90,7 +89,7 @@
     
     public function setCv_file($cv_file){
         if(is_string($cv_file)){
-            $this->_id=$cv_file;
+            $this->_cv_file=$cv_file;
         }
     }
     
@@ -101,7 +100,7 @@
     
     public function setMotivation_file($motivation_file){
         if(is_string($motivation_file)){
-            $this->_id=$motivation_file;
+            $this->_motivation_file=$motivation_file;
         }
     }
     
@@ -112,7 +111,7 @@
     
     public function setDeleted($deleted){
         if(is_int($deleted)){
-            $this->_id=$deleted;
+            $this->_deleted=$deleted;
         }
     }
     
@@ -124,7 +123,7 @@
     
     public function setAdded_at($added_at){
         if(is_string($added_at)){
-            $this->_id=$added_at;
+            $this->_added_at=$added_at;
         }
     }
     
