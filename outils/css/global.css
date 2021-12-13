@@ -22,6 +22,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
+  font-family: 'Lato';
 }
 
 .vertical-align-bottom{
@@ -39,6 +40,12 @@ body {
 .padding-vertical{
   padding-top: 15px;
   padding-bottom: 15px;
+}
+.form-required{
+  content: "*" !important;
+}
+.form-required::after{
+  content: "*" !important;
 }
 
 .container-box{
@@ -63,9 +70,10 @@ body {
 
 .btn{
   border: none;
-  padding: 5px 10px;
-  border-radius: 25px;
+  padding: 10px 25px !important;
+  border-radius: var(--border-radius-size);
   cursor: pointer;
+  text-transform: uppercase;
 }
 .btn-primary{
   color: var(--btn-primary-text-color);

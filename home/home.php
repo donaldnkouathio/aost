@@ -20,9 +20,9 @@
 
 <div class="offset-10-laptop about-block">
   <div class="about-contain">
-    <h2><strong>Alpha Omega Solutions Travail inc. (AOST)</strong> est une agence de recrutement, de formation et de placement
+    <p><strong>Alpha Omega Solutions Travail inc. (AOST)</strong> est une agence de recrutement, de formation et de placement
     du personnel pour les entreprises québécoises et canadiennes enregistrée
-    sous le NEQ 1173599367 au Registraire des entreprises du Québec.</h2>
+    sous le NEQ 1173599367 au Registraire des entreprises du Québec.</p>
   </div>
   <div class="about-contain">
     <h1>Que faisons-nous ?</h1>
@@ -88,5 +88,5 @@
     <?php } ?>
   </div>
 
-  <a href="#" class="ep-voir-plus">Tous les emplois <i class="material-icons vertical-align-bottom"> arrow_forward </i></a>
+  <a href="<?php echo _ROOT_PATH; ?>job/offers/" class="ep-voir-plus">Tous les emplois <i class="material-icons vertical-align-bottom"> arrow_forward </i></a>
 </div>
