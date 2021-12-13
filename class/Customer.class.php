@@ -1,11 +1,10 @@
- <?php
+<?php
+
+include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
 
 
- include("../bd/server-connect.php");
-
- 
- class Customer
- {
+class Customer
+{
 
     /*PROPRIETES*/
     private $_id;
@@ -50,7 +49,7 @@
 
     public function setId_customer($id_customer){
         if(is_int($id_customer)){
-            $this->_id=$id_customer;
+            $this->_id_customer=$id_customer;
         }
     }
     
@@ -61,7 +60,7 @@
     
     public function setName($name){
         if(is_string($name)){
-            $this->_id=$name;
+            $this->_name=$name;
         }
     }
     
@@ -72,7 +71,7 @@
     
     public function setPhone_1($phone_1){
         if(is_string($phone_1)){
-            $this->_id=$phone_1;
+            $this->_phone_1=$phone_1;
         }
     }
     
@@ -83,7 +82,7 @@
     
     public function setPhone_2($phone_2){
         if(is_string($phone_2)){
-            $this->_id=$phone_2;
+            $this->_phone_2=$phone_2;
         }
     }
     
@@ -94,7 +93,7 @@
     
     public function setFirst_name($first_name){
         if(is_string($first_name)){
-            $this->_id=$first_name;
+            $this->_first_name=$first_name;
         }
     }
     
@@ -105,7 +104,7 @@
     
     public function setDate_birth($date_birth){
         if(is_string($date_birth)){
-            $this->_id=$date_birth;
+            $this->_date_birth=$date_birth;
         }
     }
     
@@ -116,7 +115,7 @@
     
     public function setCountry($country){
         if(is_string($country)){
-            $this->_id=$country;
+            $this->_country=$country;
         }
     }
     
@@ -127,7 +126,7 @@
     
     public function setCity($city){
         if(is_string($city)){
-            $this->_id=$city;
+            $this->_city=$city;
         }
     }
     
@@ -138,7 +137,7 @@
     
     public function setAddress($address){
         if(is_string($address)){
-            $this->_id=$address;
+            $this->_address=$address;
         }
     }
     
@@ -149,7 +148,7 @@
     
     public function setSex($sex){
         if(is_string($sex)){
-            $this->_id=$sex;
+            $this->_sex=$sex;
         }
     }
     
@@ -160,7 +159,7 @@
     
     public function setAbout($about){
         if(is_string($about)){
-            $this->_id=$about;
+            $this->_about=$about;
         }
     }
     
@@ -171,7 +170,7 @@
     
     public function setAdded_at($added_at){
         if(is_string($added_at)){
-            $this->_id=$added_at;
+            $this->_added_at=$added_at;
         }
     }
     

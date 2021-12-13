@@ -1,11 +1,10 @@
- <?php
+<?php
+
+include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
 
 
- include("../bd/server-connect.php");
-
- 
- class Offer
- {
+class Offer
+{
 
     /*PROPRIETES*/
     private $_id;
@@ -56,7 +55,7 @@
 
     public function setId_compagny($id_compagny){
         if(is_int($id_compagny)){
-            $this->_id=$id_compagny;
+            $this->_id_compagny=$id_compagny;
         }
     }
     
@@ -67,7 +66,7 @@
     
     public function setId_user($id_user){
         if(is_int($id_user)){
-            $this->_id=$id_user;
+            $this->_id_user=$id_user;
         }
     }
     
@@ -78,7 +77,7 @@
     
     public function setId_domain($id_domain){
         if(is_int($id_domain)){
-            $this->_id=$id_domain;
+            $this->_id_domain=$id_domain;
         }
     }
     
@@ -89,7 +88,7 @@
     
     public function setId_offer($id_offer){
         if(is_int($id_offer)){
-            $this->_id=$id_offer;
+            $this->_id_offer=$id_offer;
         }
     }
     
@@ -100,7 +99,7 @@
     
     public function setProfession($profession){
         if(is_string($profession)){
-            $this->_id=$profession;
+            $this->_profession=$profession;
         }
     }
     
@@ -111,7 +110,7 @@
     
     public function setCity($city){
         if(is_string($city)){
-            $this->_id=$city;
+            $this->_city=$city;
         }
     }
     
@@ -122,7 +121,7 @@
     
     public function setImage($image){
         if(is_string($image)){
-            $this->_id=$image;
+            $this->_image=$image;
         }
     }
     
@@ -133,7 +132,7 @@
     
     public function setDescription($description){
         if(is_string($description)){
-            $this->_id=$description;
+            $this->_description=$description;
         }
     }
     
@@ -144,7 +143,7 @@
     
     public function setMissions($missions){
         if(is_string($missions)){
-            $this->_id=$missions;
+            $this->_missions=$missions;
         }
     }
     
@@ -155,7 +154,7 @@
     
     public function setSkill($skill){
         if(is_string($skill)){
-            $this->_id=$skill;
+            $this->_skill=$skill;
         }
     }
     
@@ -166,7 +165,7 @@
     
     public function setCandidate_profile($candidate_profile){
         if(is_string($candidate_profile)){
-            $this->_id=$candidate_profile;
+            $this->_candidate_profile=$candidate_profile;
         }
     }
     
@@ -177,7 +176,7 @@
     
     public function setCv($cv){
         if(is_int($cv)){
-            $this->_id=$cv;
+            $this->_cv=$cv;
         }
     }
     
@@ -188,7 +187,7 @@
     
     public function setMotivation($motivation){
         if(is_int($motivation)){
-            $this->_id=$motivation;
+            $this->_motivation=$motivation;
         }
     }
     
@@ -199,7 +198,7 @@
     
     public function setValidated($validated){
         if(is_int($validated)){
-            $this->_id=$validated;
+            $this->_validated=$validated;
         }
     }
     
@@ -210,7 +209,7 @@
     
     public function setDeleted($deleted){
         if(is_int($deleted)){
-            $this->_id=$deleted;
+            $this->_deleted=$deleted;
         }
     }
     
@@ -221,7 +220,7 @@
     
     public function setExpired($expired){
         if(is_int($expired)){
-            $this->_id=$expired;
+            $this->_expired=$expired;
         }
     }
     
@@ -232,7 +231,7 @@
     
     public function setDeadline($deadline){
         if(is_string($deadline)){
-            $this->_id=$deadline;
+            $this->_deadline=$deadline;
         }
     }
     
@@ -243,7 +242,7 @@
     
     public function setAdded_at($added_at){
         if(is_string($added_at)){
-            $this->_id=$added_at;
+            $this->_added_at=$added_at;
         }
     }
     
