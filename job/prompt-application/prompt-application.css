@@ -19,10 +19,7 @@
 .checkbox-block{
   margin-bottom: 15px;
 }
-h2{
-  margin-top: 0 !important;
-}
-h2, .icon{
+.icon{
   color: var(--color-primary);
 }
 .button-block{

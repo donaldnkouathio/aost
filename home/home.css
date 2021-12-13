@@ -20,10 +20,10 @@
   list-style-type: none;
   margin-bottom: 10px;
 }
-.about-contain h1{
+.about-contain h2{
   margin-top: 0px;
 }
-.about-contain ul li i, .about-contain h1, .about-contain strong{
+.about-contain ul li i, .about-contain strong{
   color: var(--color-primary);
 }
 
@@ -45,9 +45,7 @@
 
 /* Laptop */
 @media (min-width: 992px) {
-  .about-contain h2{
-    padding: 0 10%;
-  }
+
 }
 
 /* TV */

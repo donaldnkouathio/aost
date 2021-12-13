@@ -1,4 +1,4 @@
-<div class="offset-10-laptop padding-vertical contacteznous-block">
+<div class="offset-10-laptop contacteznous-block">
 
   <div class="left">
     <h2>Coordonées</h2>

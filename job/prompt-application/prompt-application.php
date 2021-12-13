@@ -1,8 +1,8 @@
-<div class="offset-10-laptop padding-vertical prompt-application-block">
+<div class="offset-10-laptop prompt-application-block">
 
   <div class="left">
-    <h2>Candidature spontanée</h2>
-    <p>
+    <h2 class="margin-bottom-none">Candidature spontanée</h2>
+    <p class="margin-top-none">
       Si aucune offre d’emploi ne vous intéresse, alors soumettez-nous votre CV ou
       créez-le en ligne afin d’être dans notre banque de candidatures.
     </p>
@@ -12,7 +12,7 @@
     </p>
     <p>
       Nous recevons quotidiennement de nouveaux postes.
-      Prenez toutefois connaissance de notre <a href="#">processus d’embauche</a>.
+      Prenez toutefois connaissance de notre <a href="<?php echo _ROOT_PATH; ?>job/hiring-process/">processus d’embauche</a>.
     </p>
   </div>
 

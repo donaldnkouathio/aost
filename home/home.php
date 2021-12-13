@@ -25,7 +25,7 @@
     sous le NEQ 1173599367 au Registraire des entreprises du Québec.</p>
   </div>
   <div class="about-contain">
-    <h1>Que faisons-nous ?</h1>
+    <h2>Que faisons-nous ?</h2>
     <ul>
       <li><i class="material-icons vertical-align-bottom"> check_circle </i>	Nous travaillons pour vous trouver les meilleurs employés</li>
       <li><i class="material-icons vertical-align-bottom"> check_circle </i>	Nous travaillons pour vous trouver le meilleur emploi</li>
@@ -35,7 +35,7 @@
     </ul>
   </div>
   <div class="about-contain">
-    <h1>Employeurs</h1>
+    <h2>Employeurs</h2>
     <ul>
       <li><i class="material-icons vertical-align-bottom"> check_circle </i>	Alpha Omega Solutions Travail inc. couvre en tout temps vos besoins en main d’œuvre et en  ressources humaines  que se soit des travailleurs qualifiés ou non</li>
       <li><i class="material-icons vertical-align-bottom"> check_circle </i>	Nous  formons nos employés avant de les mettre à votre disposition</li>
@@ -59,7 +59,7 @@
 </div>
 
 <div class="offset-10-laptop emplois-populaires">
-  <h1>Les emplois populaires</h1>
+  <h2>Les emplois populaires</h2>
 
   <div class="emplois-populaires-container">
     <?php
