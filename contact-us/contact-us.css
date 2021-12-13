@@ -5,9 +5,10 @@
   display: block;
 }
 .input-block input, .input-block textarea{
-  padding: 15px;
-  background-color: var(--color-shadow);
   border: none;
+  padding: 15px;
+  border-radius: var(--border-radius-size);
+  background-color: var(--color-shadow);
 }
 .input-block textarea{
 
@@ -15,11 +16,11 @@
 .input-block input{
 
 }
-h2{
-  margin-top: 0 !important;
-}
-h2, .icon{
+.icon{
   color: var(--color-primary);
+}
+.button-block{
+  text-align: right;
 }
 
 .aost-map{
@@ -68,9 +69,19 @@ h2, .icon{
     grid-column-start: 2;
     grid-column-end: 2;
   }
+  .input-block{
+    width: 49%;
+    box-sizing: border-box;
+    display: inline-block;
+  }
+  .text-area-block{
+    width: 100% !important;
+    box-sizing: border-box;
+  }
   .input-block input, .input-block textarea{
-    min-width: 80%;
-    max-width: 80%;
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .aost-map{
     height: 300px;

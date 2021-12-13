@@ -1,4 +1,4 @@
-<div class="offset-10-laptop padding-vertical contacteznous-block">
+<div class="offset-10-laptop contacteznous-block">
 
   <div class="left">
     <h2>Coordonées</h2>
@@ -42,12 +42,14 @@
         <label for="courriel">Courriel :</label>
         <input type="email" name="courriel" required value="">
       </div>
-      <div class="input-block">
+      <div class="input-block text-area-block">
         <label for="besoin">Décrivez votre besoin :</label>
         <textarea name="besoin" ></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary" name="button">Envoyer</button>
+      <div class="button-block">
+        <button type="submit" class="btn btn-primary" name="button">Envoyer</button>
+      </div>
     </form>
   </div>
 

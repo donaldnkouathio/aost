@@ -32,9 +32,4 @@ $(document).ready(function(){
   var subNavDomainesBtnClose = $("#subNavDomainesBtnClose");
   toggleShowMenu(subNavDomainesBtn, 'subNavDomaines','show');
   toggleShowMenu(subNavDomainesBtnClose, 'subNavDomaines','hide');
-
-  var subNavContactBtn = $("#subNavContactBtn");
-  var subNavContactBtnClose = $("#subNavContactBtnClose");
-  toggleShowMenu(subNavContactBtn, 'subNavContact','show');
-  toggleShowMenu(subNavContactBtnClose, 'subNavContact','hide');
 });

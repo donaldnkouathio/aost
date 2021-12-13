@@ -1,8 +1,3 @@
-@font-face {
- font-family: 'roboto-regular';
-	src: url('/aost/outils/fonts/Roboto-Regular.ttf');
-}
-
 @-ms-viewport {
   width: device-width;
 }
@@ -15,6 +10,10 @@ a{
 a:hover{
   color: var(--color-tertiary);
 }
+h2{
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
 
 body {
   margin: 0;
@@ -22,6 +21,8 @@ body {
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
+  font-family: 'Lato';
+  color: #555;
 }
 
 .vertical-align-bottom{
@@ -37,9 +38,30 @@ body {
   float: right !important;
 }
 .padding-vertical{
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
 }
+.form-required{
+  content: "*" !important;
+}
+.form-required::after{
+  content: "*" !important;
+}
+.margin-bottom-none{
+  margin-bottom: 0 !important;
+}
+.margin-top-none{
+  margin-top: 0 !important;
+}
+
+/* Ajout de l'aside sur certainnes pages */
+.aside .aside-block{
+  background-color: var(--color-shadow);
+  height: 200px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
 
 .container-box{
   background-position: center;
@@ -63,9 +85,10 @@ body {
 
 .btn{
   border: none;
-  padding: 5px 10px;
-  border-radius: 25px;
+  padding: 10px 25px !important;
+  border-radius: var(--border-radius-size);
   cursor: pointer;
+  text-transform: uppercase;
 }
 .btn-primary{
   color: var(--btn-primary-text-color);
@@ -133,6 +156,22 @@ body {
   }
   .container-box{
     /*height: 400px;*/
+  }
+
+
+  /* Ajout de l'aside sur certainnes pages */
+  .section_asside_block{
+    display: grid;
+    grid-column-gap: 5%;
+    grid-template-columns: 60% 35%;
+  }
+  .section{
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+  .aside{
+    grid-column-start: 2;
+    grid-column-end: 2;
   }
 
 }
