@@ -1,11 +1,10 @@
- <?php
+<?php
+
+include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
 
 
- include("../bd/server-connect.php");
-
- 
- class Contact
- {
+class Contact
+{
 
     /*PROPRIETES*/
     private $_id;
@@ -43,7 +42,7 @@
 
     public function setName($name){
         if(is_string($name)){
-            $this->_id=$name;
+            $this->_name=$name;
         }
     }
     
@@ -54,7 +53,7 @@
     
     public function setEmail($email){
         if(is_string($email)){
-            $this->_id=$email;
+            $this->_email=$email;
         }
     }
     
@@ -65,7 +64,7 @@
     
     public function setName($name){
         if(is_string($name)){
-            $this->_id=$name;
+            $this->_name=$name;
         }
     }
     
@@ -76,7 +75,7 @@
     
     public function setPhone($phone){
         if(is_string($phone)){
-            $this->_id=$phone;
+            $this->_phone=$phone;
         }
     }
     
@@ -87,7 +86,7 @@
     
     public function setAdded_at($added_at){
         if(is_string($added_at)){
-            $this->_id=$added_at;
+            $this->_added_at=$added_at;
         }
     }
     

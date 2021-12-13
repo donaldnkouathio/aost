@@ -1,9 +1,10 @@
- <?php
+<?php
 
- include("../bd/server-connect.php");
+include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
 
- class Admin
- {
+
+class Admin
+{
 
     /*PROPRIETES*/
     private $_id;
@@ -41,7 +42,7 @@
 
     public function setEmail($email){
         if(is_string($email)){
-            $this->_id=$email;
+            $this->_email=$email;
         }
     }
     
@@ -52,7 +53,7 @@
     
     public function setPassword($password){
         if(is_string($password)){
-            $this->_id=$password;
+            $this->_password=$password;
         }
     }
     
@@ -63,7 +64,7 @@
     
     public function setRole($role){
         if(is_string($role)){
-            $this->_id=$role;
+            $this->_role=$role;
         }
     }
     
@@ -74,7 +75,7 @@
     
     public function setName($name){
         if(is_string($name)){
-            $this->_id=$name;
+            $this->_name=$name;
         }
     }
     
@@ -85,7 +86,7 @@
     
     public function setAdded_at($added_at){
         if(is_string($added_at)){
-            $this->_id=$added_at;
+            $this->_added_at=$added_at;
         }
     }
     

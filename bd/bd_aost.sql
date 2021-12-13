@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 11 déc. 2021 à 12:49
+-- Généré le :  Dim 12 déc. 2021 à 23:25
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -207,9 +207,30 @@ CREATE TABLE IF NOT EXISTS `subdomains` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_domain` bigint(20) NOT NULL,
   `name` varchar(200) NOT NULL,
+  `color` varchar(100) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_domain` (`id_domain`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `suggestions`
+--
+
+DROP TABLE IF EXISTS `suggestions`;
+CREATE TABLE IF NOT EXISTS `suggestions` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_domain` bigint(20) NOT NULL,
+  `id_subdomain` bigint(20) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `cv_file` varchar(200) NOT NULL,
+  `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `id_domain` (`id_domain`),
+  KEY `id_subdomain` (`id_subdomain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

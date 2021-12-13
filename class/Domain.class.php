@@ -1,11 +1,11 @@
-  <?php
+<?php
 
 
-  include("../bd/server-connect.php");
+include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
 
-  
-  class domain
-  {
+
+class domain
+{
 
     /*PROPRIETES*/
     private $_id;
@@ -43,7 +43,7 @@
 
     public function setId_admin($id_admin){
         if(is_int($id_admin)){
-            $this->_id=$id_admin;
+            $this->_id_admin=$id_admin;
         }
     }
     
@@ -54,7 +54,7 @@
     
     public function setName($name){
         if(is_string($name)){
-            $this->_id=$name;
+            $this->_name=$name;
         }
     }
     
@@ -65,7 +65,7 @@
     
     public function setColor($color){
         if(is_string($color)){
-            $this->_id=$color;
+            $this->_color=$color;
         }
     }
     
@@ -76,7 +76,7 @@
     
     public function setImage($image){
         if(is_string($image)){
-            $this->_id=$image;
+            $this->_image=$image;
         }
     }
     
@@ -88,7 +88,7 @@
 
     public function setAdded_at($added_at){
         if(is_string($added_at)){
-            $this->_id=$added_at;
+            $this->_added_at=$added_at;
         }
     }
     

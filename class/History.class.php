@@ -1,11 +1,10 @@
- <?php
+<?php
+
+include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
 
 
- include("../bd/server-connect.php");
-
- 
- class History
- {
+class History
+{
 
     /*PROPRIETES*/
     private $_id;
@@ -43,7 +42,7 @@
 
     public function setId_admin($id_admin){
         if(is_int($id_admin)){
-            $this->_id=$id_admin;
+            $this->_id_admin=$id_admin;
         }
     }
     
@@ -54,7 +53,7 @@
     
     public function setId_target($id_target){
         if(is_int($id_target)){
-            $this->_id=$id_target;
+            $this->_id_target=$id_target;
         }
     }
     
@@ -65,7 +64,7 @@
     
     public function setAction($action){
         if(is_string($action)){
-            $this->_id=$action;
+            $this->_action=$action;
         }
     }
     
@@ -76,7 +75,7 @@
     
     public function setDescription($description){
         if(is_string($description)){
-            $this->_id=$description;
+            $this->_description=$description;
         }
     }
     
@@ -87,7 +86,7 @@
     
     public function setAdded_at($added_at){
         if(is_string($added_at)){
-            $this->_id=$added_at;
+            $this->_added_at=$added_at;
         }
     }
     

@@ -1,11 +1,10 @@
- <?php
+<?php
+
+include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
 
 
- include("../bd/server-connect.php");
-
- 
- class Compagny
- {
+class Compagny
+{
 
     /*PROPRIETES*/
     private $_id;
@@ -46,7 +45,7 @@
 
     public function setId_user($id_user){
         if(is_int($id_user)){
-            $this->_id=$id_user;
+            $this->_id_user=$id_user;
         }
     }
     
@@ -58,7 +57,7 @@
     
     public function setId_compagny($id_compagny){
         if(is_int($id_compagny)){
-            $this->_id=$id_compagny;
+            $this->_id_compagny=$id_compagny;
         }
     }
     
@@ -69,7 +68,7 @@
     
     public function setOther_compagny($other_compagny){
         if(is_string($other_compagny)){
-            $this->_id=$other_compagny;
+            $this->_other_compagny=$other_compagny;
         }
     }
     
@@ -80,7 +79,7 @@
     
     public function setName($name){
         if(is_string($name)){
-            $this->_id=$name;
+            $this->_name=$name;
         }
     }
     
@@ -91,7 +90,7 @@
     
     public function setCountry($country){
         if(is_string($country)){
-            $this->_id=$country;
+            $this->_country=$country;
         }
     }
     
@@ -102,7 +101,7 @@
     
     public function setCity($city){
         if(is_int($city)){
-            $this->_id=$city;
+            $this->_city=$city;
         }
     }
     
@@ -113,7 +112,7 @@
     
     public function setAddress($address){
         if(is_string($address)){
-            $this->_id=$address;
+            $this->_address=$address;
         }
     }
     
@@ -124,7 +123,7 @@
 
     public function setAdded_at($added_at){
         if(is_string($added_at)){
-            $this->_id=$added_at;
+            $this->_added_at=$added_at;
         }
     }
     
