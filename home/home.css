@@ -20,118 +20,85 @@
   list-style-type: none;
   margin-bottom: 10px;
 }
-.about-contain h1{
+.about-contain h2{
   margin-top: 0px;
 }
-.about-contain ul li i, .about-contain h1, .about-contain strong{
+.about-contain ul li i, .about-contain strong{
   color: var(--color-primary);
 }
 
-.emplois-populaires{
-  margin-bottom: 15px;
+
+/* HOME PAGE ONLY */
+.container-text_1 span{
+  display: block;
 }
-.emplois-populaires-container{
-}
-.ep-contain{
+.container-text_1 a{
   display: inline-block;
-  box-sizing: border-box;
-  margin-bottom: 15px;
-  vertical-align: top;
-  border: 1px solid var(--color-shadow);
+  background-color: var(--color-primary);
+  padding: 10px 25px !important;
   border-radius: var(--border-radius-size);
-  box-shadow: 2px 2px 3px var(--color-shadow);
+  cursor: pointer;
+  text-transform: uppercase;
+  color: var(--btn-primary-text-color);
 }
-.ep-header{
-  background-position: center;
-  border-radius: var(--border-radius-size) var(--border-radius-size) 0 0;
-  background-size: cover;
-  /*background-image: url('/aost/img/bg/bg5.jpg');*/
-  position: relative;
+.container-text_1 a:hover{
+  background-color: var(--btn-primary-bg-hover-color);
 }
-.ep-poste{
-  display: inline-block;
-  padding: 25px 15px;
-  width: 100%;
-  box-sizing: border-box;
-  color: white;
-  font-size: 1.4em;
-  text-align: center;
-  border-radius: var(--border-radius-size) var(--border-radius-size) 0 0;
-  background-color: rgba(0, 0, 0, 0.5);
+.container-text_1-title{
+  text-align: left;
 }
-.ep-domaine{
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 2px 5px;
-  color: white;
-  border-radius: var(--border-radius-size) 0 0 0;
-  /*background-color: rgba(230, 50, 50, 1);*/
-}
-.ep-voir-plus{
-  margin-top: 15px;
-}
-.ep-footer{
-  border: 1px solid #999;
-  padding: 15px 15px 5px 15px;
-  color: #555;
-  border-radius: 0 0 var(--border-radius-size) var(--border-radius-size);
-}
-.ep-footer i{
-  font-size: 1em;
-  color: var(--color-primary);
-  vertical-align:text-top !important;
-}
-.ep-footer-top{
-  margin-bottom: 5px;
-}
-.ep-footer-bottom{
-
-}
-.ep-footer-left{
-}
-.ep-footer-right{
-  float: right;
-}
+/* *** */
 
 /***** Media Query *****/
 
 /* Mobile */
-@media (min-width: 320px) {
+@media (max-width: 574px) {
   .about-contain{
-    width: 100%;
+    width: 100% !important;
   }
-  .ep-contain{
-    width: 100%;
-  }
-  .emplois-populaires{
-    padding: 15px;
-    box-sizing: border-box;
+  .container-text_1, .container-text_1-title{
+    padding-left: 15px !important;
   }
 }
 
 /* Tablette */
-@media (min-width: 576px) {
+@media (max-width: 991px) {
   .about-contain{
     width: 49%;
   }
-  .ep-contain{
-    width: 48%;
-    margin-right: 10px;
+  /* HOME PAGE ONLY */
+  .container-text_1, .container-text_1-title{
+    padding-left: 25px;
   }
+  .container-text_1{
+    text-align: left;
+  }
+  .container-text_1 span{
+    font-size: 1.3em;
+    margin-top: 15px;
+  }
+  .container-text_1 a{
+    font-size: 0.8em !important;
+    margin-top: 5px;
+  }
+  /* *** */
 }
 
 /* Laptop */
 @media (min-width: 992px) {
-  .about-contain h2{
-    text-align: center;
-    padding: 0 10%;
+  .about-contain{
+    width: 49%;
   }
-  .ep-contain{
-    width: 24%;
-    margin-right: 5px;
+
+  /* HOME PAGE ONLY */
+  .container-text_1 span{
+    font-size: 1.5em;
   }
+  .container-text_1 a{
+    font-size: 1em !important;
+    margin-top: 15px;
+  }
+  /* *** */
 }
 
 /* TV */

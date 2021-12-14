@@ -1,0 +1,93 @@
+.offres-stats{
+  padding: 15px 15px 0 15px;
+}
+.offres-filtres-header{
+  padding: 15px;
+  color: white;
+  background-color: var(--color-primary);
+}
+.offres-filtres-body{
+  padding: 15px;
+}
+
+/*** breadcrumb ***/
+.breadcrumb-contain{
+  border: 1px solid black;
+  display: inline-block;
+}
+.breadcrumb-item{
+  display: inline-block;
+  border-left: 1px solid black;
+  padding: 5px 15px;
+  margin: 0 -2px;
+  box-sizing: border-box;
+}
+.breadcrumb-item-active{
+  background-color: var(--color-primary);
+  color: white;
+  border-left: 1px solid var(--color-primary);
+}
+.breadcrumb-item:first-child{
+  border-left: none;
+}
+
+
+/***** Media Query *****/
+
+/* Mobile */
+@media (min-width: 320px) {
+  .offres-block{
+  }
+  .offres-filtres{
+    background-color: white;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100;
+    height: 100%;
+    z-index: 10;
+    width: 100%;
+    display: none;
+  }
+  .offres-contain{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+}
+
+/* Tablette */
+@media (min-width: 576px) {
+  .offres-contain{
+    padding: 15px 0 15px 15px;
+  }
+}
+
+/* Laptop */
+@media (min-width: 992px) {
+  .offres-filtres{
+    vertical-align: top;
+    box-shadow: 4px 4px 6px var(--color-shadow);
+    margin-top: 15px;
+    display: inline-block;
+    width: 20%;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .offres-contain{
+    margin-left: 15px;
+    display: inline-block;
+    width: 78%;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+  .offres-stats{
+    margin-left: 20%;
+    padding-left: 35px;
+  }
+}
+
+/* TV */
+@media (min-width: 1441px) {
+}

@@ -1,0 +1,26 @@
+
+
+
+/***** Media Query *****/
+
+/* Mobile */
+@media (max-width: 575px) {
+
+}
+
+/* Tablette */
+@media (max-width: 991px) {
+  .hiring-process-block{
+    padding: 15px;
+    padding-top: 0;
+  }
+}
+
+/* Laptop */
+@media (min-width: 992px) {
+
+}
+
+/* TV */
+@media (min-width: 1441px) {
+}

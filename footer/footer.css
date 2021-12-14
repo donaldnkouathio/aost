@@ -19,6 +19,10 @@ footer{
 .footer-contain{
   display: inline-block;
 }
+.footer-contain .h2{
+  border: 1px solid red;
+  color: white !important;
+}
 .footer-contain:first-child{
   margin-left: 0;
 }
