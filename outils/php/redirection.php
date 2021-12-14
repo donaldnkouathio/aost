@@ -2,9 +2,10 @@
   session_start();
   require_once 'init.php';
   require_once _APP_PATH.'outils/php/functions.php';
-  require_once _APP_PATH.'outils/php/Utility.class.php';
+  require_once _APP_PATH.'outils/php/Session.class.php';
+  //require_once _APP_PATH.'outils/php/import_class.php';
 
-  $utility = new Utility(); // Utilitaire qui va contenir nos variables de session
+  $session = new Session(); // Utilitaire qui va contenir nos variables de session
 
   function redirection($title, $pageContain, $currentPage, $currentSubPage, $css, $js){
     //$title : titre de la page
@@ -17,10 +18,10 @@
   <?php
     include(_APP_PATH."header/head.php");
 
-    global $utility;
+    global $session;
 
-    $utility->setCurrentPage($currentPage); //Page actuellement visitée par l'utilisateur
-    $utility->setCurrentSubPage($currentSubPage); //Page actuellement visitée par l'utilisateur
+    $session->setCurrentPage($currentPage); //Page actuellement visitée par l'utilisateur
+    $session->setCurrentSubPage($currentSubPage); //Page actuellement visitée par l'utilisateur
   ?>
 
   		<title><?php echo $title; ?></title>

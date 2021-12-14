@@ -74,8 +74,8 @@
               <span class="ep-footer-right"><i class="material-icons vertical-align-bottom"> watch_later </i> Temps plein</span>
             </div>
             <div class="ep-footer-bottom">
-              <span class="ep-footer-left"><i class="material-icons vertical-align-bottom"> location_on </i> Montréal</span>
-              <span class="ep-footer-right"><i class="material-icons vertical-align-bottom"> today </i> <?php get_elapsed_time("10-12-2021 10:30"); ?></span>
+              <span class="ep-footer-left"><i class="material-icons vertical-align-bottom"> location_on </i> Expire le Montréal</span>
+              <span class="ep-footer-right"><i class="material-icons vertical-align-bottom"> today </i> Publié <?php get_elapsed_time("10-12-2021 10:30"); ?></span>
             </div>
           </div>
         </a>
@@ -89,7 +89,7 @@
           if($i == $pageActuelle){ ?>
           <span class="breadcrumb-item breadcrumb-item-active"><?php echo $i; ?></span>
         <?php  }else{ ?>
-          <a class="breadcrumb-item" href="/aost/emploi/offres/page<?php echo $i; ?>"><?php echo $i; ?></a>
+          <a class="breadcrumb-item" href="<?php echo _ROOT_PATH; ?>job/offers/page<?php echo $i; ?>"><?php echo $i; ?></a>
         <?php }} ?>
       </div>
     </div>

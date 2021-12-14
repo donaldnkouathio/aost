@@ -1,0 +1,47 @@
+.domain-item-block{
+  display: flex;
+  flex-flow: wrap;
+  text-align: center;
+}
+.domain-item{
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 1px solid var(--color-shadow);
+  word-wrap: break-word;
+  padding: 15px;
+  border-radius: var(--border-radius-size);
+}
+.domain-item:hover{
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+
+/***** Media Query *****/
+
+/* Mobile */
+@media (max-width: 575px) {
+}
+
+/* Tablette */
+@media (max-width: 991px) {
+  .about-block{
+    padding: 15px;
+  }
+  .domain-item{
+    width: 47%;
+    margin : 1.5%;
+  }
+}
+
+/* Laptop */
+@media (min-width: 992px) {
+  .domain-item{
+    width: 30%;
+    margin : 1.5%;
+  }
+}
+
+/* TV */
+@media (min-width: 1441px) {
+}

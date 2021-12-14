@@ -67,8 +67,8 @@
 
 /* Tablette */
 @media (max-width: 991px) {
-  .prompt-application-block{
-    padding: 15px;
+  .left-block, .right{
+    padding: 15px !important;
     padding-top: 0;
   }
   .input-block input, .input-block textarea{

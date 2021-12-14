@@ -1,30 +1,33 @@
 <div class="offset-10-laptop prompt-application-block">
 
   <div class="left">
-    <h2 class="margin-bottom-none">Candidature spontanée</h2>
-    <p class="margin-top-none">
-      Si aucune offre d’emploi ne vous intéresse, alors soumettez-nous votre CV ou
-      créez-le en ligne afin d’être dans notre banque de candidatures.
-    </p>
-    <p>
-      Si votre profil nous intéresse et qu’il correspond à un de nos postes à combler, alors
-      nous communiquerons avec vous.
-    </p>
-    <p>
-      Nous recevons quotidiennement de nouveaux postes.
-      Prenez toutefois connaissance de notre <a href="<?php echo _ROOT_PATH; ?>job/hiring-process/">processus d’embauche</a>.
-    </p>
+    <?php echo $session->presentationPage("Candidature spontanée", "bg5"); ?>
+
+    <div class="left-block">
+      <p class="">
+        Si aucune offre d’emploi ne vous intéresse, alors soumettez-nous votre CV ou
+        créez-le en ligne afin d’être dans notre banque de candidatures.
+      </p>
+      <p>
+        Si votre profil nous intéresse et qu’il correspond à un de nos postes à combler, alors
+        nous communiquerons avec vous.
+      </p>
+      <p>
+        Nous recevons quotidiennement de nouveaux postes.
+        Prenez toutefois connaissance de notre <a href="<?php echo _ROOT_PATH; ?>job/hiring-process/">processus d’embauche</a>.
+      </p>
+    </div>
   </div>
 
   <div class="right">
-    <h2>Soumettre sa candidature spontanée</h2>
+    <h2 class=" margin-top-none">Soumettre sa candidature spontanée</h2>
     <div class="cv_header">
       <div class="have_cv_btn cv_btn_active">J'ai un CV</div>
       <div class="make_cv_btn">Je veux créer mon CV</div>
     </div>
 
     <div class="make_cv_block">
-      <form class="" action="index.html" method="post">
+      <form class="" action="<?php echo _ROOT_PATH; ?>job/promp-application" method="post">
         <div class="input-block">
           <label for="name">Nom<span class="form-required"> </span> :</label>
           <input type="text" name="name" required value="">
@@ -66,7 +69,7 @@
     </div>
 
     <div class="have_cv_block">
-      <form class="" action="index.html" method="post">
+      <form class="" action="<?php echo _ROOT_PATH; ?>job/promp-application" method="post" enctype="multipart/form-data">
         <div class="input-block">
           <label for="name">Nom<span class="form-required"> </span> :</label>
           <input type="text" name="name" required value="">
@@ -94,6 +97,10 @@
         <div class="input-block text-area-block">
           <label for="about">Lettre de présentation ou commentaires :</label>
           <textarea name="about" ></textarea>
+        </div>
+        <div class="input-block text-area-block">
+          <label for="about">Joindre un fichier<span class="form-required"> </span> :</label>
+          <input type="file" name="cvFile" required value="">
         </div>
 
         <div class="checkbox-block">
