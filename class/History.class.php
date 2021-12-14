@@ -110,6 +110,8 @@ class History
 
 
     public function addHistory(History $history){
+        include(_APP_PATH."bd/server-connect.php");
+        
         $query=$db->prepare("INSERT INTO history VALUES (?,?,?,?,?,?)");
 
         $id=0;
@@ -138,6 +140,8 @@ class History
 
 
   public function removeHistory($id_history){
+        include(_APP_PATH."bd/server-connect.php");
+        
     if(is_int($id_history)){
         $req=$db->prepare("DELETE FROM history WHERE id=?");
 
@@ -157,6 +161,8 @@ class History
 
 
 public function getLastHistory(){
+        include(_APP_PATH."bd/server-connect.php");
+        
     $query=$db->prepare("SELECT * FROM history WHERE id=(SELECT MAX(id) FROM history)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -170,6 +176,8 @@ public function getLastHistory(){
 
 
 public function getHistory($id){
+        include(_APP_PATH."bd/server-connect.php");
+        
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM history WHERE id=?");
         $query->bindParam(1,$id);
@@ -188,7 +196,9 @@ public function getHistory($id){
 
 
 
-public function getHistory() {
+public function getHistorys() {
+        include(_APP_PATH."bd/server-connect.php");
+        
 
     $query=$db->prepare("SELECT * FROM history ORDER BY id ASC");
 
