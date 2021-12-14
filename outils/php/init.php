@@ -1,5 +1,5 @@
 <?php
-  ini_set( 'display_errors', 'Off' );
+/*  ini_set( 'display_errors', 'Off' );
 
   // security, checked by essential files under subdir
   define('_SECURE_', 1);
@@ -17,7 +17,7 @@
   }
   @session_start();
   ob_start();
-}
+}*/
 
   //Chemins par defaut du projet;
   $root_path = $_SERVER["DOCUMENT_ROOT"]."aost/";

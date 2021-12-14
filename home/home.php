@@ -33,6 +33,7 @@
       <li><i class="material-icons vertical-align-bottom"> check_circle </i>	Emploi pour la diversité et emploi pour tous maintenant</li>
       <li><i class="material-icons vertical-align-bottom"> check_circle </i>	Nous travaillons pour le développement du Québec et du Canada</li>
     </ul>
+    <a href="<?php echo _ROOT_PATH; ?>job/offers/" class="ep-voir-plus">EN SAVOIR PLUS <i class="material-icons vertical-align-bottom"> chevron_right </i></a>
   </div>
   <div class="about-contain">
     <h2>Employeurs</h2>
@@ -42,17 +43,24 @@
       <li><i class="material-icons vertical-align-bottom"> check_circle </i>	Un conseiller responsable de secteur d’activité répondra à vos besoins et vos questions</li>
       <li><i class="material-icons vertical-align-bottom"> check_circle </i>	Un conseiller vous contactera dès réception de votre demande de manière à dresser un portrait exhaustif de votre entreprise et de vos besoins</li>
     </ul>
+    <a href="<?php echo _ROOT_PATH; ?>job/offers/" class="ep-voir-plus">EN SAVOIR PLUS <i class="material-icons vertical-align-bottom"> chevron_right </i></a>
   </div>
   <br>
 </div>
 
 <div class="container-box" style="background-image: url('/aost/img/bg/bg4.jpg');">
   <div class="container-box-shadow">
-    <div class="offset-10-laptop container-box-body" style="text-align: right">
-      <div class="container-title">Vous chercher de l'emploi ? </div>
-      <div class="container-text_1">Déposez votre C.V. et postulez Maintenant.</div>
-      <div class="">
-        <button type="button" class="btn btn-primary" name="button">Postuler</button>
+    <div class="offset-10-laptop container-box-body">
+      <div class="container-title container-text_1-title">Vous chercher de l'emploi ? </div>
+      <div class="left_right_container">
+        <div class="container-text_1 left-block">
+          <span>Créer votre profil et postuler plus facilement</span>
+          <a href="#">Créer mon profil</a>
+        </div>
+        <div class="container-text_1 right-block">
+          <span>Ou vous voules simplement nous faire parvenir votre CV</span>
+          <a href="<?php echo _ROOT_PATH; ?>job/prompt-application/" class="">Candidature spontanée</a>
+        </div>
       </div>
     </div>
   </div>
@@ -88,5 +96,5 @@
     <?php } ?>
   </div>
 
-  <a href="<?php echo _ROOT_PATH; ?>job/offers/" class="ep-voir-plus">Tous les emplois <i class="material-icons vertical-align-bottom"> arrow_forward </i></a>
+  <a href="<?php echo _ROOT_PATH; ?>job/offers/" class="ep-voir-plus">VOIR TOUS LES EMPLOIS DISPONIBLE <i class="material-icons vertical-align-bottom"> chevron_right </i></a>
 </div>

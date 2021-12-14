@@ -27,25 +27,78 @@
   color: var(--color-primary);
 }
 
+
+/* HOME PAGE ONLY */
+.container-text_1 span{
+  display: block;
+}
+.container-text_1 a{
+  display: inline-block;
+  background-color: var(--color-primary);
+  padding: 10px 25px !important;
+  border-radius: var(--border-radius-size);
+  cursor: pointer;
+  text-transform: uppercase;
+  color: var(--btn-primary-text-color);
+}
+.container-text_1 a:hover{
+  background-color: var(--btn-primary-bg-hover-color);
+}
+.container-text_1-title{
+  text-align: left;
+}
+/* *** */
+
 /***** Media Query *****/
 
 /* Mobile */
-@media (min-width: 320px) {
+@media (max-width: 574px) {
   .about-contain{
-    width: 100%;
+    width: 100% !important;
+  }
+  .container-text_1, .container-text_1-title{
+    padding-left: 15px !important;
   }
 }
 
 /* Tablette */
-@media (min-width: 576px) {
+@media (max-width: 991px) {
   .about-contain{
     width: 49%;
   }
+  /* HOME PAGE ONLY */
+  .container-text_1, .container-text_1-title{
+    padding-left: 25px;
+  }
+  .container-text_1{
+    text-align: left;
+  }
+  .container-text_1 span{
+    font-size: 1.3em;
+    margin-top: 15px;
+  }
+  .container-text_1 a{
+    font-size: 0.8em !important;
+    margin-top: 5px;
+  }
+  /* *** */
 }
 
 /* Laptop */
 @media (min-width: 992px) {
+  .about-contain{
+    width: 49%;
+  }
 
+  /* HOME PAGE ONLY */
+  .container-text_1 span{
+    font-size: 1.5em;
+  }
+  .container-text_1 a{
+    font-size: 1em !important;
+    margin-top: 15px;
+  }
+  /* *** */
 }
 
 /* TV */

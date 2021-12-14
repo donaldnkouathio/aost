@@ -53,15 +53,23 @@ body {
 .margin-top-none{
   margin-top: 0 !important;
 }
+citaion{
+  font-style: italic;
+}
+.color-primary{
+  color: var(--color-primary);
+}
 
 /* Ajout de l'aside sur certainnes pages */
 .aside .aside-block{
   background-color: var(--color-shadow);
-  height: 200px;
+  max-height: 500px;
+  word-wrap: break-word;
+  overflow: auto;
   padding: 15px;
   box-sizing: border-box;
 }
-
+/* *** */
 
 .container-box{
   background-position: center;
@@ -82,7 +90,27 @@ body {
   height: 100%;
   color: white;
 }
+.container-title{
+  text-align: center;
+}
 
+/* Pour les textes de présentation des page contenue dans la classe Session::presentationPage() */
+  .presentaion_page_block{
+    position : relative;
+    background-color: var(--color-shadow);
+    /* margin-top: -24px; */
+    z-index: 1;
+    background-position: center;
+    background-size: cover;
+  }
+  .presentaion_page_text{
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: white;
+  }
+/* *** */
+
+/* Aspect général des bouttons */
 .btn{
   border: none;
   padding: 10px 25px !important;
@@ -101,7 +129,17 @@ body {
 /***** Media Query *****/
 
 /* Mobile */
-@media (min-width: 320px) {
+@media (max-width: 575px) {
+  /* Pour les textes de présentation des page contenue dans la classe Session::presentationPage() */
+    .presentaion_page_text{
+      padding: 50px 15px !important;
+      font-size: 1.5em;
+    }
+  /* *** */
+}
+
+/* Tablette */
+@media (max-width: 991px) {
   .hide-on-mobile{
       display: none !important;
   }
@@ -112,9 +150,7 @@ body {
     font-size: 1.5em;
     font-weight: bold;
   }
-  .container-text_1{
-    font-size: 1.3em;
-  }
+
   .container-box{
     /*height: 250px;*/
   }
@@ -124,10 +160,13 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
   }
-}
 
-/* Tablette */
-@media (min-width: 576px) {
+  /* Pour les textes de présentation des page contenue dans la classe Session::presentationPage() */
+    .presentaion_page_text{
+      padding: 80px 15px;
+      font-size: 1.5em;
+    }
+  /* *** */
 }
 
 /* Laptop */
@@ -147,9 +186,6 @@ body {
     font-size: 2.5em;
     font-weight: bold;
   }
-  .container-text_1{
-    font-size: 2em;
-  }
   .container-box-body{
     padding-top: 120px;
     padding-bottom: 120px;
@@ -157,7 +193,6 @@ body {
   .container-box{
     /*height: 400px;*/
   }
-
 
   /* Ajout de l'aside sur certainnes pages */
   .section_asside_block{
@@ -173,6 +208,45 @@ body {
     grid-column-start: 2;
     grid-column-end: 2;
   }
+
+  .left_right_container{
+    margin-top: 15px;
+    display: grid;
+    grid-column-gap: 5%;
+    grid-template-columns: 50% 50%;
+  }
+  .left-block{
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+  .right-block{
+    grid-column-start: 2;
+    grid-column-end: 2;
+  }
+
+  /* Pour les textes de présentation des page contenue dans la classe Session::presentationPage() */
+    .presentaion_page_text{
+      padding: 100px 15px;
+      font-size: 2.5em;
+    }
+  /* *** */
+
+  /* Aside block */
+  .aside{
+    position: relative;
+  }
+  .aside-block-fixed{
+    position: fixed !important;
+    width: 28%;
+    box-sizing: border-box;
+    top: 15px;;
+  }
+  .aside-block-absolute{
+    position: absolute;
+    bottom : 15px;
+    width: 100%;
+  }
+  /* *** */
 
 }
 
