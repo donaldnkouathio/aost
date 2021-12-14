@@ -112,6 +112,8 @@ public function getAdded_at(){
 /*METHODES FONCTIONNELLES*/
 
 public function addSubdomain(Subdomain $subdomain){
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("INSERT INTO subdomains VALUES (?,?,?,?,?,?)");
 
     $id=0;
@@ -143,6 +145,8 @@ public function addSubdomain(Subdomain $subdomain){
 
 
 public function removeSubdomain($id_subdomain){
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($id_subdomain)){
         $req=$db->prepare("DELETE FROM subdomains WHERE id=?");
 
@@ -163,6 +167,8 @@ public function removeSubdomain($id_subdomain){
 
 
 public function getLastSubdomain(){
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("SELECT * FROM subdomains WHERE id=(SELECT MAX(id) FROM subdomain)");
     if($query->execute() && $query->rowCount()==1){
        $data=$query->fetch();
@@ -176,6 +182,8 @@ public function getLastSubdomain(){
 
 
 public function getSubdomain($id){
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($id)){
      $query=$db->prepare("SELECT * FROM subdomains WHERE id=?");
      $query->bindParam(1,$id);
@@ -194,7 +202,9 @@ public function getSubdomain($id){
 
 
 
-public function getSubdomain() {
+public function getSubdomains() {
+    include(_APP_PATH."bd/server-connect.php");
+    
 
     $query=$db->prepare("SELECT * FROM subdomains ORDER BY id ASC");
 
@@ -217,10 +227,12 @@ public function getSubdomain() {
 
 
 public function editSubdomain(Subdomain $subdomain) {
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("UPDATE subdomains
        SET name=?,
        color=?,
-       image=?,
+       image=?
        WHERE id=?
 
        ");

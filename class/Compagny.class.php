@@ -9,8 +9,8 @@ class Compagny
     /*PROPRIETES*/
     private $_id;
     private $_id_user;
-    private $_id_compagny;
-    private $_other_compagny;
+    private $_id_domain;
+    private $_other_domain;
     private $_name;
     private $_country;
     private $_city;
@@ -55,25 +55,25 @@ class Compagny
 
 
     
-    public function setId_compagny($id_compagny){
-        if(is_int($id_compagny)){
-            $this->_id_compagny=$id_compagny;
+    public function setId_domain($id_domain){
+        if(is_int($id_domain)){
+            $this->_id_domain=$id_domain;
         }
     }
     
-    public function getId_compagny(){
-        return $this->_id_compagny;
+    public function getId_domain(){
+        return $this->_id_domain;
     }
 
     
-    public function setOther_compagny($other_compagny){
-        if(is_string($other_compagny)){
-            $this->_other_compagny=$other_compagny;
+    public function setOther_domain($other_domain){
+        if(is_string($other_domain)){
+            $this->_other_domain=$other_domain;
         }
     }
     
-    public function getOther_compagny(){
-        return $this->_other_compagny;
+    public function getOther_domain(){
+        return $this->_other_domain;
     }
 
     
@@ -147,12 +147,14 @@ class Compagny
 
 
     public function addCompagny(Compagny $compagny){
+        include(_APP_PATH."bd/server-connect.php");
+        
         $query=$db->prepare("INSERT INTO compagny VALUES (?,?,?,?,?,?,?,?,?)");
 
         $id=0;
         $id_user=$compagny->getId_user();
-        $id_compagny=$compagny->getId_compagny();
-        $other_compagny=$compagny->getOther_compagny();
+        $id_domain=$compagny->getId_domain();
+        $other_domain=$compagny->getOther_domain();
         $name=$compagny->getName();
         $country=$compagny->getCountry();
         $city=$compagny->getCity();
@@ -161,8 +163,8 @@ class Compagny
 
         $query->bindParam(1,$id);
         $query->bindParam(2,$id_user);
-        $query->bindParam(3,$id_compagny);
-        $query->bindParam(4,$other_compagny);
+        $query->bindParam(3,$id_domain);
+        $query->bindParam(4,$other_domain);
         $query->bindParam(5,$name);
         $query->bindParam(6,$country);
         $query->bindParam(7,$city);
@@ -183,11 +185,13 @@ class Compagny
 
 
 
-  public function removeCompagny($id_compagny){
-    if(is_int($id_compagny)){
+  public function removeCompagny($id_domain){
+        include(_APP_PATH."bd/server-connect.php");
+        
+    if(is_int($id_domain)){
         $req=$db->prepare("DELETE FROM compagny WHERE id=?");
 
-        $req->bindParam(1,$id_compagny);
+        $req->bindParam(1,$id_domain);
 
         if($req->execute()){
             return true;
@@ -204,6 +208,8 @@ class Compagny
 
 
 public function getLastCompagny(){
+        include(_APP_PATH."bd/server-connect.php");
+        
     $query=$db->prepare("SELECT * FROM compagny WHERE id=(SELECT MAX(id) FROM compagny)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -217,6 +223,8 @@ public function getLastCompagny(){
 
 
 public function getCompagny($id){
+        include(_APP_PATH."bd/server-connect.php");
+        
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM compagny WHERE id=?");
         $query->bindParam(1,$id);
@@ -235,7 +243,9 @@ public function getCompagny($id){
 
 
 
-public function getCompagny() {
+public function getCompagnys() {
+        include(_APP_PATH."bd/server-connect.php");
+        
 
     $query=$db->prepare("SELECT * FROM compagny ORDER BY id ASC");
 
@@ -258,13 +268,15 @@ public function getCompagny() {
 
 
 public function editCompagny(Compagny $compagny) {
+        include(_APP_PATH."bd/server-connect.php");
+        
     $query=$db->prepare("UPDATE compagny
         SET name=?,
         country=?,
         city=?,
         address=?,
-        id_compagny=?,
-        other_compagny=?
+        id_domain=?,
+        other_domain=?
         WHERE id=?
 
         ");
@@ -274,15 +286,15 @@ public function editCompagny(Compagny $compagny) {
     $country=$compagny->getCountry();
     $city=$compagny->getCity();
     $address=$compagny->getAddress();
-    $id_compagny=$compagny->getid_compagny();
-    $other_compagny=$compagny->getOther_compagny();
+    $id_domain=$compagny->getId_domain();
+    $other_domain=$compagny->getOther_domain();
 
     $query->bindParam(1,$name);
     $query->bindParam(2,$country);
     $query->bindParam(3,$city);
     $query->bindParam(4,$address);
-    $query->bindParam(5,$id_compagny);
-    $query->bindParam(6,$other_compagny);
+    $query->bindParam(5,$id_domain);
+    $query->bindParam(6,$other_domain);
     $query->bindParam(7,$id);
 
     if($query->execute()){
