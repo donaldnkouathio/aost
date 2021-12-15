@@ -110,6 +110,8 @@ class Suggestion
 
 
  public function addSuggestion(Suggestion $suggestion){
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("INSERT INTO suggestions VALUES (?,?,?,?,?,?)");
 
     $id=0;
@@ -138,6 +140,8 @@ class Suggestion
 
 
 public function removeSuggestion($id_suggestion){
+ include(_APP_PATH."bd/server-connect.php");
+ 
   if(is_int($id_suggestion)){
     $req=$db->prepare("DELETE FROM suggestions WHERE id=?");
 
@@ -158,6 +162,8 @@ public function removeSuggestion($id_suggestion){
 
 
 public function getLastSuggestion(){
+ include(_APP_PATH."bd/server-connect.php");
+ 
  $query=$db->prepare("SELECT * FROM suggestions WHERE id=(SELECT MAX(id) FROM suggestions)");
  if($query->execute() && $query->rowCount()==1){
     $data=$query->fetch();
@@ -171,6 +177,8 @@ public function getLastSuggestion(){
 
 
 public function getSuggestion($id){
+ include(_APP_PATH."bd/server-connect.php");
+ 
  if(is_int($id)){
     $query=$db->prepare("SELECT * FROM suggestions WHERE id=?");
     $query->bindParam(1,$id);
@@ -190,6 +198,8 @@ public function getSuggestion($id){
 
 
 public function getSuggestions() {
+ include(_APP_PATH."bd/server-connect.php");
+ 
 
  $query=$db->prepare("SELECT * FROM suggestions ORDER BY id ASC");
 
@@ -210,6 +220,8 @@ public function getSuggestions() {
 
 
 public function editSuggestion(Suggestion $suggestion) {
+ include(_APP_PATH."bd/server-connect.php");
+ 
  $query=$db->prepare("UPDATE suggestions
     SET id_domain=?,
     id_subdomain=?,

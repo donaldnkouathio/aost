@@ -148,6 +148,8 @@ class Candidacy
 
 
     public function addCandidacy(Candidacy $candidacy){
+        include(_APP_PATH."bd/server-connect.php");
+        
         $query=$db->prepare("INSERT INTO candidacy VALUES (?,?,?,?,?,?,?,?,?)");
 
         $id=0;
@@ -185,6 +187,8 @@ class Candidacy
 
 
   public function removeCandidacy($id_candidacy){
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($id_candidacy)){
         $req=$db->prepare("DELETE FROM candidacy WHERE id=?");
 
@@ -205,6 +209,8 @@ class Candidacy
 
 
 public function getLastCandidacy(){
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("SELECT * FROM candidacy WHERE id=(SELECT MAX(id) FROM candidacy)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -218,6 +224,8 @@ public function getLastCandidacy(){
 
 
 public function getCandidacy($id){
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM candidacy WHERE id=?");
         $query->bindParam(1,$id);
@@ -236,7 +244,9 @@ public function getCandidacy($id){
 
 
 
-public function getCandidacy() {
+public function getCandidacys() {
+    include(_APP_PATH."bd/server-connect.php");
+    
 
     $query=$db->prepare("SELECT * FROM candidacy ORDER BY id ASC");
 
@@ -259,6 +269,8 @@ public function getCandidacy() {
 
 
 public function editCandidacy(Candidacy $candidacy) {
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("UPDATE candidacy
         SET id_candidacy=?,
         cv_file=?,

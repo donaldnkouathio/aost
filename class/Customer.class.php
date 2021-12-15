@@ -195,6 +195,8 @@ class Customer
 
 
     public function addCustomer(Customer $customer){
+        include(_APP_PATH."bd/server-connect.php");
+        
         $query=$db->prepare("INSERT INTO customers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $id=0;
@@ -240,6 +242,8 @@ class Customer
 
 
   public function removeCustomer($id_customer){
+        include(_APP_PATH."bd/server-connect.php");
+        
     if(is_int($id_customer)){
         $req=$db->prepare("DELETE FROM customers WHERE id=?");
 
@@ -259,6 +263,8 @@ class Customer
 
 
 public function getLastCustomer(){
+        include(_APP_PATH."bd/server-connect.php");
+        
     $query=$db->prepare("SELECT * FROM customers WHERE id=(SELECT MAX(id) FROM customers)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -272,6 +278,8 @@ public function getLastCustomer(){
 
 
 public function getCustomer($id){
+        include(_APP_PATH."bd/server-connect.php");
+        
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM customers WHERE id=?");
         $query->bindParam(1,$id);
@@ -291,6 +299,8 @@ public function getCustomer($id){
 
 
 public function getCustomers() {
+        include(_APP_PATH."bd/server-connect.php");
+        
 
     $query=$db->prepare("SELECT * FROM customers ORDER BY id ASC");
 
@@ -313,6 +323,8 @@ public function getCustomers() {
 
 
 public function editcustomer(Customer $customer) {
+        include(_APP_PATH."bd/server-connect.php");
+        
     $query=$db->prepare("UPDATE customers
         SET name=?,
         phone_1=?,
