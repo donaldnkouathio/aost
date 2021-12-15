@@ -18,7 +18,7 @@ class Candidacy
     private $_added_at;
 
     /*CONSTRUCTEUR*/
-    private function __construct(array $data){
+    public function __construct(array $data){
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
