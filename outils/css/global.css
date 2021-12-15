@@ -115,19 +115,19 @@ citaion{
 }
 
 /* Pour les textes de présentation des page contenue dans la classe Session::presentationPage() */
-  .presentaion_page_block{
-    position : relative;
-    background-color: var(--color-shadow);
-    /* margin-top: -24px; */
-    z-index: 1;
-    background-position: center;
-    background-size: cover;
-  }
-  .presentaion_page_text{
-    background-color: rgba(0, 0, 0, 0.5);
-    text-align: center;
-    color: white;
-  }
+.presentaion_page_block{
+  position : relative;
+  background-color: var(--color-shadow);
+  margin-top: 5px;
+  z-index: 1;
+  background-position: center;
+  background-size: cover;
+}
+.presentaion_page_text{
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  color: white;
+}
 /* *** */
 
 /* Aspect général des bouttons */
@@ -182,10 +182,10 @@ citaion{
   }
 
   /* Pour les textes de présentation des page contenue dans la classe Session::presentationPage() */
-    .presentaion_page_text{
-      padding: 80px 15px;
-      font-size: 1.5em;
-    }
+  .presentaion_page_text{
+    padding: 80px 15px;
+    font-size: 1.5em;
+  }
   /* *** */
 }
 
@@ -259,7 +259,7 @@ citaion{
     position: fixed !important;
     width: 28%;
     box-sizing: border-box;
-    top: 15px;;
+    top: 70px;
   }
   .aside-block-absolute{
     position: absolute;

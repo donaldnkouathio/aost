@@ -3,9 +3,13 @@
   require_once 'init.php';
   require_once _APP_PATH.'outils/php/functions.php';
   require_once _APP_PATH.'outils/php/Session.class.php';
-  //require_once _APP_PATH.'outils/php/import_class.php';
+  require_once _APP_PATH.'outils/php/import_class.php';
 
   $session = new Session(); // Utilitaire qui va contenir nos variables de session
+
+  $domain = (!isset($domain)) ? new Domain($current_domain) : $domain;
+  $subdomain = new Subdomain($current_subdomain);
+  $offer = new Offer($current_offer);
 
   function redirection($title, $pageContain, $currentPage, $currentSubPage, $css, $js){
     //$title : titre de la page
@@ -20,6 +24,10 @@
 
     global $session;
 
+    global $domain;
+    global $subdomain;
+    global $offer;
+
     $session->setCurrentPage($currentPage); //Page actuellement visitée par l'utilisateur
     $session->setCurrentSubPage($currentSubPage); //Page actuellement visitée par l'utilisateur
   ?>
@@ -32,7 +40,9 @@
   	<body>
       <?php include(_APP_PATH."header/header.php"); // En tête ?>
 
-      <?php include($pageContain); // Contenu ?>
+      <div class="" style="margin-top: 70px;">
+        <?php include($pageContain); // Contenu ?>
+      </div>
 
     	<?php include(_APP_PATH."footer/footer.php"); // Pied de page ?>
 
