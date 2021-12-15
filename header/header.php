@@ -5,9 +5,9 @@
     </div>
 
     <ul class="nav-contain-left hide-on-mobile" style="">
-      <li><a href="<?php echo _ROOT_PATH; ?>" class="<?php if($session->getCurrentPage()=="home"){echo "link-hover";} ?>">Accueil</a></li>
-      <li class="<?php if($session->getCurrentPage()=="Offres d'emplois"){echo "link-hover";} ?>">
-        <span>Emploi <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></span>
+      <li><a href="<?php echo _ROOT_PATH; ?>" class="<?php if($session->getCurrentPage()=="home"){echo "link-hover";} ?> nav-link">Accueil</a></li>
+      <li>
+        <a class="<?php if($session->getCurrentPage()=="Offres d'emplois"){echo "link-hover";} ?> nav-link">Emploi <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></a>
 
         <ul>
           <li><a href="<?php echo _ROOT_PATH; ?>job/offers" class="<?php if($session->getCurrentSubPage()=="Offres d'emplois"){echo "sub-link-hover";} ?>">Offres d'emploi</a></li>
@@ -20,7 +20,7 @@
         </ul>
       </li>
       <li>
-        <span class="<?php if($session->getCurrentPage()=="domains"){echo "link-hover";} ?>">Domaines <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></span>
+        <a class="<?php if($session->getCurrentPage()=="domains"){echo "link-hover";} ?> nav-link">Domaines <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></a>
 
         <ul>
           <?php
@@ -41,15 +41,15 @@
 
         </ul>
       </li>
-      <li><a href="<?php echo _ROOT_PATH; ?>partners/" class="<?php if($session->getCurrentPage()=="partners"){echo "link-hover";} ?>">Partenaires</a></li>
-      <li><a href="<?php echo _ROOT_PATH; ?>contact-us/" class="<?php if($session->getCurrentPage()=="contactez-nous"){echo "link-hover";} ?>">Contactez nous</a></li>
-      <li>A propos de nous <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></li>
+      <li><a href="<?php echo _ROOT_PATH; ?>partners/" class="<?php if($session->getCurrentPage()=="partners"){echo "link-hover";} ?> nav-link">Partenaires</a></li>
+      <li><a href="<?php echo _ROOT_PATH; ?>contact-us/" class="<?php if($session->getCurrentPage()=="contactez-nous"){echo "link-hover";} ?> nav-link">Contactez nous</a></li>
+      <li><a href="#" class=" nav-link">A propos de nous <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></a></li>
     </ul>
 
     <ul class="nav-contain-right" style="">
       <li class="hide-on-laptop" id="navMobileBtn"><i class="material-icons vertical-align-bottom"> menu </i></li>
-      <li class="hide-on-mobile">S'inscrire</li>
-      <li class="hide-on-mobile">Se connecter</li>
+      <li><a href="#" class="hide-on-mobile nav-link">S'inscrire</a></li>
+      <li><a href="#" class="hide-on-mobile nav-link">Se connecter</a></li>
     </ul>
 
     <!-- Menu pour mobile -->
