@@ -209,37 +209,37 @@ public function logIn(User $user) {
         $_SESSION['id']=$user_found->getId();
         $_SESSION['email']=$user_found->getEmail();
 
-          $query_is_customer=$db->prepare("SELECT id FROM customers WHERE id_user=?");
-          $query_is_customer->bindParam(1,$user_found->getId());
-          $query_is_customer->execute();
+        $query_is_customer=$db->prepare("SELECT id FROM customers WHERE id_user=?");
+        $query_is_customer->bindParam(1,$user_found->getId());
+        $query_is_customer->execute();
 
-          $query_is_compagny=$db->prepare("SELECT id FROM compagny WHERE id_user=?");
-          $query_is_compagny->bindParam(1,$user_found->getId());
-          $query_is_compagny->execute();
+        $query_is_compagny=$db->prepare("SELECT id FROM compagny WHERE id_user=?");
+        $query_is_compagny->bindParam(1,$user_found->getId());
+        $query_is_compagny->execute();
 
-          /* Si c'est un client */
-          if($query_is_customer->rowCount()>0){
-             $_SESSION['type']="customer";
-          }
-
-
-          /* Si c'est une entreprise */
-          if($query_is_compagny->rowCount()>0){
-             $_SESSION['type']="compagny";
-          }
-
-          return true;
+        /* Si c'est un client */
+        if($query_is_customer->rowCount()>0){
+          $_SESSION['type']="customer";
+       }
 
 
-       }else{
-         /* Si son compte a été bloqué par un administrateur */
-         return "blocked";
-      }
+       /* Si c'est une entreprise */
+       if($query_is_compagny->rowCount()>0){
+          $_SESSION['type']="compagny";
+       }
 
-   }else{
-      /* Si son compte n'a pas été trouvé */
-      return "not found";
+       return true;
+
+
+    }else{
+      /* Si son compte a été bloqué par un administrateur */
+      return "blocked";
    }
+
+}else{
+   /* Si son compte n'a pas été trouvé */
+   return "not found";
+}
 }else{
  return false;
 }

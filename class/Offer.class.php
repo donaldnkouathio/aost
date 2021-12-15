@@ -11,7 +11,6 @@ class Offer
     private $_id_compagny;
     private $_id_user;
     private $_id_domain;
-    private $_id_offer;
     private $_profession;
     private $_city;
     private $_image;
@@ -83,17 +82,6 @@ class Offer
     
     public function getId_domain(){
         return $this->_id_domain;
-    }
-
-    
-    public function setId_offer($id_offer){
-        if(is_int($id_offer)){
-            $this->_id_offer=$id_offer;
-        }
-    }
-    
-    public function getId_offer(){
-        return $this->_id_offer;
     }
 
     
@@ -319,8 +307,8 @@ class Offer
 
 
   public function removeOffer($id_offer){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($id_offer)){
         $req=$db->prepare("DELETE FROM offers WHERE id=?");
 
@@ -340,8 +328,8 @@ class Offer
 
 
 public function getLastOffer(){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("SELECT * FROM offers WHERE id=(SELECT MAX(id) FROM offers)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -355,8 +343,8 @@ public function getLastOffer(){
 
 
 public function getOffer($id){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM offers WHERE id=?");
         $query->bindParam(1,$id);
@@ -376,8 +364,8 @@ public function getOffer($id){
 
 
 public function getOffers() {
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
 
     $query=$db->prepare("SELECT * FROM offers ORDER BY id ASC");
 
@@ -397,8 +385,8 @@ public function getOffers() {
 
 
 public function getOffersLimit($start) {
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($start)){
         $end=$start+10;
         $query=$db->prepare("SELECT * FROM offers ORDER BY id DESC LIMIT $start,$end");
@@ -427,8 +415,8 @@ public function getOffersLimit($start) {
 
 
 public function editOffer(Offer $offer) {
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("UPDATE offers
         SET id_domain=?,
         profession=?,

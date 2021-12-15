@@ -8,7 +8,7 @@ class Customer
 
     /*PROPRIETES*/
     private $_id;
-    private $_id_customer;
+    private $_id_user;
     private $_name;
     private $_phone_1;
     private $_phone_2;
@@ -47,14 +47,14 @@ class Customer
     }
 
 
-    public function setId_customer($id_customer){
-        if(is_int($id_customer)){
-            $this->_id_customer=$id_customer;
+    public function setId_user($id_user){
+        if(is_int($id_user)){
+            $this->_id_user=$id_user;
         }
     }
     
-    public function getId_customer(){
-        return $this->_id_customer;
+    public function getId_user(){
+        return $this->_id_user;
     }
 
     
@@ -241,13 +241,13 @@ class Customer
 
 
 
-  public function removeCustomer($id_customer){
-        include(_APP_PATH."bd/server-connect.php");
-        
-    if(is_int($id_customer)){
+  public function removeCustomer($id_user){
+    include(_APP_PATH."bd/server-connect.php");
+    
+    if(is_int($id_user)){
         $req=$db->prepare("DELETE FROM customers WHERE id=?");
 
-        $req->bindParam(1,$id_customer);
+        $req->bindParam(1,$id_user);
 
         if($req->execute()){
             return true;
@@ -263,8 +263,8 @@ class Customer
 
 
 public function getLastCustomer(){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("SELECT * FROM customers WHERE id=(SELECT MAX(id) FROM customers)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -278,8 +278,8 @@ public function getLastCustomer(){
 
 
 public function getCustomer($id){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM customers WHERE id=?");
         $query->bindParam(1,$id);
@@ -299,8 +299,8 @@ public function getCustomer($id){
 
 
 public function getCustomers() {
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
 
     $query=$db->prepare("SELECT * FROM customers ORDER BY id ASC");
 
@@ -323,8 +323,8 @@ public function getCustomers() {
 
 
 public function editcustomer(Customer $customer) {
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("UPDATE customers
         SET name=?,
         phone_1=?,
@@ -352,7 +352,7 @@ public function editcustomer(Customer $customer) {
     $sex=$customer->getSex();
     $about=$customer->getAbout();
 
-    $query->bindParam(1,$id_customer);
+    $query->bindParam(1,$id_user);
     $query->bindParam(2,$name);
     $query->bindParam(3,$phone_1);
     $query->bindParam(4,$phone_2);
