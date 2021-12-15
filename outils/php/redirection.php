@@ -41,12 +41,14 @@
       <?php include(_APP_PATH."header/header.php"); // En tête ?>
 
       <?php $session->preloader(); // Indicateur de chargement des pages ?>
-      
+
       <div class="" style="margin-top: 70px;">
         <?php include($pageContain); // Contenu ?>
       </div>
 
-    	<?php include(_APP_PATH."footer/footer.php"); // Pied de page ?>
+      <?php $session->goToTop(); // Indicateur de chargement des pages ?>
+
+      <?php include(_APP_PATH."footer/footer.php"); // Pied de page ?>
 
       <script src="<?php echo $js; ?>"></script>
 

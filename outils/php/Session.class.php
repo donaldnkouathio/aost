@@ -54,6 +54,12 @@
         </div>
       </div>
     <?php }
+
+    public function goToTop(){ ?>
+      <div class="goToTop_block">
+        <div class="goToTop_btn goToTop_btn_hide"><i class="material-icons vertical-align-bottom"> keyboard_arrow_up </i></div>
+      </div>
+    <?php }
   }
 
 ?>

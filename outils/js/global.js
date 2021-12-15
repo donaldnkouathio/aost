@@ -34,4 +34,22 @@ $(document).ready(function(){
   }else {
 
   }
+
+  goToTop_btn = $(".goToTop_btn");
+
+  goToTop_btn.click(function(){
+    $(window).scrollTop(0);
+  });
+
+  $(window).scroll(function(){
+
+    if($(window).scrollTop() > 300){ //Midle
+      //alert("middle");
+      goToTop_btn.removeClass("goToTop_btn_hide");
+    }else{ //Top
+      //alert("top");
+      goToTop_btn.addClass("goToTop_btn_hide");
+    }
+
+  });
 });
