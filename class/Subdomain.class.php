@@ -6,24 +6,24 @@ include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
 class Subdomain
 {
 
-   /*PROPRIETES*/
-   private $_id;
-   private $_id_domain;
-   private $_name;
-   private $_color;
-   private $_image;
-   private $_added_at;
+ /*PROPRIETES*/
+ private $_id;
+ private $_id_domain;
+ private $_name;
+ private $_color;
+ private $_image;
+ private $_added_at;
 
-   /*CONSTRUCTEUR*/
-   private function __construct(array $data){
+ /*CONSTRUCTEUR*/
+ public function __construct(array $data){
 
     foreach ($data as $key => $value) {
-     $method='set'.ucfirst($key);
+       $method='set'.ucfirst($key);
 
-     if(method_exists($this, $method)){
-      $this->$method($value);
+       if(method_exists($this, $method)){
+          $this->$method($value);
+      }
   }
-}
 }
 
 
@@ -31,8 +31,8 @@ class Subdomain
 
 public function setId($id){
     if(is_int($id)){
-     $this->_id=$id;
- }
+       $this->_id=$id;
+   }
 }
 
 public function getId(){
@@ -42,8 +42,8 @@ public function getId(){
 
 public function setId_domain($id_domain){
     if(is_int($id_domain)){
-     $this->_id_domain=$id_domain;
- }
+       $this->_id_domain=$id_domain;
+   }
 }
 
 public function getId_domain(){
@@ -53,8 +53,8 @@ public function getId_domain(){
 
 public function setName($name){
     if(is_string($name)){
-     $this->_name=$name;
- }
+       $this->_name=$name;
+   }
 }
 
 public function getName(){
@@ -65,8 +65,8 @@ public function getName(){
 
 public function setColor($color){
     if(is_string($color)){
-     $this->_color=$color;
- }
+       $this->_color=$color;
+   }
 }
 
 public function getColor(){
@@ -77,8 +77,8 @@ public function getColor(){
 
 public function setImage($image){
     if(is_string($image)){
-     $this->_image=$image;
- }
+       $this->_image=$image;
+   }
 }
 
 public function getImage(){
@@ -89,8 +89,8 @@ public function getImage(){
 
 public function setAdded_at($added_at){
     if(is_string($added_at)){
-     $this->_added_at=$added_at;
- }
+       $this->_added_at=$added_at;
+   }
 }
 
 public function getAdded_at(){
@@ -171,11 +171,11 @@ public function getLastSubdomain(){
     
     $query=$db->prepare("SELECT * FROM subdomains WHERE id=(SELECT MAX(id) FROM subdomain)");
     if($query->execute() && $query->rowCount()==1){
-       $data=$query->fetch();
-       return (new subdomain($data)); 
-   }else{
-       return false;
-   }
+     $data=$query->fetch();
+     return (new subdomain($data)); 
+ }else{
+     return false;
+ }
 }
 
 
@@ -185,17 +185,17 @@ public function getSubdomain($id){
     include(_APP_PATH."bd/server-connect.php");
     
     if(is_int($id)){
-     $query=$db->prepare("SELECT * FROM subdomains WHERE id=?");
-     $query->bindParam(1,$id);
-     if($query->execute() && $query->rowCount()==1){
-      $data=$query->fetch();
-      return (new Subdomain($data));   
+       $query=$db->prepare("SELECT * FROM subdomains WHERE id=?");
+       $query->bindParam(1,$id);
+       if($query->execute() && $query->rowCount()==1){
+          $data=$query->fetch();
+          return (new Subdomain($data));   
+      }else{
+          return false;
+      }
   }else{
-      return false;
-  }
-}else{
-   return false;
-}
+     return false;
+ }
 
 }
 
@@ -211,12 +211,12 @@ public function getSubdomains() {
     $subdomain=[];
 
     if($query->execute()){
-       while($data=$query->fetch()){
-          $subdomain[]=new Subdomain($data);
-      }
-      return $subdomain;
-  }else{
-   return false;
+     while($data=$query->fetch()){
+      $subdomain[]=new Subdomain($data);
+  }
+  return $subdomain;
+}else{
+ return false;
 }
 }
 
@@ -230,12 +230,12 @@ public function editSubdomain(Subdomain $subdomain) {
     include(_APP_PATH."bd/server-connect.php");
     
     $query=$db->prepare("UPDATE subdomains
-       SET name=?,
-       color=?,
-       image=?
-       WHERE id=?
+     SET name=?,
+     color=?,
+     image=?
+     WHERE id=?
 
-       ");
+     ");
 
     $id=$subdomain->getId();
     $name=$subdomain->getName();
@@ -249,11 +249,11 @@ public function editSubdomain(Subdomain $subdomain) {
 
     if($query->execute()){
 
-       return true;
+     return true;
 
-   }else{
-       return false;
-   }
+ }else{
+     return false;
+ }
 }
 
 
