@@ -40,6 +40,8 @@
   	<body>
       <?php include(_APP_PATH."header/header.php"); // En tête ?>
 
+      <?php $session->preloader(); // Indicateur de chargement des pages ?>
+      
       <div class="" style="margin-top: 70px;">
         <?php include($pageContain); // Contenu ?>
       </div>

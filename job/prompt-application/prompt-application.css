@@ -53,8 +53,13 @@
   grid-column-end: 2;
 }
 .cv_btn_active, .cv_header div:hover{
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
+  border-bottom: 4px solid var(--color-primary);
   color: white;
+}
+.cv_header div{
+  border-left: 1px solid white;
+  border-right: 1px solid white;
 }
 
 

@@ -1,3 +1,65 @@
+/* Preloader for pages */
+  .preloader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    text-align: center;
+    z-index: 100;
+  }
+  .spinner-block{
+    display: inline-block;
+  }
+
+  @keyframes pulse {
+    0%{
+      transform:scale(.1);
+      opacity: 0;
+    }
+    50%{
+      opacity: .4;
+    }
+    100%{
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+  .spinner {
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    position: absolute;
+    margin: auto auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    z-index: 105;
+  }
+
+  .wave_1{
+    animation: pulse 2s infinite;
+  }
+  .wave_2{
+    animation: pulse 2s infinite .3s;
+  }
+  .wave_3{
+    animation: pulse 2s infinite .6s;
+  }
+
+  .wave_4{
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    line-height: 80px;
+    width: 80px;
+    height: 80px;
+  }
+/* *** */
+
 @-ms-viewport {
   width: device-width;
 }

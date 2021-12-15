@@ -43,6 +43,17 @@
         </div>
       </div>
     <?php }
+
+    public function preloader(){ ?>
+      <div class="preloader">
+        <div class="spinner-block">
+          <div class="spinner wave_1"></div>
+          <div class="spinner wave_2"></div>
+          <div class="spinner wave_3"></div>
+          <div class="spinner wave_4">AOST...</div>
+        </div>
+      </div>
+    <?php }
   }
 
 ?>
