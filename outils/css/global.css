@@ -67,7 +67,27 @@ citaion{
   word-wrap: break-word;
   overflow: auto;
   padding: 15px;
+  border-top: 4px solid var(--color-primary);
+  padding-bottom: 30px;
   box-sizing: border-box;
+}
+.aside .aside-block .link{
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+.aside .aside-block .link a{
+  background-color: var(--color-secondary);
+  color: white;
+  display: inline-block;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border-radius: var(--border-radius-size);
+  width: 100% !important;
+  box-shadow: 4px 4px 2px #aaa;
+}
+.aside .aside-block .link a:hover{
+  background-color: var(--color-primary);
 }
 /* *** */
 
