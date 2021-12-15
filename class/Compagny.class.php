@@ -18,7 +18,7 @@ class Compagny
     private $_added_at;
 
     /*CONSTRUCTEUR*/
-    private function __construct(array $data){
+    public function __construct(array $data){
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -186,8 +186,8 @@ class Compagny
 
 
   public function removeCompagny($id_domain){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($id_domain)){
         $req=$db->prepare("DELETE FROM compagny WHERE id=?");
 
@@ -208,8 +208,8 @@ class Compagny
 
 
 public function getLastCompagny(){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("SELECT * FROM compagny WHERE id=(SELECT MAX(id) FROM compagny)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -223,8 +223,8 @@ public function getLastCompagny(){
 
 
 public function getCompagny($id){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM compagny WHERE id=?");
         $query->bindParam(1,$id);
@@ -244,8 +244,8 @@ public function getCompagny($id){
 
 
 public function getCompagnys() {
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
 
     $query=$db->prepare("SELECT * FROM compagny ORDER BY id ASC");
 
@@ -268,8 +268,8 @@ public function getCompagnys() {
 
 
 public function editCompagny(Compagny $compagny) {
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("UPDATE compagny
         SET name=?,
         country=?,

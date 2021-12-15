@@ -8,17 +8,17 @@ class Candidacy
 
     /*PROPRIETES*/
     private $_id;
-    private $_id_candidacy;
+    private $_id_offer;
     private $_id_customer;
     private $_id_user;
-    private $_id_candidacy;
+    private $_id_domain;
     private $_cv_file;
     private $_motivation_file;
     private $_deleted;
     private $_added_at;
 
     /*CONSTRUCTEUR*/
-    private function __construct(array $data){
+    public function __construct(array $data){
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -43,14 +43,14 @@ class Candidacy
     }
 
 
-    public function setId_candidacy($id_candidacy){
-        if(is_int($id_candidacy)){
-            $this->_id_candidacy=$id_candidacy;
+    public function setId_offer($id_offer){
+        if(is_int($id_offer)){
+            $this->_id_offer=$id_offer;
         }
     }
     
-    public function getId_candidacy(){
-        return $this->_id_candidacy;
+    public function getId_offer(){
+        return $this->_id_offer;
     }
 
     
@@ -76,14 +76,14 @@ class Candidacy
     }
 
     
-    public function setId_candidacy($id_candidacy){
-        if(is_int($id_candidacy)){
-            $this->_id_candidacy=$id_candidacy;
+    public function setId_domain($id_domain){
+        if(is_int($id_domain)){
+            $this->_id_domain=$id_domain;
         }
     }
     
-    public function getId_candidacy(){
-        return $this->_id_candidacy;
+    public function getId_domain(){
+        return $this->_id_domain;
     }
 
     
@@ -156,7 +156,7 @@ class Candidacy
         $id_offer=$candidacy->getId_offer();
         $id_customer=$candidacy->getId_customer();
         $id_user=$candidacy->getId_user();
-        $id_candidacy=$candidacy->getId_candidacy();
+        $id_domain=$candidacy->getId_domain();
         $cv_file=$candidacy->getCv_file();
         $motivation_file=$candidacy->getMotivation_file();
         $deleted=$candidacy->getDeleted();
@@ -166,7 +166,7 @@ class Candidacy
         $query->bindParam(2,$id_offer);
         $query->bindParam(3,$id_customer);
         $query->bindParam(4,$id_user);
-        $query->bindParam(5,$id_candidacy);
+        $query->bindParam(5,$id_domain);
         $query->bindParam(6,$cv_file);
         $query->bindParam(7,$motivation_file);
         $query->bindParam(8,$deleted);
@@ -186,13 +186,13 @@ class Candidacy
 
 
 
-  public function removeCandidacy($id_candidacy){
+  public function removeCandidacy($id_offer){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id_candidacy)){
+    if(is_int($id_offer)){
         $req=$db->prepare("DELETE FROM candidacy WHERE id=?");
 
-        $req->bindParam(1,$id_candidacy);
+        $req->bindParam(1,$id_offer);
 
         if($req->execute()){
             return true;
@@ -272,7 +272,7 @@ public function editCandidacy(Candidacy $candidacy) {
     include(_APP_PATH."bd/server-connect.php");
     
     $query=$db->prepare("UPDATE candidacy
-        SET id_candidacy=?,
+        SET id_offer=?,
         cv_file=?,
         motivation_file=?,
         deleted=?
@@ -281,12 +281,12 @@ public function editCandidacy(Candidacy $candidacy) {
         ");
 
     $id=$candidacy->getId();
-    $id_candidacy=$candidacy->getId_candidacy();
+    $id_offer=$candidacy->getid_offer();
     $cv_file=$candidacy->getCv_file();
     $motivation_file=$candidacy->getMotivation_file();
     $deleted=$candidacy->getDeleted();
 
-    $query->bindParam(1,$id_candidacy);
+    $query->bindParam(1,$id_offer);
     $query->bindParam(2,$cv_file);
     $query->bindParam(3,$motivation_file);
     $query->bindParam(4,$deleted);

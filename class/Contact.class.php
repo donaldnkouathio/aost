@@ -8,14 +8,14 @@ class Contact
 
     /*PROPRIETES*/
     private $_id;
-    private $_name;
+    private $_role;
     private $_email;
     private $_name;
     private $_phone;
     private $_added_at;
 
     /*CONSTRUCTEUR*/
-    private function __construct(array $data){
+    public function __construct(array $data){
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -40,14 +40,14 @@ class Contact
     }
 
 
-    public function setName($name){
-        if(is_string($name)){
-            $this->_name=$name;
+    public function setRole($role){
+        if(is_string($role)){
+            $this->_role=$role;
         }
     }
     
-    public function getName(){
-        return $this->_name;
+    public function getRole(){
+        return $this->_role;
     }
 
     
@@ -144,8 +144,8 @@ class Contact
 
 
   public function removeContact($id_contact){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+
     if(is_int($id_contact)){
         $req=$db->prepare("DELETE FROM contact WHERE id=?");
 
@@ -165,8 +165,8 @@ class Contact
 
 
 public function getLastContact(){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+
     $query=$db->prepare("SELECT * FROM contact WHERE id=(SELECT MAX(id) FROM contact)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -180,8 +180,8 @@ public function getLastContact(){
 
 
 public function getContact($id){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM contact WHERE id=?");
         $query->bindParam(1,$id);
@@ -201,8 +201,8 @@ public function getContact($id){
 
 
 public function getContacts() {
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+
 
     $query=$db->prepare("SELECT * FROM contact ORDER BY id ASC");
 
@@ -225,8 +225,8 @@ public function getContacts() {
 
 
 public function editContact(Contact $contact) {
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+
     $query=$db->prepare("UPDATE contact
         SET role=?,
         email=?,

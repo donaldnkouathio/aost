@@ -16,7 +16,7 @@ class domain
     private $_added_at;
 
     /*CONSTRUCTEUR*/
-    private function __construct(array $data){
+    public function __construct(array $data){
 
         foreach ($data as $key => $value) {
             $method='set'.ucfirst($key);
@@ -143,8 +143,8 @@ class domain
 
 
   public function removeDomain($id_domain){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($id_domain)){
         $req=$db->prepare("DELETE FROM domains WHERE id=?");
 
@@ -163,8 +163,8 @@ class domain
 
 
 public function getLastDomain(){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("SELECT * FROM domains WHERE id=(SELECT MAX(id) FROM domain)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -178,8 +178,8 @@ public function getLastDomain(){
 
 
 public function getDomain($id){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM domains WHERE id=?");
         $query->bindParam(1,$id);
@@ -199,8 +199,8 @@ public function getDomain($id){
 
 
 public function getDomains() {
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
 
     $query=$db->prepare("SELECT * FROM domains ORDER BY id ASC");
 
@@ -223,8 +223,8 @@ public function getDomains() {
 
 
 public function editDomain(Domain $domain) {
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("UPDATE domains
         SET name=?,
         color=?,
