@@ -85,12 +85,16 @@
     <?php if($nombreDePages > 1){ ?>
     <div class="breadcrumb-block">
       <div class="breadcrumb-contain">
-        <?php for($i = 1; $i < $nombreDePages+1; $i++){
+        <?php if($pageActuelle >  1){ ?>
+          <a class="breadcrumb-item" href="<?php echo _ROOT_PATH; ?>job/offers/p/<?php echo $pageActuelle - 1; ?>"><i class="material-icons vertical-align-bottom"> chevron_left </i></a>
+        <?php }for($i = 1; $i < $nombreDePages+1; $i++){
           if($i == $pageActuelle){ ?>
           <span class="breadcrumb-item breadcrumb-item-active"><?php echo $i; ?></span>
         <?php  }else{ ?>
-          <a class="breadcrumb-item" href="<?php echo _ROOT_PATH; ?>job/offers/page<?php echo $i; ?>"><?php echo $i; ?></a>
-        <?php }} ?>
+          <a class="breadcrumb-item" href="<?php echo _ROOT_PATH; ?>job/offers/p/<?php echo $i; ?>"><?php echo $i; ?></a>
+        <?php }}if($pageActuelle <= $nombreDePages - 1){ ?>
+          <a class="breadcrumb-item" href="<?php echo _ROOT_PATH; ?>job/offers/p/<?php echo $pageActuelle + 1; ?>"><i class="material-icons vertical-align-bottom"> chevron_right </i></a>
+        <?php } ?>
       </div>
     </div>
     <?php } ?>
