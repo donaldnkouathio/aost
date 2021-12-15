@@ -109,6 +109,7 @@ class Admin
     /*METHODES FONCTIONNELLES*/
 
     public function addAdmin(Admin $admin){
+        include(_APP_PATH."bd/server-connect.php");
         $query=$db->prepare("INSERT INTO admins VALUES (?,?,?,?,?,?)");
 
         $id=0;
@@ -140,6 +141,8 @@ class Admin
 
 
   public function removeAdmin($id_admin){
+    include(_APP_PATH."bd/server-connect.php");
+
     if(is_int($id_admin)){
         $req=$db->prepare("DELETE FROM admins WHERE id=?");
 
@@ -158,6 +161,8 @@ class Admin
 
 
 public function getLastAdmin(){
+    include(_APP_PATH."bd/server-connect.php");
+
     $query=$db->prepare("SELECT * FROM admins WHERE id=(SELECT MAX(id) FROM admins)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -171,6 +176,8 @@ public function getLastAdmin(){
 
 
 public function getAdmin($id){
+    include(_APP_PATH."bd/server-connect.php");
+
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM admins WHERE id=?");
         $query->bindParam(1,$id);
@@ -190,7 +197,8 @@ public function getAdmin($id){
 
 
 public function getAdmins() {
-
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("SELECT * FROM admins ORDER BY id ASC");
 
     $admins=[];
@@ -212,6 +220,8 @@ public function getAdmins() {
 
 
 public function editAdmin(Admin $admin) {
+    include(_APP_PATH."bd/server-connect.php");
+
     $query=$db->prepare("UPDATE admins
         SET email=?,
         password=?,
@@ -247,6 +257,8 @@ public function editAdmin(Admin $admin) {
 
 
 public function logIn(Admin $admin) {
+    include(_APP_PATH."bd/server-connect.php");
+
     $blocked=0;
 
     /* Recherche de l'administrateur */

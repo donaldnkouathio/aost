@@ -112,6 +112,8 @@ class Contact
 
 
     public function addContact(Contact $contact){
+        include(_APP_PATH."bd/server-connect.php");
+        
         $query=$db->prepare("INSERT INTO contact VALUES (?,?,?,?,?,?)");
 
         $id=0;
@@ -142,6 +144,8 @@ class Contact
 
 
   public function removeContact($id_contact){
+        include(_APP_PATH."bd/server-connect.php");
+        
     if(is_int($id_contact)){
         $req=$db->prepare("DELETE FROM contact WHERE id=?");
 
@@ -161,6 +165,8 @@ class Contact
 
 
 public function getLastContact(){
+        include(_APP_PATH."bd/server-connect.php");
+        
     $query=$db->prepare("SELECT * FROM contact WHERE id=(SELECT MAX(id) FROM contact)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -174,6 +180,8 @@ public function getLastContact(){
 
 
 public function getContact($id){
+        include(_APP_PATH."bd/server-connect.php");
+        
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM contact WHERE id=?");
         $query->bindParam(1,$id);
@@ -192,7 +200,9 @@ public function getContact($id){
 
 
 
-public function getContact() {
+public function getContacts() {
+        include(_APP_PATH."bd/server-connect.php");
+        
 
     $query=$db->prepare("SELECT * FROM contact ORDER BY id ASC");
 
@@ -215,6 +225,8 @@ public function getContact() {
 
 
 public function editContact(Contact $contact) {
+        include(_APP_PATH."bd/server-connect.php");
+        
     $query=$db->prepare("UPDATE contact
         SET role=?,
         email=?,

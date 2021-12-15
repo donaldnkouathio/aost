@@ -111,6 +111,8 @@ class domain
     /*METHODES FONCTIONNELLES*/
 
     public function addDomain(Domain $domain){
+        include(_APP_PATH."bd/server-connect.php");
+        
         $query=$db->prepare("INSERT INTO domains VALUES (?,?,?,?,?,?)");
 
         $id=0;
@@ -141,6 +143,8 @@ class domain
 
 
   public function removeDomain($id_domain){
+        include(_APP_PATH."bd/server-connect.php");
+        
     if(is_int($id_domain)){
         $req=$db->prepare("DELETE FROM domains WHERE id=?");
 
@@ -159,6 +163,8 @@ class domain
 
 
 public function getLastDomain(){
+        include(_APP_PATH."bd/server-connect.php");
+        
     $query=$db->prepare("SELECT * FROM domains WHERE id=(SELECT MAX(id) FROM domain)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -172,6 +178,8 @@ public function getLastDomain(){
 
 
 public function getDomain($id){
+        include(_APP_PATH."bd/server-connect.php");
+        
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM domains WHERE id=?");
         $query->bindParam(1,$id);
@@ -190,7 +198,9 @@ public function getDomain($id){
 
 
 
-public function getDomain() {
+public function getDomains() {
+        include(_APP_PATH."bd/server-connect.php");
+        
 
     $query=$db->prepare("SELECT * FROM domains ORDER BY id ASC");
 
@@ -213,6 +223,8 @@ public function getDomain() {
 
 
 public function editDomain(Domain $domain) {
+        include(_APP_PATH."bd/server-connect.php");
+        
     $query=$db->prepare("UPDATE domains
         SET name=?,
         color=?,
