@@ -30,9 +30,7 @@ class Admin
     /*SETTERS & GETTERS*/
 
     public function setId($id){
-        if(is_int($id)){
-            $this->_id=$id;
-        }
+        $this->_id=intval($id);
     }
 
     public function getId(){
@@ -41,9 +39,7 @@ class Admin
 
 
     public function setEmail($email){
-        if(is_string($email)){
-            $this->_email=$email;
-        }
+        $this->_email=htmlentities(strval($email));
     }
     
     public function getEmail(){
@@ -52,9 +48,8 @@ class Admin
 
     
     public function setPassword($password){
-        if(is_string($password)){
-            $this->_password=$password;
-        }
+        $this->_password=htmlentities(strval($password));
+
     }
     
     public function getPassword(){
@@ -63,9 +58,7 @@ class Admin
 
     
     public function setRole($role){
-        if(is_string($role)){
-            $this->_role=$role;
-        }
+        $this->_role=htmlentities(strval($role));
     }
     
     public function getRole(){
@@ -74,9 +67,7 @@ class Admin
 
     
     public function setName($name){
-        if(is_string($name)){
-            $this->_name=$name;
-        }
+        $this->_name=htmlentities(trim(strval($name)," "));
     }
     
     public function getName(){
@@ -85,9 +76,7 @@ class Admin
 
     
     public function setAdded_at($added_at){
-        if(is_string($added_at)){
-            $this->_added_at=$added_at;
-        }
+        $this->_added_at=htmlentities(strval($added_at));
     }
     
     public function getAdded_at(){

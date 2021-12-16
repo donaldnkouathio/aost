@@ -33,9 +33,7 @@ class Compagny
     /*SETTERS & GETTERS*/
 
     public function setId($id){
-        if(is_int($id)){
-            $this->_id=$id;
-        }
+        $this->_id=intval($id);
     }
 
     public function getId(){
@@ -44,9 +42,7 @@ class Compagny
 
 
     public function setId_user($id_user){
-        if(is_int($id_user)){
-            $this->_id_user=$id_user;
-        }
+        $this->_id_user=intval($id_user);
     }
     
     public function getId_user(){
@@ -56,9 +52,7 @@ class Compagny
 
     
     public function setId_domain($id_domain){
-        if(is_int($id_domain)){
-            $this->_id_domain=$id_domain;
-        }
+        $this->_id_domain=intval($id_domain);
     }
     
     public function getId_domain(){
@@ -67,9 +61,7 @@ class Compagny
 
     
     public function setOther_domain($other_domain){
-        if(is_string($other_domain)){
-            $this->_other_domain=$other_domain;
-        }
+        $this->_other_domain=htmlentities(strval($other_domain));
     }
     
     public function getOther_domain(){
@@ -78,9 +70,7 @@ class Compagny
 
     
     public function setName($name){
-        if(is_string($name)){
-            $this->_name=$name;
-        }
+        $this->_name=htmlentities(trim(strval($name)," "));
     }
     
     public function getName(){
@@ -89,9 +79,7 @@ class Compagny
 
     
     public function setCountry($country){
-        if(is_string($country)){
-            $this->_country=$country;
-        }
+        $this->_country=htmlentities(trim(strval($country)," "));
     }
     
     public function getCountry(){
@@ -100,9 +88,7 @@ class Compagny
 
     
     public function setCity($city){
-        if(is_int($city)){
-            $this->_city=$city;
-        }
+        $this->_city=htmlentities(trim(strval($city)," "));
     }
     
     public function getCity(){
@@ -111,9 +97,7 @@ class Compagny
 
     
     public function setAddress($address){
-        if(is_string($address)){
-            $this->_address=$address;
-        }
+        $this->_address=htmlentities(trim(strval($address)," "));
     }
     
     public function getAddress(){
@@ -122,9 +106,7 @@ class Compagny
     
 
     public function setAdded_at($added_at){
-        if(is_string($added_at)){
-            $this->_added_at=$added_at;
-        }
+        $this->_added_at=strval($added_at);
     }
     
     public function getAdded_at(){

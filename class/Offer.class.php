@@ -42,9 +42,7 @@ class Offer
     /*SETTERS & GETTERS*/
 
     public function setId($id){
-        if(is_int($id)){
-            $this->_id=$id;
-        }
+            $this->_id=intval($id);
     }
 
     public function getId(){
@@ -53,9 +51,7 @@ class Offer
 
 
     public function setId_compagny($id_compagny){
-        if(is_int($id_compagny)){
-            $this->_id_compagny=$id_compagny;
-        }
+            $this->_id_compagny=intval($id_compagny);
     }
     
     public function getId_compagny(){
@@ -64,9 +60,7 @@ class Offer
 
     
     public function setId_user($id_user){
-        if(is_int($id_user)){
-            $this->_id_user=$id_user;
-        }
+            $this->_id_user=intval($id_user);
     }
     
     public function getId_user(){
@@ -75,9 +69,7 @@ class Offer
 
     
     public function setId_domain($id_domain){
-        if(is_int($id_domain)){
-            $this->_id_domain=$id_domain;
-        }
+            $this->_id_domain=intval($id_domain);
     }
     
     public function getId_domain(){
@@ -86,9 +78,7 @@ class Offer
 
     
     public function setProfession($profession){
-        if(is_string($profession)){
-            $this->_profession=$profession;
-        }
+        $this->_profession=htmlentities(strval($profession));
     }
     
     public function getProfession(){
@@ -97,9 +87,7 @@ class Offer
 
     
     public function setCity($city){
-        if(is_string($city)){
-            $this->_city=$city;
-        }
+        $this->_city=htmlentities(strval($city));
     }
     
     public function getCity(){
@@ -108,9 +96,7 @@ class Offer
 
     
     public function setImage($image){
-        if(is_string($image)){
-            $this->_image=$image;
-        }
+        $this->_image=htmlentities(strval($image));
     }
     
     public function getImage(){
@@ -119,9 +105,7 @@ class Offer
 
     
     public function setDescription($description){
-        if(is_string($description)){
-            $this->_description=$description;
-        }
+        $this->_description=htmlentities(strval($description));
     }
     
     public function getDescription(){
@@ -130,9 +114,7 @@ class Offer
 
     
     public function setMissions($missions){
-        if(is_string($missions)){
-            $this->_missions=$missions;
-        }
+        $this->_missions=htmlentities(strval($missions));
     }
     
     public function getMissions(){
@@ -141,9 +123,7 @@ class Offer
 
     
     public function setSkill($skill){
-        if(is_string($skill)){
-            $this->_skill=$skill;
-        }
+        $this->_skill=htmlentities(strval($skill));
     }
     
     public function getSkill(){
@@ -152,9 +132,7 @@ class Offer
 
     
     public function setCandidate_profile($candidate_profile){
-        if(is_string($candidate_profile)){
-            $this->_candidate_profile=$candidate_profile;
-        }
+        $this->_candidate_profile=htmlentities(strval($candidate_profile));
     }
     
     public function getCandidate_profile(){
@@ -163,9 +141,7 @@ class Offer
 
     
     public function setCv($cv){
-        if(is_int($cv)){
-            $this->_cv=$cv;
-        }
+        $this->_cv=intval($cv);
     }
     
     public function getCv(){
@@ -174,9 +150,7 @@ class Offer
 
     
     public function setMotivation($motivation){
-        if(is_int($motivation)){
-            $this->_motivation=$motivation;
-        }
+        $this->_motivation=intval($motivation);
     }
     
     public function getMotivation(){
@@ -185,9 +159,7 @@ class Offer
 
     
     public function setValidated($validated){
-        if(is_int($validated)){
-            $this->_validated=$validated;
-        }
+        $this->_validated=intval($validated);
     }
     
     public function getValidated(){
@@ -196,9 +168,7 @@ class Offer
 
     
     public function setDeleted($deleted){
-        if(is_int($deleted)){
-            $this->_deleted=$deleted;
-        }
+        $this->_deleted=intval($deleted);
     }
     
     public function getDeleted(){
@@ -207,9 +177,7 @@ class Offer
 
     
     public function setExpired($expired){
-        if(is_int($expired)){
-            $this->_expired=$expired;
-        }
+        $this->_expired=intval($expired);
     }
     
     public function getExpired(){
@@ -218,9 +186,7 @@ class Offer
 
     
     public function setDeadline($deadline){
-        if(is_string($deadline)){
-            $this->_deadline=$deadline;
-        }
+        $this->_deadline=htmlentities(strval($deadline));
     }
     
     public function getDeadline(){
@@ -229,9 +195,7 @@ class Offer
 
     
     public function setAdded_at($added_at){
-        if(is_string($added_at)){
-            $this->_added_at=$added_at;
-        }
+        $this->_added_at=htmlentities(strval($added_at));
     }
     
     public function getAdded_at(){

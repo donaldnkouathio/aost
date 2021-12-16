@@ -37,9 +37,7 @@ class Customer
     /*SETTERS & GETTERS*/
 
     public function setId($id){
-        if(is_int($id)){
-            $this->_id=$id;
-        }
+            $this->_id=intval($id);
     }
 
     public function getId(){
@@ -48,9 +46,7 @@ class Customer
 
 
     public function setId_user($id_user){
-        if(is_int($id_user)){
-            $this->_id_user=$id_user;
-        }
+            $this->_id_user=intval($id_user);
     }
     
     public function getId_user(){
@@ -70,9 +66,7 @@ class Customer
 
     
     public function setPhone_1($phone_1){
-        if(is_string($phone_1)){
-            $this->_phone_1=$phone_1;
-        }
+        $this->_phone_1=htmlentities(strval($phone_1));
     }
     
     public function getPhone_1(){
@@ -81,9 +75,7 @@ class Customer
 
     
     public function setPhone_2($phone_2){
-        if(is_string($phone_2)){
-            $this->_phone_2=$phone_2;
-        }
+        $this->_phone_2=htmlentities(strval($phone_2));
     }
     
     public function getPhone_2(){
@@ -92,9 +84,7 @@ class Customer
 
     
     public function setFirst_name($first_name){
-        if(is_string($first_name)){
-            $this->_first_name=$first_name;
-        }
+        $this->_first_name=htmlentities(strval($first_name));
     }
     
     public function getFirst_name(){
@@ -103,9 +93,7 @@ class Customer
 
     
     public function setDate_birth($date_birth){
-        if(is_string($date_birth)){
-            $this->_date_birth=$date_birth;
-        }
+        $this->_date_birth=htmlentities(strval($date_birth));
     }
     
     public function getDate_birth(){
@@ -114,9 +102,7 @@ class Customer
 
     
     public function setCountry($country){
-        if(is_string($country)){
-            $this->_country=$country;
-        }
+        $this->_country=htmlentities(strval($country));
     }
     
     public function getCountry(){
@@ -125,9 +111,7 @@ class Customer
 
     
     public function setCity($city){
-        if(is_string($city)){
-            $this->_city=$city;
-        }
+        $this->_city=htmlentities(strval($city));
     }
     
     public function getCity(){
@@ -136,9 +120,7 @@ class Customer
 
     
     public function setAddress($address){
-        if(is_string($address)){
-            $this->_address=$address;
-        }
+        $this->_address=htmlentities(strval($address));
     }
     
     public function getAddress(){
@@ -147,9 +129,7 @@ class Customer
 
     
     public function setSex($sex){
-        if(is_string($sex)){
-            $this->_sex=$sex;
-        }
+        $this->_sex=htmlentities(strval($sex));
     }
     
     public function getSex(){
@@ -158,9 +138,7 @@ class Customer
 
     
     public function setAbout($about){
-        if(is_string($about)){
-            $this->_about=$about;
-        }
+        $this->_about=htmlentities(strval($about));
     }
     
     public function getAbout(){
@@ -169,9 +147,7 @@ class Customer
 
     
     public function setAdded_at($added_at){
-        if(is_string($added_at)){
-            $this->_added_at=$added_at;
-        }
+        $this->_added_at=htmlentities(strval($added_at));
     }
     
     public function getAdded_at(){

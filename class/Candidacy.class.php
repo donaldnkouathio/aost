@@ -33,9 +33,7 @@ class Candidacy
     /*SETTERS & GETTERS*/
 
     public function setId($id){
-        if(is_int($id)){
-            $this->_id=$id;
-        }
+        $this->_id=intval($id);
     }
 
     public function getId(){
@@ -44,9 +42,7 @@ class Candidacy
 
 
     public function setId_offer($id_offer){
-        if(is_int($id_offer)){
-            $this->_id_offer=$id_offer;
-        }
+        $this->_id_offer=intval($id_offer);
     }
     
     public function getId_offer(){
@@ -55,9 +51,7 @@ class Candidacy
 
     
     public function setId_customer($id_customer){
-        if(is_int($id_customer)){
-            $this->_id_customer=$id_customer;
-        }
+        $this->_id_customer=intval($id_customer);
     }
     
     public function getId_customer(){
@@ -66,9 +60,7 @@ class Candidacy
 
     
     public function setId_user($id_user){
-        if(is_int($id_user)){
-            $this->_id_user=$id_user;
-        }
+        $this->_id_user=intval($id_user);
     }
     
     public function getId_user(){
@@ -77,9 +69,7 @@ class Candidacy
 
     
     public function setId_domain($id_domain){
-        if(is_int($id_domain)){
-            $this->_id_domain=$id_domain;
-        }
+        $this->_id_domain=intval($id_domain);
     }
     
     public function getId_domain(){
@@ -88,9 +78,7 @@ class Candidacy
 
     
     public function setCv_file($cv_file){
-        if(is_string($cv_file)){
-            $this->_cv_file=$cv_file;
-        }
+        $this->_cv_file=strval($cv_file));
     }
     
     public function getCv_file(){
@@ -99,9 +87,7 @@ class Candidacy
 
     
     public function setMotivation_file($motivation_file){
-        if(is_string($motivation_file)){
-            $this->_motivation_file=$motivation_file;
-        }
+        $this->_motivation_file=strval($motivation_file));
     }
     
     public function getMotivation_file(){
@@ -110,9 +96,7 @@ class Candidacy
 
     
     public function setDeleted($deleted){
-        if(is_int($deleted)){
-            $this->_deleted=$deleted;
-        }
+        $this->_deleted=intval($deleted);
     }
     
     public function getDeleted(){
@@ -122,9 +106,7 @@ class Candidacy
 
     
     public function setAdded_at($added_at){
-        if(is_string($added_at)){
-            $this->_added_at=$added_at;
-        }
+        $this->_added_at=htmlentities(strval($added_at));
     }
     
     public function getAdded_at(){

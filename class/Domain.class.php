@@ -31,9 +31,7 @@ class domain
     /*SETTERS & GETTERS*/
 
     public function setId($id){
-        if(is_int($id)){
-            $this->_id=$id;
-        }
+        $this->_id=$id;
     }
 
     public function getId(){
@@ -42,9 +40,7 @@ class domain
 
 
     public function setId_admin($id_admin){
-        if(is_int($id_admin)){
-            $this->_id_admin=$id_admin;
-        }
+        $this->_id_admin=$id_admin;
     }
     
     public function getId_admin(){
@@ -53,9 +49,7 @@ class domain
 
     
     public function setName($name){
-        if(is_string($name)){
-            $this->_name=$name;
-        }
+        $this->_name=htmlentities(strval($name));
     }
     
     public function getName(){
@@ -64,9 +58,7 @@ class domain
 
     
     public function setColor($color){
-        if(is_string($color)){
-            $this->_color=$color;
-        }
+        $this->_color=htmlentities(strval($color));
     }
     
     public function getColor(){
@@ -75,9 +67,7 @@ class domain
 
     
     public function setImage($image){
-        if(is_string($image)){
-            $this->_image=$image;
-        }
+        $this->_image=htmlentities(strval($image));
     }
     
     public function getImage(){

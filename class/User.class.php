@@ -32,9 +32,7 @@ class User
  /*SETTERS & GETTERS*/
 
  public function setId($id){
-  if(is_int($id)){
-     $this->_id=$id;
-  }
+     $this->_id=intval($id);
 }
 
 public function getId(){
@@ -43,9 +41,7 @@ public function getId(){
 
 
 public function setEmail($email){
-  if(is_string($email)){
-     $this->_email=$email;
-  }
+ $this->_email=htmlentities(strval($email));
 }
 
 public function getEmail(){
@@ -54,9 +50,7 @@ public function getEmail(){
 
 
 public function setPassword($password){
-  if(is_string($password)){
-     $this->_password=$password;
-  }
+ $this->_password=htmlentities(strval($password));
 }
 
 public function getPassword(){
@@ -65,9 +59,7 @@ public function getPassword(){
 
 
 public function setProfile($profile){
-  if(is_string($profile)){
-     $this->_profile=$profile;
-  }
+ $this->_profile=htmlentities(strval($profile));
 }
 
 public function getProfile(){
@@ -76,9 +68,7 @@ public function getProfile(){
 
 
 public function setBlocked($blocked){
-  if(is_int($blocked)){
-     $this->_blocked=$blocked;
-  }
+     $this->_blocked=intval($blocked);
 }
 
 public function getBlocked(){
@@ -87,9 +77,7 @@ public function getBlocked(){
 
 
 public function setToken_checked($token_checked){
-  if(is_string($token_checked)){
-     $this->_token_checked=$token_checked;
-  }
+ $this->_token_checked=htmlentities(strval($token_checked));
 }
 
 public function getToken_checked(){
@@ -98,9 +86,7 @@ public function getToken_checked(){
 
 
 public function setVerified_at($verified_at){
-  if(is_string($verified_at)){
-     $this->_verified_at=$verified_at;
-  }
+ $this->_verified_at=htmlentities(strval($verified_at));
 }
 
 public function getVerified_at(){
@@ -109,9 +95,7 @@ public function getVerified_at(){
 
 
 public function setAdded_at($added_at){
-  if(is_string($added_at)){
-     $this->_added_at=$added_at;
-  }
+ $this->_added_at=htmlentities(strval($added_at));
 }
 
 public function getAdded_at(){

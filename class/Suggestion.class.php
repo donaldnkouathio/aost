@@ -30,9 +30,7 @@ class Suggestion
   /*SETTERS & GETTERS*/
 
   public function setId($id){
-    if(is_int($id)){
-       $this->_id=$id;
-    }
+       $this->_id=intval($id);
  }
 
  public function getId(){
@@ -41,9 +39,7 @@ class Suggestion
 
 
  public function setId_domain($id_domain){
-    if(is_int($id_domain)){
-       $this->_id_domain=$id_domain;
-    }
+       $this->_id_domain=intval($id_domain);
  }
 
  public function getId_domain(){
@@ -52,9 +48,7 @@ class Suggestion
 
 
  public function setId_subdomain($id_subdomain){
-    if(is_int($id_subdomain)){
-       $this->_id_subdomain=$id_subdomain;
-    }
+       $this->_id_subdomain=intval($id_subdomain);
  }
 
  public function getId_subdomain(){
@@ -63,9 +57,7 @@ class Suggestion
 
 
  public function setEmail($email){
-    if(is_string($email)){
-       $this->_email=$email;
-    }
+  $this->_email=htmlentities(strval($email));
  }
 
  public function getEmail(){
@@ -74,9 +66,7 @@ class Suggestion
 
 
  public function setCv_file($cv_file){
-    if(is_string($cv_file)){
-       $this->_cv_file=$cv_file;
-    }
+  $this->_cv_file=htmlentities(strval($cv_file));
  }
 
  public function getCv_file(){
@@ -85,9 +75,7 @@ class Suggestion
 
 
  public function setAdded_at($added_at){
-    if(is_string($added_at)){
-       $this->_added_at=$added_at;
-    }
+  $this->_added_at=htmlentities(strval($added_at));
  }
 
  public function getAdded_at(){
