@@ -134,16 +134,13 @@ class Contact
   public function removeContact($id_contact){
     include(_APP_PATH."bd/server-connect.php");
 
-    if(is_int($id_contact)){
-        $req=$db->prepare("DELETE FROM contact WHERE id=?");
+    $id_contact=intval($id_contact);
+    $req=$db->prepare("DELETE FROM contact WHERE id=?");
 
-        $req->bindParam(1,$id_contact);
+    $req->bindParam(1,$id_contact);
 
-        if($req->execute()){
-            return true;
-        }else{
-            return false;
-        }
+    if($req->execute()){
+        return true;
     }else{
         return false;
     }
@@ -170,15 +167,12 @@ public function getLastContact(){
 public function getContact($id){
     include(_APP_PATH."bd/server-connect.php");
 
-    if(is_int($id)){
-        $query=$db->prepare("SELECT * FROM contact WHERE id=?");
-        $query->bindParam(1,$id);
-        if($query->execute() && $query->rowCount()==1){
-            $data=$query->fetch();
-            return (new Contact($data));   
-        }else{
-            return false;
-        }
+    $id=intval($id);
+    $query=$db->prepare("SELECT * FROM contact WHERE id=?");
+    $query->bindParam(1,$id);
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new Contact($data));   
     }else{
         return false;
     }

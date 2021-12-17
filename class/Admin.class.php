@@ -132,16 +132,14 @@ class Admin
   public function removeAdmin($id_admin){
     include(_APP_PATH."bd/server-connect.php");
 
-    if(is_int($id_admin)){
-        $req=$db->prepare("DELETE FROM admins WHERE id=?");
+    $id_admin=intval($id_admin);
 
-        $req->bindParam(1,$id_admin);
+    $req=$db->prepare("DELETE FROM admins WHERE id=?");
 
-        if($req->execute()){
-            return true;
-        }else{
-            return false;
-        }
+    $req->bindParam(1,$id_admin);
+
+    if($req->execute()){
+        return true;
     }else{
         return false;
     }
@@ -167,15 +165,13 @@ public function getLastAdmin(){
 public function getAdmin($id){
     include(_APP_PATH."bd/server-connect.php");
 
-    if(is_int($id)){
-        $query=$db->prepare("SELECT * FROM admins WHERE id=?");
-        $query->bindParam(1,$id);
-        if($query->execute() && $query->rowCount()==1){
-            $data=$query->fetch();
-            return (new Admin($data));   
-        }else{
-            return false;
-        }
+    
+    $id=intval($id);
+    $query=$db->prepare("SELECT * FROM admins WHERE id=?");
+    $query->bindParam(1,$id);
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new Admin($data));   
     }else{
         return false;
     }

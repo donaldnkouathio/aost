@@ -30,7 +30,7 @@ class History
     /*SETTERS & GETTERS*/
 
     public function setId($id){
-            $this->_id=intval($id);
+        $this->_id=intval($id);
     }
 
     public function getId(){
@@ -39,7 +39,7 @@ class History
 
 
     public function setId_admin($id_admin){
-            $this->_id_admin=intval($id_admin);
+        $this->_id_admin=intval($id_admin);
     }
     
     public function getId_admin(){
@@ -48,7 +48,7 @@ class History
 
     
     public function setId_target($id_target){
-            $this->_id_target=intval($id_target);
+        $this->_id_target=intval($id_target);
     }
     
     public function getId_target(){
@@ -128,18 +128,15 @@ class History
 
 
   public function removeHistory($id_history){
-        include(_APP_PATH."bd/server-connect.php");
-        
-    if(is_int($id_history)){
-        $req=$db->prepare("DELETE FROM history WHERE id=?");
+    include(_APP_PATH."bd/server-connect.php");
+    
+    $id_history=intval($id_history);
+    $req=$db->prepare("DELETE FROM history WHERE id=?");
 
-        $req->bindParam(1,$id_history);
+    $req->bindParam(1,$id_history);
 
-        if($req->execute()){
-            return true;
-        }else{
-            return false;
-        }
+    if($req->execute()){
+        return true;
     }else{
         return false;
     }
@@ -149,8 +146,8 @@ class History
 
 
 public function getLastHistory(){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     $query=$db->prepare("SELECT * FROM history WHERE id=(SELECT MAX(id) FROM history)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
@@ -164,8 +161,8 @@ public function getLastHistory(){
 
 
 public function getHistory($id){
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM history WHERE id=?");
         $query->bindParam(1,$id);
@@ -185,8 +182,8 @@ public function getHistory($id){
 
 
 public function getHistorys() {
-        include(_APP_PATH."bd/server-connect.php");
-        
+    include(_APP_PATH."bd/server-connect.php");
+    
 
     $query=$db->prepare("SELECT * FROM history ORDER BY id ASC");
 

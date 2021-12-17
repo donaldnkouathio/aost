@@ -37,7 +37,7 @@ class Customer
     /*SETTERS & GETTERS*/
 
     public function setId($id){
-            $this->_id=intval($id);
+        $this->_id=intval($id);
     }
 
     public function getId(){
@@ -46,7 +46,7 @@ class Customer
 
 
     public function setId_user($id_user){
-            $this->_id_user=intval($id_user);
+        $this->_id_user=intval($id_user);
     }
     
     public function getId_user(){
@@ -220,16 +220,13 @@ class Customer
   public function removeCustomer($id_user){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id_user)){
-        $req=$db->prepare("DELETE FROM customers WHERE id=?");
+    $id_user=intval($id_user);
+    $req=$db->prepare("DELETE FROM customers WHERE id=?");
 
-        $req->bindParam(1,$id_user);
+    $req->bindParam(1,$id_user);
 
-        if($req->execute()){
-            return true;
-        }else{
-            return false;
-        }
+    if($req->execute()){
+        return true;
     }else{
         return false;
     }
@@ -256,15 +253,12 @@ public function getLastCustomer(){
 public function getCustomer($id){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id)){
-        $query=$db->prepare("SELECT * FROM customers WHERE id=?");
-        $query->bindParam(1,$id);
-        if($query->execute() && $query->rowCount()==1){
-            $data=$query->fetch();
-            return (new Customer($data));   
-        }else{
-            return false;
-        }
+    $id=intval($id);
+    $query=$db->prepare("SELECT * FROM customers WHERE id=?");
+    $query->bindParam(1,$id);
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new Customer($data));   
     }else{
         return false;
     }

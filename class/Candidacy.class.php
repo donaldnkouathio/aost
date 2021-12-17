@@ -78,7 +78,7 @@ class Candidacy
 
     
     public function setCv_file($cv_file){
-        $this->_cv_file=strval($cv_file));
+        $this->_cv_file=strval($cv_file);
     }
     
     public function getCv_file(){
@@ -87,28 +87,28 @@ class Candidacy
 
     
     public function setMotivation_file($motivation_file){
-        $this->_motivation_file=strval($motivation_file));
+        $this->_motivation_file=strval($motivation_file);
     }
-    
+
     public function getMotivation_file(){
         return $this->_motivation_file;
     }
 
-    
+
     public function setDeleted($deleted){
         $this->_deleted=intval($deleted);
     }
-    
+
     public function getDeleted(){
         return $this->_deleted;
     }
 
 
-    
+
     public function setAdded_at($added_at){
         $this->_added_at=htmlentities(strval($added_at));
     }
-    
+
     public function getAdded_at(){
         return $this->_added_at;
     }
@@ -131,7 +131,7 @@ class Candidacy
 
     public function addCandidacy(Candidacy $candidacy){
         include(_APP_PATH."bd/server-connect.php");
-        
+
         $query=$db->prepare("INSERT INTO candidacy VALUES (?,?,?,?,?,?,?,?,?)");
 
         $id=0;
@@ -171,19 +171,17 @@ class Candidacy
   public function removeCandidacy($id_offer){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id_offer)){
-        $req=$db->prepare("DELETE FROM candidacy WHERE id=?");
+    $id_offer=intval($id_offer);
+    $req=$db->prepare("DELETE FROM candidacy WHERE id=?");
 
-        $req->bindParam(1,$id_offer);
+    $req->bindParam(1,$id_offer);
 
-        if($req->execute()){
-            return true;
-        }else{
-            return false;
-        }
+    if($req->execute()){
+        return true;
     }else{
         return false;
     }
+    
     
 }
 
@@ -208,7 +206,7 @@ public function getLastCandidacy(){
 public function getCandidacy($id){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id)){
+    $id=intval($id);
         $query=$db->prepare("SELECT * FROM candidacy WHERE id=?");
         $query->bindParam(1,$id);
         if($query->execute() && $query->rowCount()==1){
@@ -217,9 +215,6 @@ public function getCandidacy($id){
         }else{
             return false;
         }
-    }else{
-        return false;
-    }
 
 }
 

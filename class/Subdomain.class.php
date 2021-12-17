@@ -30,7 +30,7 @@ class Subdomain
 /*SETTERS & GETTERS*/
 
 public function setId($id){
-       $this->_id=intval($id);
+   $this->_id=intval($id);
 }
 
 public function getId(){
@@ -39,7 +39,7 @@ public function getId(){
 
 
 public function setId_domain($id_domain){
-       $this->_id_domain=intval($id_domain);
+   $this->_id_domain=intval($id_domain);
 }
 
 public function getId_domain(){
@@ -135,16 +135,13 @@ public function addSubdomain(Subdomain $subdomain){
 public function removeSubdomain($id_subdomain){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id_subdomain)){
-        $req=$db->prepare("DELETE FROM subdomains WHERE id=?");
+    $id_subdomain=intval($id_subdomain);
+    $req=$db->prepare("DELETE FROM subdomains WHERE id=?");
 
-        $req->bindParam(1,$id_subdomain);
+    $req->bindParam(1,$id_subdomain);
 
-        if($req->execute()){
-            return true;
-        }else{
-            return false;
-        }
+    if($req->execute()){
+        return true;
     }else{
         return false;
     }
@@ -172,18 +169,15 @@ public function getLastSubdomain(){
 public function getSubdomain($id){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id)){
-       $query=$db->prepare("SELECT * FROM subdomains WHERE id=?");
-       $query->bindParam(1,$id);
-       if($query->execute() && $query->rowCount()==1){
-          $data=$query->fetch();
-          return (new Subdomain($data));   
-      }else{
-          return false;
-      }
+    $id=intval($id);
+    $query=$db->prepare("SELECT * FROM subdomains WHERE id=?");
+    $query->bindParam(1,$id);
+    if($query->execute() && $query->rowCount()==1){
+      $data=$query->fetch();
+      return (new Subdomain($data));   
   }else{
-     return false;
- }
+      return false;
+  }
 
 }
 

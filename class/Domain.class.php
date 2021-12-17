@@ -135,16 +135,13 @@ class domain
   public function removeDomain($id_domain){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id_domain)){
-        $req=$db->prepare("DELETE FROM domains WHERE id=?");
+    $id_domain=intval($id_domain);
+    $req=$db->prepare("DELETE FROM domains WHERE id=?");
 
-        $req->bindParam(1,$id_domain);
+    $req->bindParam(1,$id_domain);
 
-        if($req->execute()){
-            return true;
-        }else{
-            return false;
-        }
+    if($req->execute()){
+        return true;
     }else{
         return false;
     }
@@ -170,15 +167,12 @@ public function getLastDomain(){
 public function getDomain($id){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id)){
-        $query=$db->prepare("SELECT * FROM domains WHERE id=?");
-        $query->bindParam(1,$id);
-        if($query->execute() && $query->rowCount()==1){
-            $data=$query->fetch();
-            return (new Domain($data));   
-        }else{
-            return false;
-        }
+    $id=intval($id);
+    $query=$db->prepare("SELECT * FROM domains WHERE id=?");
+    $query->bindParam(1,$id);
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new Domain($data));   
     }else{
         return false;
     }

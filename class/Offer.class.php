@@ -42,7 +42,7 @@ class Offer
     /*SETTERS & GETTERS*/
 
     public function setId($id){
-            $this->_id=intval($id);
+        $this->_id=intval($id);
     }
 
     public function getId(){
@@ -51,7 +51,7 @@ class Offer
 
 
     public function setId_compagny($id_compagny){
-            $this->_id_compagny=intval($id_compagny);
+        $this->_id_compagny=intval($id_compagny);
     }
     
     public function getId_compagny(){
@@ -60,7 +60,7 @@ class Offer
 
     
     public function setId_user($id_user){
-            $this->_id_user=intval($id_user);
+        $this->_id_user=intval($id_user);
     }
     
     public function getId_user(){
@@ -69,7 +69,7 @@ class Offer
 
     
     public function setId_domain($id_domain){
-            $this->_id_domain=intval($id_domain);
+        $this->_id_domain=intval($id_domain);
     }
     
     public function getId_domain(){
@@ -273,16 +273,13 @@ class Offer
   public function removeOffer($id_offer){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id_offer)){
-        $req=$db->prepare("DELETE FROM offers WHERE id=?");
+    $id_offer=intval($id_offer);
+    $req=$db->prepare("DELETE FROM offers WHERE id=?");
 
-        $req->bindParam(1,$id_offer);
+    $req->bindParam(1,$id_offer);
 
-        if($req->execute()){
-            return true;
-        }else{
-            return false;
-        }
+    if($req->execute()){
+        return true;
     }else{
         return false;
     }
@@ -309,15 +306,12 @@ public function getLastOffer(){
 public function getOffer($id){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id)){
-        $query=$db->prepare("SELECT * FROM offers WHERE id=?");
-        $query->bindParam(1,$id);
-        if($query->execute() && $query->rowCount()==1){
-            $data=$query->fetch();
-            return (new Offer($data));   
-        }else{
-            return false;
-        }
+    $id=intval($id);
+    $query=$db->prepare("SELECT * FROM offers WHERE id=?");
+    $query->bindParam(1,$id);
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new Offer($data));   
     }else{
         return false;
     }
@@ -351,20 +345,17 @@ public function getOffers() {
 public function getOffersLimit($start) {
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($start)){
-        $end=$start+10;
-        $query=$db->prepare("SELECT * FROM offers ORDER BY id DESC LIMIT $start,$end");
+    $start=intval($start);
+    $end=$start+10;
+    $query=$db->prepare("SELECT * FROM offers ORDER BY id DESC LIMIT $start,$end");
 
-        $offers=[];
+    $offers=[];
 
-        if($query->execute()){
-            while($data=$query->fetch()){
-                $offers[]=new Offer($data);
-            }
-            return $offers;
-        }else{
-            return false;
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $offers[]=new Offer($data);
         }
+        return $offers;
     }else{
         return false;
     }

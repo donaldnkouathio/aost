@@ -170,16 +170,13 @@ class Compagny
   public function removeCompagny($id_domain){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id_domain)){
-        $req=$db->prepare("DELETE FROM compagny WHERE id=?");
+    $id_domain=intval($id_domain);
+    $req=$db->prepare("DELETE FROM compagny WHERE id=?");
 
-        $req->bindParam(1,$id_domain);
+    $req->bindParam(1,$id_domain);
 
-        if($req->execute()){
-            return true;
-        }else{
-            return false;
-        }
+    if($req->execute()){
+        return true;
     }else{
         return false;
     }
@@ -207,15 +204,28 @@ public function getLastCompagny(){
 public function getCompagny($id){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id)){
-        $query=$db->prepare("SELECT * FROM compagny WHERE id=?");
-        $query->bindParam(1,$id);
-        if($query->execute() && $query->rowCount()==1){
-            $data=$query->fetch();
-            return (new Compagny($data));   
-        }else{
-            return false;
-        }
+    $id=intval($id);
+    $query=$db->prepare("SELECT * FROM compagny WHERE id=?");
+    $query->bindParam(1,$id);
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new Compagny($data));   
+    }else{
+        return false;
+    }
+
+}
+
+
+public function getCompagnyUser($id_user){
+    include(_APP_PATH."bd/server-connect.php");
+    
+    $id_user=intval($id_user);
+    $query=$db->prepare("SELECT * FROM compagny WHERE id_user=?");
+    $query->bindParam(1,$id);
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new Compagny($data));   
     }else{
         return false;
     }

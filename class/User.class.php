@@ -32,7 +32,7 @@ class User
  /*SETTERS & GETTERS*/
 
  public function setId($id){
-     $this->_id=intval($id);
+  $this->_id=intval($id);
 }
 
 public function getId(){
@@ -68,7 +68,7 @@ public function getProfile(){
 
 
 public function setBlocked($blocked){
-     $this->_blocked=intval($blocked);
+  $this->_blocked=intval($blocked);
 }
 
 public function getBlocked(){
@@ -152,6 +152,7 @@ public function signIn(User $user) {
 
    mkdir($user_folder);
    mkdir($user_folder."/profile");
+   mkdir($user_folder."/offers");
    copy(_APP_PATH."img/".$profile,$user_folder."/profile/".$profile);
 
    $user->logIn($new_user);
@@ -249,15 +250,12 @@ public function getLastUser(){
 public function getUser($id){
   include(_APP_PATH."bd/server-connect.php");
 
-  if(is_int($id)){
-     $query=$db->prepare("SELECT * FROM users WHERE id=?");
-     $query->bindParam(1,$id);
-     if($query->execute() && $query->rowCount()==1){
-        $data=$query->fetch();
-        return (new User($data));	
-     }else{
-        return false;
-     }
+  $id=intval($id);
+  $query=$db->prepare("SELECT * FROM users WHERE id=?");
+  $query->bindParam(1,$id);
+  if($query->execute() && $query->rowCount()==1){
+     $data=$query->fetch();
+     return (new User($data));	
   }else{
      return false;
   }
@@ -292,14 +290,11 @@ public function getUsers() {
 public function blockUser($id){
   include(_APP_PATH."bd/server-connect.php");
 
-  if(is_int($id)){
-     $query=$db->prepare("DELETE FROM users WHERE id=?");
-     $query->bindParam(1,$id);
-     if($query->execute()){
-        return true;	
-     }else{
-        return false;
-     }
+  $id=intval($id);
+  $query=$db->prepare("DELETE FROM users WHERE id=?");
+  $query->bindParam(1,$id);
+  if($query->execute()){
+     return true;	
   }else{
      return false;
   }
