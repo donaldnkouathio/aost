@@ -61,7 +61,9 @@
 
         $premiereEntree=($pageActuelle-1)*$actuParPage; // On calcule la première entrée à lire
 
-        for($i= $premiereEntree; $i < $actuParPage + $premiereEntree; $i++){
+        //for($i= $premiereEntree; $i < $actuParPage + $premiereEntree; $i++){
+        $offers = $offer->getOffers(); $i=-1;
+        foreach ($offers as $offer) { echo intval($offer->getId()); $i++;
       ?>
         <a href="#" class="ep-contain">
           <div class="ep-header" style="background-image: url('/aost/img/bg/<?php echo $bgTab[$i]; ?>.jpg')">

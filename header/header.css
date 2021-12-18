@@ -1,5 +1,12 @@
 header{
   background-color : var(--nav-bg-color);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 70px;
+  z-index: 35;
+  box-sizing: border-box;
 }
 .nav-contain-left{
   display: inline-block;
@@ -116,11 +123,11 @@ header{
 
 /* Laptop */
 @media (min-width: 992px) {
-  header{
+  /*header{
     padding: 0;
     z-index: 35;
     position: relative;
-  }
+  }*/
   .nav-container{
     padding: 0;
     height: 70px;
