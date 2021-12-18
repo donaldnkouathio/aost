@@ -24,18 +24,14 @@
 
         <ul>
           <?php
-            $domaineTab= ["Informatique", "Ressources humaines humaines","Education", "Ressources humaines humaines","Education", "Informatique", "Sécurité", "Ressources humaines", "Ressources humaines","Education"];
-            $imgTab= ["dom", "dom2","dom", "dom2", "dom", "dom2", "dom","dom2", "dom","dom2"];
-            $j=-1;
-            for($i=0; $i<19; $i++){
-              if ($j>=9) {
-                $j = 0;
-              }else {
-                $j++;
+            $domains = $domain->getDomains();
+            foreach ($domains as $domain) {
+              if ($domain->getImage() == "") {
+                $domain->setImage("dom");
               }
           ?>
-            <a href="<?php echo _ROOT_PATH; ?>domains/<?php echo $domaineTab[$j]; ?>/" class="domain-block" style="background-image: url('<?php echo _ROOT_PATH; ?>img/domain/<?php echo $imgTab[$j]; ?>.jpg')">
-              <div><?php echo $domaineTab[$j].""; ?></div>
+            <a href="<?php echo _ROOT_PATH; ?>domains/<?php echo str_replace(" ", "-", $domain->getName())."/".$domain->getId(); ?>" class="domain-block" style="background-image: url('<?php echo _ROOT_PATH; ?>img/domain/<?php echo $domain->getImage(); ?>.jpg')">
+              <div><?php echo $domain->getName()." /".$domain->getId(); ?></div>
             </a>
           <?php } ?>
 
