@@ -30,9 +30,7 @@ class Subdomain
 /*SETTERS & GETTERS*/
 
 public function setId($id){
-    if(is_int($id)){
-       $this->_id=$id;
-   }
+   $this->_id=intval($id);
 }
 
 public function getId(){
@@ -41,9 +39,7 @@ public function getId(){
 
 
 public function setId_domain($id_domain){
-    if(is_int($id_domain)){
-       $this->_id_domain=$id_domain;
-   }
+   $this->_id_domain=intval($id_domain);
 }
 
 public function getId_domain(){
@@ -52,9 +48,7 @@ public function getId_domain(){
 
 
 public function setName($name){
-    if(is_string($name)){
-       $this->_name=$name;
-   }
+ $this->_name=htmlentities(strval($name));
 }
 
 public function getName(){
@@ -64,9 +58,7 @@ public function getName(){
 
 
 public function setColor($color){
-    if(is_string($color)){
-       $this->_color=$color;
-   }
+ $this->_color=htmlentities(strval($color));
 }
 
 public function getColor(){
@@ -76,9 +68,7 @@ public function getColor(){
 
 
 public function setImage($image){
-    if(is_string($image)){
-       $this->_image=$image;
-   }
+ $this->_image=htmlentities(strval($image));
 }
 
 public function getImage(){
@@ -88,9 +78,7 @@ public function getImage(){
 
 
 public function setAdded_at($added_at){
-    if(is_string($added_at)){
-       $this->_added_at=$added_at;
-   }
+ $this->_added_at=htmlentities(strval($added_at));
 }
 
 public function getAdded_at(){
@@ -147,16 +135,13 @@ public function addSubdomain(Subdomain $subdomain){
 public function removeSubdomain($id_subdomain){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id_subdomain)){
-        $req=$db->prepare("DELETE FROM subdomains WHERE id=?");
+    $id_subdomain=intval($id_subdomain);
+    $req=$db->prepare("DELETE FROM subdomains WHERE id=?");
 
-        $req->bindParam(1,$id_subdomain);
+    $req->bindParam(1,$id_subdomain);
 
-        if($req->execute()){
-            return true;
-        }else{
-            return false;
-        }
+    if($req->execute()){
+        return true;
     }else{
         return false;
     }
@@ -184,18 +169,15 @@ public function getLastSubdomain(){
 public function getSubdomain($id){
     include(_APP_PATH."bd/server-connect.php");
     
-    if(is_int($id)){
-       $query=$db->prepare("SELECT * FROM subdomains WHERE id=?");
-       $query->bindParam(1,$id);
-       if($query->execute() && $query->rowCount()==1){
-          $data=$query->fetch();
-          return (new Subdomain($data));   
-      }else{
-          return false;
-      }
+    $id=intval($id);
+    $query=$db->prepare("SELECT * FROM subdomains WHERE id=?");
+    $query->bindParam(1,$id);
+    if($query->execute() && $query->rowCount()==1){
+      $data=$query->fetch();
+      return (new Subdomain($data));   
   }else{
-     return false;
- }
+      return false;
+  }
 
 }
 
