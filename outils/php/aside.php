@@ -1,4 +1,4 @@
-<div class="aside-block">
+<div class="aside-block aside_block_fixed" style="margin-top: 5px;">
 
   <?php
     $rand = random_int(1,2);

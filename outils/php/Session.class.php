@@ -43,6 +43,23 @@
         </div>
       </div>
     <?php }
+
+    public function preloader(){ ?>
+      <div class="preloader">
+        <div class="spinner-block">
+          <div class="spinner wave_1"></div>
+          <div class="spinner wave_2"></div>
+          <div class="spinner wave_3"></div>
+          <div class="spinner wave_4">AOST...</div>
+        </div>
+      </div>
+    <?php }
+
+    public function goToTop(){ ?>
+      <div class="goToTop_block">
+        <div class="goToTop_btn goToTop_btn_hide"><i class="material-icons vertical-align-bottom"> keyboard_arrow_up </i></div>
+      </div>
+    <?php }
   }
 
 ?>
