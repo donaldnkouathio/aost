@@ -51,7 +51,7 @@ class Offer
 
 
     public function setCompagny($compagny){
-        $this->_compagny=strval($compagny);
+        $this->_compagny=htmlentities(strval($compagny));
     }
     
     public function getCompagny(){
