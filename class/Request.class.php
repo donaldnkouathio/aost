@@ -15,6 +15,7 @@ class Request
     private $_person;
     private $_phone;
     private $_fax_phone;
+    private $_need;
     private $_deleted;
     private $_added_at;
 
@@ -103,6 +104,14 @@ class Request
         return $this->_fax_phone;
     }
     
+    public function setNeed($need){
+        $this->_need=htmlentities(strval($need));
+    }
+    
+    public function getNeed(){
+        return $this->_need;
+    }
+    
     public function setDeleted($deleted){
         $this->_deleted=intval($deleted);
     }
@@ -137,7 +146,7 @@ class Request
     public function addRequest(Request $request){
         include(_APP_PATH."bd/server-connect.php");
         
-        $query=$db->prepare("INSERT INTO requests VALUES (?,?,?,?,?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO requests VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 
         $id=0;
         $compagny=$request->getCompagny();
@@ -147,6 +156,7 @@ class Request
         $person=$request->getPerson();
         $phone=$request->getPhone();
         $fax_phone=$request->getFax_phone();
+        $need=$request->getNeed();
         $deleted=$request->getDeleted();
         $added_at=$request->getAdded_at();
 
@@ -158,8 +168,9 @@ class Request
         $query->bindParam(6,$person);
         $query->bindParam(7,$phone);
         $query->bindParam(8,$fax_phone);
-        $query->bindParam(9,$deleted);;
-        $query->bindParam(10,$added_at);
+        $query->bindParam(9,$need);
+        $query->bindParam(10,$deleted);;
+        $query->bindParam(11,$added_at);
 
         if($query->execute()){
           return true;
@@ -282,6 +293,7 @@ public function editRequest(Request $request) {
         person=?,
         phone=?,
         fax_phone=?,
+        need=?,
         deleted=?
         WHERE id=?
 
@@ -295,6 +307,7 @@ public function editRequest(Request $request) {
     $person=$request->getPerson();
     $phone=$request->getPhone();
     $fax_phone=$request->getFax_phone();
+    $need=$request->getNeed();
     $deleted=$request->getDeleted();
 
     $query->bindParam(1,$id);
@@ -305,7 +318,8 @@ public function editRequest(Request $request) {
     $query->bindParam(6,$person);
     $query->bindParam(7,$phone);
     $query->bindParam(8,$fax_phone);
-    $query->bindParam(9,$deleted);
+    $query->bindParam(9,$need);
+    $query->bindParam(10,$deleted);
 
     if($query->execute()){
 
