@@ -30,8 +30,8 @@
                 $domain->setImage("dom");
               }
           ?>
-            <a href="<?php echo _ROOT_PATH; ?>domains/<?php echo str_replace(" ", "-", $domain->getName())."/".$domain->getId(); ?>" class="domain-block" style="background-image: url('<?php echo _ROOT_PATH; ?>img/domain/<?php echo $domain->getImage(); ?>.jpg')">
-              <div><?php echo $domain->getName()." /".$domain->getId(); ?></div>
+            <a href="<?php echo _ROOT_PATH; ?>domains/<?php echo (str_replace(" ", "-", $domain->getName()))."/".$domain->getId(); ?>" class="domain-block" style="background-image: url('<?php echo _ROOT_PATH; ?>img/domain/<?php echo $domain->getImage(); ?>.jpg')">
+              <div><?php echo $domain->getName(); ?></div>
             </a>
           <?php } ?>
 

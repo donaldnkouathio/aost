@@ -63,21 +63,21 @@
 
         //for($i= $premiereEntree; $i < $actuParPage + $premiereEntree; $i++){
         $offers = $offer->getOffers(); $i=-1;
-        foreach ($offers as $offer) { echo intval($offer->getId()); $i++;
+        foreach ($offers as $offer) { $i++;
       ?>
         <a href="#" class="ep-contain">
           <div class="ep-header" style="background-image: url('/aost/img/bg/<?php echo $bgTab[$i]; ?>.jpg')">
-            <span class="ep-poste"><?php echo $posteTab[$i]; ?></span>
+            <span class="ep-poste"><?php echo $offer->getProfession(); ?></span>
             <span class="ep-domaine" style="background-color: <?php echo $colorTab[$i]; ?>"><?php echo $domaineTab[$i]; ?></span>
           </div>
           <div class="ep-footer">
             <div class="ep-footer-top">
               <span class="ep-footer-left"><i class="material-icons vertical-align-bottom"> paid </i> 15$/heure</span>
-              <span class="ep-footer-right"><i class="material-icons vertical-align-bottom"> watch_later </i> Temps plein</span>
+                <span class="ep-footer-right"><i class="material-icons vertical-align-bottom">watch_later</i> Expire <?php echo $offer->getDeadline(); ?></span>
             </div>
             <div class="ep-footer-bottom">
-              <span class="ep-footer-left"><i class="material-icons vertical-align-bottom"> location_on </i> Expire le Montréal</span>
-              <span class="ep-footer-right"><i class="material-icons vertical-align-bottom"> today </i> Publié <?php get_elapsed_time("10-12-2021 10:30"); ?></span>
+              <span class="ep-footer-left"><i class="material-icons vertical-align-bottom">location_on</i> <?php echo $offer->getCity(); ?></span>
+              <span class="ep-footer-right"><i class="material-icons vertical-align-bottom"> today </i> Publié <?php get_elapsed_time($offer->getAdded_at()); ?></span>
             </div>
           </div>
         </a>

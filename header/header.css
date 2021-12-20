@@ -151,7 +151,7 @@ header{
   .nav-link{
     box-sizing: border-box;
     display: inline-block;
-    padding: 25px 15px !important;
+    padding: 25px 5px !important;
     color : white;
   }
   .nav-contain-left li ul, .nav-contain-right li ul{
