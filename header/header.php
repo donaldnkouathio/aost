@@ -44,8 +44,6 @@
 
     <ul class="nav-contain-right" style="">
       <li class="hide-on-laptop" id="navMobileBtn"><i class="material-icons vertical-align-bottom"> menu </i></li>
-      <li><a href="#" class="hide-on-mobile nav-link">S'inscrire</a></li>
-      <li><a href="#" class="hide-on-mobile nav-link">Se connecter</a></li>
     </ul>
 
     <!-- Menu pour mobile -->
@@ -77,9 +75,6 @@
           A propos de nous
           <i class="material-icons vertical-align-bottom" style="float:right"> chevron_right </i>
         </a></li>
-
-        <li><a href="#">S'inscrire</a></li>
-        <li><a href="#">Se connecter</a></li>
       </ul>
     </div>
 
