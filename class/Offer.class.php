@@ -8,9 +8,9 @@ class Offer
 
     /*PROPRIETES*/
     private $_id;
-    private $_id_compagny;
-    private $_id_user;
+    private $_id_admin;
     private $_id_domain;
+    private $_compagny;
     private $_profession;
     private $_city;
     private $_image;
@@ -50,21 +50,21 @@ class Offer
     }
 
 
-    public function setId_compagny($id_compagny){
-        $this->_id_compagny=intval($id_compagny);
+    public function setCompagny($compagny){
+        $this->_compagny=htmlentities(strval($compagny));
     }
     
-    public function getId_compagny(){
-        return $this->_id_compagny;
+    public function getCompagny(){
+        return $this->_compagny;
     }
 
     
-    public function setId_user($id_user){
-        $this->_id_user=intval($id_user);
+    public function setId_admin($id_admin){
+        $this->_id_admin=intval($id_admin);
     }
     
-    public function getId_user(){
-        return $this->_id_user;
+    public function getId_admin(){
+        return $this->_id_admin;
     }
 
     
@@ -222,9 +222,9 @@ class Offer
         $query=$db->prepare("INSERT INTO offers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $id=0;
-        $id_compagny=$offer->getId_compagny();
-        $id_user=$offer->getId_user();
+        $id_admin=$offer->getId_admin();
         $id_domain=$offer->getId_domain();
+        $compagny=$offer->getCompagny();
         $profession=$offer->getProfession();
         $city=$offer->getCity();
         $image=$offer->getImage();
@@ -241,9 +241,9 @@ class Offer
         $added_at=$offer->getAdded_at();
 
         $query->bindParam(1,$id);
-        $query->bindParam(2,$id_compagny);
-        $query->bindParam(3,$id_user);
-        $query->bindParam(4,$id_domain);
+        $query->bindParam(2,$id_admin);
+        $query->bindParam(3,$id_domain);
+        $query->bindParam(4,$compagny);
         $query->bindParam(5,$profession);
         $query->bindParam(6,$city);
         $query->bindParam(7,$image);
@@ -386,6 +386,7 @@ public function editOffer(Offer $offer) {
         validated=?,
         deleted=?,
         expired=?,
+        compagny=?,
         deadline=?
         WHERE id=?
 
@@ -420,8 +421,9 @@ public function editOffer(Offer $offer) {
     $query->bindParam(11,$validated);
     $query->bindParam(12,$deleted);
     $query->bindParam(13,$expired);
-    $query->bindParam(14,$deadline);
-    $query->bindParam(15,$id);
+    $query->bindParam(14,$compagny);
+    $query->bindParam(15,$deadline);
+    $query->bindParam(16,$id);
 
     if($query->execute()){
 
