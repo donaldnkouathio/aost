@@ -36,9 +36,9 @@ $current_subdomain=[
 
 $current_offer=[
 	'id'=>0,
-	'id_compagny'=>0,
-	'id_user'=>0,
+	'id_admin'=>0,
 	'id_domain'=>0,
+	'compagny'=>0,
 	'profession'=>"",
 	'city'=>"",
 	'image'=>"",
