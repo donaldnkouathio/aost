@@ -9,7 +9,7 @@
       <li>
         <a class="<?php if($session->getCurrentPage()=="Offres d'emplois"){echo "link-hover";} ?> nav-link">Emploi <i class="material-icons vertical-align-bottom"> keyboard_arrow_down </i></a>
 
-        <ul>
+        <ul class="job-block">
           <li><a href="<?php echo _ROOT_PATH; ?>job/offers" class="<?php if($session->getCurrentSubPage()=="Offres d'emplois"){echo "sub-link-hover";} ?>">Offres d'emploi</a></li>
           <li><a href="<?php echo _ROOT_PATH; ?>job/candidates" class="<?php if($session->getCurrentSubPage()=="candidates"){echo "sub-link-hover";} ?>">Candidats</a></li>
           <li><a href="<?php echo _ROOT_PATH; ?>job/prompt-application" class="<?php if($session->getCurrentSubPage()=="prompt-application"){echo "sub-link-hover";} ?>">Candidature spontanée</a></li>
@@ -26,12 +26,10 @@
           <?php
             $domains = $domain->getDomains();
             foreach ($domains as $domain) {
-              if ($domain->getImage() == "") {
-                $domain->setImage("dom");
-              }
+              $domainColor = $domain->getColor()==""? "66BFDE" : $domain -> getColor();
           ?>
-            <a href="<?php echo _ROOT_PATH; ?>domains/<?php echo (str_replace(" ", "-", $domain->getName()))."/".$domain->getId(); ?>" class="domain-block" style="background-image: url('<?php echo _ROOT_PATH; ?>img/domain/<?php echo $domain->getImage(); ?>.jpg')">
-              <div><?php echo $domain->getName(); ?></div>
+            <a href="<?php echo _ROOT_PATH; ?>domains/<?php echo (str_replace(" ", "-", $domain->getName()))."/".$domain->getId(); ?>" class="domain-block <?php if($session->getCurrentSubPage()==$domain->getName()){echo "sub-link-hover";} ?>" style="border-left : 3px solid #<?php echo $domainColor; ?>">
+              <span><?php echo $domain->getName(); ?></span>
             </a>
           <?php } ?>
 
@@ -102,10 +100,15 @@
         <span style="margin-left: 15px;">Domaines</span>
       </div>
       <ul class="nav-mobile-body">
-        <li><a href="<?php echo _ROOT_PATH; ?>domains/Info web/">Informatique</a></li>
-        <li><a href="<?php echo _ROOT_PATH; ?>domains/Info web/">Ressources humaines</a></li>
-        <li><a href="<?php echo _ROOT_PATH; ?>domains/Info web/">Education</a></li>
-        <li><a href="<?php echo _ROOT_PATH; ?>domains/Info web/">Sécurité</a></li>
+      <?php
+        $domains = $domain->getDomains();
+        foreach ($domains as $domain) {
+          $domainColor = $domain->getColor()==""? "66BFDE" : $domain -> getColor();
+      ?>
+        <li><a href="<?php echo _ROOT_PATH; ?>domains/<?php echo (str_replace(" ", "-", $domain->getName()))."/".$domain->getId(); ?>" class="<?php if($session->getCurrentSubPage()==$domain->getName()){echo "link-mobile-hover";} ?>">
+          <?php echo $domain->getName(); ?>
+        </a></li>
+      <?php } ?>
       </ul>
     </div>
 

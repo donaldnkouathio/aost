@@ -1,5 +1,9 @@
+.offers-container{
+  background-color: var(--color-shadow);
+}
 .emplois-populaires{
-  margin-bottom: 15px;
+  padding-bottom: 15px;
+  padding-top: 15px;
 }
 .emplois-populaires-container{
 }
@@ -13,12 +17,13 @@
   box-sizing: border-box;
   margin-right: 15px;
   color : var(--color-text) !important;
-  box-shadow: -1px 2px 6px var(--color-shadow);
+  box-shadow: -1px 2px 6px var(--color-text);
+  background-color: white;
   margin-bottom: 15px;
   border-radius: 0 var(--border-radius-size) var(--border-radius-size) 0;
 }
 .ep-block:hover{
-  background-color: var(--color-shadow);
+  background-color: #c0c0c0;
 }
 .ep-icon{
   display: none;

@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<div class="offres-block">
+<div class="offres-block offers-container">
   <div class="offres-stats">
     Environ <?php echo count($offers); ?> résultats trouvés
     <span class=" btn btn-primary filtresBtn hide-on-laptop">Filtres</span>
@@ -61,9 +61,7 @@
         $premiereEntree=($pageActuelle-1)*$actuParPage; // On calcule la première entrée à lire
 
         foreach ($offers as $offer) {
-      ?>
 
-        <?php
           $domain = $domain->getDomain($offer->getId_domain());
           $domainColor = $domain->getColor()==""? "66BFDE" : $domain -> getColor();
         ?>
