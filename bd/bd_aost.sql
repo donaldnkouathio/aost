@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 12 déc. 2021 à 23:25
+-- Généré le :  jeu. 23 déc. 2021 à 03:21
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -43,6 +43,25 @@ CREATE TABLE IF NOT EXISTS `admins` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `alerts`
+--
+
+DROP TABLE IF EXISTS `alerts`;
+CREATE TABLE IF NOT EXISTS `alerts` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_domain` bigint(20) NOT NULL,
+  `id_subdomain` bigint(20) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `cv_file` varchar(200) NOT NULL,
+  `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `id_domain` (`id_domain`),
+  KEY `id_subdomain` (`id_subdomain`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `candidacy`
 --
 
@@ -50,8 +69,6 @@ DROP TABLE IF EXISTS `candidacy`;
 CREATE TABLE IF NOT EXISTS `candidacy` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_offer` bigint(20) NOT NULL,
-  `id_customer` bigint(20) NOT NULL,
-  `id_user` bigint(20) NOT NULL,
   `id_domain` bigint(11) NOT NULL,
   `cv_file` varchar(255) DEFAULT NULL,
   `motivation_file` varchar(255) DEFAULT NULL,
@@ -59,8 +76,6 @@ CREATE TABLE IF NOT EXISTS `candidacy` (
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_job` (`id_offer`),
-  KEY `id_customer` (`id_customer`),
-  KEY `id_user` (`id_user`),
   KEY `fk_domain` (`id_domain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table contenant les candidatures des clients';
 
@@ -173,11 +188,12 @@ CREATE TABLE IF NOT EXISTS `history` (
 DROP TABLE IF EXISTS `offers`;
 CREATE TABLE IF NOT EXISTS `offers` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_compagny` bigint(20) NOT NULL COMMENT 'id de l''entreprise qui publie l''offre',
-  `id_user` bigint(20) NOT NULL COMMENT 'id de l''utilisateur qui publie l''offre',
+  `id_admin` bigint(20) NOT NULL,
   `id_domain` bigint(20) NOT NULL,
+  `id_subdomain` bigint(20) NOT NULL,
+  `compagny` varchar(100) NOT NULL,
   `profession` varchar(100) NOT NULL COMMENT 'Poste demandé',
-  `City` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `description` longtext COMMENT 'Description globale de la demande',
   `missions` longtext COMMENT 'description détaillée (par mission) de la demande',
@@ -185,16 +201,35 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `candidate_profile` longtext COMMENT 'Informations requises du postulant (age, annee d''experience, caractere etc...)',
   `cv` int(1) NOT NULL DEFAULT '0' COMMENT 'vaudra 1 si un CV est requit pour postuler',
   `motivation` int(1) NOT NULL DEFAULT '0' COMMENT 'Vaudra 1 si une lettre de motivation est requise pour postuler',
-  `validated` int(2) NOT NULL DEFAULT '0',
   `deleted` int(2) NOT NULL DEFAULT '0' COMMENT 'Vaudra 1 si supprimé par un admin (restera présente dans un onglet archives ou corbeille)',
   `expired` int(2) NOT NULL DEFAULT '0' COMMENT 'vaudra 1 si déjà expiré',
   `deadline` datetime NOT NULL COMMENT 'Date limite',
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `id_user` (`id_user`),
-  KEY `id_compagny` (`id_compagny`),
   KEY `fk_domain` (`id_domain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table qui contient les differentes offres';
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `requests`
+--
+
+DROP TABLE IF EXISTS `requests`;
+CREATE TABLE IF NOT EXISTS `requests` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `compagny` varchar(100) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `compagny_type` varchar(200) NOT NULL,
+  `person` varchar(100) NOT NULL,
+  `phone` varchar(30) NOT NULL,
+  `fax_phone` varchar(30) DEFAULT NULL,
+  `need` longtext NOT NULL,
+  `deleted` int(1) DEFAULT '0',
+  `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -212,25 +247,6 @@ CREATE TABLE IF NOT EXISTS `subdomains` (
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_domain` (`id_domain`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `suggestions`
---
-
-DROP TABLE IF EXISTS `suggestions`;
-CREATE TABLE IF NOT EXISTS `suggestions` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_domain` bigint(20) NOT NULL,
-  `id_subdomain` bigint(20) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `cv_file` varchar(200) NOT NULL,
-  `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `id_domain` (`id_domain`),
-  KEY `id_subdomain` (`id_subdomain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
