@@ -10,6 +10,7 @@ class Offer
     private $_id;
     private $_id_admin;
     private $_id_domain;
+    private $_id_subdomain;
     private $_compagny;
     private $_profession;
     private $_city;
@@ -20,7 +21,6 @@ class Offer
     private $_candidate_profile;
     private $_cv;
     private $_motivation;
-    private $_validated;
     private $_deleted;
     private $_expired;
     private $_deadline;
@@ -74,6 +74,15 @@ class Offer
     
     public function getId_domain(){
         return $this->_id_domain;
+    }
+
+
+    public function setId_subdomain($id_subdomain){
+        $this->_id_subdomain=intval($id_subdomain);
+    }
+    
+    public function getId_subdomain(){
+        return $this->_id_subdomain;
     }
 
     
@@ -158,15 +167,6 @@ class Offer
     }
 
     
-    public function setValidated($validated){
-        $this->_validated=intval($validated);
-    }
-    
-    public function getValidated(){
-        return $this->_validated;
-    }
-
-    
     public function setDeleted($deleted){
         $this->_deleted=intval($deleted);
     }
@@ -224,6 +224,7 @@ class Offer
         $id=0;
         $id_admin=$offer->getId_admin();
         $id_domain=$offer->getId_domain();
+        $id_subdomain=$offer->getId_subdomain();
         $compagny=$offer->getCompagny();
         $profession=$offer->getProfession();
         $city=$offer->getCity();
@@ -234,7 +235,6 @@ class Offer
         $candidate_profile=$offer->getCandidate_profile();
         $cv=$offer->getCv();
         $motivation=$offer->getMotivation();
-        $validated=$offer->getValidated();
         $deleted=$offer->getDeleted();
         $expired=$offer->getExpired();
         $deadline=$offer->getDeadline();
@@ -243,17 +243,17 @@ class Offer
         $query->bindParam(1,$id);
         $query->bindParam(2,$id_admin);
         $query->bindParam(3,$id_domain);
-        $query->bindParam(4,$compagny);
-        $query->bindParam(5,$profession);
-        $query->bindParam(6,$city);
-        $query->bindParam(7,$image);
-        $query->bindParam(8,$description);
-        $query->bindParam(9,$missions);
-        $query->bindParam(10,$skill);
-        $query->bindParam(11,$candidate_profile);
-        $query->bindParam(12,$cv);
-        $query->bindParam(13,$motivation);
-        $query->bindParam(14,$validated);
+        $query->bindParam(4,$id_subdomain);
+        $query->bindParam(5,$compagny);
+        $query->bindParam(6,$profession);
+        $query->bindParam(7,$city);
+        $query->bindParam(8,$image);
+        $query->bindParam(9,$description);
+        $query->bindParam(10,$missions);
+        $query->bindParam(11,$skill);
+        $query->bindParam(12,$candidate_profile);
+        $query->bindParam(13,$cv);
+        $query->bindParam(14,$motivation);
         $query->bindParam(15,$deleted);
         $query->bindParam(16,$expired);
         $query->bindParam(17,$deadline);
@@ -374,6 +374,7 @@ public function editOffer(Offer $offer) {
     
     $query=$db->prepare("UPDATE offers
         SET id_domain=?,
+        id_subdomain=?,
         profession=?,
         city=?,
         image=?,
@@ -383,7 +384,6 @@ public function editOffer(Offer $offer) {
         candidate_profile=?,
         cv=?,
         motivation=?,
-        validated=?,
         deleted=?,
         expired=?,
         compagny=?,
@@ -394,7 +394,9 @@ public function editOffer(Offer $offer) {
 
     $id=$offer->getId();
     $id_domain=$offer->getId_domain();
+    $id_subdomain=$offer->getId_subdomain();
     $profession=$offer->getProfession();
+    $compagny=$offer->getCompagny();
     $city=$offer->getCity();
     $image=$offer->getImage();
     $description=$offer->getDescription();
@@ -403,22 +405,21 @@ public function editOffer(Offer $offer) {
     $candidate_profile=$offer->getCandidate_profile();
     $cv=$offer->getCv();
     $motivation=$offer->getMotivation();
-    $validated=$offer->getValidated();
     $deleted=$offer->getDeleted();
     $expired=$offer->getExpired();
     $deadline=$offer->getDeadline();
 
     $query->bindParam(1,$id_domain);
-    $query->bindParam(2,$profession);
-    $query->bindParam(3,$city);
-    $query->bindParam(4,$image);
-    $query->bindParam(5,$description);
-    $query->bindParam(6,$missions);
-    $query->bindParam(7,$skill);
-    $query->bindParam(8,$candidate_profile);
-    $query->bindParam(9,$cv);
-    $query->bindParam(10,$motivation);
-    $query->bindParam(11,$validated);
+    $query->bindParam(2,$id_subdomain);
+    $query->bindParam(3,$profession);
+    $query->bindParam(4,$city);
+    $query->bindParam(5,$image);
+    $query->bindParam(6,$description);
+    $query->bindParam(7,$missions);
+    $query->bindParam(8,$skill);
+    $query->bindParam(9,$candidate_profile);
+    $query->bindParam(10,$cv);
+    $query->bindParam(11,$motivation);
     $query->bindParam(12,$deleted);
     $query->bindParam(13,$expired);
     $query->bindParam(14,$compagny);

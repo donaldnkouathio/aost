@@ -3,7 +3,7 @@
 include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
 
 
-class Suggestion
+class Alert
 {
 
  /*PROPRIETES*/
@@ -17,19 +17,19 @@ class Suggestion
  /*CONSTRUCTEUR*/
  public function __construct(array $data){
 
-    foreach ($data as $key => $value) {
-       $method='set'.ucfirst($key);
+  foreach ($data as $key => $value) {
+   $method='set'.ucfirst($key);
 
-       if(method_exists($this, $method)){
-          $this->$method($value);
-       }
-    }
- }
+   if(method_exists($this, $method)){
+    $this->$method($value);
+  }
+}
+}
 
 
- /*SETTERS & GETTERS*/
+/*SETTERS & GETTERS*/
 
- public function setId($id){
+public function setId($id){
   $this->_id=intval($id);
 }
 
@@ -97,17 +97,17 @@ public function getAdded_at(){
 /*METHODES FONCTIONNELLES*/
 
 
-public function addSuggestion(Suggestion $suggestion){
+public function addAlert(Alert $alert){
   include(_APP_PATH."bd/server-connect.php");
 
-  $query=$db->prepare("INSERT INTO suggestions VALUES (?,?,?,?,?,?)");
+  $query=$db->prepare("INSERT INTO alerts VALUES (?,?,?,?,?,?)");
 
   $id=0;
-  $id_domain=$suggestion->getId_domain();
-  $id_subdomain=$suggestion->getId_subdomain();
-  $email=$suggestion->getEmail();
-  $cv_file=$suggestion->getCv_file();
-  $added_at=$suggestion->getAdded_at();
+  $id_domain=$alert->getId_domain();
+  $id_subdomain=$alert->getId_subdomain();
+  $email=$alert->getEmail();
+  $cv_file=$alert->getCv_file();
+  $added_at=$alert->getAdded_at();
 
   $query->bindParam(1,$id);
   $query->bindParam(2,$id_domain);
@@ -119,79 +119,79 @@ public function addSuggestion(Suggestion $suggestion){
 
   if($query->execute()){
     return true;
- }else{
+  }else{
     return false;
+  }
+}
+
+
+
+
+public function removeAlert($id_alert){
+  include(_APP_PATH."bd/server-connect.php");
+
+  $id_alert=intval($id_alert);
+  $req=$db->prepare("DELETE FROM alerts WHERE id=?");
+
+  $req->bindParam(1,$id_alert);
+
+  if($req->execute()){
+   return true;
+ }else{
+   return false;
+ }
+
+}
+
+
+
+
+public function getLastAlert(){
+  include(_APP_PATH."bd/server-connect.php");
+
+  $query=$db->prepare("SELECT * FROM alerts WHERE id=(SELECT MAX(id) FROM alerts)");
+  if($query->execute() && $query->rowCount()==1){
+   $data=$query->fetch();
+   return (new Alert($data)); 
+ }else{
+   return false;
  }
 }
 
 
 
 
-public function removeSuggestion($id_suggestion){
-  include(_APP_PATH."bd/server-connect.php");
-
-  $id_suggestion=intval($id_suggestion);
-  $req=$db->prepare("DELETE FROM suggestions WHERE id=?");
-
-  $req->bindParam(1,$id_suggestion);
-
-  if($req->execute()){
-   return true;
-}else{
-   return false;
-}
-
-}
-
-
-
-
-public function getLastSuggestion(){
-  include(_APP_PATH."bd/server-connect.php");
-
-  $query=$db->prepare("SELECT * FROM suggestions WHERE id=(SELECT MAX(id) FROM suggestions)");
-  if($query->execute() && $query->rowCount()==1){
-     $data=$query->fetch();
-     return (new Suggestion($data)); 
-  }else{
-     return false;
-  }
-}
-
-
-
-
-public function getSuggestion($id){
+public function getAlert($id){
   include(_APP_PATH."bd/server-connect.php");
 
   $id=intval($id);
-  $query=$db->prepare("SELECT * FROM suggestions WHERE id=?");
+  $query=$db->prepare("SELECT * FROM alerts WHERE id=?");
   $query->bindParam(1,$id);
   if($query->execute() && $query->rowCount()==1){
-     $data=$query->fetch();
-     return (new Suggestion($data));	
-  }else{
-     return false;
-  }
+   $data=$query->fetch();
+   return (new Alert($data));	
+ }else{
+   return false;
+ }
 
 }
 
 
 
 
-public function getSuggestions() {
+public function getAlerts() {
   include(_APP_PATH."bd/server-connect.php");
 
 
-  $query=$db->prepare("SELECT * FROM suggestions ORDER BY id ASC");
+  $query=$db->prepare("SELECT * FROM alerts ORDER BY id ASC");
 
-  $suggestions=[];
+  $alerts=[];
 
   if($query->execute()){
-     while($data=$query->fetch()){
-      $suggestions[]=new Suggestion($data);
-   }
-   return $suggestions;
+   while($data=$query->fetch()){
+    $alerts[]=new Alert($data);
+  }
+  return $alerts;
 }else{
   return false;
 }
@@ -201,23 +201,23 @@ public function getSuggestions() {
 
 
 
-public function editSuggestion(Suggestion $suggestion) {
+public function editAlert(Alert $alert) {
   include(_APP_PATH."bd/server-connect.php");
 
-  $query=$db->prepare("UPDATE suggestions
-     SET id_domain=?,
-     id_subdomain=?,
-     email=?,
-     cv_file=?
-     WHERE id=?
+  $query=$db->prepare("UPDATE alerts
+   SET id_domain=?,
+   id_subdomain=?,
+   email=?,
+   cv_file=?
+   WHERE id=?
 
-     ");
+   ");
 
-  $id=$suggestion->getId();
-  $id_domain=$suggestion->getId_domain();
-  $id_subdomain=$suggestion->getId_subdomain();
-  $email=$suggestion->getEmail();
-  $cv_file=$suggestion->getCv_file();
+  $id=$alert->getId();
+  $id_domain=$alert->getId_domain();
+  $id_subdomain=$alert->getId_subdomain();
+  $email=$alert->getEmail();
+  $cv_file=$alert->getCv_file();
 
   $query->bindParam(1,$id_domain);
   $query->bindParam(2,$id_subdomain);
@@ -227,11 +227,11 @@ public function editSuggestion(Suggestion $suggestion) {
 
   if($query->execute()){
 
-     return true;
+   return true;
 
-  }else{
-     return false;
-  }
+ }else{
+   return false;
+ }
 }
 
 
