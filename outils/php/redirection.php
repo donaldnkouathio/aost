@@ -3,6 +3,7 @@
   require_once 'init.php';
   require_once _APP_PATH.'outils/php/functions.php';
   require_once _APP_PATH.'outils/php/Session.class.php';
+  require_once _APP_PATH.'outils/php/Posting.class.php';
   require_once _APP_PATH.'outils/php/import_class.php';
 
   $session = new Session(); // Utilitaire qui va contenir nos variables de session

@@ -101,7 +101,7 @@ public function getAdded_at(){
 
 public function addSubdomain(Subdomain $subdomain){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $query=$db->prepare("INSERT INTO subdomains VALUES (?,?,?,?,?,?)");
 
     $id=0;
@@ -134,7 +134,7 @@ public function addSubdomain(Subdomain $subdomain){
 
 public function removeSubdomain($id_subdomain){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $id_subdomain=intval($id_subdomain);
     $req=$db->prepare("DELETE FROM subdomains WHERE id=?");
 
@@ -153,11 +153,11 @@ public function removeSubdomain($id_subdomain){
 
 public function getLastSubdomain(){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $query=$db->prepare("SELECT * FROM subdomains WHERE id=(SELECT MAX(id) FROM subdomain)");
     if($query->execute() && $query->rowCount()==1){
        $data=$query->fetch();
-       return (new subdomain($data)); 
+       return (new subdomain($data));
    }else{
        return false;
    }
@@ -168,13 +168,13 @@ public function getLastSubdomain(){
 
 public function getSubdomain($id){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $id=intval($id);
     $query=$db->prepare("SELECT * FROM subdomains WHERE id=?");
     $query->bindParam(1,$id);
     if($query->execute() && $query->rowCount()==1){
       $data=$query->fetch();
-      return (new Subdomain($data));   
+      return (new Subdomain($data));
   }else{
       return false;
   }
@@ -186,7 +186,7 @@ public function getSubdomain($id){
 
 public function getSubdomains() {
     include(_APP_PATH."bd/server-connect.php");
-    
+
 
     $query=$db->prepare("SELECT * FROM subdomains ORDER BY name ASC");
 
@@ -207,11 +207,11 @@ public function getSubdomains() {
 
 public function getListSubdomains($id_domain) {
     include(_APP_PATH."bd/server-connect.php");
-    
+
 
     $id_domain=intval($id_domain);
     $query=$db->prepare("SELECT * FROM subdomains WHERE id_domain=? ORDER BY name ASC");
-
+    $query->bindParam(1,$id_domain);
     $subdomain=[];
 
     if($query->execute()){
@@ -232,7 +232,7 @@ public function getListSubdomains($id_domain) {
 
 public function editSubdomain(Subdomain $subdomain) {
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $query=$db->prepare("UPDATE subdomains
        SET name=?,
        color=?,

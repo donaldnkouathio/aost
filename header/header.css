@@ -38,7 +38,7 @@ header{
   color: white !important;
   border-bottom: none;
 }
-.link-hover, .sub-link-hover{
+.link-hover{
   color: var(--nav-text-hover-color) !important;
 }
 .link-mobile-hover{
@@ -151,7 +151,7 @@ header{
   .nav-link{
     box-sizing: border-box;
     display: inline-block;
-    padding: 25px 15px !important;
+    padding: 25px 5px !important;
     color : white;
   }
   .nav-contain-left li ul, .nav-contain-right li ul{
@@ -161,7 +161,7 @@ header{
     top: 70px;
     z-index: 20;
     box-sizing: border-box;
-    background-color: var(--nav-text-color);
+    background-color: var(--color-shadow);
     box-shadow: 0px 6px 6px #555;
     padding-bottom: 50px;
     padding-top: 35px;
@@ -179,33 +179,43 @@ header{
       top: 70px;
     }
   }
-  .domain-block{
+  .domain-block, .job-block li{
     display: inline-block;
     position: relative;
-    width: 195px;
-    height: 100px;
+    width: 210px;
     box-sizing: border-box;
     vertical-align: top;
     margin-top: 15px;
-    padding: 0;
+    padding: 0 !important;
     margin-left: 10px;
-    background-position: center;
-    background-size: cover;
+    background-color: var(--nav-text-color);
+    color : var(--color-text) !important;
+    border-radius: 0 var(--border-radius-size) var(--border-radius-size) 0;
   }
-  .domain-block div{
-    position: absolute;
+  .domain-block:hover, .job-block li:hover{
+    background-color: #c0c0c0;
+  }
+  .domain-block span, .job-block li a{
     display: inline-block;
+    margin-bottom: -6px;
     width: 100%;
-    bottom: 0;
     padding: 5px;
     box-sizing: border-box;
-    text-align: center;
-    left: 0;
-    color: white;
-    background-color: rgba(0,0,0,0.7);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    font-weight: bold;
+    color: var(--color-primary) !important;
   }
-  .domain-block div:hover{
-    height: 100px !important;
+  .domain-block span:hover, .job-block li a:hover{
+    color: var(--color-primary) !important;
+  }
+  .job-block li{
+    border-left : 3px solid var(--color-secondary);
+  }
+  .sub-link-hover{
+    background-color: #c0c0c0;
+    border-radius: 0 var(--border-radius-size) var(--border-radius-size) 0;
   }
 }
 
