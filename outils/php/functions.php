@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $tab_month=array("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aougt","Septembre","Octobre","Novembre","Décembre");
 
@@ -16,14 +16,14 @@ function get_french_date($date){
 
 
 function get_elapsed_time($datetime){
-
+	global $tab_month;
 	$date_convert_in_seconde = strtotime($datetime);
 	if(date('Ymd', $date_convert_in_seconde) == date('Ymd')){
 		$diff = time()-$date_convert_in_seconde;
 		if($diff < 60){
 			echo "Il y a ".$diff." secondes";
 		}else if($diff < 3600){
-			echo "Il y a ".floor($diff/60)." min";	
+			echo "Il y a ".floor($diff/60)." min";
 		}else if($diff < 86400){
 			echo "Il y a ".floor($diff/3600)."h";
 		}
@@ -32,7 +32,7 @@ function get_elapsed_time($datetime){
 		echo "Hier";
 
 	}else if(date('Ymd', $date_convert_in_seconde) == date('Ymd', strtotime('- 2 DAY'))){
-		echo "Il y a 2 jours";	
+		echo "Il y a 2 jours";
 
 	}else if(date('Ymd', $date_convert_in_seconde) == date('Ymd', strtotime('- 3 DAY'))){
 		echo "Il y a 3 jours";
@@ -135,35 +135,35 @@ function get_elapsed_time($datetime){
 
 
 
-function compressImage($source, $destination, $quality) { 
-    // Get image info 
-	$imgInfo = getimagesize($source); 
-	$mime = $imgInfo['mime']; 
-	
-    // Create a new image from file 
-	switch($mime){ 
-		case 'image/jpeg': 
-		$image = imagecreatefromjpeg($source); 
-		break; 
-		case 'image/jpg': 
-		$image = imagecreatefromjpg($source); 
-		break; 
-		case 'image/png': 
-		$image = imagecreatefrompng($source); 
-		break; 
-		case 'image/gif': 
-		$image = imagecreatefromgif($source); 
-		break; 
-		default: 
-		$image = imagecreatefromjpeg($source); 
-	} 
-	
-    // Save image 
-	imagejpeg($image, $destination, $quality); 
-	
-    // Return compressed image 
-	return $destination; 
-} 
+function compressImage($source, $destination, $quality) {
+    // Get image info
+	$imgInfo = getimagesize($source);
+	$mime = $imgInfo['mime'];
+
+    // Create a new image from file
+	switch($mime){
+		case 'image/jpeg':
+		$image = imagecreatefromjpeg($source);
+		break;
+		case 'image/jpg':
+		$image = imagecreatefromjpg($source);
+		break;
+		case 'image/png':
+		$image = imagecreatefrompng($source);
+		break;
+		case 'image/gif':
+		$image = imagecreatefromgif($source);
+		break;
+		default:
+		$image = imagecreatefromjpeg($source);
+	}
+
+    // Save image
+	imagejpeg($image, $destination, $quality);
+
+    // Return compressed image
+	return $destination;
+}
 
 
 
