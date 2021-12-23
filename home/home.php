@@ -71,28 +71,22 @@
 
   <div class="emplois-populaires-container">
     <?php
-      $bgTab = ["bg5","bg2","bg3","bg5"];
-      $posteTab = ["Web master","Mâcon","Soudeur","Développeur web"];
-      $domaineTab = ["Informatique", "Construction et métiers spécialisés ", "Construction et métiers spécialisés ", "Informatique"];
-      $colorTab = ["red", "blue", "blue", "red"];
-      for($i=0; $i<4; $i++){
+      $offers = $offer->getOffers();
+
+      foreach ($offers as $offer) {
+        $domain = $domain->getDomain($offer->getId_domain());
+        $domainColor = $domain->getColor()==""? "66BFDE" : $domain -> getColor();
     ?>
-      <a href="#" class="ep-contain">
-        <div class="ep-header" style="background-image: url('/aost/img/bg/<?php echo $bgTab[$i]; ?>.jpg')">
-          <span class="ep-poste"><?php echo $posteTab[$i]; ?></span>
-          <span class="ep-domaine" style="background-color: <?php echo $colorTab[$i]; ?>"><?php echo $domaineTab[$i]; ?></span>
-        </div>
-        <div class="ep-footer">
-          <div class="ep-footer-top">
-            <span class="ep-footer-left"><i class="material-icons vertical-align-bottom"> paid </i> 15$/heure</span>
-            <span class="ep-footer-right"><i class="material-icons vertical-align-bottom"> watch_later </i> Temps plein</span>
-          </div>
-          <div class="ep-footer-bottom">
-            <span class="ep-footer-left"><i class="material-icons vertical-align-bottom"> location_on </i> Montréal</span>
-            <span class="ep-footer-right"><i class="material-icons vertical-align-bottom"> today </i> 7 décembre 2021</span>
-          </div>
-        </div>
-      </a>
+    <a href="<?php echo _ROOT_PATH."job/offers/a/".str_replace(" ", "-",$offer->getProfession())."/".$offer->getId()."/" ?>" class="ep-block" style="border-left : 3px solid #<?php echo $domainColor; ?>">
+      <div class="ep-icon">
+        <span>icon</span>
+      </div>
+      <div class="ep-text">
+        <span class="ep-title"><?php echo $offer->getProfession(); ?></span>
+        <span class="ep-city"><i class="material-icons vertical-align-bottom">location_on</i><?php echo $offer->getCity(); ?></span>
+        <span class="ep-added_at"><i class="material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
+      </div>
+    </a>
     <?php } ?>
   </div>
 
