@@ -1,6 +1,7 @@
 <?php
 
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Admin.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Alert.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Candidacy.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Compagny.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Contact.class.php");
@@ -8,6 +9,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Customer.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Domain.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/History.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Offer.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Request.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Subdomain.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/User.class.php");
 
@@ -24,21 +26,39 @@ $current_user=[
 ];
 
 
-$current_subdomain=[
+
+
+$current_alert=[
 	'id'=>0,
 	'id_domain'=>0,
-	'name'=>"",
-	'color'=>"",
-	'image'=>"",
+	'id_subdomain'=>0,
+	'email'=>"",
+	'cv_file'=>"",
+	'added_at'=>""
+];
+
+
+$current_request=[
+	'id'=>0,
+	'compagny'=>"",
+	'email'=>"",
+	'city'=>"",
+	'compagny_type'=>"",
+	'person'=>"",
+	'phone'=>"",
+	'fax_phone'=>"",
+	'need'=>"",
+	'deleted'=>0,
 	'added_at'=>""
 ];
 
 
 $current_offer=[
 	'id'=>0,
-	'id_compagny'=>0,
-	'id_user'=>0,
+	'id_admin'=>0,
 	'id_domain'=>0,
+	'id_subdomain'=>0,
+	'compagny'=>0,
 	'profession'=>"",
 	'city'=>"",
 	'image'=>"",
@@ -48,7 +68,6 @@ $current_offer=[
 	'candidate_profile'=>"",
 	'cv'=>0,
 	'motivation'=>0,
-	'validated'=>0,
 	'deleted'=>0,
 	'expired'=>0,
 	'deadline'=>"",
@@ -69,6 +88,16 @@ $current_history=[
 $current_domain=[
 	'id'=>0,
 	'id_admin'=>0,
+	'name'=>"",
+	'color'=>"",
+	'image'=>"",
+	'added_at'=>""
+];
+
+
+$current_subdomain=[
+	'id'=>0,
+	'id_domain'=>0,
 	'name'=>"",
 	'color'=>"",
 	'image'=>"",
@@ -119,8 +148,6 @@ $current_compagny=[
 $current_candidacy=[
 	'id'=>0,
 	'id_offer'=>0,
-	'id_customer'=>0,
-	'id_user'=>0,
 	'id_domain'=>0,
 	'cv_file'=>"",
 	'motivation_file'=>"",
