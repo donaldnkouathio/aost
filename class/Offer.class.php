@@ -53,25 +53,25 @@ class Offer
     public function setCompagny($compagny){
         $this->_compagny=htmlentities(strval($compagny));
     }
-    
+
     public function getCompagny(){
         return $this->_compagny;
     }
 
-    
+
     public function setId_admin($id_admin){
         $this->_id_admin=intval($id_admin);
     }
-    
+
     public function getId_admin(){
         return $this->_id_admin;
     }
 
-    
+
     public function setId_domain($id_domain){
         $this->_id_domain=intval($id_domain);
     }
-    
+
     public function getId_domain(){
         return $this->_id_domain;
     }
@@ -80,124 +80,124 @@ class Offer
     public function setId_subdomain($id_subdomain){
         $this->_id_subdomain=intval($id_subdomain);
     }
-    
+
     public function getId_subdomain(){
         return $this->_id_subdomain;
     }
 
-    
+
     public function setProfession($profession){
         $this->_profession=htmlentities(strval($profession));
     }
-    
+
     public function getProfession(){
         return $this->_profession;
     }
 
-    
+
     public function setCity($city){
         $this->_city=htmlentities(strval($city));
     }
-    
+
     public function getCity(){
         return $this->_city;
     }
 
-    
+
     public function setImage($image){
         $this->_image=htmlentities(strval($image));
     }
-    
+
     public function getImage(){
         return $this->_image;
     }
 
-    
+
     public function setDescription($description){
         $this->_description=htmlentities(strval($description));
     }
-    
+
     public function getDescription(){
         return $this->_description;
     }
 
-    
+
     public function setMissions($missions){
         $this->_missions=htmlentities(strval($missions));
     }
-    
+
     public function getMissions(){
         return $this->_missions;
     }
 
-    
+
     public function setSkill($skill){
         $this->_skill=htmlentities(strval($skill));
     }
-    
+
     public function getSkill(){
         return $this->_skill;
     }
 
-    
+
     public function setCandidate_profile($candidate_profile){
         $this->_candidate_profile=htmlentities(strval($candidate_profile));
     }
-    
+
     public function getCandidate_profile(){
         return $this->_candidate_profile;
     }
 
-    
+
     public function setCv($cv){
         $this->_cv=intval($cv);
     }
-    
+
     public function getCv(){
         return $this->_cv;
     }
 
-    
+
     public function setMotivation($motivation){
         $this->_motivation=intval($motivation);
     }
-    
+
     public function getMotivation(){
         return $this->_motivation;
     }
 
-    
+
     public function setDeleted($deleted){
         $this->_deleted=intval($deleted);
     }
-    
+
     public function getDeleted(){
         return $this->_deleted;
     }
 
-    
+
     public function setExpired($expired){
         $this->_expired=intval($expired);
     }
-    
+
     public function getExpired(){
         return $this->_expired;
     }
 
-    
+
     public function setDeadline($deadline){
         $this->_deadline=htmlentities(strval($deadline));
     }
-    
+
     public function getDeadline(){
         return $this->_deadline;
     }
 
-    
+
     public function setAdded_at($added_at){
         $this->_added_at=htmlentities(strval($added_at));
     }
-    
+
     public function getAdded_at(){
         return $this->_added_at;
     }
@@ -218,7 +218,7 @@ class Offer
 
     public function addOffer(Offer $offer){
         include(_APP_PATH."bd/server-connect.php");
-        
+
         $query=$db->prepare("INSERT INTO offers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $id=0;
@@ -272,7 +272,7 @@ class Offer
 
   public function removeOffer($id_offer){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $id_offer=intval($id_offer);
     $req=$db->prepare("DELETE FROM offers WHERE id=?");
 
@@ -283,18 +283,18 @@ class Offer
     }else{
         return false;
     }
-    
+
 }
 
 
 
 public function getLastOffer(){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $query=$db->prepare("SELECT * FROM offers WHERE id=(SELECT MAX(id) FROM offers)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new Offer($data)); 
+        return (new Offer($data));
     }else{
         return false;
     }
@@ -305,13 +305,13 @@ public function getLastOffer(){
 
 public function getOffer($id){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $id=intval($id);
     $query=$db->prepare("SELECT * FROM offers WHERE id=?");
     $query->bindParam(1,$id);
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new Offer($data));   
+        return (new Offer($data));
     }else{
         return false;
     }
@@ -323,7 +323,7 @@ public function getOffer($id){
 
 public function getOffers() {
     include(_APP_PATH."bd/server-connect.php");
-    
+
 
     $query=$db->prepare("SELECT * FROM offers ORDER BY id ASC");
 
@@ -344,7 +344,7 @@ public function getOffers() {
 
 public function getOffersLimit($start) {
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $start=intval($start);
     $end=$start+10;
     $query=$db->prepare("SELECT * FROM offers ORDER BY id DESC LIMIT $start,$end");
@@ -365,13 +365,127 @@ public function getOffersLimit($start) {
 
 
 
+//Pour les différents filtres
+public function getOffersLimitRegex($keyword, $start) {
+    include(_APP_PATH."bd/server-connect.php");
+
+    $start=intval($start);
+    $end=$start+10;
+    $query=$db->prepare("SELECT * FROM offers WHERE profession REGEXP '^(.*)$keyword(.*)$' ORDER BY id DESC LIMIT $start,$end");
+
+    $offers=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $offers[]=new Offer($data);
+        }
+        return $offers;
+    }else{
+        return false;
+    }
+}
+
+public function getOffersFilter($date_direction, $id_domain, $start) {
+    include(_APP_PATH."bd/server-connect.php");
+
+    $id_domain = intval($id_domain);
+    $start=intval($start);
+    $end=$start+10;
+    $query= $id_domain == 0 ? $db->prepare("SELECT * FROM offers ORDER BY added_at $date_direction LIMIT $start,$end") : $db->prepare("SELECT * FROM offers WHERE id_domain=$id_domain ORDER BY added_at $date_direction LIMIT $start,$end");
+
+    $offers=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $offers[]=new Offer($data);
+        }
+        return $offers;
+    }else{
+        return false;
+    }
+}
+
+public function getOffersFilterRegex($date_direction, $id_domain, $keyword, $start) {
+    include(_APP_PATH."bd/server-connect.php");
+
+    $id_domain = intval($id_domain);
+    $start=intval($start);
+    $end=$start+10;
+    $query= $id_domain == 0 ? $db->prepare("SELECT * FROM offers WHERE profession REGEXP '^(.*)$keyword(.*)$' ORDER BY added_at $date_direction LIMIT $start,$end") : $db->prepare("SELECT * FROM offers WHERE profession REGEXP '^(.*)$keyword(.*)$' id_domain=$id_domain ORDER BY added_at $date_direction LIMIT $start,$end");
+
+    $offers=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $offers[]=new Offer($data);
+        }
+        return $offers;
+    }else{
+        return false;
+    }
+}
+
+//Pour compter le nombre d'offre
+public function getOffersLimitRegex_count($keyword) {
+    include(_APP_PATH."bd/server-connect.php");
+
+    $query=$db->prepare("SELECT * FROM offers WHERE profession REGEXP '^(.*)$keyword(.*)$' ORDER BY id DESC");
+
+    $offers=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $offers[]=new Offer($data);
+        }
+        return $offers;
+    }else{
+        return false;
+    }
+}
+
+public function getOffersFilter_count($id_domain) {
+    include(_APP_PATH."bd/server-connect.php");
+
+    $id_domain = intval($id_domain);
+    $query= $id_domain == 0 ? $db->prepare("SELECT * FROM offers") : $db->prepare("SELECT * FROM offers WHERE id_domain= $id_domain");
+
+    $offers=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $offers[]=new Offer($data);
+        }
+        return $offers;
+    }else{
+        return false;
+    }
+}
+
+public function getOffersFilterRegex_count($id_domain, $keyword) {
+    include(_APP_PATH."bd/server-connect.php");
+
+    $id_domain = intval($id_domain);
+    $query= $id_domain == 0 ? $db->prepare("SELECT * FROM offers WHERE profession REGEXP '^(.*)$keyword(.*)$'") : $db->prepare("SELECT * FROM offers WHERE profession REGEXP '^(.*)$keyword(.*)$' id_domain=$id_domain");
+
+    $offers=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $offers[]=new Offer($data);
+        }
+        return $offers;
+    }else{
+        return false;
+    }
 
 
+}
+/* *** */
 
 
 public function editOffer(Offer $offer) {
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $query=$db->prepare("UPDATE offers
         SET id_domain=?,
         id_subdomain=?,

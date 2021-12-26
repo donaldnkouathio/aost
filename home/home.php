@@ -2,18 +2,18 @@
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body" style="">
       <div class="container-title">L'agence qui facilite votre recherche d'emploi</div>
-      <div class="form-offres-block">
+      <form method="post" action="<?php echo _ROOT_PATH; ?>job/offers/" class="form-offres-block">
         <div class="input-search">
-          <input type="text" id="inputSearchInput" placeholder="Chercher un emploi...">
+          <input type="text" name="keyword" id="inputSearchInput" placeholder="Chercher un emploi...">
 
           <!-- Auto Suggest -->
-          <div class="autoSuggest-block" id="autoSuggest-block">
+          <div class="autoSuggest-block" autocomplete="off" id="autoSuggest-block">
 
           </div>
         </div>
         <br>
-        <button type="button" class="btn btn-primary" name="button">Chercher</button>
-      </div>
+        <button id="autosuggest-btn" type="submit" class="btn btn-primary" name="button">Chercher</button>
+      </form>
     </div>
   </div>
 </div>

@@ -40,14 +40,14 @@
     <div class="about_block">
       <h2 class="margin-bottom-none">Description</h2>
       <div class="about_text">
-        <?php toHtmlElem($offer->getDescription()); ?>
+        <?php echo htmlspecialchars_decode($offer->getDescription()); ?>
       </div>
     </div>
 
     <div class="about_block">
       <h2 class="margin-bottom-none">Votre mission</h2>
       <div class="about_text">
-        <?php toHtmlElem($offer->getMissions()); ?>
+        <?php echo htmlspecialchars_decode($offer->getMissions()); ?>
       </div>
     </div>
 
@@ -57,14 +57,14 @@
     <div class="about_block">
       <h2 class="margin-bottom-none">Exigences</h2>
       <div class="about_text">
-        <?php toHtmlElem($offer->getSkill()); ?>
+        <?php echo htmlspecialchars_decode($offer->getSkill()); ?>
       </div>
     </div>
 
     <div class="about_block">
       <h2 class="margin-bottom-none">Profil réchercher</h2>
       <div class="about_text">
-        <?php toHtmlElem($offer->getCandidate_profile()); ?>
+        <?php echo htmlspecialchars_decode($offer->getCandidate_profile()); ?>
       </div>
     </div>
 
@@ -79,11 +79,3 @@
     ?>
   </div>
 </div>
-
-<?php
-  function toHtmlElem($str){
-    $txt = str_replace("&lt;","<", $str);
-    $txt = str_replace("&gt;",">", $txt);
-    echo $txt;
-  }
-?>
