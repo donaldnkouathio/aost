@@ -1,31 +1,110 @@
 <?php
-	$offers = $offer->getOffers();
+	//Pour compter le nombre d'offres et déterminer le nombre de sous pages
+	if (isset($_POST["keyword"])) { //Si l'utilisateur effectu un tri par mot clé
+		if ($_POST["keyword"] != "") { // Si le mot clé n'est pas vide
+
+			if(isset($_POST["id_domain"])){ // Si l'utilisateur effectu un tri
+				$offers_count = $offer->getOffersFilterRegex_count($_POST["id_domain"], $_POST["keyword"]);
+			}else {
+				$offers_count = $offer->getOffersLimitRegex_count($_POST["keyword"]);
+			}
+
+		}else{
+			if(isset($_POST["id_domain"])){ // Si l'utilisateur effectu un tri
+				$offers_count = $offer->getOffersFilter_count($_POST["id_domain"]);
+			}else {
+				$offers_count = $offer->getOffers();
+			}
+		}
+
+	}else{
+		if(isset($_POST["id_domain"])){ // Si l'utilisateur effectu un tri
+			$offers_count = $offer->getOffersFilter_count($_POST["id_domain"]);
+		}else {
+			$offers_count = $offer->getOffers();
+		}
+	}
+
+
+	$actuParPage= 10; // actu par page
+	$nombreDePages=ceil(count($offers_count)/$actuParPage); // nombre total de page
+	if(isset($_GET['page'])) // Si la variable $_GET['page'] existe...
+	{
+		 $pageActuelle=intval($_GET['page']);
+
+		 if($pageActuelle>$nombreDePages) // Si la valeur de $pageActuelle (le numéro de la page) est plus grande que $nombreDePages...
+		 {
+					$pageActuelle=$nombreDePages;
+		 }
+	}
+	else // Sinon
+	{
+		 $pageActuelle=1; // La page actuelle est la n°1
+	}
+
+	$premiereEntree=($pageActuelle-1)*$actuParPage; // On calcule la première entrée à lire
+
+	if (isset($_POST["keyword"])) { //Si l'utilisateur effectu un tri par mot clé
+		if ($_POST["keyword"] != "") { // Si le mot clé n'est pas vide
+
+			if(isset($_POST["id_domain"])){ // Si l'utilisateur effectu un tri
+				$offers = $offer->getOffersFilterRegex($_POST["date"], $_POST["id_domain"], $_POST["keyword"], $premiereEntree);
+			}else {
+				$offers = $offer->getOffersLimitRegex($_POST["keyword"], $premiereEntree);
+			}
+
+		}else{
+			if(isset($_POST["id_domain"])){ // Si l'utilisateur effectu un tri
+				$offers = $offer->getOffersFilter($_POST["date"], $_POST["id_domain"], $premiereEntree);
+			}else {
+				$offers = $offer->getOffersLimit($premiereEntree);
+			}
+		}
+
+	}else{
+		if(isset($_POST["id_domain"])){ // Si l'utilisateur effectu un tri
+			$offers = $offer->getOffersFilter($_POST["date"], $_POST["id_domain"], $premiereEntree);
+		}else {
+			$offers = $offer->getOffersLimit($premiereEntree);
+		}
+	}
 ?>
 
 <div class="container-box" style="background-image: url('/aost/img/bg/bg1.jpg');">
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body" style="">
       <div class="container-title">L'agence qui facilite votre recherche d'emploi</div>
-      <div class="form-offres-block">
+			<form method="post" action="<?php echo _ROOT_PATH; ?>job/offers/" class="form-offres-block">
         <div class="input-search">
-          <input type="text" id="inputSearchInput" placeholder="Chercher un emploi...">
+          <input type="text" name="keyword" class="" id="inputSearchInput" autocomplete="off" placeholder="Chercher un emploi..." value="<?php if(isset($_POST["keyword"])){echo $_POST["keyword"];} ?>">
 
           <!-- Auto Suggest -->
           <div class="autoSuggest-block" id="autoSuggest-block">
 
           </div>
         </div>
-
         <br>
-        <button type="button" class="btn btn-primary" name="button">Chercher</button>
-      </div>
+        <button id="autosuggest-btn" type="submit" class="btn btn-primary" name="button">Chercher</button>
+      </form>
     </div>
   </div>
 </div>
 
 <div class="offres-block offers-container">
   <div class="offres-stats">
-    Environ <?php echo count($offers); ?> résultats trouvés
+    <span class="stat">
+			<?php
+				if(count($offers_count) > 1){
+					echo count($offers_count)." offres trouvés";
+				}else {
+					if(count($offers_count) > 0){
+						echo "Une offre trouvé";
+					}else {
+						echo "Aucune offres trouvé";
+					}
+				}
+			?>
+		</span>
     <span class=" btn btn-primary filtresBtn hide-on-laptop">Filtres</span>
   </div>
 
@@ -34,31 +113,38 @@
       Filtres
       <i class="material-icons hide-on-laptop vertical-align-bottom cursor-pointer filtresBtnClose float-right"> close</i>
     </div>
-    <div class="offres-filtres-body">
-      azertyu
-    </div>
+    <form method="post" action="<?php echo _ROOT_PATH; ?>job/offers/" class="offres-filtres-body">
+      <div class="input-block">
+      	<label for="date">Trier par date </label>
+				<select class="" name="date" id="date">
+					<option value="DESC" <?php if(isset($_POST["date"])){ if($_POST["date"] == "DESC"){echo "selected";} } ?>>décroissant</option>
+					<option value="ASC" <?php if(isset($_POST["date"])){ if($_POST["date"] == "ASC"){echo "selected";} } ?>>Croissant</option>
+				</select>
+      </div>
+			<div class="input-block">
+				<label for="domain">Domain </label>
+				<select class="" id="domain" name="id_domain">
+					<option value="0">Tous les domaines</option>
+					<?php
+						$domains = $domain->getDomains();
+						foreach($domains as $domain){
+					?>
+					<option value="<?php echo $domain->getId(); ?>" <?php if(isset($_POST["id_domain"])){ if($_POST["id_domain"] == $domain->getId()){echo "selected";} } ?>><?php echo $domain->getName(); ?></option>
+					<?php } ?>
+				</select>
+			</div>
+
+			<?php if(isset($_POST["keyword"])){ ?>
+			<input type="hidden" class="inputSearchInput" name="keyword" value="<?php echo $_POST["keyword"]; ?>">
+			<?php } ?>
+
+			<input type="submit" name="" class="btn btn-primary" value="Filtrer">
+    </form>
   </div>
 
   <div class="offres-contain">
     <div class="emplois-populaires-container">
       <?php
-        $actuParPage= 10; // actu par page
-        $nombreDePages=ceil(count($offers)/$actuParPage); // nombre total de page
-        if(isset($_GET['page'])) // Si la variable $_GET['page'] existe...
-        {
-           $pageActuelle=intval($_GET['page']);
-
-           if($pageActuelle>$nombreDePages) // Si la valeur de $pageActuelle (le numéro de la page) est plus grande que $nombreDePages...
-           {
-                $pageActuelle=$nombreDePages;
-           }
-        }
-        else // Sinon
-        {
-           $pageActuelle=1; // La page actuelle est la n°1
-        }
-
-        $premiereEntree=($pageActuelle-1)*$actuParPage; // On calcule la première entrée à lire
 
         foreach ($offers as $offer) {
 

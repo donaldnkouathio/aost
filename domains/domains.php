@@ -6,10 +6,15 @@
   </div>
 </div>
 
-<div class="offset-10-laptop about-block domain-item-block">
-  <?php for ($i=0; $i < 15; $i++) { ?>
-    <div class="domain-item">
-      Web master
-    </div>
-  <?php } ?>
+<div class="" style="background-color: var(--color-shadow);">
+  <div class="offset-10-laptop about-block domain-item-block">
+    <?php
+      $subdomains = $subdomain->getListSubdomains($_GET["id"]);
+      foreach($subdomains as $subdomain) {
+    ?>
+      <div class="domain-item">
+        <?php echo $subdomain->getName(); ?>
+      </div>
+    <?php } ?>
+  </div>
 </div>
