@@ -2,26 +2,25 @@
 
 
 session_start();
-require_once 'init.php';
+require_once '../../init.php';
 require_once _APP_PATH.'outils/php/functions.php';
 require_once _APP_PATH.'outils/php/Session.class.php';
 require_once _APP_PATH.'outils/php/import_class.php';
 
 
-$current_admin=[
+$current_city=[
 	'id'=>0,
-	'email'=>$_POST['email'],
-	'password'=>$_POST['password'],
-	'role'=>$_POST['role'],
 	'name'=>$_POST['name'],
 	'added_at'=>date("Y-m-d H:i:s")
 ];
 
 
-$admin=new Admin($current_admin);
+$city=new City($current_city);
 
-if($admin->addAdmin($admin)){
-	
+if($city->addCity($city)){
+	//header("Location:../../../../contact-us/index.php?data=sended");
+}else{
+	//header("Location:../../../../contact-us/index.php?data=failed");
 }
 
 

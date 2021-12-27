@@ -10,6 +10,13 @@ class Candidacy
     private $_id;
     private $_id_offer;
     private $_id_domain;
+    private $_id_city;
+    private $_name;
+    private $_first_name;
+    private $_phone;
+    private $_email;
+    private $_domains;
+    private $_about;
     private $_cv_file;
     private $_motivation_file;
     private $_deleted;
@@ -54,6 +61,69 @@ class Candidacy
     
     public function getId_domain(){
         return $this->_id_domain;
+    }
+
+    
+    public function setId_city($id_city){
+        $this->_id_city=intval($id_city);
+    }
+    
+    public function getId_city(){
+        return $this->_id_city;
+    }
+
+    
+    public function setName($name){
+        $this->_name=htmlentities(strval($name));
+    }
+    
+    public function getName(){
+        return $this->_name;
+    }
+
+    
+    public function setFirst_name($first_name){
+        $this->_first_name=htmlentities(strval($first_name));
+    }
+    
+    public function getFirst_name(){
+        return $this->_first_name;
+    }
+
+    
+    public function setPhone($phone){
+        $this->_phone=htmlentities(strval($phone));
+    }
+    
+    public function getPhone(){
+        return $this->_phone;
+    }
+
+    
+    public function setEmail($email){
+        $this->_email=htmlentities(strval($email));
+    }
+    
+    public function getEmail(){
+        return $this->_email;
+    }
+
+    
+    public function setDomains($domains){
+        $this->_domains=htmlentities(strval($domains));
+    }
+    
+    public function getDomains(){
+        return $this->_domains;
+    }
+
+    
+    public function setAbout($about){
+        $this->_about=htmlentities(strval($about));
+    }
+    
+    public function getAbout(){
+        return $this->_about;
     }
 
     
@@ -112,11 +182,18 @@ class Candidacy
     public function addCandidacy(Candidacy $candidacy){
         include(_APP_PATH."bd/server-connect.php");
 
-        $query=$db->prepare("INSERT INTO candidacy VALUES (?,?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO candidacy VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $id=0;
         $id_offer=$candidacy->getId_offer();
         $id_domain=$candidacy->getId_domain();
+        $id_city=$candidacy->getId_city();
+        $name=$candidacy->getName();
+        $first_name=$candidacy->getFirst_name();
+        $phone=$candidacy->getPhone();
+        $email=$candidacy->getEmail();
+        $domains=$candidacy->getDomains();
+        $about=$candidacy->getAbout();
         $cv_file=$candidacy->getCv_file();
         $motivation_file=$candidacy->getMotivation_file();
         $deleted=$candidacy->getDeleted();
@@ -125,10 +202,17 @@ class Candidacy
         $query->bindParam(1,$id);
         $query->bindParam(2,$id_offer);
         $query->bindParam(3,$id_domain);
-        $query->bindParam(4,$cv_file);
-        $query->bindParam(5,$motivation_file);
-        $query->bindParam(6,$deleted);
-        $query->bindParam(7,$added_at);
+        $query->bindParam(4,$id_city);
+        $query->bindParam(5,$name);
+        $query->bindParam(6,$first_name);
+        $query->bindParam(7,$phone);
+        $query->bindParam(8,$email);
+        $query->bindParam(9,$domains);
+        $query->bindParam(10,$about);
+        $query->bindParam(11,$cv_file);
+        $query->bindParam(12,$motivation_file);
+        $query->bindParam(13,$deleted);
+        $query->bindParam(14,$added_at);
 
 
         if($query->execute()){
@@ -226,6 +310,14 @@ public function editCandidacy(Candidacy $candidacy) {
     
     $query=$db->prepare("UPDATE candidacy
         SET id_offer=?,
+        id_domain=?,
+        id_city=?,
+        name=?,
+        first_name=?,
+        phone=?,
+        email=?,
+        domains=?,
+        about=?,
         cv_file=?,
         motivation_file=?,
         deleted=?
@@ -234,16 +326,32 @@ public function editCandidacy(Candidacy $candidacy) {
         ");
 
     $id=$candidacy->getId();
-    $id_offer=$candidacy->getid_offer();
+    $id_offer=$candidacy->getId_offer();
+    $id_domain=$candidacy->getId_domain();
+    $id_city=$candidacy->getId_city();
+    $name=$candidacy->getName();
+    $first_name=$candidacy->getFirst_name();
+    $phone=$candidacy->getPhone();
+    $email=$candidacy->getEmail();
+    $domains=$candidacy->getDomains();
+    $about=$candidacy->getAbout();
     $cv_file=$candidacy->getCv_file();
     $motivation_file=$candidacy->getMotivation_file();
     $deleted=$candidacy->getDeleted();
 
     $query->bindParam(1,$id_offer);
-    $query->bindParam(2,$cv_file);
-    $query->bindParam(3,$motivation_file);
-    $query->bindParam(4,$deleted);
-    $query->bindParam(5,$id);
+    $query->bindParam(2,$id_domain);
+    $query->bindParam(3,$id_city);
+    $query->bindParam(4,$name);
+    $query->bindParam(5,$first_name);
+    $query->bindParam(6,$phone);
+    $query->bindParam(7,$email);
+    $query->bindParam(8,$domains);
+    $query->bindParam(9,$about);
+    $query->bindParam(10,$cv_file);
+    $query->bindParam(11,$motivation_file);
+    $query->bindParam(12,$deleted);
+    $query->bindParam(13,$id);
 
     if($query->execute()){
 

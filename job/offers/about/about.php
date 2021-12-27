@@ -15,8 +15,8 @@
         <span>Domaine</span>
         <p>
           <?php
-            $domain = $domain->getDomain($offer->getId_domain());
-            echo $domain->getName();
+          $domain = $domain->getDomain($offer->getId_domain());
+          echo $domain->getName();
           ?>
         </p>
       </div>
@@ -74,8 +74,8 @@
 <div class="offset-10-laptop">
   <div class="posting-block">
     <?php
-      $Posting = new Posting("job/promp-application/traitement.php", "Postuler à cet offre", "Postuler", $offer->getId());
-      echo $Posting->getPostingSection();
+    $Posting = new Posting("job/promp-application/traitement.php", "Postuler à cet offre", "Postuler", $offer->getId());
+    echo $Posting->getPostingSection();
     ?>
   </div>
 </div>

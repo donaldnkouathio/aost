@@ -13,38 +13,38 @@
   <div class="right">
     <h2>Vous avez une question ?</h2>
 
-    <form class="" action="/aost/contacteznous/contacteznous/traitement.php" method="post">
+    <form class="" action="../outils/php/traitement/request/add-request.php" method="post">
       <div class="input-block">
         <label for="compagnie">Compagnie :</label>
-        <input type="text" name="compagnie" required value="">
+        <input type="text" name="compagny" required value="">
       </div>
       <div class="input-block">
         <label for="ville">Ville où vous êtes :</label>
-        <input type="text" name="ville" required value="">
+        <input type="text" name="city" required value="">
       </div>
       <div class="input-block">
         <label for="industrie">Type d'industrie :</label>
-        <input type="text" name="industrie" required value="">
+        <input type="text" name="compagny_type" required value="">
       </div>
       <div class="input-block">
         <label for="personneRessource">Personne-ressource :</label>
-        <input type="text" name="personneRessource" required value="">
+        <input type="text" name="person" required value="">
       </div>
       <div class="input-block">
         <label for="telephone">Téléphone :</label>
-        <input type="number" name="telephone" required value="">
+        <input type="number" name="phone" required value="">
       </div>
       <div class="input-block">
         <label for="telecopieur">Télécopieur :</label>
-        <input type="number" name="telecopieur" required value="">
+        <input type="number" name="fax_phone" required value="">
       </div>
       <div class="input-block">
         <label for="courriel">Courriel :</label>
-        <input type="email" name="courriel" required value="">
+        <input type="email" name="email" required value="">
       </div>
       <div class="input-block text-area-block">
         <label for="besoin">Décrivez votre besoin :</label>
-        <textarea name="besoin" ></textarea>
+        <textarea name="need" ></textarea>
       </div>
 
       <div class="button-block">
