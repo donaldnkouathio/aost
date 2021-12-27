@@ -74,7 +74,7 @@ class Candidacy
 
     
     public function setName($name){
-        $this->_name=htmlentities(strval($name);
+        $this->_name=htmlentities(strval($name));
     }
     
     public function getName(){
