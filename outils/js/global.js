@@ -1,3 +1,6 @@
+//Init variables
+const _ROOT_PATH = "/aost/";
+
 $(window).load(function() {
   $('.preloader').fadeOut('slow', function() { $(this).remove(); });
 });

@@ -23,4 +23,11 @@ $(document).ready(function(){
   toggleShowFiltres(filtresBtn, 'offres-filtres','show');
   toggleShowFiltres(filtresBtnClose, 'offres-filtres','hide');
 
+
+  var domain = $("#domain");
+  var inputSearchInput = $(".inputSearchInput");
+  domain.change(function(){
+    inputSearchInput.val("");
+  });
+
 });

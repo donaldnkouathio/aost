@@ -1,19 +1,21 @@
 .domain-item-block{
   display: flex;
   flex-flow: wrap;
-  text-align: center;
 }
 .domain-item{
   display: inline-block;
   box-sizing: border-box;
-  cursor: pointer;
-  border: 1px solid var(--color-shadow);
+  cursor: default;
   word-wrap: break-word;
   padding: 15px;
-  border-radius: var(--border-radius-size);
+  box-shadow: -1px 2px 6px var(--color-text);
+  border-left: 3px solid var(--color-secondary);
+  background-color: var(--nav-text-color);
+  border-radius: 0 var(--border-radius-size) var(--border-radius-size) 0;
+  color : var(--color-primary);
 }
 .domain-item:hover{
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: #c0c0c0;
 }
 
 

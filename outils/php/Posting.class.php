@@ -1,4 +1,5 @@
 <?php
+  /* formulaires pour les quanditatures spontanée et pour postuler à un emploi */
   class Posting{
     private $title;
     private $id_offer;

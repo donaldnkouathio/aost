@@ -351,6 +351,9 @@ citaion{
     bottom : 15px;
     width: 100%;
   }
+  .aside .aside-block{
+    border-radius: 0 0 var(--border-radius-size) var(--border-radius-size);
+  }
   /* *** */
 
 }
