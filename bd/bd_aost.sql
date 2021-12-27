@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 23 déc. 2021 à 03:21
+-- Généré le :  lun. 27 déc. 2021 à 14:07
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -78,6 +78,20 @@ CREATE TABLE IF NOT EXISTS `candidacy` (
   KEY `id_job` (`id_offer`),
   KEY `fk_domain` (`id_domain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table contenant les candidatures des clients';
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `city`
+--
+
+DROP TABLE IF EXISTS `city`;
+CREATE TABLE IF NOT EXISTS `city` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -191,6 +205,7 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `id_admin` bigint(20) NOT NULL,
   `id_domain` bigint(20) NOT NULL,
   `id_subdomain` bigint(20) NOT NULL,
+  `id_city` bigint(20) NOT NULL,
   `compagny` varchar(100) NOT NULL,
   `profession` varchar(100) NOT NULL COMMENT 'Poste demandé',
   `city` varchar(100) NOT NULL,
@@ -206,7 +221,10 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `deadline` datetime NOT NULL COMMENT 'Date limite',
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `fk_domain` (`id_domain`)
+  KEY `fk_domain` (`id_domain`),
+  KEY `fk_city` (`id_city`),
+  KEY `fk_subdomain` (`id_subdomain`),
+  KEY `fk_admin` (`id_admin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table qui contient les differentes offres';
 
 -- --------------------------------------------------------

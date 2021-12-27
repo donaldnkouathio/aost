@@ -11,9 +11,9 @@ class Offer
     private $_id_admin;
     private $_id_domain;
     private $_id_subdomain;
+    private $_id_city;
     private $_compagny;
     private $_profession;
-    private $_city;
     private $_image;
     private $_description;
     private $_missions;
@@ -86,21 +86,21 @@ class Offer
     }
 
 
+    public function setId_city($id_city){
+        $this->_id_city=intval($id_city);
+    }
+
+    public function getId_city(){
+        return $this->_id_city;
+    }
+
+
     public function setProfession($profession){
         $this->_profession=htmlentities(strval($profession));
     }
 
     public function getProfession(){
         return $this->_profession;
-    }
-
-
-    public function setCity($city){
-        $this->_city=htmlentities(strval($city));
-    }
-
-    public function getCity(){
-        return $this->_city;
     }
 
 
@@ -227,7 +227,7 @@ class Offer
         $id_subdomain=$offer->getId_subdomain();
         $compagny=$offer->getCompagny();
         $profession=$offer->getProfession();
-        $city=$offer->getCity();
+        $id_city=$offer->getId_city();
         $image=$offer->getImage();
         $description=$offer->getDescription();
         $missions=$offer->getMissions();
@@ -244,9 +244,9 @@ class Offer
         $query->bindParam(2,$id_admin);
         $query->bindParam(3,$id_domain);
         $query->bindParam(4,$id_subdomain);
-        $query->bindParam(5,$compagny);
-        $query->bindParam(6,$profession);
-        $query->bindParam(7,$city);
+        $query->bindParam(5,$id_city);
+        $query->bindParam(6,$compagny);
+        $query->bindParam(7,$profession);
         $query->bindParam(8,$image);
         $query->bindParam(9,$description);
         $query->bindParam(10,$missions);
@@ -489,8 +489,8 @@ public function editOffer(Offer $offer) {
     $query=$db->prepare("UPDATE offers
         SET id_domain=?,
         id_subdomain=?,
+        id_city=?,
         profession=?,
-        city=?,
         image=?,
         description=?,
         missions=?,
@@ -509,9 +509,9 @@ public function editOffer(Offer $offer) {
     $id=$offer->getId();
     $id_domain=$offer->getId_domain();
     $id_subdomain=$offer->getId_subdomain();
+    $id_city=$offer->getId_city();
     $profession=$offer->getProfession();
     $compagny=$offer->getCompagny();
-    $city=$offer->getCity();
     $image=$offer->getImage();
     $description=$offer->getDescription();
     $missions=$offer->getMissions();
@@ -525,8 +525,8 @@ public function editOffer(Offer $offer) {
 
     $query->bindParam(1,$id_domain);
     $query->bindParam(2,$id_subdomain);
-    $query->bindParam(3,$profession);
-    $query->bindParam(4,$city);
+    $query->bindParam(3,$id_city);
+    $query->bindParam(4,$profession);
     $query->bindParam(5,$image);
     $query->bindParam(6,$description);
     $query->bindParam(7,$missions);
