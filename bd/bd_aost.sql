@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 27 déc. 2021 à 15:12
+-- Généré le :  lun. 27 déc. 2021 à 17:23
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -266,13 +266,15 @@ CREATE TABLE IF NOT EXISTS `requests` (
 DROP TABLE IF EXISTS `subdomains`;
 CREATE TABLE IF NOT EXISTS `subdomains` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_admin` bigint(20) NOT NULL,
   `id_domain` bigint(20) NOT NULL,
   `name` varchar(200) NOT NULL,
   `color` varchar(100) NOT NULL,
   `image` varchar(255) NOT NULL,
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `id_domain` (`id_domain`)
+  KEY `id_domain` (`id_domain`),
+  KEY `fk_admin` (`id_admin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

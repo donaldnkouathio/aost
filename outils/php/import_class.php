@@ -98,6 +98,7 @@ $current_domain=[
 
 $current_subdomain=[
 	'id'=>0,
+	'id_admin'=>0,
 	'id_domain'=>0,
 	'name'=>"",
 	'color'=>"",
