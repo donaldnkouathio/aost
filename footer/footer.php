@@ -16,13 +16,19 @@
           </p>
         </div>
 
-        <div class="footer-contain">
+        <div class="footer-contain contact_us">
           <h3>Contactez-nous</h3>
           <p>
             2232 Rue Noel, H4M1R9 Montréal <br>
             tel : 438-289-5095 <br>
             tel : 438-938-8292
           </p>
+        </div>
+
+
+        <div class="footer-contain">
+          <h3>Suivez-nous</h3>
+          <p><a href="https://www.facebook.com/ALPHA-OMEGA-Solutions-Travail-AOST-120693572651635/" target="_blank" style="color: white">Facebook</a></p>
         </div>
 
       </div>
