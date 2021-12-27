@@ -7,6 +7,7 @@ header{
   height: 70px;
   z-index: 35;
   box-sizing: border-box;
+  box-shadow: -1px 4px 6px var(--color-text);
 }
 .nav-contain-left{
   display: inline-block;
@@ -52,7 +53,7 @@ header{
   border-bottom: none;
 }
 .nav-contain-left li:hover .nav-link, .nav-contain-right li:hover .nav-link{
-  background-color: white;
+  background-color: var(--color-shadow);
   color: var(--color-primary) !important;
 }
 
@@ -170,6 +171,7 @@ header{
     display: none;
     overflow: hidden;
     width: 100%;
+    border-radius: 0 0 var(--border-radius-size) var(--border-radius-size);
   }
   @keyframes fadeout{
     from{

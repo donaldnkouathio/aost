@@ -98,7 +98,7 @@
 					echo count($offers_count)." offres trouvés";
 				}else {
 					if(count($offers_count) > 0){
-						echo count($offers_count)." offre trouvé";
+						echo "Une offre trouvé";
 					}else {
 						echo "Aucune offres trouvé";
 					}

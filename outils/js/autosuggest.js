@@ -24,7 +24,7 @@ $(document).ready(function(){
             var regex;
 
             for (var i = 0; i < suggestText.length - 1; i++) {
-              regex = new RegExp(inputSearchValue);
+              regex = new RegExp(inputSearchValue, "i");
 
               if(regex.test(suggestText[i]) == true){
 
