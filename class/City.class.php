@@ -3,7 +3,7 @@
 include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
 
 
-class city
+class City
 {
 
     /*PROPRIETES*/
