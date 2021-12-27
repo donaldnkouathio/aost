@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 27 déc. 2021 à 14:07
+-- Généré le :  lun. 27 déc. 2021 à 15:12
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -70,13 +70,21 @@ CREATE TABLE IF NOT EXISTS `candidacy` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_offer` bigint(20) NOT NULL,
   `id_domain` bigint(11) NOT NULL,
+  `id_city` bigint(20) DEFAULT NULL COMMENT 'Ville du postulant',
+  `name` varchar(100) NOT NULL,
+  `first_name` varchar(100) DEFAULT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `domains` varchar(200) DEFAULT NULL,
+  `about` longtext,
   `cv_file` varchar(255) DEFAULT NULL,
   `motivation_file` varchar(255) DEFAULT NULL,
   `deleted` int(2) NOT NULL DEFAULT '0' COMMENT 'Vaudra 1 si supprimé par un admin',
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_job` (`id_offer`),
-  KEY `fk_domain` (`id_domain`)
+  KEY `fk_domain` (`id_domain`),
+  KEY `fk_city` (`id_city`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table contenant les candidatures des clients';
 
 -- --------------------------------------------------------
