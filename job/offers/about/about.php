@@ -23,7 +23,12 @@
 
       <div class="infos_text_item">
         <span>Ville</span>
-        <p><?php echo $offer->getCity(); ?></p>
+        <p>
+          <?php
+            $city = $city->getCity($offer->getId_city());
+            echo $city->getName(); 
+          ?>
+        </p>
       </div>
 
       <div class="infos_text_item">
