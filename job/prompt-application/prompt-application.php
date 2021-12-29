@@ -21,8 +21,8 @@
 
   <div class="right">
     <?php
-      $Posting = new Posting("job/promp-application/traitement.php", "Soumettre sa candidature spontanée", "Envoyer mon CV", "");
-      echo $Posting->getPostingSection();
+    $Posting = new Posting("outils/php/traitement/alert/add-alert.php", "Soumettre sa candidature spontanée", "Envoyer mon CV", "");
+    echo $Posting->getPostingSection();
     ?>
 
   </div>

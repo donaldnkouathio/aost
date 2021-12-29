@@ -11,6 +11,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/aost/class/History.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Offer.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Request.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Subdomain.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/aost/class/City.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/aost/class/User.class.php");
 
 
@@ -30,9 +31,13 @@ $current_user=[
 
 $current_alert=[
 	'id'=>0,
-	'id_domain'=>0,
-	'id_subdomain'=>0,
 	'email'=>"",
+	'domain'=>"",
+	'name'=>"",
+	'first_name'=>"",
+	'phone'=>"",
+	'city'=>"",
+	'about'=>"",
 	'cv_file'=>"",
 	'added_at'=>""
 ];
@@ -58,10 +63,9 @@ $current_offer=[
 	'id_admin'=>0,
 	'id_domain'=>0,
 	'id_subdomain'=>0,
+	'id_city'=>0,
 	'compagny'=>0,
 	'profession'=>"",
-	'city'=>"",
-	'image'=>"",
 	'description'=>"",
 	'missions'=>"",
 	'skill'=>"",
@@ -97,6 +101,7 @@ $current_domain=[
 
 $current_subdomain=[
 	'id'=>0,
+	'id_admin'=>0,
 	'id_domain'=>0,
 	'name'=>"",
 	'color'=>"",
@@ -149,6 +154,13 @@ $current_candidacy=[
 	'id'=>0,
 	'id_offer'=>0,
 	'id_domain'=>0,
+	'id_city'=>0,
+	'name'=>"",
+	'first_name'=>"",
+	'phone'=>"",
+	'email'=>"",
+	'domains'=>"",
+	'about'=>"",
 	'cv_file'=>"",
 	'motivation_file'=>"",
 	'deleted'=>0,
@@ -170,6 +182,12 @@ $current_admin=[
 
 
 
+
+$current_city=[
+	'id'=>0,
+	'name'=>"",
+	'added_at'=>""
+];
 
 
 
