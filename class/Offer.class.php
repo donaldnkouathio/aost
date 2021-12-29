@@ -14,7 +14,6 @@ class Offer
     private $_id_city;
     private $_compagny;
     private $_profession;
-    private $_image;
     private $_description;
     private $_missions;
     private $_skill;
@@ -102,16 +101,6 @@ class Offer
     public function getProfession(){
         return $this->_profession;
     }
-
-
-    public function setImage($image){
-        $this->_image=htmlentities(strval($image));
-    }
-
-    public function getImage(){
-        return $this->_image;
-    }
-
 
     public function setDescription($description){
         $this->_description=htmlentities(strval($description));
@@ -219,16 +208,15 @@ class Offer
     public function addOffer(Offer $offer){
         include(_APP_PATH."bd/server-connect.php");
 
-        $query=$db->prepare("INSERT INTO offers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO offers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $id=0;
         $id_admin=$offer->getId_admin();
         $id_domain=$offer->getId_domain();
         $id_subdomain=$offer->getId_subdomain();
+        $id_city=$offer->getId_city();
         $compagny=$offer->getCompagny();
         $profession=$offer->getProfession();
-        $id_city=$offer->getId_city();
-        $image=$offer->getImage();
         $description=$offer->getDescription();
         $missions=$offer->getMissions();
         $skill=$offer->getSkill();
@@ -247,17 +235,16 @@ class Offer
         $query->bindParam(5,$id_city);
         $query->bindParam(6,$compagny);
         $query->bindParam(7,$profession);
-        $query->bindParam(8,$image);
-        $query->bindParam(9,$description);
-        $query->bindParam(10,$missions);
-        $query->bindParam(11,$skill);
-        $query->bindParam(12,$candidate_profile);
-        $query->bindParam(13,$cv);
-        $query->bindParam(14,$motivation);
-        $query->bindParam(15,$deleted);
-        $query->bindParam(16,$expired);
-        $query->bindParam(17,$deadline);
-        $query->bindParam(18,$added_at);
+        $query->bindParam(8,$description);
+        $query->bindParam(9,$missions);
+        $query->bindParam(10,$skill);
+        $query->bindParam(11,$candidate_profile);
+        $query->bindParam(12,$cv);
+        $query->bindParam(13,$motivation);
+        $query->bindParam(14,$deleted);
+        $query->bindParam(15,$expired);
+        $query->bindParam(16,$deadline);
+        $query->bindParam(17,$added_at);
 
         if($query->execute()){
           return true;
@@ -512,7 +499,6 @@ public function editOffer(Offer $offer) {
     $id_city=$offer->getId_city();
     $profession=$offer->getProfession();
     $compagny=$offer->getCompagny();
-    $image=$offer->getImage();
     $description=$offer->getDescription();
     $missions=$offer->getMissions();
     $skill=$offer->getSkill();
@@ -527,18 +513,17 @@ public function editOffer(Offer $offer) {
     $query->bindParam(2,$id_subdomain);
     $query->bindParam(3,$id_city);
     $query->bindParam(4,$profession);
-    $query->bindParam(5,$image);
-    $query->bindParam(6,$description);
-    $query->bindParam(7,$missions);
-    $query->bindParam(8,$skill);
-    $query->bindParam(9,$candidate_profile);
-    $query->bindParam(10,$cv);
-    $query->bindParam(11,$motivation);
-    $query->bindParam(12,$deleted);
-    $query->bindParam(13,$expired);
-    $query->bindParam(14,$compagny);
-    $query->bindParam(15,$deadline);
-    $query->bindParam(16,$id);
+    $query->bindParam(5,$description);
+    $query->bindParam(6,$missions);
+    $query->bindParam(7,$skill);
+    $query->bindParam(8,$candidate_profile);
+    $query->bindParam(9,$cv);
+    $query->bindParam(10,$motivation);
+    $query->bindParam(11,$deleted);
+    $query->bindParam(12,$expired);
+    $query->bindParam(13,$compagny);
+    $query->bindParam(14,$deadline);
+    $query->bindParam(15,$id);
 
     if($query->execute()){
 

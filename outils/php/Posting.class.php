@@ -20,7 +20,7 @@ class Posting{
     <link rel="stylesheet" href="<?php echo _ROOT_PATH."outils/css/posting.css" ?>"/>
 
     <h2 class=" margin-top-none"><?php echo $this->title; ?></h2>
-    <div class="cv_header">
+    <div class="cv_header"> 
       <div class="have_cv_btn cv_btn_active">J'ai un CV</div>
       <div class="make_cv_btn">Je veux créer mon CV</div>
     </div>
@@ -45,7 +45,7 @@ class Posting{
         </div>
         <div class="input-block job-block-no_cv">
           <label for="job-category-no-cv">Catégorie d'emploi <span class="form-required"> </span> :</label>
-          <input type="text" class="job-category" id="job-category-no-cv" name="domains" readonly required>
+          <input type="text" class="job-category" id="job-category-no-cv" name="domain" readonly required>
         </div>
         <div class="input-block">
           <label for="city">Ville<span class="form-required"> </span> :</label>
@@ -79,19 +79,19 @@ class Posting{
         </div>
         <div class="input-block">
           <label for="last-name">Prénom :</label>
-          <input type="text" name="last-name" value="">
+          <input type="text" name="first_name" value="">
         </div>
         <div class="input-block">
           <label for="phone">Téléphone :</label>
           <input type="text" name="phone" value="">
         </div>
         <div class="input-block">
-          <label for="email">Courriel personnel :</label>
+          <label for="email">Courriel personnel<span class="form-required"> </span> :</label>
           <input type="text" name="email" value="">
         </div>
         <div class="input-block job-block-cv">
-          <label for="job-category-cv">Catégorie d'emploi :</label>
-          <input type="text" class="job-category" id="job-category-cv" name="job-category" readonly>
+          <label for="job-category-cv">Catégorie d'emploi<span class="form-required"> </span> :</label>
+          <input type="text" class="job-category" id="job-category-cv" name="domain" readonly>
         </div>
         <div class="input-block">
           <label for="city">Ville :</label>

@@ -1,5 +1,7 @@
 <?php
 
+/*INCOMPLET */
+
 
 session_start();
 require_once '../../init.php';
@@ -10,25 +12,31 @@ require_once _APP_PATH.'outils/php/import_class.php';
 
 $current_alert=[
 	'id'=>0,
-	'id_domain'=>$_POST['id_domain'],
-	'id_subdomain'=>$_POST['id_subdomain'],
 	'email'=>$_POST['email'],
-	'cv_file'=>$_POST['cv_file'],
-	'added_at'=>""
+	'domain'=>$_POST['domain'],
+	'name'=>$_POST['name'],
+	'first_name'=>$_POST['first_name'],
+	'phone'=>$_POST['phone'],
+	'city'=>$_POST['city'],
+	'about'=>$_POST['about'],
+	'cv_file'=>"",
+	'added_at'=>date("Y-m-d H:i:s")
 ];
 
 $alert=new Alert($current_alert);
 
 
-if(!empty($_FILES)){
+if($_POST['request_type']=="have_cv"){
 	$data=0;
-	$filename=basename($_FILES['image']['name']);
+	$filename=basename($_FILES['cv_file']['name']);
 	$ext=pathinfo($filename, PATHINFO_EXTENSION);
-	$tmp=$_FILES['image']['tmp_name'];
-	$type=$_FILES['image']['type'];
-	$size=$_FILES['image']['size'];
-	$error=$_FILES['image']['error'];
-	$tab_ext=array('png','jpg','webp','PNG','JPG','jpeg','JPEG');
+	$tmp=$_FILES['cv_file']['tmp_name'];
+	$type=$_FILES['cv_file']['type'];
+	$size=$_FILES['cv_file']['size'];
+	$error=$_FILES['cv_file']['error'];
+	$tab_ext=array('PDF','pdf','docx','DOCX');
+
+	$alert->setCv_file("Cv_".$_POST['name']."_".$_POST['city'].".".$ext);
 
 
 	if(in_array($ext, $tab_ext)){
@@ -39,7 +47,7 @@ if(!empty($_FILES)){
 				
 				$alert_folder=_APP_PATH."files/alerts/".$last_alert->getId();
 
-				$file_renamed=$last_alert->getId().".".$ext;
+				$file_renamed="Cv_".$_POST['name']."_".$_POST['city'].".".$ext;
 
 				mkdir($alert_folder);
 
@@ -47,8 +55,10 @@ if(!empty($_FILES)){
 
 					$data=true;
 
+					echo "saved";
+
 				}else{
-					$data="Erreur lors de l'upload de l'image... Veuillez réessayer !";
+					$data="Erreur lors de l'upload de l'cv_file... Veuillez réessayer !";
 				}
 			}else{
 				$data="Erreur lors d'execution, Veuillez réessayer !";
@@ -62,11 +72,12 @@ if(!empty($_FILES)){
 		$data="Extension de fichier non pris en charge ! Choisissez un autre fichier...";
 	}
 }else{
-	$data=true;
-	$alert->addAlert($alert);
+	
+
 }
 
 header("Location:../../../../job/prompt-application/index.php?data=".$data);
+
 
 
 

@@ -72,22 +72,22 @@
 
     <div class="emplois-populaires-container">
       <?php
-        $offers = $offer->getOffers();
+      $offers = $offer->getOffers();
 
-        foreach ($offers as $offer) {
-          $domain = $domain->getDomain($offer->getId_domain());
-          $domainColor = $domain->getColor()==""? "66BFDE" : $domain -> getColor();
-      ?>
-      <a href="<?php echo _ROOT_PATH."job/offers/a/".str_replace(" ", "-",$offer->getProfession())."/".$offer->getId()."/" ?>" class="ep-block" style="border-left : 3px solid #<?php echo $domainColor; ?>">
-        <div class="ep-icon">
-          <span>icon</span>
-        </div>
-        <div class="ep-text">
-          <span class="ep-title"><?php echo $offer->getProfession(); ?></span>
-          <span class="ep-city"><i class="material-icons vertical-align-bottom">location_on</i><?php echo $offer->getCity(); ?></span>
-          <span class="ep-added_at"><i class="material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
-        </div>
-      </a>
+      foreach ($offers as $offer) {
+        $domain = $domain->getDomain($offer->getId_domain());
+        $domainColor = $domain->getColor()==""? "66BFDE" : $domain -> getColor();
+        ?>
+        <a href="<?php echo _ROOT_PATH."job/offers/a/".str_replace(" ", "-",$offer->getProfession())."/".$offer->getId()."/" ?>" class="ep-block" style="border-left : 3px solid #<?php echo $domainColor; ?>">
+          <div class="ep-icon">
+            <span>icon</span>
+          </div>
+          <div class="ep-text">
+            <span class="ep-title"><?php echo $offer->getProfession(); ?></span>
+            <span class="ep-city"><i class="material-icons vertical-align-bottom">location_on</i><?php echo $offer->getCity(); ?></span>
+            <span class="ep-added_at"><i class="material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
+          </div>
+        </a>
       <?php } ?>
     </div>
 
