@@ -9,11 +9,9 @@ class Offer
     /*PROPRIETES*/
     private $_id;
     private $_id_admin;
-    private $_id_domain;
     private $_id_subdomain;
     private $_id_city;
     private $_compagny;
-    private $_profession;
     private $_description;
     private $_missions;
     private $_skill;
@@ -67,15 +65,6 @@ class Offer
     }
 
 
-    public function setId_domain($id_domain){
-        $this->_id_domain=intval($id_domain);
-    }
-
-    public function getId_domain(){
-        return $this->_id_domain;
-    }
-
-
     public function setId_subdomain($id_subdomain){
         $this->_id_subdomain=intval($id_subdomain);
     }
@@ -91,15 +80,6 @@ class Offer
 
     public function getId_city(){
         return $this->_id_city;
-    }
-
-
-    public function setProfession($profession){
-        $this->_profession=htmlentities(strval($profession));
-    }
-
-    public function getProfession(){
-        return $this->_profession;
     }
 
     public function setDescription($description){
@@ -208,15 +188,13 @@ class Offer
     public function addOffer(Offer $offer){
         include(_APP_PATH."bd/server-connect.php");
 
-        $query=$db->prepare("INSERT INTO offers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO offers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $id=0;
         $id_admin=$offer->getId_admin();
-        $id_domain=$offer->getId_domain();
         $id_subdomain=$offer->getId_subdomain();
         $id_city=$offer->getId_city();
         $compagny=$offer->getCompagny();
-        $profession=$offer->getProfession();
         $description=$offer->getDescription();
         $missions=$offer->getMissions();
         $skill=$offer->getSkill();
@@ -230,21 +208,19 @@ class Offer
 
         $query->bindParam(1,$id);
         $query->bindParam(2,$id_admin);
-        $query->bindParam(3,$id_domain);
-        $query->bindParam(4,$id_subdomain);
-        $query->bindParam(5,$id_city);
-        $query->bindParam(6,$compagny);
-        $query->bindParam(7,$profession);
-        $query->bindParam(8,$description);
-        $query->bindParam(9,$missions);
-        $query->bindParam(10,$skill);
-        $query->bindParam(11,$candidate_profile);
-        $query->bindParam(12,$cv);
-        $query->bindParam(13,$motivation);
-        $query->bindParam(14,$deleted);
-        $query->bindParam(15,$expired);
-        $query->bindParam(16,$deadline);
-        $query->bindParam(17,$added_at);
+        $query->bindParam(3,$id_subdomain);
+        $query->bindParam(4,$id_city);
+        $query->bindParam(5,$compagny);
+        $query->bindParam(6,$description);
+        $query->bindParam(7,$missions);
+        $query->bindParam(8,$skill);
+        $query->bindParam(9,$candidate_profile);
+        $query->bindParam(10,$cv);
+        $query->bindParam(11,$motivation);
+        $query->bindParam(12,$deleted);
+        $query->bindParam(13,$expired);
+        $query->bindParam(14,$deadline);
+        $query->bindParam(15,$added_at);
 
         if($query->execute()){
           return true;
@@ -474,10 +450,8 @@ public function editOffer(Offer $offer) {
     include(_APP_PATH."bd/server-connect.php");
 
     $query=$db->prepare("UPDATE offers
-        SET id_domain=?,
-        id_subdomain=?,
+        SET id_subdomain=?,
         id_city=?,
-        profession=?,
         image=?,
         description=?,
         missions=?,
@@ -494,10 +468,8 @@ public function editOffer(Offer $offer) {
         ");
 
     $id=$offer->getId();
-    $id_domain=$offer->getId_domain();
     $id_subdomain=$offer->getId_subdomain();
     $id_city=$offer->getId_city();
-    $profession=$offer->getProfession();
     $compagny=$offer->getCompagny();
     $description=$offer->getDescription();
     $missions=$offer->getMissions();
@@ -509,21 +481,19 @@ public function editOffer(Offer $offer) {
     $expired=$offer->getExpired();
     $deadline=$offer->getDeadline();
 
-    $query->bindParam(1,$id_domain);
-    $query->bindParam(2,$id_subdomain);
-    $query->bindParam(3,$id_city);
-    $query->bindParam(4,$profession);
-    $query->bindParam(5,$description);
-    $query->bindParam(6,$missions);
-    $query->bindParam(7,$skill);
-    $query->bindParam(8,$candidate_profile);
-    $query->bindParam(9,$cv);
-    $query->bindParam(10,$motivation);
-    $query->bindParam(11,$deleted);
-    $query->bindParam(12,$expired);
-    $query->bindParam(13,$compagny);
-    $query->bindParam(14,$deadline);
-    $query->bindParam(15,$id);
+    $query->bindParam(1,$id_subdomain);
+    $query->bindParam(2,$id_city);
+    $query->bindParam(3,$description);
+    $query->bindParam(4,$missions);
+    $query->bindParam(5,$skill);
+    $query->bindParam(6,$candidate_profile);
+    $query->bindParam(7,$cv);
+    $query->bindParam(8,$motivation);
+    $query->bindParam(9,$deleted);
+    $query->bindParam(10,$expired);
+    $query->bindParam(11,$compagny);
+    $query->bindParam(12,$deadline);
+    $query->bindParam(13,$id);
 
     if($query->execute()){
 
