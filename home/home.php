@@ -75,6 +75,8 @@
       $offers = $offer->getOffers();
 
       foreach ($offers as $offer) {
+        $city = $city->getCity($offer->getId_city());
+
         $domain = $domain->getDomain($offer->getId_domain());
         $domainColor = $domain->getColor()==""? "66BFDE" : $domain -> getColor();
         ?>
@@ -84,7 +86,7 @@
           </div>
           <div class="ep-text">
             <span class="ep-title"><?php echo $offer->getProfession(); ?></span>
-            <span class="ep-city"><i class="material-icons vertical-align-bottom">location_on</i><?php echo $offer->getCity(); ?></span>
+            <span class="ep-city"><i class="material-icons vertical-align-bottom">location_on</i><?php echo $city->getName(); ?></span>
             <span class="ep-added_at"><i class="material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
           </div>
         </a>

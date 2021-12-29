@@ -1,5 +1,4 @@
 <?php
-  session_start();
   require_once 'init.php';
   require_once _APP_PATH.'outils/php/functions.php';
   require_once _APP_PATH.'outils/php/Session.class.php';
@@ -11,6 +10,7 @@
   $domain = (!isset($domain)) ? new Domain($current_domain) : $domain;
   $subdomain = new Subdomain($current_subdomain);
   $offer = new Offer($current_offer);
+  $city = new City($current_city);
 
   function redirection($title, $pageContain, $currentPage, $currentSubPage, $css, $js){
     //$title : titre de la page
@@ -28,6 +28,7 @@
     global $domain;
     global $subdomain;
     global $offer;
+    global $city;
 
     $session->setCurrentPage($currentPage); //Page actuellement visitée par l'utilisateur
     $session->setCurrentSubPage($currentSubPage); //Page actuellement visitée par l'utilisateur
