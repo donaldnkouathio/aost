@@ -31,9 +31,13 @@ $current_user=[
 
 $current_alert=[
 	'id'=>0,
-	'id_domain'=>0,
-	'id_subdomain'=>0,
 	'email'=>"",
+	'domain'=>"",
+	'name'=>"",
+	'first_name'=>"",
+	'phone'=>"",
+	'city'=>"",
+	'about'=>"",
 	'cv_file'=>"",
 	'added_at'=>""
 ];
@@ -59,10 +63,9 @@ $current_offer=[
 	'id_admin'=>0,
 	'id_domain'=>0,
 	'id_subdomain'=>0,
+	'id_city'=>0,
 	'compagny'=>0,
 	'profession'=>"",
-	'city'=>"",
-	'image'=>"",
 	'description'=>"",
 	'missions'=>"",
 	'skill'=>"",

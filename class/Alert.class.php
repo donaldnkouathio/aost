@@ -8,9 +8,13 @@ class Alert
 
  /*PROPRIETES*/
  private $_id;
- private $_id_domain;
- private $_id_subdomain;
  private $_email;
+ private $_domain;
+ private $_name;
+ private $_first_name;
+ private $_phone;
+ private $_city;
+ private $_about;
  private $_cv_file;
  private $_added_at;
 
@@ -38,30 +42,66 @@ public function getId(){
 }
 
 
-public function setId_domain($id_domain){
-  $this->_id_domain=intval($id_domain);
-}
-
-public function getId_domain(){
-  return $this->_id_domain;
-}
-
-
-public function setId_subdomain($id_subdomain){
-  $this->_id_subdomain=intval($id_subdomain);
-}
-
-public function getId_subdomain(){
-  return $this->_id_subdomain;
-}
-
-
 public function setEmail($email){
  $this->_email=htmlentities(strval($email));
 }
 
 public function getEmail(){
   return $this->_email;
+}
+
+
+public function setDomain($domain){
+ $this->_domain=htmlentities(strval($domain));
+}
+
+public function getDomain(){
+  return $this->_domain;
+}
+
+
+public function setName($name){
+ $this->_name=htmlentities(strval($name));
+}
+
+public function getName(){
+  return $this->_name;
+}
+
+
+public function setFirst_name($first_name){
+ $this->_first_name=htmlentities(strval($first_name));
+}
+
+public function getFirst_name(){
+  return $this->_first_name;
+}
+
+
+public function setPhone($phone){
+ $this->_phone=htmlentities(strval($phone));
+}
+
+public function getPhone(){
+  return $this->_phone;
+}
+
+
+public function setCity($city){
+ $this->_city=htmlentities(strval($city));
+}
+
+public function getCity(){
+  return $this->_city;
+}
+
+
+public function setAbout($about){
+ $this->_about=htmlentities(strval($about));
+}
+
+public function getAbout(){
+  return $this->_about;
 }
 
 
@@ -100,21 +140,29 @@ public function getAdded_at(){
 public function addAlert(Alert $alert){
   include(_APP_PATH."bd/server-connect.php");
 
-  $query=$db->prepare("INSERT INTO alerts VALUES (?,?,?,?,?,?)");
+  $query=$db->prepare("INSERT INTO alerts VALUES (?,?,?,?,?,?,?,?,?,?)");
 
   $id=0;
-  $id_domain=$alert->getId_domain();
-  $id_subdomain=$alert->getId_subdomain();
   $email=$alert->getEmail();
+  $domain=$alert->getDomain();
+  $name=$alert->getName();
+  $first_name=$alert->getFirst_name();
+  $phone=$alert->getPhone();
+  $city=$alert->getCity();
+  $about=$alert->getAbout();
   $cv_file=$alert->getCv_file();
   $added_at=$alert->getAdded_at();
 
   $query->bindParam(1,$id);
-  $query->bindParam(2,$id_domain);
-  $query->bindParam(3,$id_subdomain);
-  $query->bindParam(4,$email);
-  $query->bindParam(5,$cv_file);
-  $query->bindParam(6,$added_at);
+  $query->bindParam(2,$email);
+  $query->bindParam(3,$domain);
+  $query->bindParam(4,$name);
+  $query->bindParam(5,$first_name);
+  $query->bindParam(6,$phone);
+  $query->bindParam(7,$city);
+  $query->bindParam(8,$about);
+  $query->bindParam(9,$cv_file);
+  $query->bindParam(10,$added_at);
 
 
   if($query->execute()){
@@ -200,39 +248,6 @@ public function getAlerts() {
 
 
 
-
-public function editAlert(Alert $alert) {
-  include(_APP_PATH."bd/server-connect.php");
-
-  $query=$db->prepare("UPDATE alerts
-   SET id_domain=?,
-   id_subdomain=?,
-   email=?,
-   cv_file=?
-   WHERE id=?
-
-   ");
-
-  $id=$alert->getId();
-  $id_domain=$alert->getId_domain();
-  $id_subdomain=$alert->getId_subdomain();
-  $email=$alert->getEmail();
-  $cv_file=$alert->getCv_file();
-
-  $query->bindParam(1,$id_domain);
-  $query->bindParam(2,$id_subdomain);
-  $query->bindParam(3,$email);
-  $query->bindParam(4,$cv_file);
-  $query->bindParam(5,$id);
-
-  if($query->execute()){
-
-   return true;
-
- }else{
-   return false;
- }
-}
 
 
 
