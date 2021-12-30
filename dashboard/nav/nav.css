@@ -1,0 +1,121 @@
+header{
+  background-color: var(--color-primary);
+  color: var(--nav-text-color);
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  z-index: 10;
+}
+header .header_left{
+  display: inline-block;
+}
+header .header_right{
+  display: inline-block;
+  float: right;
+}
+.nav_block{
+  background-color: var(--color-primary);
+}
+.nav_block ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow: auto;
+}
+.nav_block ul li{
+  text-decoration: none;
+}
+.dashboard_nav_link{
+  display: inline-block;
+  color: var(--nav-text-color);
+  width: 100% !important;
+  box-sizing: border-box;
+  padding: 15px;
+  border-bottom: 1px solid var(--nav-text-color);
+}
+.dashboard_nav_link i{
+  display: inline-block;
+  margin-right: 5px !important;
+  color: #c0c0c0c0;
+  margin-bottom: 0.1em;
+}
+.nav_block ul li:first-child{
+  border-top: 1px solid var(--nav-text-color);
+}
+.dashboard_nav_link:hover, .dashboard_nav_link_hover{
+  color: var(--color-tertiary);
+  background-color: var(--color-shadow);
+}
+
+.header_left a{
+  margin-left: 15px;
+}
+.header_left a img{
+  height: 40px;
+  margin-top: 15px;
+  vertical-align: -50%;
+}
+.header_left span{
+  font-size: 1.2em;
+  margin-left: 15px;
+}
+
+.header_right{
+  padding-right: 15px;
+}
+.header_right span{
+  padding-top: 50%;
+  font-size: 1em;
+}
+.header_right .navMobileBtn{
+  cursor: pointer;
+  font-size: 1.6em !important;
+}
+
+
+/***** Media Query *****/
+
+/* Mobile */
+@media (max-width: 575px) {
+
+}
+
+/* Tablette */
+@media (max-width: 991px) {
+  header{
+    width: 100%;
+  }
+  .nav_block{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Laptop */
+@media (min-width: 992px) {
+  header{
+    margin-left: 10%;
+    width: 80%;
+  }
+  .nav_block{
+    position: fixed;
+    top: 0;
+    box-sizing: border-box;
+    padding-top: 70px;
+    left: 10%;
+    width: 15%;
+    height: 100%;
+    z-index: 5;
+  }
+}
+
+/* TV */
+@media (min-width: 1441px) {
+}

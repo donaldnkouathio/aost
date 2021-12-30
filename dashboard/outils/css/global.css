@@ -1,0 +1,325 @@
+.dashbord_item{
+  box-sizing: border-box;
+  padding: 15px;
+  margin-top: 70px;
+  background-color: var(--color-shadow);
+}
+
+.item_container{
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+  box-sizing: border-box;
+}
+td, th{
+  border: 1px solid var(--color-text);
+  text-align: left;
+  padding: 15px;
+}
+tr:first-child{
+  background-color: #c0c0c0;
+}
+tr{
+  background-color: white;
+}
+tr:nth-child(even){
+  background-color: var(--color-shadow);
+}
+tr:hover, tr:nth-child(even):hover{
+  background-color: #c0c0c0;
+}
+
+.btnEdit{
+  box-sizing: border-box;
+  padding: 5px;
+  font-size: 0.8em;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  margin-right: 15px;
+  background-color: white;
+}
+.btnEdit:hover{
+  color: white;
+  background-color: var(--color-primary);
+}
+
+.btnAdd{
+  box-sizing: border-box;
+  padding: 5px;
+  font-size: 0.8em;
+  color: green;
+  border-radius: var(--border-radius-size);
+  border: 1px solid green;
+  cursor: pointer;
+  margin-right: 15px;
+  background-color: white;
+
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
+.btnAdd:hover{
+  color: white;
+  background-color: green;
+}
+
+.btnDelete{
+  box-sizing: border-box;
+  padding: 5px;
+  font-size: 0.8em;
+  color: red;
+  border: 1px solid red;
+  cursor: pointer;
+  background-color: white;
+}
+.btnDelete:hover{
+  color: white;
+  background-color: red;
+}
+.item_setting i{
+  font-size: 1.2em;
+  margin-bottom: 0.2em;
+}
+/** */
+
+/* Edit Modal */
+.item_modal_shadow{
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 15;
+  display: none;
+}
+.item_modal{
+  background-color: var(--color-shadow);
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 2;
+}
+.item_modal_header{
+  height: 10%;
+  text-align: center;
+  box-sizing: border-box;
+  display: grid;
+  cursor: pointer;
+  grid-template-columns: 50% 50%;
+}
+.item_modal_header_left{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: green;
+  color: white;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  z-index: 20;
+}
+.item_modal_header_right{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  background-color: var(--color-text);
+  color: white;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  z-index: 20;
+}
+.item_modal_header_left:hover{
+  background-color: darkgreen;
+}
+.item_modal_header_right:hover{
+  background-color: var(--color-primary);
+}
+.item_modal_body{
+  padding: 15px;
+  padding-top: 0;
+  height: 90%;
+  overflow: auto;
+  box-sizing: border-box;
+}
+.item_modal_input{
+  width: 48%;
+  padding: 0 15px 15px 0px;
+  margin-top: 15px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+.item_modal_checkbox{
+  margin-bottom: 15px;
+}
+.item_modal_input label{
+
+}
+.item_modal_input input, .item_modal_input select{
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: white;
+  border: none;
+}
+/* *** */
+
+/*** Delete Modal ***/
+.item_deleteModal_shadow{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 10;
+  display: none;
+}
+.item_deleteModal{
+  border-radius: var(--border-radius-size);
+  background-color: var(--color-shadow);
+  position: fixed;
+}
+.item_deleteModal_body{
+  height: 80%;
+  box-sizing: border-box;
+  padding: 15px;
+  text-align: center;
+}
+.item_deleteModal_body i{
+  display: block;
+  color: red;
+  margin-bottom: 15px;
+  font-size: 2.8em;
+}
+.item_deleteModal_body span{
+
+}
+.item_deleteModal_footer{
+  height: 20%;
+  text-align: center;
+  box-sizing: border-box;
+  display: grid;
+  cursor: pointer;
+  grid-template-columns: 50% 50%;
+}
+.item_deleteModal_left{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: red;
+  color: white;
+  padding-top: 7%;
+  padding-bottom: 5%;
+}
+.item_deleteModal_right{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  background-color: var(--color-text);
+  color: white;
+  padding-top: 7%;
+  padding-bottom: 5%;
+}
+.item_deleteModal_left:hover{
+  background-color: darkred;
+}
+.item_deleteModal_right:hover{
+  background-color: var(--color-primary);
+}
+/* *** */
+
+
+/*** breadcrumb ***/
+.breadcrumb-contain{;
+  display: inline-block;
+  margin-top: 15px;
+}
+.breadcrumb-item{
+  display: inline-block;
+  border: 1px solid var(--color-primary);
+  padding: 2px 10px;
+  margin: 0 2px;
+  box-sizing: border-box;
+}
+.breadcrumb-item-active, .breadcrumb-item:hover{
+  background-color: var(--color-primary);
+  color: white;
+  border: 1px solid var(--color-primary);
+}
+
+/***** Media Query *****/
+
+/* Mobile */
+@media (max-width: 575px) {
+  .item_block{
+    width: 100% !important;
+    margin-right: 0px;
+  }
+  .item_deleteModal{
+    top: 0% !important;
+    left: 0% !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* Tablette */
+@media (max-width: 991px) {
+  .item_block{
+    width: 43%;
+    margin-right: 5px;
+  }
+  .item_modal{
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: 15!important;
+  }
+  .item_modal_shadow{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15!important;
+  }
+  .item_deleteModal{
+    top: 30%;
+    left: 20%;
+    height: 40%;
+    width: 60%;
+  }
+}
+
+/* Laptop */
+@media (min-width: 992px) {
+  .dashbord_item{
+    margin-left: 25%;
+    width: 65%;
+  }
+  .item_block{
+    width: 31.5%;
+    margin-left: 5px;
+  }
+  .item_block:first-child{
+    margin-left: 0px !important;
+  }
+  .item_modal{
+    top: 0;
+    width: 65%;
+    height: 100%;
+    left: 25%;
+  }
+  .item_modal_shadow{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .item_deleteModal{
+    top: 30%;
+    left: 35%;
+    height: 40%;
+    width: 30%;
+  }
+}
+
+/* TV */
+@media (min-width: 1441px) {
+}

@@ -1,7 +1,7 @@
 <div class="container-box" style="background-image: url('/aost/img/bg/bg1.jpg');">
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body" style="">
-      <div class="container-title"><?php echo ucwords($offer->getProfession()); ?></div>
+      <div class="container-title"><?php echo ucwords($subdomain->getName()); ?></div>
     </div>
   </div>
 </div>
@@ -15,7 +15,7 @@
         <span>Domaine</span>
         <p>
           <?php
-          $domain = $domain->getDomain($offer->getId_domain());
+          $domain = $domain->getDomain($subdomain->getId_domain());
           echo $domain->getName();
           ?>
         </p>
@@ -26,7 +26,7 @@
         <p>
           <?php
             $city = $city->getCity($offer->getId_city());
-            echo $city->getName(); 
+            echo $city->getName();
           ?>
         </p>
       </div>
