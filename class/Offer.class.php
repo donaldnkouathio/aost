@@ -329,119 +329,37 @@ public function getOffersLimit($start) {
 
 
 //Pour les différents filtres
-public function getOffersLimitRegex($keyword, $start) {
-    include(_APP_PATH."bd/server-connect.php");
+public function getOffersFilterLimit($keyword, $id_domain, $date, $start){
+  include(_APP_PATH."bd/server-connect.php");
 
-    $start=intval($start);
-    $end=$start+10;
-    $query=$db->prepare("SELECT * FROM offers WHERE profession REGEXP '^(.*)$keyword(.*)$' ORDER BY id DESC LIMIT $start,$end");
+  $id_domain = intval($id_domain);
 
-    $offers=[];
+  $start=intval($start);
+  $end=$start+10;
 
-    if($query->execute()){
-        while($data=$query->fetch()){
-            $offers[]=new Offer($data);
-        }
-        return $offers;
-    }else{
-        return false;
-    }
-}
+  $regex = $keyword == "" ? "" : " subdomains.name REGEXP '^(.*)$keyword(.*)$' ";
+  $domainTxt = $id_domain == -1 ? "" : " subdomains.id_domain=$id_domain ";
+  $dateDirection = " ORDER BY offers.added_at $date ";
+  $limit = " LIMIT $start,$end ";
 
-public function getOffersFilter($date_direction, $id_domain, $start) {
-    include(_APP_PATH."bd/server-connect.php");
+  if($domainTxt == "" && $regex == ""){
+    $where_1 = " 1 ";
+  }else {
+    $where_1 = "";
+  }
 
-    $id_domain = intval($id_domain);
-    $start=intval($start);
-    $end=$start+10;
-    $query= $id_domain == 0 ? $db->prepare("SELECT * FROM offers ORDER BY added_at $date_direction LIMIT $start,$end") : $db->prepare("SELECT * FROM offers WHERE id_domain=$id_domain ORDER BY added_at $date_direction LIMIT $start,$end");
+  $query= $db->prepare("SELECT * FROM subdomains INNER JOIN offers ON offers.id_subdomain = subdomains.id WHERE $regex $domainTxt $where_1 $dateDirection $limit");
 
-    $offers=[];
+  $offers=[];
 
-    if($query->execute()){
-        while($data=$query->fetch()){
-            $offers[]=new Offer($data);
-        }
-        return $offers;
-    }else{
-        return false;
-    }
-}
-
-public function getOffersFilterRegex($date_direction, $id_domain, $keyword, $start) {
-    include(_APP_PATH."bd/server-connect.php");
-
-    $id_domain = intval($id_domain);
-    $start=intval($start);
-    $end=$start+10;
-    $query= $id_domain == 0 ? $db->prepare("SELECT * FROM offers WHERE profession REGEXP '^(.*)$keyword(.*)$' ORDER BY added_at $date_direction LIMIT $start,$end") : $db->prepare("SELECT * FROM offers WHERE profession REGEXP '^(.*)$keyword(.*)$' id_domain=$id_domain ORDER BY added_at $date_direction LIMIT $start,$end");
-
-    $offers=[];
-
-    if($query->execute()){
-        while($data=$query->fetch()){
-            $offers[]=new Offer($data);
-        }
-        return $offers;
-    }else{
-        return false;
-    }
-}
-
-//Pour compter le nombre d'offre
-public function getOffersLimitRegex_count($keyword) {
-    include(_APP_PATH."bd/server-connect.php");
-
-    $query=$db->prepare("SELECT * FROM offers WHERE profession REGEXP '^(.*)$keyword(.*)$' ORDER BY id DESC");
-
-    $offers=[];
-
-    if($query->execute()){
-        while($data=$query->fetch()){
-            $offers[]=new Offer($data);
-        }
-        return $offers;
-    }else{
-        return false;
-    }
-}
-
-public function getOffersFilter_count($id_domain) {
-    include(_APP_PATH."bd/server-connect.php");
-
-    $id_domain = intval($id_domain);
-    $query= $id_domain == 0 ? $db->prepare("SELECT * FROM offers") : $db->prepare("SELECT * FROM offers WHERE id_domain= $id_domain");
-
-    $offers=[];
-
-    if($query->execute()){
-        while($data=$query->fetch()){
-            $offers[]=new Offer($data);
-        }
-        return $offers;
-    }else{
-        return false;
-    }
-}
-
-public function getOffersFilterRegex_count($id_domain, $keyword) {
-    include(_APP_PATH."bd/server-connect.php");
-
-    $id_domain = intval($id_domain);
-    $query= $id_domain == 0 ? $db->prepare("SELECT * FROM offers WHERE profession REGEXP '^(.*)$keyword(.*)$'") : $db->prepare("SELECT * FROM offers WHERE profession REGEXP '^(.*)$keyword(.*)$' id_domain=$id_domain");
-
-    $offers=[];
-
-    if($query->execute()){
-        while($data=$query->fetch()){
-            $offers[]=new Offer($data);
-        }
-        return $offers;
-    }else{
-        return false;
-    }
-
-
+  if($query->execute()){
+      while($data=$query->fetch()){
+          $offers[]=new Offer($data);
+      }
+      return $offers;
+  }else{
+      return false;
+  }
 }
 /* *** */
 

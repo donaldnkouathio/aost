@@ -2,31 +2,13 @@
 
 <?php
 	//Pour compter le nombre d'offres et déterminer le nombre de sous pages
-	if (isset($_POST["keyword"])) { //Si l'utilisateur effectu un tri par mot clé
-		if ($_POST["keyword"] != "") { // Si le mot clé n'est pas vide
+	$keyword = isset($_POST["keyword"]) ? $_POST["keyword"] : "";
 
-			if(isset($_POST["id_domain"])){ // Si l'utilisateur effectu un tri
-				$offers_count = $offer->getOffersFilterRegex_count($_POST["id_domain"], $_POST["keyword"]);
-			}else {
-				$offers_count = $offer->getOffersLimitRegex_count($_POST["keyword"]);
-			}
+	$date = isset($_POST["date"]) ? $_POST["date"] : "DESC";
 
-		}else{
-			if(isset($_POST["id_domain"])){ // Si l'utilisateur effectu un tri
-				$offers_count = $offer->getOffersFilter_count($_POST["id_domain"]);
-			}else {
-				$offers_count = $offer->getOffers();
-			}
-		}
+	$id_domain = isset($_POST["id_domain"]) ? $_POST["id_domain"] : "-1";
 
-	}else{
-		if(isset($_POST["id_domain"])){ // Si l'utilisateur effectu un tri
-			$offers_count = $offer->getOffersFilter_count($_POST["id_domain"]);
-		}else {
-			$offers_count = $offer->getOffers();
-		}
-	}
-
+	$offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
 
 	$actuParPage= 10; // actu par page
 	$nombreDePages=ceil(count($offers_count)/$actuParPage); // nombre total de page
@@ -46,30 +28,9 @@
 
 	$premiereEntree=($pageActuelle-1)*$actuParPage; // On calcule la première entrée à lire
 
-	if (isset($_POST["keyword"])) { //Si l'utilisateur effectu un tri par mot clé
-		if ($_POST["keyword"] != "") { // Si le mot clé n'est pas vide
 
-			if(isset($_POST["id_domain"])){ // Si l'utilisateur effectu un tri
-				$offers = $offer->getOffersFilterRegex($_POST["date"], $_POST["id_domain"], $_POST["keyword"], $premiereEntree);
-			}else {
-				$offers = $offer->getOffersLimitRegex($_POST["keyword"], $premiereEntree);
-			}
-
-		}else{
-			if(isset($_POST["id_domain"])){ // Si l'utilisateur effectu un tri
-				$offers = $offer->getOffersFilter($_POST["date"], $_POST["id_domain"], $premiereEntree);
-			}else {
-				$offers = $offer->getOffersLimit($premiereEntree);
-			}
-		}
-
-	}else{
-		if(isset($_POST["id_domain"])){ // Si l'utilisateur effectu un tri
-			$offers = $offer->getOffersFilter($_POST["date"], $_POST["id_domain"], $premiereEntree);
-		}else {
-			$offers = $offer->getOffersLimit($premiereEntree);
-		}
-	}
+  	// pour les filres
+  	$offers = $offer->getOffersFilterLimit($keyword, $id_domain, $date, $premiereEntree);
 ?>
 
 <span class="stat">

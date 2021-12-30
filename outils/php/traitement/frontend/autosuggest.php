@@ -5,13 +5,14 @@
   require_once _APP_PATH.'outils/php/import_class.php';
 
   $offer = new Offer($current_offer);
-
+  $subdomain = new Subdomain($current_subdomain);
 
   $offers = $offer->getOffers();
   $response = "";
 
   foreach ($offers as $offer) {
-    $response .= $offer->getProfession().",";
+    $subdomain = $subdomain->getSubdomain($offer->getId_subdomain());
+    $response .= $subdomain->getName().",";
   }
 
   echo $response;
