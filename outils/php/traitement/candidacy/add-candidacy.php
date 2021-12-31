@@ -17,7 +17,7 @@ if($_POST['request_type']=="have_cv"){
 	$current_candidacy=[
 		'id'=>0,
 		'id_offer'=>$offer->getId(),
-		'id_domain'=>$offer->getId_domain(),
+		'id_subdomain'=>$offer->getId_subdomain(),
 		'id_city'=>$_POST['city'],
 		'name'=>$_POST['name'],
 		'first_name'=>$_POST['first_name'],

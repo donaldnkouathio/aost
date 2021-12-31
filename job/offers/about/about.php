@@ -25,8 +25,8 @@
         <span>Ville</span>
         <p>
           <?php
-            $city = $city->getCity($offer->getId_city());
-            echo $city->getName();
+          $city = $city->getCity($offer->getId_city());
+          echo $city->getName();
           ?>
         </p>
       </div>
@@ -79,7 +79,7 @@
 <div class="offset-10-laptop">
   <div class="posting-block">
     <?php
-    $Posting = new Posting("job/promp-application/traitement.php", "Postuler à cet offre", "Postuler", $offer->getId());
+    $Posting = new Posting("outils/php/traitement/candidacy/add-candidacy.php", "Postuler à cet offre", "Postuler", $offer->getId());
     echo $Posting->getPostingSection();
     ?>
   </div>
