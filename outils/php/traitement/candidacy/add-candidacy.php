@@ -17,16 +17,16 @@ if($_POST['request_type']=="have_cv"){
 	$current_candidacy=[
 		'id'=>0,
 		'id_offer'=>$offer->getId(),
-		'id_domain'=>$offer->getId_domain(),
+		'id_subdomain'=>$offer->getId_subdomain(),
 		'id_city'=>$_POST['city'],
 		'name'=>$_POST['name'],
 		'first_name'=>$_POST['first_name'],
 		'phone'=>$_POST['phone'],
 		'email'=>$_POST['email'],
-		'domains'=>$_POST['domains'],
+		'domains'=>$_POST['domain'],
 		'about'=>$_POST['about'],
-		'cv_file'=>$_POST['name'],
-		'motivation_file'=>$_POST['name'],
+		'cv_file'=>"",
+		'motivation_file'=>"",
 		'deleted'=>0,
 		'added_at'=>date("Y-m-d H:i:s")
 	];
@@ -45,6 +45,7 @@ if($_POST['request_type']=="have_cv"){
 		$error=$_FILES['cv_file']['error'];
 		$tab_ext=array('PDF','pdf');
 
+		$alert->setCv_file("Candidature_Cv_".$_POST['name'].".".$ext);
 
 		if(in_array($ext, $tab_ext)){
 			if($size<10*1024*1024){
@@ -52,9 +53,9 @@ if($_POST['request_type']=="have_cv"){
 				if($candidacy->addCandidacy($candidacy)){
 					$last_candidacy=$candidacy->getLastCandidacy();
 
-					$candidacy_folder=_APP_PATH."files/candidacys/".$last_candidacy->getId();
+					$candidacy_folder=_APP_PATH."files/candidacy/".$last_candidacy->getId();
 
-					$file_renamed=$last_candidacy->getId().".".$ext;
+					$file_renamed="Candidature_Cv_".$_POST['name'].".".$ext;
 
 					mkdir($candidacy_folder);
 

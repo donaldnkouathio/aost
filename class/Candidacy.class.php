@@ -9,7 +9,7 @@ class Candidacy
     /*PROPRIETES*/
     private $_id;
     private $_id_offer;
-    private $_id_domain;
+    private $_id_subdomain;
     private $_id_city;
     private $_name;
     private $_first_name;
@@ -55,12 +55,12 @@ class Candidacy
     }
 
     
-    public function setId_domain($id_domain){
-        $this->_id_domain=intval($id_domain);
+    public function setId_subdomain($id_subdomain){
+        $this->_id_subdomain=intval($id_subdomain);
     }
     
-    public function getId_domain(){
-        return $this->_id_domain;
+    public function getId_subdomain(){
+        return $this->_id_subdomain;
     }
 
     
@@ -186,7 +186,7 @@ class Candidacy
 
         $id=0;
         $id_offer=$candidacy->getId_offer();
-        $id_domain=$candidacy->getId_domain();
+        $id_subdomain=$candidacy->getId_subdomain();
         $id_city=$candidacy->getId_city();
         $name=$candidacy->getName();
         $first_name=$candidacy->getFirst_name();
@@ -201,7 +201,7 @@ class Candidacy
 
         $query->bindParam(1,$id);
         $query->bindParam(2,$id_offer);
-        $query->bindParam(3,$id_domain);
+        $query->bindParam(3,$id_subdomain);
         $query->bindParam(4,$id_city);
         $query->bindParam(5,$name);
         $query->bindParam(6,$first_name);
@@ -310,7 +310,7 @@ public function editCandidacy(Candidacy $candidacy) {
     
     $query=$db->prepare("UPDATE candidacy
         SET id_offer=?,
-        id_domain=?,
+        id_subdomain=?,
         id_city=?,
         name=?,
         first_name=?,
@@ -327,7 +327,7 @@ public function editCandidacy(Candidacy $candidacy) {
 
     $id=$candidacy->getId();
     $id_offer=$candidacy->getId_offer();
-    $id_domain=$candidacy->getId_domain();
+    $id_subdomain=$candidacy->getId_subdomain();
     $id_city=$candidacy->getId_city();
     $name=$candidacy->getName();
     $first_name=$candidacy->getFirst_name();
@@ -340,7 +340,7 @@ public function editCandidacy(Candidacy $candidacy) {
     $deleted=$candidacy->getDeleted();
 
     $query->bindParam(1,$id_offer);
-    $query->bindParam(2,$id_domain);
+    $query->bindParam(2,$id_subdomain);
     $query->bindParam(3,$id_city);
     $query->bindParam(4,$name);
     $query->bindParam(5,$first_name);
