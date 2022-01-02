@@ -1,6 +1,5 @@
 <?php
 
-/* INCOMPLET (Manque pour partie creer mon CV)*/
 
 session_start();
 require_once '../../init.php';
@@ -8,32 +7,34 @@ require_once _APP_PATH.'outils/php/functions.php';
 require_once _APP_PATH.'outils/php/Session.class.php';
 require_once _APP_PATH.'outils/php/import_class.php';
 
+header("Content-Type: text/html;charset=utf-8");
 
 $data=0;
 
+$offer=new Offer($current_offer);
+$offer=$offer->getOffer($_POST['id_offer']);
+
+$current_candidacy=[
+	'id'=>0,
+	'id_offer'=>$offer->getId(),
+	'id_subdomain'=>$offer->getId_subdomain(),
+	'city'=>$_POST['city'],
+	'name'=>$_POST['name'],
+	'first_name'=>$_POST['first_name'],
+	'phone'=>$_POST['phone'],
+	'email'=>$_POST['email'],
+	'domains'=>substr($_POST['domain'], 0,strlen($_POST['domain'])-1),
+	'about'=>$_POST['about'],
+	'cv_file'=>"",
+	'motivation_file'=>"",
+	'deleted'=>0,
+	'added_at'=>date("Y-m-d H:i:s")
+];
+
+
+$candidacy=new Candidacy($current_candidacy);
+
 if($_POST['request_type']=="have_cv"){
-	$offer=new Offer($current_offer);
-	$offer=$offer->getOffer($_POST['id_offer']);
-
-	$current_candidacy=[
-		'id'=>0,
-		'id_offer'=>$offer->getId(),
-		'id_subdomain'=>$offer->getId_subdomain(),
-		'id_city'=>$_POST['city'],
-		'name'=>$_POST['name'],
-		'first_name'=>$_POST['first_name'],
-		'phone'=>$_POST['phone'],
-		'email'=>$_POST['email'],
-		'domains'=>$_POST['domain'],
-		'about'=>$_POST['about'],
-		'cv_file'=>"",
-		'motivation_file'=>"",
-		'deleted'=>0,
-		'added_at'=>date("Y-m-d H:i:s")
-	];
-
-
-	$candidacy=new Candidacy($current_candidacy);
 
 	if(isset($_FILES['cv_file'])){
 		$filename=basename($_FILES['cv_file']['name']);
@@ -47,7 +48,7 @@ if($_POST['request_type']=="have_cv"){
 		if(in_array($ext, $tab_ext)){
 			if($size<10*1024*1024){
 				$data=1;
-				$candidacy->setCv_file("Candidature_Cv_".$_POST['name'].".".$ext);
+				$candidacy->setCv_file("Candidature_Cv_".$candidacy->getName().".".$ext);
 			}else{
 				$data="Fichier du CV trop lourd ! Veuillez choisir un fichier de moins de 10 Mo";
 			}
@@ -72,7 +73,7 @@ if($_POST['request_type']=="have_cv"){
 			if(in_array($ext, $tab_ext)){
 				if($size<10*1024*1024){
 					$data=1;
-					$candidacy->setMotivation_file("Candidature_Motivation_".$_POST['name'].".".$ext);
+					$candidacy->setMotivation_file("Candidature_Motivation_".$candidacy->getName().".".$ext);
 				}else{
 					$data="Fichier de motivation trop lourd ! Veuillez choisir un fichier de moins de 10 Mo";
 				}
@@ -92,8 +93,8 @@ if($_POST['request_type']=="have_cv"){
 
 			$candidacy_folder=_APP_PATH."files/candidacy/".$last_candidacy->getId();
 
-			$cv_renamed="Candidature_Cv_".$_POST['name'].".".$ext;
-			$motivation_renamed="Candidature_Motivation_".$_POST['name'].".".$ext;
+			$cv_renamed="Candidature_Cv_".$candidacy->getName().".".$ext;
+			$motivation_renamed="Candidature_Motivation_".$candidacy->getName().".".$ext;
 
 			mkdir($candidacy_folder);
 
@@ -121,6 +122,59 @@ if($_POST['request_type']=="have_cv"){
 			$data="Erreur lors d'execution, Veuillez réessayer !";
 		}
 	}
+
+
+
+
+}else if($_POST['request_type']=="make_cv"){
+	
+	require('../../fpdf/fpdf.php');
+
+	/* CREATION/GENERATION DU CV */
+
+	$candidacy->setCv_file("Candidature_Cv_".$candidacy->getName().".pdf");
+	$cv_renamed="Candidature_Cv_".$candidacy->getName().".pdf";
+
+	$pdf = new FPDF();
+
+	$pdf->AddPage();
+
+	//set font to arial, bold, 14pt
+	$pdf->SetFont('Arial',false,14);
+
+	//Cell(width , height , text , border , end line , [align] )
+
+	$pdf->Cell(190,10,'CURRICULUM VITAE',0,1,'C');
+	$pdf->Cell(190,20,'PRESENTATION',0,1,'C');
+	$pdf->Cell(190,10,'Nom: '.$candidacy->getName(),0,1,'L');
+	$pdf->Cell(190,10,utf8_decode('Prénom: ').utf8_decode($candidacy->getFirst_name()),0,1,'L');
+	$pdf->Cell(190,10,utf8_decode('Téléphone: ').$candidacy->getPhone(),0,1,'L');
+	$pdf->Cell(190,10,'Ville: '.utf8_decode($candidacy->getCity()),0,1,'L');
+	$pdf->Cell(190,10,'Email: '.$candidacy->getEmail(),0,1,'L');
+	$pdf->Cell(190,10,'Domaine: '.utf8_decode($candidacy->getDomains()),0,1,'L');
+	$pdf->Cell(190,20,'',0,1,'L');
+	$pdf->Write(5,utf8_decode($candidacy->getAbout()));
+
+	if($candidacy->addCandidacy($candidacy)){
+
+		$last_candidacy=$candidacy->getLastCandidacy();
+
+		$candidacy_folder=_APP_PATH."files/candidacy/".$last_candidacy->getId();
+
+		mkdir($candidacy_folder);
+
+		if($pdf->Output($candidacy_folder."/".$cv_renamed,'F')){
+			$data=true;
+		}else{
+			$data="Erreur lors de la création de votre CV... Veuillez réessayer !";
+		}	
+	}else{
+		$data="Erreur lors d'execution, Veuillez réessayer !";
+	}
+
+
+}else{
+	echo "Valeur de retour inconnue !";
 }
 
 

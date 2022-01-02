@@ -996,36 +996,39 @@ function Output($dest='', $name='', $isUTF8=false)
 	{
 		case 'I':
 			// Send to standard output
-			$this->_checkoutput();
-			if(PHP_SAPI!='cli')
-			{
+		$this->_checkoutput();
+		if(PHP_SAPI!='cli')
+		{
 				// We send to a browser
-				header('Content-Type: application/pdf');
-				header('Content-Disposition: inline; '.$this->_httpencode('filename',$name,$isUTF8));
-				header('Cache-Control: private, max-age=0, must-revalidate');
-				header('Pragma: public');
-			}
-			echo $this->buffer;
-			break;
-		case 'D':
-			// Download file
-			$this->_checkoutput();
-			header('Content-Type: application/x-download');
-			header('Content-Disposition: attachment; '.$this->_httpencode('filename',$name,$isUTF8));
+			header('Content-Type: application/pdf');
+			header('Content-Disposition: inline; '.$this->_httpencode('filename',$name,$isUTF8));
 			header('Cache-Control: private, max-age=0, must-revalidate');
 			header('Pragma: public');
-			echo $this->buffer;
-			break;
+		}
+		echo $this->buffer;
+		break;
+		case 'D':
+			// Download file
+		$this->_checkoutput();
+		header('Content-Type: application/x-download');
+		header('Content-Disposition: attachment; '.$this->_httpencode('filename',$name,$isUTF8));
+		header('Cache-Control: private, max-age=0, must-revalidate');
+		header('Pragma: public');
+		echo $this->buffer;
+		break;
 		case 'F':
 			// Save to local file
-			if(!file_put_contents($name,$this->buffer))
-				$this->Error('Unable to create output file: '.$name);
-			break;
+		if(!file_put_contents($name,$this->buffer)){
+			$this->Error('Unable to create output file: '.$name);
+		}else{
+			return true;
+		}
+		break;
 		case 'S':
 			// Return as a string
-			return $this->buffer;
+		return $this->buffer;
 		default:
-			$this->Error('Incorrect output destination: '.$dest);
+		$this->Error('Incorrect output destination: '.$dest);
 	}
 	return '';
 }
