@@ -91,7 +91,7 @@ class Posting{
         </div>
         <div class="input-block job-block-cv">
           <label for="job-category-cv">Catégorie d'emploi<span class="form-required"> </span> :</label>
-          <input type="text" class="job-category" id="job-category-cv" name="domain" readonly>
+          <input type="text" class="job-category" id="job-category-cv" name="domain" readonly required>
         </div>
         <div class="input-block">
           <label for="city">Ville :</label>
