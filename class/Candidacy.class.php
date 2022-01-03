@@ -9,8 +9,8 @@ class Candidacy
     /*PROPRIETES*/
     private $_id;
     private $_id_offer;
-    private $_id_domain;
-    private $_id_city;
+    private $_id_subdomain;
+    private $_city;
     private $_name;
     private $_first_name;
     private $_phone;
@@ -55,21 +55,21 @@ class Candidacy
     }
 
     
-    public function setId_domain($id_domain){
-        $this->_id_domain=intval($id_domain);
+    public function setId_subdomain($id_subdomain){
+        $this->_id_subdomain=intval($id_subdomain);
     }
     
-    public function getId_domain(){
-        return $this->_id_domain;
+    public function getId_subdomain(){
+        return $this->_id_subdomain;
     }
 
     
-    public function setId_city($id_city){
-        $this->_id_city=intval($id_city);
+    public function setCity($city){
+        $this->_city=htmlentities(strval($city));
     }
     
-    public function getId_city(){
-        return $this->_id_city;
+    public function getCity(){
+        return $this->_city;
     }
 
     
@@ -186,8 +186,8 @@ class Candidacy
 
         $id=0;
         $id_offer=$candidacy->getId_offer();
-        $id_domain=$candidacy->getId_domain();
-        $id_city=$candidacy->getId_city();
+        $id_subdomain=$candidacy->getId_subdomain();
+        $city=$candidacy->getCity();
         $name=$candidacy->getName();
         $first_name=$candidacy->getFirst_name();
         $phone=$candidacy->getPhone();
@@ -201,8 +201,8 @@ class Candidacy
 
         $query->bindParam(1,$id);
         $query->bindParam(2,$id_offer);
-        $query->bindParam(3,$id_domain);
-        $query->bindParam(4,$id_city);
+        $query->bindParam(3,$id_subdomain);
+        $query->bindParam(4,$city);
         $query->bindParam(5,$name);
         $query->bindParam(6,$first_name);
         $query->bindParam(7,$phone);
@@ -310,8 +310,8 @@ public function editCandidacy(Candidacy $candidacy) {
     
     $query=$db->prepare("UPDATE candidacy
         SET id_offer=?,
-        id_domain=?,
-        id_city=?,
+        id_subdomain=?,
+        city=?,
         name=?,
         first_name=?,
         phone=?,
@@ -327,8 +327,8 @@ public function editCandidacy(Candidacy $candidacy) {
 
     $id=$candidacy->getId();
     $id_offer=$candidacy->getId_offer();
-    $id_domain=$candidacy->getId_domain();
-    $id_city=$candidacy->getId_city();
+    $id_subdomain=$candidacy->getId_subdomain();
+    $city=$candidacy->getCity();
     $name=$candidacy->getName();
     $first_name=$candidacy->getFirst_name();
     $phone=$candidacy->getPhone();
@@ -340,8 +340,8 @@ public function editCandidacy(Candidacy $candidacy) {
     $deleted=$candidacy->getDeleted();
 
     $query->bindParam(1,$id_offer);
-    $query->bindParam(2,$id_domain);
-    $query->bindParam(3,$id_city);
+    $query->bindParam(2,$id_subdomain);
+    $query->bindParam(3,$city);
     $query->bindParam(4,$name);
     $query->bindParam(5,$first_name);
     $query->bindParam(6,$phone);
