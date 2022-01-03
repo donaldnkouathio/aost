@@ -58,10 +58,10 @@ if($_POST['request_type']=="have_cv"){
 					echo "saved";
 
 				}else{
-					$data="Erreur lors de l'upload de l'cv_file... Veuillez réessayer !";
+					$data="Erreur lors de l'upload du cv_file... Veuillez réessayer !";
 				}
 			}else{
-				$data="Erreur lors d'execution, Veuillez réessayer !";
+				$data="Erreur d'execution, Veuillez réessayer !";
 			}
 
 		}else{

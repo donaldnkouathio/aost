@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 29 déc. 2021 à 18:54
+-- Généré le :  Dim 02 jan. 2022 à 23:53
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -78,8 +78,8 @@ DROP TABLE IF EXISTS `candidacy`;
 CREATE TABLE IF NOT EXISTS `candidacy` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_offer` bigint(20) NOT NULL,
-  `id_domain` bigint(11) NOT NULL,
-  `id_city` bigint(20) DEFAULT NULL COMMENT 'Ville du postulant',
+  `id_subdomain` bigint(20) NOT NULL,
+  `city` varchar(100) DEFAULT NULL COMMENT 'Ville du postulant',
   `name` varchar(100) NOT NULL,
   `first_name` varchar(100) DEFAULT NULL,
   `phone` varchar(50) DEFAULT NULL,
@@ -92,8 +92,7 @@ CREATE TABLE IF NOT EXISTS `candidacy` (
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_job` (`id_offer`),
-  KEY `fk_domain` (`id_domain`),
-  KEY `fk_city` (`id_city`)
+  KEY `fk_subdomain` (`id_subdomain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table contenant les candidatures des clients';
 
 -- --------------------------------------------------------
@@ -115,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `city` (
 --
 
 INSERT INTO `city` (`id`, `name`, `added_at`) VALUES
-(1, 'Québec', '2021-12-29 04:08:01'),
+(1, 'Quebec', '2021-12-29 04:08:01'),
 (2, 'Montreal', '2021-12-29 04:11:18');
 
 -- --------------------------------------------------------
