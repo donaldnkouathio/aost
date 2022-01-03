@@ -72,9 +72,7 @@ if(!empty($_FILES)){
 }
 
 
-header("Location:../../../../dashboard/index.php?data=".$data);
-
-
+echo $data;
 
 
 

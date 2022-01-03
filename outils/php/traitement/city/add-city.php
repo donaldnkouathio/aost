@@ -17,11 +17,7 @@ $current_city=[
 
 $city=new City($current_city);
 
-if($city->addCity($city)){
-	//header("Location:../../../../contact-us/index.php?data=sended");
-}else{
-	//header("Location:../../../../contact-us/index.php?data=failed");
-}
+echo $city->addCity($city);
 
 
 

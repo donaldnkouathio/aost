@@ -34,11 +34,7 @@ $current_offer=[
 
 $offer=new Offer($current_offer);
 
-if($offer->addOffer($offer)){
-	echo true;
-}else{
-	echo false;
-}
+echo $offer->addOffer($offer);
 
 
 

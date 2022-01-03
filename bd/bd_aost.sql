@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 02 jan. 2022 à 23:53
+-- Généré le :  lun. 03 jan. 2022 à 00:40
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -56,16 +56,17 @@ INSERT INTO `admins` (`id`, `email`, `password`, `role`, `name`, `added_at`) VAL
 DROP TABLE IF EXISTS `alerts`;
 CREATE TABLE IF NOT EXISTS `alerts` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_city` bigint(20) NOT NULL,
   `email` varchar(255) NOT NULL,
   `domain` longtext NOT NULL,
   `name` varchar(100) NOT NULL,
   `first_name` varchar(100) DEFAULT NULL,
   `phone` varchar(100) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
   `about` longtext,
   `cv_file` varchar(255) NOT NULL,
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_city` (`id_city`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

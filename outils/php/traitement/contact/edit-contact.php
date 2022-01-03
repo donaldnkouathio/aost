@@ -17,11 +17,7 @@ $contact->setEmail($_POST['email']);
 $contact->setName($_POST['name']);
 $contact->setPhone($_POST['phone']);
 
-if($contact->editContact($contact)){
-	//header("Location:../../../../contact-us/index.php?data=sended");
-}else{
-	//header("Location:../../../../contact-us/index.php?data=failed");
-}
+echo $contact->editContact($contact);
 
 
 

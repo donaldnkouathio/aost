@@ -25,11 +25,7 @@ $current_request=[
 
 $request=new Request($current_request);
 
-if($request->addRequest($request)){
-	header("Location:../../../../contact-us/index.php?data=sended");
-}else{
-	header("Location:../../../../contact-us/index.php?data=failed");
-}
+echo $request->addRequest($request);
 
 
 
