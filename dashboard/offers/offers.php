@@ -53,7 +53,8 @@
   ?>
 </span>
 
-<div class="item_container">
+<!--
+<div class="">
   <table>
     <tr>
       <th>No</th>
@@ -93,6 +94,43 @@
   ?>
   </table>
 </div>
+-->
+
+<?php // New style for offers show ?>
+<div class="suggest_container">
+	<?php
+		$i = 0;
+		foreach ($offers as $offer) {
+			$city = $city->getCity($offer->getId_city());
+      $subdomain = $subdomain->getSubdomain($offer->getId_subdomain());
+	?>
+		<div class="suggest_block">
+			<div class="suggest_row">
+				<span class="suggest_col">Offre No <?php echo $offer->getId(); ?></span>
+			</div>
+			<div class="suggest_row">
+				<span class="suggest_title"> <?php echo ucfirst($subdomain->getName()); ?></span>
+			</div>
+			<div class="suggest_row">
+				<span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">domain</i><?php echo ucfirst($offer->getCompagny()); ?></span>
+				<span class="suggest_col float-right"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">location_on</i><?php echo ucfirst($city->getName()); ?></span>
+			</div>
+			<div class="suggest_row">
+				<span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
+				<div class="suggest_col float-right">
+					<span class="btnEdit" id="btnEdit<?php echo $i; ?>" title="Modifier">
+						<i class="material-icons vertical-align-bottom">mode_edit</i>
+					</span>
+					<span class="btnDelete" id="btnDelete<?php echo $i; ?>" title="Supprimer">
+						<i class="material-icons vertical-align-bottom">close</i>
+					</span>
+				</div>
+			</div>
+		</div>
+	<?php
+    $i++; } ?>
+</div>
+
 
 <?php if($nombreDePages > 1){ ?>
 <div class="breadcrumb-block">
