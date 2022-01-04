@@ -5,6 +5,48 @@
   background-color: var(--color-shadow);
 }
 
+.suggest_container{
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 15px;
+}
+.suggest_block{
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: white;
+  border-left: 3px solid var(--color-secondary);
+  border-radius: 0 var(--border-radius-size) var(--border-radius-size) 0;
+}
+.suggest_block:hover{
+  box-shadow: 0px 0px 6px var(--color-text);
+}
+.suggest_block i{
+  font-size: 1.1em;
+  margin-bottom: 0.2em;
+}
+.margin-right-5{
+  margin-right: 5px;
+}
+.background-primary{
+  color: var(--color-primary);
+}
+.suggest_row{
+  padding: 5px;
+}
+.suggest_col{
+  display: inline-block;
+}
+.suggest_title{
+  max-width: 100%;
+  max-height: 1.4em;
+  overflow: hidden;
+  display: inline-block;
+  font-weight: bold;
+}
+
 .item_container{
 }
 
@@ -54,12 +96,8 @@ tr:hover, tr:nth-child(even):hover{
   border-radius: var(--border-radius-size);
   border: 1px solid green;
   cursor: pointer;
-  margin-right: 15px;
+  margin-left: 15px;
   background-color: white;
-
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
 }
 .btnAdd:hover{
   color: white;
@@ -139,9 +177,7 @@ tr:hover, tr:nth-child(even):hover{
   box-sizing: border-box;
 }
 .item_modal_input{
-  width: 48%;
   padding: 0 15px 15px 0px;
-  margin-top: 15px;
   box-sizing: border-box;
   display: inline-block;
 }
@@ -257,6 +293,15 @@ tr:hover, tr:nth-child(even):hover{
     height: 100% !important;
     width: 100% !important;
   }
+
+  .suggest_block{
+    width: 100%;
+  }
+
+
+  .item_modal_input{
+    width: 100%;
+  }
 }
 
 /* Tablette */
@@ -284,6 +329,24 @@ tr:hover, tr:nth-child(even):hover{
     left: 20%;
     height: 40%;
     width: 60%;
+  }
+}
+
+/* Tablette et laptop */
+@media (min-width: 576px) {
+  .suggest_block{
+    width: 49%;
+  }
+  .suggest_block:nth-child(2n+2){
+    float: right;
+    border-left: none;
+    border-right: 3px solid var(--color-secondary);
+    border-radius: var(--border-radius-size) 0 0 var(--border-radius-size);
+  }
+
+
+  .item_modal_input{
+    width: 48%;
   }
 }
 
