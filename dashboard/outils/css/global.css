@@ -54,12 +54,8 @@ tr:hover, tr:nth-child(even):hover{
   border-radius: var(--border-radius-size);
   border: 1px solid green;
   cursor: pointer;
-  margin-right: 15px;
+  margin-left: 15px;
   background-color: white;
-
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
 }
 .btnAdd:hover{
   color: white;
