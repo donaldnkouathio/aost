@@ -3,7 +3,7 @@
 <?php // Button for add modal ?>
 <span class="btnAdd" id="btnAdd">
   <i class="material-icons" style="font-size : 1em;">add</i>
-  <span class="">Ajouter</span>
+  <span class="">Ajouter une offre d'emploi</span>
 </span>
 
 <?php
@@ -401,7 +401,7 @@ $i++;
 	          btn.html("chargement...");
 	        },
 	        success : function(ret){
-						alert(ret);
+						window.location.reload();
 					}
 				});
       });
@@ -420,7 +420,7 @@ $i++;
 						btn.html("chargement...");
 					},
 					success : function(ret){
-						alert(ret);
+						window.location.reload();
 					}
 				});
 			});

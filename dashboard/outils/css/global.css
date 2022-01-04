@@ -337,7 +337,7 @@ tr:hover, tr:nth-child(even):hover{
   .suggest_block{
     width: 49%;
   }
-  .suggest_block:nth-child(2n+1){
+  .suggest_block:nth-child(2n+2){
     float: right;
     border-left: none;
     border-right: 3px solid var(--color-secondary);
