@@ -20,3 +20,5 @@
     <script type="text/javascript" src="<?php echo _DASHBOARD_PATH; ?>nav/nav.js"></script>
     <script type="text/javascript" src="<?php echo _ROOT_PATH; ?>outils/frameworks/trumbowyg/trumbowyg.js"></script>
     <script type="text/javascript" src="<?php echo _ROOT_PATH; ?>outils/frameworks/trumbowyg/langs/fr.js"></script>
+    <script type="text/javascript" src="<?php echo _ROOT_PATH; ?>outils/js/global.js"></script>
+    <script type="text/javascript" src="<?php echo _DASHBOARD_PATH; ?>outils/js/global.js"></script>
