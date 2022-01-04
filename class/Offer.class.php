@@ -48,7 +48,7 @@ class Offer
 
 
     public function setCompagny($compagny){
-        $this->_compagny=htmlentities(strval($compagny));
+        $this->_compagny=strval($compagny);
     }
 
     public function getCompagny(){
@@ -83,7 +83,7 @@ class Offer
     }
 
     public function setDescription($description){
-        $this->_description=htmlentities(strval($description));
+        $this->_description=strval($description);
     }
 
     public function getDescription(){
@@ -92,7 +92,7 @@ class Offer
 
 
     public function setMissions($missions){
-        $this->_missions=htmlentities(strval($missions));
+        $this->_missions=strval($missions);
     }
 
     public function getMissions(){
@@ -101,7 +101,7 @@ class Offer
 
 
     public function setSkill($skill){
-        $this->_skill=htmlentities(strval($skill));
+        $this->_skill=strval($skill);
     }
 
     public function getSkill(){
@@ -110,7 +110,7 @@ class Offer
 
 
     public function setCandidate_profile($candidate_profile){
-        $this->_candidate_profile=htmlentities(strval($candidate_profile));
+        $this->_candidate_profile=strval($candidate_profile);
     }
 
     public function getCandidate_profile(){
@@ -155,7 +155,7 @@ class Offer
 
 
     public function setDeadline($deadline){
-        $this->_deadline=htmlentities(strval($deadline));
+        $this->_deadline=strval($deadline);
     }
 
     public function getDeadline(){
@@ -164,7 +164,7 @@ class Offer
 
 
     public function setAdded_at($added_at){
-        $this->_added_at=htmlentities(strval($added_at));
+        $this->_added_at=strval($added_at);
     }
 
     public function getAdded_at(){
@@ -225,7 +225,7 @@ class Offer
         if($query->execute()){
           return true;
       }else{
-          return false;
+          return "false";
       }
   }
 
@@ -344,22 +344,22 @@ public function getOffersFilterLimit($keyword, $id_domain, $date, $start){
 
   if($domainTxt == "" && $regex == ""){
     $where_1 = " 1 ";
-  }else {
+}else {
     $where_1 = "";
+}
+
+$query= $db->prepare("SELECT * FROM subdomains INNER JOIN offers ON offers.id_subdomain = subdomains.id WHERE $regex $domainTxt $where_1 $dateDirection $limit");
+
+$offers=[];
+
+if($query->execute()){
+  while($data=$query->fetch()){
+      $offers[]=new Offer($data);
   }
-
-  $query= $db->prepare("SELECT * FROM subdomains INNER JOIN offers ON offers.id_subdomain = subdomains.id WHERE $regex $domainTxt $where_1 $dateDirection $limit");
-
-  $offers=[];
-
-  if($query->execute()){
-      while($data=$query->fetch()){
-          $offers[]=new Offer($data);
-      }
-      return $offers;
-  }else{
-      return false;
-  }
+  return $offers;
+}else{
+  return false;
+}
 }
 /* *** */
 
@@ -370,7 +370,6 @@ public function editOffer(Offer $offer) {
     $query=$db->prepare("UPDATE offers
         SET id_subdomain=?,
         id_city=?,
-        image=?,
         description=?,
         missions=?,
         skill=?,

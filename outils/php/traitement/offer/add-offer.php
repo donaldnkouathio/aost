@@ -7,7 +7,7 @@ require_once _APP_PATH.'outils/php/functions.php';
 require_once _APP_PATH.'outils/php/Session.class.php';
 require_once _APP_PATH.'outils/php/import_class.php';
 
-$deadline=date('Y-m-d H:i:s', strtotime('+ 2 MONTH'))
+$deadline=date('Y-m-d H:i:s', strtotime('+ 2 MONTH'));
 
 if(isset($_POST['deadline']) && !empty($_POST['deadline'])){
 	$deadline=$_POST['deadline']." ".date('H:i:s');
@@ -16,7 +16,7 @@ if(isset($_POST['deadline']) && !empty($_POST['deadline'])){
 
 $current_offer=[
 	'id'=>0,
-	'id_admin'=>$_SESSION['id'],
+	'id_admin'=>1,
 	'id_subdomain'=>$_POST['id_subdomain'],
 	'id_city'=>$_POST['city'],
 	'compagny'=>$_POST['compagny'],
@@ -34,7 +34,10 @@ $current_offer=[
 
 $offer=new Offer($current_offer);
 
-echo $offer->addOffer($offer);
+if($offer->addOffer($offer)){
+
+	
+}
 
 
 
