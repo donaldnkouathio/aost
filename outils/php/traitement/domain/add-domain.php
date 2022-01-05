@@ -22,11 +22,7 @@ $current_domain=[
 
 $domain=new Domain($current_domain);
 
-if($domain->addDomain($domain)){
-	//header("Location:../../../../domain-us/index.php?data=sended");
-}else{
-	//header("Location:../../../../domain-us/index.php?data=failed");
-}
+echo $domain->addDomain($domain);
 
 
 

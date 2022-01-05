@@ -20,11 +20,7 @@ $current_contact=[
 
 $contact=new Contact($current_contact);
 
-if($contact->addContact($contact)){
-	//header("Location:../../../../contact-us/index.php?data=sended");
-}else{
-	//header("Location:../../../../contact-us/index.php?data=failed");
-}
+ech $contact->addContact($contact);
 
 
 

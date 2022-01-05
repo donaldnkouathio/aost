@@ -17,11 +17,8 @@ $domain->setName($_POST['name']);
 $domain->setColor($_POST['color']);
 $domain->setImage($_POST['image']);
 
-if($domain->editDomain($domain)){
-	//header("Location:../../../../domain-us/index.php?data=sended");
-}else{
-	//header("Location:../../../../domain-us/index.php?data=failed");
-}
+
+echo $domain->editDomain($domain);
 
 
 
