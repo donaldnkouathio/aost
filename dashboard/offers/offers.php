@@ -192,7 +192,7 @@ $i++; } ?>
           </div>
           <div class="item_modal_input">
             <label for="deadline<?php echo $i; ?>">Expire le </label>
-            <input type="date" name="" value="<?php echo date('Y-m-d', strtotime($offer->getDeadline())); ?>"  id="deadline<?php echo $i; ?>">
+            <input type="date" name="" min="<?php echo date('Y-m-d', strtotime('+ 1 DAY'));?>" value="<?php echo date('Y-m-d', strtotime($offer->getDeadline())); ?>"  id="deadline<?php echo $i; ?>">
           </div>
           <div class="item_modal_input">
             <label for="compagny<?php echo $i; ?>">Entreprise </label>
