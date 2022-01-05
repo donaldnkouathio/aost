@@ -8,12 +8,12 @@ class Alert
 
  /*PROPRIETES*/
  private $_id;
+ private $_id_city;
  private $_email;
  private $_domain;
  private $_name;
  private $_first_name;
  private $_phone;
- private $_city;
  private $_about;
  private $_cv_file;
  private $_added_at;
@@ -87,12 +87,12 @@ public function getPhone(){
 }
 
 
-public function setCity($city){
- $this->_city=htmlentities(strval($city));
+public function setId_city($id_city){
+ $this->_id_city=intval($id_city);
 }
 
-public function getCity(){
-  return $this->_city;
+public function getId_city(){
+  return $this->_id_city;
 }
 
 
@@ -144,22 +144,22 @@ public function addAlert(Alert $alert){
 
   $id=0;
   $email=$alert->getEmail();
+  $id_city=$alert->getId_city();
   $domain=$alert->getDomain();
   $name=$alert->getName();
   $first_name=$alert->getFirst_name();
   $phone=$alert->getPhone();
-  $city=$alert->getCity();
   $about=$alert->getAbout();
   $cv_file=$alert->getCv_file();
   $added_at=$alert->getAdded_at();
 
   $query->bindParam(1,$id);
-  $query->bindParam(2,$email);
-  $query->bindParam(3,$domain);
-  $query->bindParam(4,$name);
-  $query->bindParam(5,$first_name);
-  $query->bindParam(6,$phone);
-  $query->bindParam(7,$city);
+  $query->bindParam(2,$id_city);
+  $query->bindParam(3,$email);
+  $query->bindParam(4,$domain);
+  $query->bindParam(5,$name);
+  $query->bindParam(6,$first_name);
+  $query->bindParam(7,$phone);
   $query->bindParam(8,$about);
   $query->bindParam(9,$cv_file);
   $query->bindParam(10,$added_at);

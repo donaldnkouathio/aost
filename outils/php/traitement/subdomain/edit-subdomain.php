@@ -17,11 +17,8 @@ $subdomain->setName($_POST['name']);
 $subdomain->setColor($_POST['color']);
 $subdomain->setImage($_POST['image']);
 
-if($subdomain->editSubdomain($subdomain)){
-	//header("Location:../../../../subdomain-us/index.php?data=sended");
-}else{
-	//header("Location:../../../../subdomain-us/index.php?data=failed");
-}
+
+echo $subdomain->editSubdomain($subdomain);
 
 
 

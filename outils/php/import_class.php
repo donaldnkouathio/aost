@@ -31,12 +31,12 @@ $current_user=[
 
 $current_alert=[
 	'id'=>0,
+	'id_city'=>"",
 	'email'=>"",
 	'domain'=>"",
 	'name'=>"",
 	'first_name'=>"",
 	'phone'=>"",
-	'city'=>"",
 	'about'=>"",
 	'cv_file'=>"",
 	'added_at'=>""

@@ -23,11 +23,7 @@ $current_subdomain=[
 
 $subdomain=new Subdomain($current_subdomain);
 
-if($subdomain->addSubdomain($subdomain)){
-	//header("Location:../../../../subdomain-us/index.php?data=sended");
-}else{
-	//header("Location:../../../../subdomain-us/index.php?data=failed");
-}
+echo $subdomain->addSubdomain($subdomain);
 
 
 
