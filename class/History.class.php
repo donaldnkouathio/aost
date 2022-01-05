@@ -113,7 +113,7 @@ class History
         $query->bindParam(2,$id_admin);
         $query->bindParam(3,$id_target);
         $query->bindParam(4,$action);
-        $query->bindParam(5,$action);
+        $query->bindParam(5,$description);
         $query->bindParam(6,$added_at);
 
 

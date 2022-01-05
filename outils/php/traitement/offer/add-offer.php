@@ -54,6 +54,7 @@ if($offer->addOffer($offer)){
 	];
 
 	$history=new History($current_history);
+	$history->addHistory($history);
 
 }
 
