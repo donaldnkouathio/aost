@@ -99,7 +99,7 @@ class Admin
 
     public function addAdmin(Admin $admin){
         include(_APP_PATH."bd/server-connect.php");
-        $query=$db->prepare("INSERT INTO admins VALUES (?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO admins VALUES (?,?,UNHEX(SHA1(?)),?,?,?)");
 
         $id=0;
         $email=$admin->getEmail();
