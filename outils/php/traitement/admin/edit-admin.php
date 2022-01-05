@@ -13,7 +13,6 @@ $admin=new Admin($current_admin);
 $admin=$admin->getAdmin($_SESSION['id']);
 
 $admin->setEmail($_POST['email']);
-$admin->setPassword($_POST['password']);
 $admin->setRole($_POST['role']);
 $admin->setName($_POST['name']);
 
