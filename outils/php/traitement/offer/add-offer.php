@@ -41,7 +41,7 @@ if($offer->addOffer($offer)){
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin(1);
 
-	$subdomain=new Subdomain();
+	$subdomain=new Subdomain($current_subdomain);
 	$subdomain=$subdomain->getSubdomain($offer->getId_subdomain());
 
 	$current_history=[

@@ -26,18 +26,16 @@ $offer->setDeadline($_POST['deadline']);
 
 
 if($offer->editOffer($offer)){
-	$last_offer=$offer->getLastOffer();
-
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin(1);
 
-	$subdomain=new Subdomain();
+	$subdomain=new Subdomain($current_subdomain);
 	$subdomain=$subdomain->getSubdomain($offer->getId_subdomain());
 
 	$current_history=[
 		'id'=>0,
 		'id_admin'=>1,
-		'id_target'=>$last_offer->getId(),
+		'id_target'=>$offer->getId(),
 		'action'=>"edit offer",
 		'description'=>$admin->getName()." a modifié une offre dans la catégorie ".$subdomain->getName(),
 		'added_at'=>date("Y-m-d H:i:s")
