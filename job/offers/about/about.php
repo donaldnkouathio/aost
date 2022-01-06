@@ -38,7 +38,7 @@
 
       <div class="infos_text_item">
         <span>Expire</span>
-        <p><?php echo get_elapsed_time($offer->getDeadline()); ?></p>
+        <p><?php echo get_expired_time($offer->getDeadline()); ?></p>
       </div>
     </div>
 

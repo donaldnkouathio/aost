@@ -48,7 +48,7 @@ class Admin
 
 
     public function setPassword($password){
-        $this->_password=htmlentities(strval($password));
+        $this->_password=strval($password);
 
     }
 
