@@ -10,7 +10,7 @@ require_once _APP_PATH.'outils/php/import_class.php';
 
 $admin=new Admin($current_admin);
 
-$admin=$admin->getAdmin($_SESSION['id']);
+$admin=$admin->getAdmin($_POST['id']);
 
 $admin->setPassword($_POST['password']);
 

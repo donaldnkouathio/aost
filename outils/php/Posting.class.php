@@ -16,11 +16,37 @@ class Posting{
   public function getPostingSection(){
     global $domain;
     global $subdomain;
+
+    $current_offer=[
+      'id'=>0,
+      'id_admin'=>0,
+      'id_subdomain'=>0,
+      'id_city'=>0,
+      'compagny'=>0,
+      'description'=>"",
+      'missions'=>"",
+      'skill'=>"",
+      'candidate_profile'=>"",
+      'cv'=>0,
+      'motivation'=>0,
+      'deleted'=>0,
+      'expired'=>0,
+      'deadline'=>"",
+      'added_at'=>""
+    ];
+    $offer = new Offer($current_offer);
+
+    if($this->id_offer != ""){
+      $offer = $offer -> getOffer($this->id_offer);
+    }else {
+      $offer->setCv(1);
+      $offer->setMotivation(1);
+    }
     ?>
     <link rel="stylesheet" href="<?php echo _ROOT_PATH."outils/css/posting.css" ?>"/>
 
     <h2 class=" margin-top-none"><?php echo $this->title; ?></h2>
-    <div class="cv_header"> 
+    <div class="cv_header">
       <div class="have_cv_btn cv_btn_active">J'ai un CV</div>
       <div class="make_cv_btn">Je veux créer mon CV</div>
     </div>
@@ -32,7 +58,7 @@ class Posting{
           <input type="text" name="name" required value="">
         </div>
         <div class="input-block">
-          <label for="last-name">Prénom<span class="form-required"> </span> :</label>
+          <label for="first_name">Prénom<span class="form-required"> </span> :</label>
           <input type="text" name="first_name" required value="">
         </div>
         <div class="input-block">
@@ -78,7 +104,7 @@ class Posting{
           <input type="text" name="name" required value="">
         </div>
         <div class="input-block">
-          <label for="last-name">Prénom :</label>
+          <label for="first_name">Prénom :</label>
           <input type="text" name="first_name" value="">
         </div>
         <div class="input-block">
@@ -101,10 +127,20 @@ class Posting{
           <label for="about">Lettre de présentation ou commentaires :</label>
           <textarea name="about" ></textarea>
         </div>
+
+        <?php if($offer->getCv() == 1){ ?>
         <div class="input-block text-area-block">
-          <label for="about">Joindre mon CV (au format PDF)<span class="form-required"> </span> :</label>
+          <label for="cv_file">Joindre mon CV (au format PDF)<span class="form-required"> </span> :</label>
           <input type="file" name="cv_file" required value="">
         </div>
+        <?php } ?>
+
+        <?php if($offer->getMotivation() == 1){ ?>
+        <div class="input-block text-area-block">
+          <label for="motivation_file">Joindre ma lettre de motivation (au format PDF)<span class="form-required"> </span> :</label>
+          <input type="file" name="motivation_file" required value="">
+        </div>
+        <?php } ?>
 
         <div class="checkbox-block">
           <input type="checkbox" id="EULA2" name="" value="" required>
