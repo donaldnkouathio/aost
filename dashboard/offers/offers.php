@@ -367,7 +367,7 @@ $i++; } ?>
     function putInBD(btn, path, id, id_subdomain, id_city, compagny, description, mission, skill, candidate_profile, cv, motivation, deleted, expired, deadline){
       btn.click(function(){
         var id_val = id,
-        id_subdomain_val = id_subdomain,
+        id_subdomain_val = id_subdomain.val(),
         id_city_val = id_city.val(),
         compagny_val = compagny.val(),
         description_val = description.trumbowyg('html'),
@@ -381,29 +381,33 @@ $i++; } ?>
         var cv_val = cv.prop('checked') == true ? 1 : 0,
         motivation_val = motivation.prop('checked') == true ? 1 : 0;
 
-        $.ajax({
-         url: _ROOT_PATH+path,
-         type: "POST",
-         data:	"id_subdomain="+id_subdomain_val
-         +"&id="+id_val
-         +"&city="+id_city_val
-         +"&compagny="+compagny_val
-         +"&description="+description_val
-         +"&missions="+mission_val
-         +"&skill="+skill_val
-         +"&candidate_profile="+candidate_profile_val
-         +"&cv="+cv_val
-         +"&motivation="+motivation_val
-         +"&deleted="+deleted_val
-         +"&expired="+expired_val
-         +"&deadline="+deadline_val,
-         beforeSend : function(){
-           btn.html("chargement...");
-         },
-         success : function(ret){
-          window.location.reload();
-        }
-      });
+				if(deadline_val != "" && compagny_val != "" && description_val != "" && mission_val != "" && skill_val != "" && candidate_profile_val != ""){
+	        $.ajax({
+	         url: _ROOT_PATH+path,
+	         type: "POST",
+	         data:	"id_subdomain="+id_subdomain_val
+	         +"&id="+id_val
+	         +"&city="+id_city_val
+	         +"&compagny="+compagny_val
+	         +"&description="+description_val
+	         +"&missions="+mission_val
+	         +"&skill="+skill_val
+	         +"&candidate_profile="+candidate_profile_val
+	         +"&cv="+cv_val
+	         +"&motivation="+motivation_val
+	         +"&deleted="+deleted_val
+	         +"&expired="+expired_val
+	         +"&deadline="+deadline_val,
+	         beforeSend : function(){
+	           btn.html("chargement...");
+	         },
+	         success : function(ret){
+	          window.location.reload();
+	        }
+	      });
+			}else {
+				alert("Les champs ne doivent pas être nuls");
+			}
       });
     }
 
@@ -442,7 +446,7 @@ $i++; } ?>
         setTrumbowyg($(".skill<?php echo $i; ?>"), `<?php echo htmlspecialchars_decode($offer->getSkill()); ?>`);
         setTrumbowyg($(".candidate_profile<?php echo $i; ?>"), `<?php echo htmlspecialchars_decode($offer->getCandidate_profile()); ?>`);
 
-        putInBD($("#btnEditConfirm<?php echo $i; ?>"), "outils/php/traitement/offer/edit-offer.php", $("#id<?php echo $i; ?>").val(), $("#id_subdomain<?php echo $i; ?>").val(), $("#id_city<?php echo $i; ?>"), $("#compagny<?php echo $i; ?>"), $(".description<?php echo $i; ?>"), $(".missions<?php echo $i; ?>"), $(".skill<?php echo $i; ?>"), $(".candidate_profile<?php echo $i; ?>"), $("#cv<?php echo $i; ?>"), $("#motivation<?php echo $i; ?>"), "", "", $("#deadline<?php echo $i; ?>"));
+        putInBD($("#btnEditConfirm<?php echo $i; ?>"), "outils/php/traitement/offer/edit-offer.php", $("#id<?php echo $i; ?>").val(), $("#id_subdomain<?php echo $i; ?>"), $("#id_city<?php echo $i; ?>"), $("#compagny<?php echo $i; ?>"), $(".description<?php echo $i; ?>"), $(".missions<?php echo $i; ?>"), $(".skill<?php echo $i; ?>"), $(".candidate_profile<?php echo $i; ?>"), $("#cv<?php echo $i; ?>"), $("#motivation<?php echo $i; ?>"), "", "", $("#deadline<?php echo $i; ?>"));
         <?php
         $i++;
       }
@@ -456,6 +460,6 @@ $i++; } ?>
     setTrumbowyg($(".skill"), ``);
     setTrumbowyg($(".candidate_profile"), ``);
 
-    putInBD($("#btnAddConfirm"), "outils/php/traitement/offer/add-offer.php", "0", $("#id_subdomain").val(), $("#id_city"), $("#compagny"), $(".description"), $(".missions"), $(".skill"), $(".candidate_profile"), $("#cv"), $("#motivation"), "", "", $("#deadline"));
+    putInBD($("#btnAddConfirm"), "outils/php/traitement/offer/add-offer.php", "0", $("#id_subdomain"), $("#id_city"), $("#compagny"), $(".description"), $(".missions"), $(".skill"), $(".candidate_profile"), $("#cv"), $("#motivation"), "", "", $("#deadline"));
   });
 </script>
