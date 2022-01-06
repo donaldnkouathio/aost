@@ -41,44 +41,44 @@ class Admin
     public function setEmail($email){
         $this->_email=htmlentities(strval($email));
     }
-    
+
     public function getEmail(){
         return $this->_email;
     }
 
-    
+
     public function setPassword($password){
         $this->_password=htmlentities(strval($password));
 
     }
-    
+
     public function getPassword(){
         return $this->_password;
     }
 
-    
+
     public function setRole($role){
         $this->_role=htmlentities(strval($role));
     }
-    
+
     public function getRole(){
         return $this->_role;
     }
 
-    
+
     public function setName($name){
         $this->_name=htmlentities(trim(strval($name)," "));
     }
-    
+
     public function getName(){
         return $this->_name;
     }
 
-    
+
     public function setAdded_at($added_at){
         $this->_added_at=htmlentities(strval($added_at));
     }
-    
+
     public function getAdded_at(){
         return $this->_added_at;
     }
@@ -143,7 +143,7 @@ class Admin
     }else{
         return false;
     }
-    
+
 }
 
 
@@ -153,7 +153,7 @@ public function getLastAdmin(){
     $query=$db->prepare("SELECT * FROM admins WHERE id=(SELECT MAX(id) FROM admins)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new Admin($data)); 
+        return (new Admin($data));
     }else{
         return false;
     }
@@ -165,13 +165,13 @@ public function getLastAdmin(){
 public function getAdmin($id){
     include(_APP_PATH."bd/server-connect.php");
 
-    
+
     $id=intval($id);
     $query=$db->prepare("SELECT * FROM admins WHERE id=?");
     $query->bindParam(1,$id);
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new Admin($data));   
+        return (new Admin($data));
     }else{
         return false;
     }
@@ -183,7 +183,7 @@ public function getAdmin($id){
 
 public function getAdmins() {
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $query=$db->prepare("SELECT * FROM admins ORDER BY id ASC");
 
     $admins=[];
@@ -266,6 +266,8 @@ public function logIn(Admin $admin) {
             $_SESSION['id']=$admin_found->getId();
             $_SESSION['email']=$admin_found->getEmail();
             $_SESSION['role']=$admin_found->getRole();
+            $_SESSION['name']=$admin_found->getName();
+            $_SESSION['added_at']=$admin_found->getAdded_at();
 
             return true;
 
@@ -285,7 +287,7 @@ public function logIn(Admin $admin) {
 
 public function logOut() {
     $_SESSION=array();
-    header("location:../home/index.php");
+    //header("location:../home/index.php");
 }
 
 
