@@ -381,29 +381,33 @@ $i++; } ?>
         var cv_val = cv.prop('checked') == true ? 1 : 0,
         motivation_val = motivation.prop('checked') == true ? 1 : 0;
 
-        $.ajax({
-         url: _ROOT_PATH+path,
-         type: "POST",
-         data:	"id_subdomain="+id_subdomain_val
-         +"&id="+id_val
-         +"&city="+id_city_val
-         +"&compagny="+compagny_val
-         +"&description="+description_val
-         +"&missions="+mission_val
-         +"&skill="+skill_val
-         +"&candidate_profile="+candidate_profile_val
-         +"&cv="+cv_val
-         +"&motivation="+motivation_val
-         +"&deleted="+deleted_val
-         +"&expired="+expired_val
-         +"&deadline="+deadline_val,
-         beforeSend : function(){
-           btn.html("chargement...");
-         },
-         success : function(ret){
-          window.location.reload();
-        }
-      });
+				if(deadline_val != "" && compagny_val != "" && description_val != "" && mission_val != "" && skill_val != "" && candidate_profile_val != ""){
+	        $.ajax({
+	         url: _ROOT_PATH+path,
+	         type: "POST",
+	         data:	"id_subdomain="+id_subdomain_val
+	         +"&id="+id_val
+	         +"&city="+id_city_val
+	         +"&compagny="+compagny_val
+	         +"&description="+description_val
+	         +"&missions="+mission_val
+	         +"&skill="+skill_val
+	         +"&candidate_profile="+candidate_profile_val
+	         +"&cv="+cv_val
+	         +"&motivation="+motivation_val
+	         +"&deleted="+deleted_val
+	         +"&expired="+expired_val
+	         +"&deadline="+deadline_val,
+	         beforeSend : function(){
+	           btn.html("chargement...");
+	         },
+	         success : function(ret){
+	          window.location.reload();
+	        }
+	      });
+			}else {
+				alert("Les champs ne doivent pas être nuls");
+			}
       });
     }
 
