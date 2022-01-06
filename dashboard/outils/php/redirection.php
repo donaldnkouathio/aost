@@ -13,6 +13,7 @@
   $offer = new Offer($current_offer);
   $city = new City($current_city);
   $admin = new Admin($current_admin);
+  $candidacy = new Candidacy($current_candidacy);
 
   function redirection($title, $pageContain, $currentPage, $currentSubPage, $css, $js){
     //$title : titre de la page
@@ -32,6 +33,7 @@
     global $offer;
     global $city;
     global $admin;
+    global $candidacy;
 
     $session->setCurrentPage($currentPage); //Page actuellement visitée par l'utilisateur
     $session->setCurrentSubPage($currentSubPage); //Page actuellement visitée par l'utilisateur
@@ -48,7 +50,13 @@
       <?php $session->preloader(); // Indicateur de chargement des pages ?>
 
       <div class="dashbord_item" style="">
-        <?php include($pageContain); // Contenu ?>
+        <?php  // Contenu
+          if(isset($_SESSION["email"])){
+            include($pageContain);
+          }else {
+            include(_DASHBOARD_PHP_PATH."login/index.php");
+          }
+        ?>
       </div>
 
       <?php //$session->goToTop(); // Indicateur de chargement des pages ?>
