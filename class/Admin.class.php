@@ -209,7 +209,7 @@ public function editAdmin(Admin $admin) {
 
     $query=$db->prepare("UPDATE admins
         SET email=?,
-        password=?,
+        password=UNHEX(SHA1(?)),
         role=?,
         name=?
         WHERE id=?

@@ -80,7 +80,7 @@ tr:hover, tr:nth-child(even):hover{
   color: var(--color-primary);
   border: 1px solid var(--color-primary);
   cursor: pointer;
-  margin-right: 15px;
+  margin-left: 15px;
   background-color: white;
 }
 .btnEdit:hover{
@@ -112,6 +112,7 @@ tr:hover, tr:nth-child(even):hover{
   border: 1px solid red;
   cursor: pointer;
   background-color: white;
+  margin-left: 15px;
 }
 .btnDelete:hover{
   color: white;
@@ -343,6 +344,12 @@ tr:hover, tr:nth-child(even):hover{
 
   .item_modal_input{
     width: 100%;
+  }
+
+  .btnAddAdmin{
+    display: block;
+    margin-right: 15px !important;
+    margin-bottom : 15px;
   }
 }
 
