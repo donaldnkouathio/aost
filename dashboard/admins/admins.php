@@ -30,7 +30,7 @@ $admins = $admin->getAdmins();
 <div class="suggest_container">
 
   <?php //For Admin online  ?>
-  <div class="suggest_block" style="border: 1px solid green; border-left: 3px solid green;">
+  <div class="suggest_block" style="border: 1px solid var(--color-success); border-left: 3px solid var(--color-success);">
     <div class="suggest_row">
       <span class="suggest_col">Admin No <?php echo $_SESSION['id']; ?></span>
     </div>
@@ -107,7 +107,7 @@ $admins = $admin->getAdmins();
   <div class="item_modal">
 
     <div class="item_modal_body">
-      <h3 style="font-weight: normal">Administrateur <strong>No <?php echo $admin->getId(); ?></strong>, ajouté <?php get_elapsed_time($admin->getAdded_at()); ?></h3>
+      <h3 style="font-weight: normal">Administrateur <strong>No <?php echo $admin->getId(); ?></strong></h3>
 
       <div class="item_modal_input">
         <label for="email<?php echo $admin->getId(); ?>">Email </label>
@@ -132,10 +132,10 @@ $admins = $admin->getAdmins();
     </div>
 
     <div class="item_modal_header">
-      <div class="item_modal_header_left" id="btnEditConfirm<?php echo $admin->getId(); ?>">
+      <div class="btn btn-primary" id="btnEditConfirm<?php echo $admin->getId(); ?>">
         Modifier
       </div>
-      <div class="item_modal_header_right" id="btnEditClose<?php echo $admin->getId(); ?>" title="Annuler">
+      <div class="btn" id="btnEditClose<?php echo $admin->getId(); ?>" title="Annuler">
         Annuler
       </div>
     </div>
@@ -153,10 +153,10 @@ $admins = $admin->getAdmins();
 
     </div>
     <div class="item_deleteModal_footer">
-      <div class="item_deleteModal_left" id="btnDeleteConfirm<?php echo $admin->getId(); ?>">
+      <div class="btn btn-danger" id="btnDeleteConfirm<?php echo $admin->getId(); ?>">
         Supprimer
       </div>
-      <div class="item_deleteModal_right" id="btnDeleteClose<?php echo $admin->getId(); ?>" title="Annuler">
+      <div class="btn" id="btnDeleteClose<?php echo $admin->getId(); ?>" title="Annuler">
         Annuler
       </div>
     </div>
@@ -167,6 +167,8 @@ $admins = $admin->getAdmins();
 <div class="item_deleteModal_shadow" id="editPwdModal<?php echo $admin->getId(); ?>">
   <div class="item_deleteModal">
     <div class="item_editPwdModal_body">
+
+      <h3 class="margin-top-none">Changer le mot de passe</h3>
 
       <div class="item_modal_input">
           <label for="edit_password<?php echo $admin->getId(); ?>">Nouveau mot de passe </label>
@@ -181,10 +183,10 @@ $admins = $admin->getAdmins();
 
     </div>
     <div class="item_deleteModal_footer">
-      <div class="item_deleteModal_left" id="btnEditPwdConfirm<?php echo $admin->getId(); ?>">
+      <div class="btn btn-primary" id="btnEditPwdConfirm<?php echo $admin->getId(); ?>">
         Changer
       </div>
-      <div class="item_deleteModal_right" id="btnEditPWDClose<?php echo $admin->getId(); ?>" title="Annuler">
+      <div class="btn" id="btnEditPWDClose<?php echo $admin->getId(); ?>" title="Annuler">
         Annuler
       </div>
     </div>
@@ -223,10 +225,10 @@ $admins = $admin->getAdmins();
     </div>
 
     <div class="item_modal_header">
-      <div class="item_modal_header_left" id="btnAddConfirm">
+      <div class="btn btn-primary" id="btnAddConfirm">
         Ajouter
       </div>
-      <div class="item_modal_header_right" id="btnAddClose" title="Annuler">
+      <div class="btn" id="btnAddClose" title="Annuler">
         Annuler
       </div>
     </div>

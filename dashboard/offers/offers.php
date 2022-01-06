@@ -223,10 +223,10 @@ $i++; } ?>
         </div>
 
         <div class="item_modal_header">
-          <div class="item_modal_header_left" id="btnEditConfirm<?php echo $i; ?>">
+          <div class="btn btn-primary" id="btnEditConfirm<?php echo $i; ?>">
             Modifier
           </div>
-          <div class="item_modal_header_right" id="btnEditClose<?php echo $i;?>" title="Annuler">
+          <div class="btn" id="btnEditClose<?php echo $i;?>" title="Annuler">
             Annuler
           </div>
         </div>
@@ -244,10 +244,10 @@ $i++; } ?>
           <input type="hidden" name="id<?php echo $i; ?>" id="id<?php echo $i; ?>" value="<?php echo $offer->getId(); ?>">
         </div>
         <div class="item_deleteModal_footer">
-          <div class="item_deleteModal_left" id="btnDeleteConfirm<?php echo $i;?>">
+          <div class="btn btn-danger" id="btnDeleteConfirm<?php echo $i;?>">
             Supprimer
           </div>
-          <div class="item_deleteModal_right" id="btnDeleteClose<?php echo $i;?>" title="Annuler">
+          <div class="btn" id="btnDeleteClose<?php echo $i;?>" title="Annuler">
             Annuler
           </div>
         </div>
@@ -324,10 +324,10 @@ $i++; } ?>
       </div>
 
       <div class="item_modal_header">
-        <div class="item_modal_header_left" id="btnAddConfirm">
+        <div class="btn btn-primary" id="btnAddConfirm">
           Ajouter
         </div>
-        <div class="item_modal_header_right" id="btnAddClose" title="Annuler">
+        <div class="btn" id="btnAddClose" title="Annuler">
           Annuler
         </div>
       </div>
@@ -381,31 +381,6 @@ $i++; } ?>
         var cv_val = cv.prop('checked') == true ? 1 : 0,
         motivation_val = motivation.prop('checked') == true ? 1 : 0;
 
-<<<<<<< HEAD
-        $.ajax({
-         url: _ROOT_PATH+path,
-         type: "POST",
-         data:	"id_subdomain="+id_subdomain_val
-         +"&id="+id_val
-         +"&city="+id_city_val
-         +"&compagny="+compagny_val
-         +"&description="+description_val
-         +"&missions="+mission_val
-         +"&skill="+skill_val
-         +"&candidate_profile="+candidate_profile_val
-         +"&cv="+cv_val
-         +"&motivation="+motivation_val
-         +"&deleted="+deleted_val
-         +"&expired="+expired_val
-         +"&deadline="+deadline_val,
-         beforeSend : function(){
-           btn.html("chargement...");
-         },
-         success : function(ret){
-          alert(ret);
-        }
-      });
-=======
 				if(deadline_val != "" && compagny_val != "" && description_val != "" && mission_val != "" && skill_val != "" && candidate_profile_val != ""){
 	        $.ajax({
 	         url: _ROOT_PATH+path,
@@ -433,7 +408,6 @@ $i++; } ?>
 			}else {
 				alert("Les champs ne doivent pas être nuls");
 			}
->>>>>>> 61a0dd421331d7949e3c2e5615415c8f44a6ae28
       });
     }
 

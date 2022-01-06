@@ -4,7 +4,11 @@
   --color-tertiary : #001935;
   --color-shadow : #eee; /* Utilisé pour les ombres et les couleurs grises */
   --color-text : #555;
-  
+  --color-danger : red; /* utilisé pour les actions de suppression, rouge par defaut */
+  --color-danger-dark : darkred;
+  --color-success : green; /* utilisé généralement pour les actions d'ajout, vert par defaut */
+  --color-success-dark : darkgreen;
+
   --border-radius-size : 5px;
 
   /* Nav */
@@ -28,4 +32,7 @@
   --btn-primary-text-color: white;
   --btn-primary-bg-color : var(--color-primary);
   --btn-primary-bg-hover-color : var(--color-tertiary);
+  --btn-danger-text-color: white;
+  --btn-danger-bg-color : var(--color-danger);
+  --btn-danger-bg-hover-color : var(--color-danger-dark);
 }

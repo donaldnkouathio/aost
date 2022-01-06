@@ -75,7 +75,7 @@ $candidacies = $candidacy->getCandidacys();
       </div>
 
       <div class="item_modal_header">
-        <div class="item_modal_header_right" id="btnSeeCVClose<?php echo $candidacy->getId(); ?>" title="Annuler">
+        <div class="btn" id="btnSeeCVClose<?php echo $candidacy->getId(); ?>" title="Annuler">
           Annuler
         </div>
       </div>
@@ -93,10 +93,10 @@ $candidacies = $candidacy->getCandidacys();
 
       </div>
       <div class="item_deleteModal_footer">
-        <div class="item_deleteModal_left" id="btnDeleteCandidacyConfirm<?php echo $candidacy->getId(); ?>">
+        <div class="btn btn-danger" id="btnDeleteCandidacyConfirm<?php echo $candidacy->getId(); ?>">
           Supprimer
         </div>
-        <div class="item_deleteModal_right" id="btnDeleteCandidacyClose<?php echo $candidacy->getId(); ?>" title="Annuler">
+        <div class="btn" id="btnDeleteCandidacyClose<?php echo $candidacy->getId(); ?>" title="Annuler">
           Annuler
         </div>
       </div>

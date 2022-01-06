@@ -24,7 +24,7 @@
     <li><a href="#" class="dashboard_nav_link"><i class="material-icons vertical-align-bottom">history</i> Historique</a></li>
 
     <?php if(isset($_SESSION["email"])){ ?>
-      <li><a class="dashboard_nav_link" style="background-color: red; color: white !important" id="log_out_btn"><i class="material-icons vertical-align-bottom">logout</i> Se déconecter</a></li>
+      <li><a class="dashboard_nav_link background-danger" id="log_out_btn"><i class="material-icons vertical-align-bottom">logout</i> Se déconecter</a></li>
     <?php } ?>
 
   </ul>

@@ -230,6 +230,22 @@ citaion{
 .btn-primary:hover{
   background-color: var(--btn-primary-bg-hover-color);
 }
+.btn-danger{
+  color: var(--btn-danger-text-color);
+  background-color: var(--btn-danger-bg-color);
+}
+.btn-danger:hover{
+  background-color: var(--btn-danger-bg-hover-color);
+}
+
+.background-danger{
+  background-color: var(--color-danger);
+  color: white !important;
+}
+.background-danger:hover{
+  background-color: var(--color-danger-dark) !important;
+  color: white !important;
+}
 
 /***** Media Query *****/
 
