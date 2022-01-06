@@ -1,9 +1,9 @@
-<h2 class="margin-top-none" style="display: inline-block"><?php echo $_SESSION['name']; ?></h2>
+<h2 class="margin-top-none" style="display: inline-block"><?php echo htmlspecialchars_decode($_SESSION['name']); ?></h2>
 
 <?php // Button for add modal ?>
 <?php if($_SESSION["role"] == $session->getRole_1()){ ?>
 <span class="btnAdd btnAddAdmin" id="btnAdd">
-  <i class="material-icons" style="font-size : 1em;">add</i>
+  <i class="material-icons vertical-align-bottom margin-right-5" style="font-size : 1.2em; margin-bottom: 1.6em">person_add</i>
   <span class="">Ajouter un administrateur</span>
 </span>
 <?php } ?>
@@ -218,14 +218,6 @@ $admins = $admin->getAdmins();
         <select class="" name="" id="role">
           <option value="super">Super</option>
           <option value="moderateur" selected>Modérateur</option>
-        </select>
-      </div>
-
-      <div class="item_modal_input">
-        <label for="role">Rôle</label>
-        <select class="" name="" id="role">
-          <option value="<?php echo $session->getRole_1(); ?>">Super</option>
-          <option value="<?php echo $session->getRole_2(); ?>" selected>Modérateur</option>
         </select>
       </div>
     </div>

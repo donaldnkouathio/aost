@@ -93,7 +93,6 @@ tr:hover, tr:nth-child(even):hover{
   padding: 5px;
   font-size: 0.8em;
   color: green;
-  border-radius: var(--border-radius-size);
   border: 1px solid green;
   cursor: pointer;
   margin-left: 15px;

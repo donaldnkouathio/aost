@@ -13,6 +13,7 @@
   $offer = new Offer($current_offer);
   $city = new City($current_city);
   $admin = new Admin($current_admin);
+  $candidacy = new Candidacy($current_candidacy);
 
   function redirection($title, $pageContain, $currentPage, $currentSubPage, $css, $js){
     //$title : titre de la page
@@ -32,6 +33,7 @@
     global $offer;
     global $city;
     global $admin;
+    global $candidacy;
 
     $session->setCurrentPage($currentPage); //Page actuellement visitée par l'utilisateur
     $session->setCurrentSubPage($currentSubPage); //Page actuellement visitée par l'utilisateur
