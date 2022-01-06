@@ -401,7 +401,7 @@ $i++; } ?>
            btn.html("chargement...");
          },
          success : function(ret){
-          window.location.reload();
+          alert(ret);
         }
       });
       });
