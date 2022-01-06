@@ -58,7 +58,9 @@ if($_POST['request_type']=="have_cv"){
 
 				$file_renamed="Alert_Cv_".$alert->getName()."_".$alert->getId_city().".".$ext;
 
-				mkdir($alert_folder);
+				if(!file_exists($alert_folder)){
+					mkdir($alert_folder);
+				}
 
 				if(move_uploaded_file($tmp, $alert_folder."/".$file_renamed)){
 
