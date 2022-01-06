@@ -248,6 +248,27 @@ public function getAlerts() {
 
 
 
+public function getAlertsDomain($domain) {
+  include(_APP_PATH."bd/server-connect.php");
+
+
+  $query=$db->prepare("SELECT * FROM alerts WHERE domain LIKE '%$domain%' GROUP BY email ORDER BY id ASC");
+
+  $alerts=[];
+
+  if($query->execute()){
+   while($data=$query->fetch()){
+    $alerts[]=new Alert($data);
+  }
+  return $alerts;
+}else{
+  return false;
+}
+}
+
+
+
+
 
 
 
