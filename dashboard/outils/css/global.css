@@ -5,48 +5,6 @@
   background-color: var(--color-shadow);
 }
 
-.suggest_container{
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 15px;
-}
-.suggest_block{
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 15px;
-  margin-bottom: 15px;
-  background-color: white;
-  border-left: 3px solid var(--color-secondary);
-  border-radius: 0 var(--border-radius-size) var(--border-radius-size) 0;
-}
-.suggest_block:hover{
-  box-shadow: 0px 0px 6px var(--color-text);
-}
-.suggest_block i{
-  font-size: 1.1em;
-  margin-bottom: 0.2em;
-}
-.margin-right-5{
-  margin-right: 5px;
-}
-.background-primary{
-  color: var(--color-primary);
-}
-.suggest_row{
-  padding: 5px;
-}
-.suggest_col{
-  display: inline-block;
-}
-.suggest_title{
-  max-width: 100%;
-  max-height: 1.4em;
-  overflow: hidden;
-  display: inline-block;
-  font-weight: bold;
-}
-
 .item_container{
 }
 

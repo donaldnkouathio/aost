@@ -195,7 +195,7 @@ header{
     border-radius: 0 var(--border-radius-size) var(--border-radius-size) 0;
   }
   .domain-block:hover, .job-block li:hover{
-    background-color: #c0c0c0;
+    box-shadow: -1px 2px 6px var(--color-text);
   }
   .domain-block span, .job-block li a{
     display: inline-block;
@@ -216,7 +216,7 @@ header{
     border-left : 3px solid var(--color-secondary);
   }
   .sub-link-hover{
-    background-color: #c0c0c0;
+    box-shadow: -1px 2px 6px var(--color-text);
     border-radius: 0 var(--border-radius-size) var(--border-radius-size) 0;
   }
 }

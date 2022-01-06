@@ -1,4 +1,4 @@
-<h2 class="margin-top-none" style="display: inline-block">Demandes d'offre</h2>
+<h2 class="margin-top-none" style="display: inline-block">Candidatures</h2>
 
 <?php
 $candidacies = $candidacy->getCandidacys();
