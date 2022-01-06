@@ -22,5 +22,10 @@
     <li><a class="dashboard_nav_link" href="#"><i class="material-icons vertical-align-bottom">folder_open</i> Sous domaines</a></li>
     <li><a class="dashboard_nav_link" href="#"><i class="material-icons vertical-align-bottom">phone</i> Contacts</a></li>
     <li><a class="dashboard_nav_link" href="#"><i class="material-icons vertical-align-bottom">history</i> Historique</a></li>
+
+    <?php if(isset($_SESSION["email"])){ ?>
+      <li><a class="dashboard_nav_link" style="background-color: red; color: white !important" id="log_out_btn"><i class="material-icons vertical-align-bottom">logout</i> Se déconecter</a></li>
+    <?php } ?>
+
   </ul>
 </nav>

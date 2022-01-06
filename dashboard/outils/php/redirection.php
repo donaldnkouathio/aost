@@ -48,7 +48,13 @@
       <?php $session->preloader(); // Indicateur de chargement des pages ?>
 
       <div class="dashbord_item" style="">
-        <?php include($pageContain); // Contenu ?>
+        <?php  // Contenu
+          if(isset($_SESSION["email"])){
+            include($pageContain);
+          }else {
+            include(_DASHBOARD_PHP_PATH."login/index.php");
+          }
+        ?>
       </div>
 
       <?php //$session->goToTop(); // Indicateur de chargement des pages ?>
