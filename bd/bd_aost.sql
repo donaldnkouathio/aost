@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 07 jan. 2022 à 04:21
+-- Généré le :  ven. 07 jan. 2022 à 07:03
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -57,7 +57,7 @@ INSERT INTO `admins` (`id`, `email`, `password`, `role`, `name`, `added_at`) VAL
 DROP TABLE IF EXISTS `alerts`;
 CREATE TABLE IF NOT EXISTS `alerts` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_city` bigint(20) NOT NULL,
+  `city` varchar(80) NOT NULL,
   `email` varchar(255) NOT NULL,
   `domain` longtext NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -66,16 +66,15 @@ CREATE TABLE IF NOT EXISTS `alerts` (
   `about` longtext,
   `cv_file` varchar(255) NOT NULL,
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `fk_city` (`id_city`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `alerts`
 --
 
-INSERT INTO `alerts` (`id`, `id_city`, `email`, `domain`, `name`, `first_name`, `phone`, `about`, `cv_file`, `added_at`) VALUES
-(1, 0, 'dimcompte@gmail.com', 'analyste,coordonnateur marchandisage', 'Black', 'Light', '0692503797', 'TEST2', 'Cv_Black_0.pdf', '2022-01-06 13:14:01');
+INSERT INTO `alerts` (`id`, `city`, `email`, `domain`, `name`, `first_name`, `phone`, `about`, `cv_file`, `added_at`) VALUES
+(3, 'Yaounde', 'dimcompte@gmail.com', 'chauffeurs,commis entrepot', 'Black', 'Light', '0692503797', 'candidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacy', 'Candidature_Cv_Black.pdf', '2022-01-07 06:58:48');
 
 -- --------------------------------------------------------
 
@@ -102,14 +101,7 @@ CREATE TABLE IF NOT EXISTS `candidacy` (
   PRIMARY KEY (`id`),
   KEY `id_job` (`id_offer`),
   KEY `fk_subdomain` (`id_subdomain`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='Table contenant les candidatures des clients';
-
---
--- Déchargement des données de la table `candidacy`
---
-
-INSERT INTO `candidacy` (`id`, `id_offer`, `id_subdomain`, `city`, `name`, `first_name`, `phone`, `email`, `domains`, `about`, `cv_file`, `motivation_file`, `deleted`, `added_at`) VALUES
-(4, 1, 6, 'Yaounde', 'Black', 'Light', '0692503797', 'dimcompte@gmail.com', 'analyste,assistant gerant,coordonnateur marchandisage', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Candidature_Cv_Black.pdf', '', 0, '2022-01-07 02:00:46');
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table contenant les candidatures des clients';
 
 -- --------------------------------------------------------
 

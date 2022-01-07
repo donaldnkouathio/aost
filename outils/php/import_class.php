@@ -31,7 +31,7 @@ $current_user=[
 
 $current_alert=[
 	'id'=>0,
-	'id_city'=>"",
+	'city'=>"",
 	'email'=>"",
 	'domain'=>"",
 	'name'=>"",
