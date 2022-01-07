@@ -221,7 +221,7 @@
             }
           });
         }else {
-          indicator.text("Le nom ne doit pas être nul");
+          indicator.text("Le nom ne doit pas être vide !");
         }
 
       });

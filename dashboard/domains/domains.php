@@ -153,7 +153,7 @@ $domains = $domain->getDomains();
     }
 
     //For add domain in DB
-		function putInBD(btn, path, id, name){
+		function putInBD(btn, path, id, name, indicator){
 			btn.click(function(){
 				var id_val = id,
     				name_val = name.val();
@@ -171,20 +171,25 @@ $domains = $domain->getDomains();
 
         var color_val = id == "" ? "<?php echo $color; ?>" : "";
 
-				$.ajax({
-					url: _ROOT_PATH+path,
-					type: "POST",
-					data:	"id="+id_val
-                +"&name="+name_val
-                +"&image="
-                +"&color="+color_val,
-					beforeSend : function(){
-						btn.html("chargement...");
-					},
-					success : function(ret){
-						window.location.reload();
-					}
-				});
+        if(name_val != ""){
+          $.ajax({
+  					url: _ROOT_PATH+path,
+  					type: "POST",
+  					data:	"id="+id_val
+                  +"&name="+name_val
+                  +"&image="
+                  +"&color="+color_val,
+  					beforeSend : function(){
+  						btn.html("chargement...");
+  					},
+  					success : function(ret){
+  						window.location.reload();
+  					}
+  				});
+        }else {
+          indicator.text("Le nom ne doit pas être vide !")
+        }
+
 			});
 		}
 
@@ -216,12 +221,12 @@ $domains = $domain->getDomains();
       //for edit
       toggleModal($("#editDomainModal<?php echo $domain->getId(); ?>"), $("#btnEditDomain<?php echo $domain->getId(); ?>"), $("#btnEditDomainClose<?php echo $domain->getId(); ?>"));
 
-      putInBD($("#btnEditDomainConfirm<?php echo $domain->getId(); ?>"), "outils/php/traitement/domain/edit-domain.php", $("#id<?php echo $domain->getId(); ?>").val(), $("#name<?php echo $domain->getId(); ?>"));
+      putInBD($("#btnEditDomainConfirm<?php echo $domain->getId(); ?>"), "outils/php/traitement/domain/edit-domain.php", $("#id<?php echo $domain->getId(); ?>").val(), $("#name<?php echo $domain->getId(); ?>"), $("#edit_domainIndicator<?php echo $domain->getId(); ?>"));
     <?php } ?>
 
     //for add
     toggleModal($("#addDomainModal"), $("#btnAddDomain"), $("#btnAddDomainClose"));
 
-    putInBD($("#btnAddDomainConfirm"), "outils/php/traitement/domain/add-domain.php", "", $("#name"));
+    putInBD($("#btnAddDomainConfirm"), "outils/php/traitement/domain/add-domain.php", "", $("#name"), $("#add_domainIndicator"));
   });
 </script>
