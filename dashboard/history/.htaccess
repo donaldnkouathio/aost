@@ -1,0 +1,4 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule ^m/(.*)/p/(.*)$ ?month=$1&page=$2 [L]
+RewriteRule ^m/(.*)$ ?month=$1 [L]
