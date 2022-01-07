@@ -15,7 +15,6 @@ $current_domain=[
 	'id_admin'=>$_SESSION['id'],
 	'name'=>$_POST['name'],
 	'color'=>$_POST['color'],
-	'image'=>$_POST['image'],
 	'added_at'=>date("Y-m-d H:i:s")
 ];
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 07 jan. 2022 à 07:03
+-- Généré le :  ven. 07 jan. 2022 à 23:51
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -45,8 +45,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 
 INSERT INTO `admins` (`id`, `email`, `password`, `role`, `name`, `added_at`) VALUES
-(1, 'dimcompte@gmail.com', 0x70352f41061eda4ff3c322094af068ba70c3b38b, 'super', 'Ego Buster', '2022-01-07 02:38:56'),
-(2, 'dnk@gmail.com', 0xbfe54caa6d483cc3887dce9d1b8eb91408f1ea7a, 'moderateur', 'Donald K', '2022-01-07 03:25:35');
+(1, 'dimcompte@gmail.com', 0x70352f41061eda4ff3c322094af068ba70c3b38b, 'super', 'Ego Buster', '2022-01-07 02:38:56');
 
 -- --------------------------------------------------------
 
@@ -201,37 +200,35 @@ CREATE TABLE IF NOT EXISTS `domains` (
   `id_admin` bigint(20) NOT NULL,
   `name` varchar(100) NOT NULL,
   `color` varchar(100) NOT NULL,
-  `image` varchar(100) NOT NULL,
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_admin` (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `domains`
 --
 
-INSERT INTO `domains` (`id`, `id_admin`, `name`, `color`, `image`, `added_at`) VALUES
-(1, 1, 'Informatique', '85a7e1', 'dom2', '2021-12-11 23:23:43'),
-(2, 1, 'Commerce de detail & de gros', 'fa1254', '', '2021-12-13 17:48:16'),
-(4, 1, 'Ressources humaines', '', '', '2021-12-13 17:48:16'),
-(5, 1, 'Marketing', '', '', '2021-12-13 17:48:16'),
-(6, 1, 'Administration', '', '', '2021-12-13 17:48:16'),
-(7, 1, 'Construction et metiers specialises', '', '', '2021-12-13 17:48:16'),
-(8, 1, 'Finances et comptabilite', '', '', '2021-12-13 17:48:16'),
-(9, 1, 'Assurances', '', '', '2021-12-13 17:48:16'),
-(10, 1, 'Sante', '', 'dom2', '2021-12-13 17:48:16'),
-(11, 1, 'Travail general', '', '', '2021-12-13 17:48:16'),
-(12, 1, 'Entretien menager', '', '', '2021-12-13 17:48:16'),
-(13, 1, 'Administration', '', '', '2021-12-13 17:48:16'),
-(14, 1, 'Service a la clientele', '', '', '2021-12-13 17:48:16'),
-(15, 1, 'Transport & Logistique', '', '', '2021-12-13 17:48:16'),
-(16, 1, 'education', '', '', '2021-12-13 17:48:16'),
-(17, 1, 'Securite', '', '', '2021-12-13 17:48:16'),
-(18, 1, 'Hotellerie, restauration, evenements speciaux', '', '', '2021-12-13 17:48:16'),
-(19, 1, 'Pharmaceutique', '', '', '2021-12-13 17:48:16'),
-(3, 1, 'Soutien aux familles ', '', '', '2021-12-13 17:48:16'),
-(23, 1, 'Agricultures', '', '', '2022-01-07 03:45:56');
+INSERT INTO `domains` (`id`, `id_admin`, `name`, `color`, `added_at`) VALUES
+(1, 1, 'Informatique', '85a7e1', '2021-12-11 23:23:43'),
+(2, 1, 'Commerce de detail & de gros', 'fa1254', '2021-12-13 17:48:16'),
+(4, 1, 'Ressources humaines', '', '2021-12-13 17:48:16'),
+(5, 1, 'Marketing', '', '2021-12-13 17:48:16'),
+(6, 1, 'Administration', '', '2021-12-13 17:48:16'),
+(7, 1, 'Construction et metiers specialises', '', '2021-12-13 17:48:16'),
+(8, 1, 'Finances et comptabilite', '', '2021-12-13 17:48:16'),
+(9, 1, 'Assurances', '', '2021-12-13 17:48:16'),
+(10, 1, 'Sante', '', '2021-12-13 17:48:16'),
+(11, 1, 'Travail general', '', '2021-12-13 17:48:16'),
+(12, 1, 'Entretien menager', '', '2021-12-13 17:48:16'),
+(13, 1, 'Administration', '', '2021-12-13 17:48:16'),
+(14, 1, 'Service a la clientele', '', '2021-12-13 17:48:16'),
+(15, 1, 'Transport & Logistique', '', '2021-12-13 17:48:16'),
+(16, 1, 'education', '', '2021-12-13 17:48:16'),
+(17, 1, 'Securite', '', '2021-12-13 17:48:16'),
+(18, 1, 'Hotellerie, restauration, evenements speciaux', '', '2021-12-13 17:48:16'),
+(19, 1, 'Pharmaceutique', '', '2021-12-13 17:48:16'),
+(3, 1, 'Soutien aux familles ', '', '2021-12-13 17:48:16');
 
 -- --------------------------------------------------------
 
@@ -249,26 +246,19 @@ CREATE TABLE IF NOT EXISTS `history` (
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_admin` (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COMMENT='Table qui concervera l''ensemble des actions effectuées par les administrateurs';
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COMMENT='Table qui concervera l''ensemble des actions effectuées par les administrateurs';
 
 --
 -- Déchargement des données de la table `history`
 --
 
 INSERT INTO `history` (`id`, `id_admin`, `id_target`, `action`, `description`, `added_at`) VALUES
-(1, 1, 1, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-06 17:05:08'),
-(2, 1, 2, 'add admin', 'Ego Buster a ajout&eacute; l\'administrateur Donald de role moderateur', '2022-01-07 03:25:35'),
-(3, 1, 2, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie chauffeurs', '2022-01-07 03:26:43'),
-(4, 1, 6, 'delete candidacy', 'Ego Buster a supprim&eacute; une candidature ', '2022-01-07 03:27:14'),
-(6, 1, 20, 'delete domain', 'Ego Buster a supprim&eacute; le domaine Agriculture', '2022-01-07 03:41:15'),
-(7, 1, 21, 'delete domain', 'Ego Buster a supprim&eacute; le domaine Agriculture', '2022-01-07 03:43:50'),
-(8, 1, 22, 'delete domain', 'Ego Buster a supprim&eacute; le domaine agriculture', '2022-01-07 03:45:49'),
-(9, 1, 23, 'add domain', 'Ego Buster a ajout&eacute; le domaine Agriculture', '2022-01-07 03:45:56'),
-(10, 1, 23, 'edit domain', 'Ego Buster a modifier le domaine Agriculture en Agricultures', '2022-01-07 03:49:44'),
-(11, 1, 90, 'add subdomain', 'Ego Buster a ajout&eacute; le sous-domaine planteur dans le domaine Agricultures', '2022-01-07 03:54:51'),
-(12, 1, 90, 'delete domain', 'Ego Buster a supprim&eacute; le sous-domaine planteur', '2022-01-07 03:56:54'),
-(13, 1, 2, 'edit admin', 'Ego Buster a modifier les informations de l\'administrateur Donald', '2022-01-07 04:02:29'),
-(14, 1, 2, 'edit password', 'Ego Buster a modifi&eacute; le mot de passe de Donald K', '2022-01-07 04:04:47');
+(15, 1, 2, 'delete admin', 'Ego Buster a supprim&eacute; l\'administrateur Donald K de role moderateur', '2022-01-07 23:12:19'),
+(16, 1, 23, 'edit domain', 'Ego Buster a modifier le domaine Agricultures en Agriculture', '2022-01-07 23:44:09'),
+(17, 1, 23, 'delete domain', 'Ego Buster a supprim&eacute; le domaine Agriculture', '2022-01-07 23:44:14'),
+(18, 1, 24, 'add domain', 'Ego Buster a ajout&eacute; le domaine agriculture', '2022-01-07 23:48:06'),
+(19, 1, 91, 'add subdomain', 'Ego Buster a ajout&eacute; le sous-domaine Planteur dans le domaine agriculture', '2022-01-07 23:50:24'),
+(20, 1, 24, 'delete domain', 'Ego Buster a supprim&eacute; le domaine agriculture', '2022-01-07 23:50:31');
 
 -- --------------------------------------------------------
 
@@ -348,52 +338,51 @@ CREATE TABLE IF NOT EXISTS `subdomains` (
   `id_domain` bigint(20) NOT NULL,
   `name` varchar(200) NOT NULL,
   `color` varchar(100) NOT NULL,
-  `image` varchar(255) NOT NULL,
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_domain` (`id_domain`),
   KEY `fk_admin` (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=91 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=92 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `subdomains`
 --
 
-INSERT INTO `subdomains` (`id`, `id_admin`, `id_domain`, `name`, `color`, `image`, `added_at`) VALUES
-(2, 1, 2, 'commis entrepot', 'e1e6ff', 'dom.jpg', '2021-12-13 17:53:37'),
-(3, 1, 2, 'coordonnateur marchandisage', 'e1e6ff', 'dom.jpg', '2021-12-13 17:53:37'),
-(4, 1, 2, 'gerant de magasin', 'e1e6ff', 'dom.jpg', '2021-12-13 17:53:37'),
-(5, 1, 2, 'assistant gerant', 'e1e6ff', 'dom.jpg', '2021-12-13 17:53:37'),
-(6, 1, 2, 'analyste', 'e1e6ff', 'dom.jpg', '2021-12-13 17:53:37'),
-(7, 1, 2, 'formation et developpement- concepteur de contenu', 'e1e6ff', 'dom.jpg', '2021-12-13 17:53:37'),
-(8, 1, 2, 'chef d’equipe', 'e1e6ff', 'dom.jpg', '2021-12-13 17:53:37'),
-(9, 1, 2, 'gestionnaire des ventes', 'e1e6ff', 'dom.jpg', '2021-12-13 17:53:37'),
-(10, 1, 2, 'chauffeurs', 'e1e6ff', 'dom.jpg', '2021-12-13 17:53:37'),
-(11, 1, 2, 'manutentionnaire', 'e1e6ff', 'dom.jpg', '2021-12-13 17:53:37'),
-(12, 1, 1, 'Developpeur', 'e1e6ff', 'dom.jpg', '2021-12-13 17:56:00'),
-(13, 1, 1, 'Administrateur de base de donnees', 'e1e6ff', 'dom.jpg', '2021-12-13 17:58:43'),
-(14, 1, 1, 'Administrateur de reseaux', 'e1e6ff', 'dom.jpg', '2021-12-13 17:58:43'),
-(15, 1, 1, 'Administrateur de systemes', 'e1e6ff', 'dom.jpg', '2021-12-13 17:58:43'),
-(16, 1, 1, 'Analyste de contenu', 'e1e6ff', 'dom.jpg', '2021-12-13 17:58:43'),
-(17, 1, 1, 'Technicien Reseaux Niveau', 'e1e6ff', 'dom.jpg', '2021-12-13 17:58:43'),
-(18, 1, 1, 'Responsable de Projet TI', 'e1e6ff', 'dom.jpg', '2021-12-13 17:58:43'),
-(19, 1, 1, 'Analyste de donnees', 'e1e6ff', 'dom.jpg', '2021-12-13 17:58:43'),
-(20, 1, 1, 'Analyste en securite TI', 'e1e6ff', 'dom.jpg', '2021-12-13 17:58:43'),
-(21, 1, 1, 'Analyste fonctionnel', 'e1e6ff', 'dom.jpg', '2021-12-13 17:58:43'),
-(22, 1, 1, 'Analyste en assurance-qualite', 'e1e6ff', 'dom.jpg', '2021-12-13 17:58:43'),
-(23, 1, 1, 'soutien technique informatique', 'e1e6ff', 'dom.jpg', '2021-12-13 17:58:43'),
-(24, 1, 4, 'coordonnateur des RH', 'e1e6ff', 'dom.jpg', '2021-12-13 18:00:40'),
-(25, 1, 4, 'generaliste des RH', 'e1e6ff', 'dom.jpg', '2021-12-13 18:00:40'),
-(26, 1, 4, 'gestionnaire RH', 'e1e6ff', 'dom.jpg', '2021-12-13 18:00:40'),
-(27, 1, 4, 'recruteur du personnel', 'e1e6ff', 'dom.jpg', '2021-12-13 18:00:40'),
-(28, 1, 4, 'adjoint des RH', 'e1e6ff', 'dom.jpg', '2021-12-13 18:00:40'),
-(29, 1, 5, 'technicien(ne) marketing', 'e1e6ff', 'dom.jpg', '2021-12-13 18:03:12'),
-(30, 1, 5, 'specialiste des medias et des evenements', 'e1e6ff', 'dom.jpg', '2021-12-13 18:03:12'),
-(31, 1, 5, 'coordonnateur(trice) marketing', 'e1e6ff', 'dom.jpg', '2021-12-13 18:03:12'),
-(32, 1, 5, 'coordinateur des services aux clients', 'e1e6ff', 'dom.jpg', '2021-12-13 18:03:12'),
-(33, 1, 5, 'reception et developpement', 'e1e6ff', 'dom.jpg', '2021-12-13 18:03:12'),
-(34, 1, 5, 'conseiller(ere)', 'e1e6ff', 'dom.jpg', '2021-12-13 18:03:12'),
-(35, 1, 5, 'marketing et communication', 'e1e6ff', 'dom.jpg', '2021-12-13 18:03:12');
+INSERT INTO `subdomains` (`id`, `id_admin`, `id_domain`, `name`, `color`, `added_at`) VALUES
+(2, 1, 2, 'commis entrepot', 'e1e6ff', '2021-12-13 17:53:37'),
+(3, 1, 2, 'coordonnateur marchandisage', 'e1e6ff', '2021-12-13 17:53:37'),
+(4, 1, 2, 'gerant de magasin', 'e1e6ff', '2021-12-13 17:53:37'),
+(5, 1, 2, 'assistant gerant', 'e1e6ff', '2021-12-13 17:53:37'),
+(6, 1, 2, 'analyste', 'e1e6ff', '2021-12-13 17:53:37'),
+(7, 1, 2, 'formation et developpement- concepteur de contenu', 'e1e6ff', '2021-12-13 17:53:37'),
+(8, 1, 2, 'chef d’equipe', 'e1e6ff', '2021-12-13 17:53:37'),
+(9, 1, 2, 'gestionnaire des ventes', 'e1e6ff', '2021-12-13 17:53:37'),
+(10, 1, 2, 'chauffeurs', 'e1e6ff', '2021-12-13 17:53:37'),
+(11, 1, 2, 'manutentionnaire', 'e1e6ff', '2021-12-13 17:53:37'),
+(12, 1, 1, 'Developpeur', 'e1e6ff', '2021-12-13 17:56:00'),
+(13, 1, 1, 'Administrateur de base de donnees', 'e1e6ff', '2021-12-13 17:58:43'),
+(14, 1, 1, 'Administrateur de reseaux', 'e1e6ff', '2021-12-13 17:58:43'),
+(15, 1, 1, 'Administrateur de systemes', 'e1e6ff', '2021-12-13 17:58:43'),
+(16, 1, 1, 'Analyste de contenu', 'e1e6ff', '2021-12-13 17:58:43'),
+(17, 1, 1, 'Technicien Reseaux Niveau', 'e1e6ff', '2021-12-13 17:58:43'),
+(18, 1, 1, 'Responsable de Projet TI', 'e1e6ff', '2021-12-13 17:58:43'),
+(19, 1, 1, 'Analyste de donnees', 'e1e6ff', '2021-12-13 17:58:43'),
+(20, 1, 1, 'Analyste en securite TI', 'e1e6ff', '2021-12-13 17:58:43'),
+(21, 1, 1, 'Analyste fonctionnel', 'e1e6ff', '2021-12-13 17:58:43'),
+(22, 1, 1, 'Analyste en assurance-qualite', 'e1e6ff', '2021-12-13 17:58:43'),
+(23, 1, 1, 'soutien technique informatique', 'e1e6ff', '2021-12-13 17:58:43'),
+(24, 1, 4, 'coordonnateur des RH', 'e1e6ff', '2021-12-13 18:00:40'),
+(25, 1, 4, 'generaliste des RH', 'e1e6ff', '2021-12-13 18:00:40'),
+(26, 1, 4, 'gestionnaire RH', 'e1e6ff', '2021-12-13 18:00:40'),
+(27, 1, 4, 'recruteur du personnel', 'e1e6ff', '2021-12-13 18:00:40'),
+(28, 1, 4, 'adjoint des RH', 'e1e6ff', '2021-12-13 18:00:40'),
+(29, 1, 5, 'technicien(ne) marketing', 'e1e6ff', '2021-12-13 18:03:12'),
+(30, 1, 5, 'specialiste des medias et des evenements', 'e1e6ff', '2021-12-13 18:03:12'),
+(31, 1, 5, 'coordonnateur(trice) marketing', 'e1e6ff', '2021-12-13 18:03:12'),
+(32, 1, 5, 'coordinateur des services aux clients', 'e1e6ff', '2021-12-13 18:03:12'),
+(33, 1, 5, 'reception et developpement', 'e1e6ff', '2021-12-13 18:03:12'),
+(34, 1, 5, 'conseiller(ere)', 'e1e6ff', '2021-12-13 18:03:12'),
+(35, 1, 5, 'marketing et communication', 'e1e6ff', '2021-12-13 18:03:12');
 
 -- --------------------------------------------------------
 

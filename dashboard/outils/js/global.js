@@ -1,15 +1,15 @@
 $(document).ready(function(){
   $("#log_btn").click(function(){
     var email = $("#email").val(),
-        password = $("#password").val(),
-        current_page = $("#current_page").val();
+    password = $("#password").val(),
+    current_page = $("#current_page").val();
 
     $.ajax({
       url: _ROOT_PATH+"outils/php/traitement/frontend/login.php",
       type: "POST",
       data:	"email="+email
-            +"&password="+password
-            +"&current_page="+current_page,
+      +"&password="+password
+      +"&current_page="+current_page,
       beforeSend : function(){
         $("#log_btn").html("chargement...");
       },
@@ -19,7 +19,7 @@ $(document).ready(function(){
         if(ret == "ok"){
           window.location.reload();
         }else{
-          alert("Aucun compte trouvé");
+          alert("Email ou mot de passe incorrecte !");
         }
       }
     });

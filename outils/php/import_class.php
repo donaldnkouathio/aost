@@ -92,7 +92,6 @@ $current_domain=[
 	'id_admin'=>0,
 	'name'=>"",
 	'color'=>"",
-	'image'=>"",
 	'added_at'=>""
 ];
 
@@ -103,7 +102,6 @@ $current_subdomain=[
 	'id_domain'=>0,
 	'name'=>"",
 	'color'=>"",
-	'image'=>"",
 	'added_at'=>""
 ];
 

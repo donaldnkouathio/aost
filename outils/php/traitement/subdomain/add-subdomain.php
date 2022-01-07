@@ -16,7 +16,6 @@ $current_subdomain=[
 	'id_domain'=>$_POST['id_domain'],
 	'name'=>$_POST['name'],
 	'color'=>$_POST['color'],
-	'image'=>$_POST['image'],
 	'added_at'=>date("Y-m-d H:i:s")
 ];
 

@@ -18,7 +18,6 @@ $subdomain->setId_admin($_SESSION['id']);
 $subdomain->setId_domain($_POST['id_domain']);
 $subdomain->setName($_POST['name']);
 $subdomain->setColor($_POST['color']);
-$subdomain->setImage($_POST['image']);
 
 
 if($subdomain->editSubdomain($subdomain){

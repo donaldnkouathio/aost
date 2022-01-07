@@ -12,7 +12,6 @@ class domain
     private $_id_admin;
     private $_name;
     private $_color;
-    private $_image;
     private $_added_at;
 
     /*CONSTRUCTEUR*/
@@ -66,15 +65,6 @@ class domain
     }
 
 
-    public function setImage($image){
-        $this->_image=htmlentities(strval($image));
-    }
-
-    public function getImage(){
-        return $this->_image;
-    }
-
-
 
     public function setAdded_at($added_at){
         if(is_string($added_at)){
@@ -103,21 +93,19 @@ class domain
     public function addDomain(Domain $domain){
         include(_APP_PATH."bd/server-connect.php");
 
-        $query=$db->prepare("INSERT INTO domains VALUES (?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO domains VALUES (?,?,?,?,?)");
 
         $id=0;
         $id_admin=$domain->getId_admin();
         $name=$domain->getName();
         $color=$domain->getColor();
-        $image=$domain->getImage();
         $added_at=$domain->getAdded_at();
 
         $query->bindParam(1,$id);
         $query->bindParam(2,$id_admin);
         $query->bindParam(3,$name);
         $query->bindParam(4,$color);
-        $query->bindParam(5,$image);
-        $query->bindParam(6,$added_at);
+        $query->bindParam(5,$added_at);
 
 
         if($query->execute()){
@@ -141,6 +129,11 @@ class domain
     $req->bindParam(1,$id_domain);
 
     if($req->execute()){
+        $req=$db->prepare("DELETE FROM subdomains WHERE id_domain=?");
+        $req->bindParam(1,$id_domain);
+
+        $req->execute();
+
         return true;
     }else{
         return false;
@@ -211,8 +204,7 @@ public function editDomain(Domain $domain) {
 
     $query=$db->prepare("UPDATE domains
         SET name=?,
-        color=?,
-        image=?
+        color=?
         WHERE id=?
 
         ");
@@ -220,12 +212,10 @@ public function editDomain(Domain $domain) {
     $id=$domain->getId();
     $name=$domain->getName();
     $color=$domain->getColor();
-    $image=$domain->getImage();
 
     $query->bindParam(1,$name);
     $query->bindParam(2,$color);
-    $query->bindParam(3,$image);
-    $query->bindParam(4,$id);
+    $query->bindParam(3,$id);
 
     if($query->execute()){
 
