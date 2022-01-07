@@ -45,18 +45,17 @@ $candidacies = $candidacy->getCandidacys();
         <?php if($candidacy->getCv_file() != ""){ ?>
         <span class="btnEdit" id="btnSeeCV<?php echo $candidacy->getId(); ?>" title="Voir le CV" style="margin-left: 5px">
           <i class="material-icons vertical-align-bottom">insert_drive_file</i>
-          Voir le CV
+          CV
         </span>
         <?php } ?>
         <?php if($candidacy->getMotivation_file() != ""){ ?>
         <span class="btnEdit" id="btnSeeMotivation<?php echo $candidacy->getId(); ?>" title="Voir la lettre de motivation">
           <i class="material-icons vertical-align-bottom">insert_drive_file</i>
-          Voir la lettre de motivation
+          Lettre de motivation
         </span>
         <?php } ?>
         <span class="btnDelete" id="btnDeleteCandidacy<?php echo $candidacy->getId(); ?>" title="Supprimer cette candidature">
           <i class="material-icons vertical-align-bottom">close</i>
-          Supprimer
         </span>
       </div>
     </div>
@@ -64,6 +63,7 @@ $candidacies = $candidacy->getCandidacys();
 </div>
 
 <?php foreach ($candidacies as $candidacy) { ?>
+  <?php // See CV Modal ?>
   <div class="item_modal_shadow" id="seeCVModal<?php echo $candidacy->getId(); ?>">
     <div class="item_modal">
 
@@ -76,6 +76,25 @@ $candidacies = $candidacy->getCandidacys();
 
       <div class="item_modal_header">
         <div class="btn" id="btnSeeCVClose<?php echo $candidacy->getId(); ?>" title="Annuler">
+          Annuler
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <?php // See Motivation Modal ?>
+  <div class="item_modal_shadow" id="seeMotivationModal<?php echo $candidacy->getId(); ?>">
+    <div class="item_modal">
+
+      <div class="item_modal_body">
+      <!--  <h3 style="font-weight: normal">Candidature <strong>No <?php echo $candidacy->getId(); ?></strong>, posté <?php get_elapsed_time($candidacy->getAdded_at()); ?></h3> -->
+
+        <embed src="<?php echo _ROOT_PATH."files/candidacy/".$candidacy->getId()."/".htmlspecialchars_decode($candidacy->getMotivation_file()) ?>" width="100%" height="98%" type="application/pdf" />
+
+      </div>
+
+      <div class="item_modal_header">
+        <div class="btn" id="btnSeeMotivationClose<?php echo $candidacy->getId(); ?>" title="Annuler">
           Annuler
         </div>
       </div>
@@ -145,6 +164,7 @@ $candidacies = $candidacy->getCandidacys();
 
       //for edit
       toggleModal($("#seeCVModal<?php echo $candidacy->getId(); ?>"), $("#btnSeeCV<?php echo $candidacy->getId(); ?>"), $("#btnSeeCVClose<?php echo $candidacy->getId(); ?>"));
+      toggleModal($("#seeMotivationModal<?php echo $candidacy->getId(); ?>"), $("#btnSeeMotivation<?php echo $candidacy->getId(); ?>"), $("#btnSeeMotivationClose<?php echo $candidacy->getId(); ?>"));
     <?php } ?>
   });
 </script>
