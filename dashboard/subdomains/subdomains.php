@@ -46,7 +46,7 @@
 	?>
     <div class="suggest_block">
       <div class="suggest_row">
-        <span class="suggest_col">Domaine No <?php echo $subdomain->getId(); ?></span>
+        <span class="suggest_col">Sous-domaine No <?php echo $subdomain->getId(); ?></span>
       </div>
       <div class="suggest_row">
         <span class="suggest_title"  style="max-width: 100%; overflow: hidden; height: 1.4em;" title="<?php echo ucfirst(htmlspecialchars_decode($subdomain->getName())); ?>"> <?php echo ucfirst(htmlspecialchars_decode($subdomain->getName())); ?></span>
