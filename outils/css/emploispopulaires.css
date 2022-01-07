@@ -17,13 +17,12 @@
   box-sizing: border-box;
   margin-right: 15px;
   color : var(--color-text) !important;
-  box-shadow: -1px 2px 6px var(--color-text);
   background-color: white;
   margin-bottom: 15px;
   border-radius: 0 var(--border-radius-size) var(--border-radius-size) 0;
 }
 .ep-block:hover{
-  background-color: #c0c0c0;
+  box-shadow: -1px 2px 6px var(--color-text);
 }
 .ep-icon{
   display: none;

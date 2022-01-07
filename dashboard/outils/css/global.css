@@ -5,49 +5,13 @@
   background-color: var(--color-shadow);
 }
 
-.suggest_container{
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 15px;
-}
-.suggest_block{
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 15px;
-  margin-bottom: 15px;
-  background-color: white;
-  border-left: 3px solid var(--color-secondary);
-  border-radius: 0 var(--border-radius-size) var(--border-radius-size) 0;
-}
-.suggest_block:hover{
-  box-shadow: 0px 0px 6px var(--color-text);
-}
-.suggest_block i{
-  font-size: 1.1em;
-  margin-bottom: 0.2em;
-}
-.margin-right-5{
-  margin-right: 5px;
-}
-.background-primary{
-  color: var(--color-primary);
-}
-.suggest_row{
-  padding: 5px;
-}
-.suggest_col{
-  display: inline-block;
-}
-.suggest_title{
-  max-width: 100%;
-  max-height: 1.4em;
-  overflow: hidden;
-  display: inline-block;
-  font-weight: bold;
-}
-
 .item_container{
+}
+.item_inline_input{
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: white;
+  border: none;
 }
 
 table{
@@ -92,30 +56,30 @@ tr:hover, tr:nth-child(even):hover{
   box-sizing: border-box;
   padding: 5px;
   font-size: 0.8em;
-  color: green;
-  border: 1px solid green;
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
   cursor: pointer;
   margin-left: 15px;
   background-color: white;
 }
 .btnAdd:hover{
   color: white;
-  background-color: green;
+  background-color: var(--color-success);
 }
 
 .btnDelete{
   box-sizing: border-box;
   padding: 5px;
   font-size: 0.8em;
-  color: red;
-  border: 1px solid red;
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger);
   cursor: pointer;
   background-color: white;
   margin-left: 15px;
 }
 .btnDelete:hover{
   color: white;
-  background-color: red;
+  background-color: var(--color-danger);
 }
 .item_setting i{
   font-size: 1.2em;
@@ -139,35 +103,17 @@ tr:hover, tr:nth-child(even):hover{
 }
 .item_modal_header{
   height: 10%;
-  text-align: center;
+  text-align: right;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   box-sizing: border-box;
-  display: grid;
-  cursor: pointer;
-  grid-template-columns: 50% 50%;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
-.item_modal_header_left{
-  grid-column-start: 1;
-  grid-column-end: 2;
-  background-color: green;
-  color: white;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  z-index: 20;
-}
-.item_modal_header_right{
-  grid-column-start: 2;
-  grid-column-end: 2;
-  background-color: var(--color-text);
-  color: white;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  z-index: 20;
-}
-.item_modal_header_left:hover{
-  background-color: darkgreen;
-}
-.item_modal_header_right:hover{
-  background-color: var(--color-primary);
+.item_modal_header .btn{
+  display: inline-block;
+  margin-left: 15px;
+  font-size: 0.8em;
 }
 .item_modal_body{
   padding: 15px;
@@ -209,31 +155,30 @@ tr:hover, tr:nth-child(even):hover{
   display: none;
 }
 .item_deleteModal{
-  border-radius: var(--border-radius-size);
   background-color: var(--color-shadow);
   position: fixed;
 }
 .item_deleteModal_body{
-  height: 80%;
   box-sizing: border-box;
   padding: 15px;
   text-align: center;
+  overflow: auto;
 }
 .item_editPwdModal_body{
-  height: 80%;
   box-sizing: border-box;
   padding: 15px;
+  overflow: auto;
 }
 .item_editPwdModal_body .item_modal_input{
   width: 100%;
 }
 .item_modal_indicator{
-  color: red;
+  color: var(--color-danger);
   font-size: 0.9em;
 }
 .item_deleteModal_body i{
   display: block;
-  color: red;
+  color: var(--color-danger);
   margin-bottom: 15px;
   font-size: 2.8em;
 }
@@ -241,31 +186,18 @@ tr:hover, tr:nth-child(even):hover{
 
 }
 .item_deleteModal_footer{
-  height: 20%;
-  text-align: center;
+  text-align: right;
+  padding-right: 15px;
   box-sizing: border-box;
-  display: grid;
-  cursor: pointer;
-  grid-template-columns: 50% 50%;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
-.item_deleteModal_left{
-  grid-column-start: 1;
-  grid-column-end: 2;
-  background-color: red;
-  color: white;
-  padding-top: 7%;
-  padding-bottom: 5%;
-}
-.item_deleteModal_right{
-  grid-column-start: 2;
-  grid-column-end: 2;
-  background-color: var(--color-text);
-  color: white;
-  padding-top: 7%;
-  padding-bottom: 5%;
+.item_deleteModal_footer .btn{
+  display: inline-block;
+  margin-left: 15px;
+  font-size: 0.8em;
 }
 .item_deleteModal_left:hover{
-  background-color: darkred;
+  background-color: var(--color-danger-dark);
 }
 .item_deleteModal_right:hover{
   background-color: var(--color-primary);
@@ -330,10 +262,21 @@ tr:hover, tr:nth-child(even):hover{
     margin-right: 0px;
   }
   .item_deleteModal{
+    border-radius: none !important;
     top: 0% !important;
     left: 0% !important;
     height: 100% !important;
     width: 100% !important;
+  }
+  .item_deleteModal_footer .btn{
+    margin-top: 4% !important;
+    margin-bottom: 4% !important;
+  }
+  .item_deleteModal_body{
+    height: 90%;
+  }
+  .item_editPwdModal_body{
+    height: 90%;
   }
 
   .suggest_block{
@@ -349,6 +292,18 @@ tr:hover, tr:nth-child(even):hover{
     display: block;
     margin-right: 15px !important;
     margin-bottom : 15px;
+  }
+
+  .btnAdd{
+    width: 100%;
+    margin-left: 0 !important;
+  }
+  .btnAdd i{
+    font-size : 1.2em;
+  }
+
+  .item_inline_input{
+    width: 100%;
   }
 }
 
@@ -372,12 +327,7 @@ tr:hover, tr:nth-child(even):hover{
     height: 100%;
     z-index: 15!important;
   }
-  .item_deleteModal{
-    top: 30%;
-    left: 20%;
-    height: 40%;
-    width: 60%;
-  }
+
 }
 
 /* Tablette et laptop */
@@ -395,6 +345,36 @@ tr:hover, tr:nth-child(even):hover{
 
   .item_modal_input{
     width: 48%;
+  }
+
+  /* modal delete for laptop */
+  .item_deleteModal{
+    border-radius: var(--border-radius-size);
+    top: 20%;
+    left: 35%;
+    height: 60%;
+    width: 30%;
+  }
+  .item_deleteModal_footer .btn{
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  .item_deleteModal_body{
+    height: 80%;
+  }
+  .item_editPwdModal_body{
+    height: 80%;
+  }
+
+
+  .item_inline_input{
+    margin-left: 5px;
+  }
+
+
+  .btnAdd i{
+    font-size : 1.2em;
+    margin-bottom: 1.6em;
   }
 }
 
@@ -422,12 +402,6 @@ tr:hover, tr:nth-child(even):hover{
     left: 0;
     width: 100%;
     height: 100%;
-  }
-  .item_deleteModal{
-    top: 30%;
-    left: 35%;
-    height: 40%;
-    width: 30%;
   }
 }
 

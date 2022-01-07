@@ -59,6 +59,32 @@
   width: 80px;
   height: 80px;
 }
+
+/* Loader */
+.btn-loading{
+  position: relative;
+  box-sizing: border-box;
+}
+.loader{
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  border: 2px solid var(--color-shadow);
+  border-top: 2px solid var(--color-danger);
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
 /* *** */
 .goToTop_block{
 
@@ -230,6 +256,69 @@ citaion{
 .btn-primary:hover{
   background-color: var(--btn-primary-bg-hover-color);
 }
+.btn-danger{
+  color: var(--btn-danger-text-color);
+  background-color: var(--btn-danger-bg-color);
+}
+.btn-danger:hover{
+  background-color: var(--btn-danger-bg-hover-color);
+}
+
+.background-danger{
+  background-color: var(--color-danger);
+  color: white !important;
+}
+.background-danger:hover{
+  background-color: var(--color-danger-dark) !important;
+  color: white !important;
+}
+
+
+/* Pour les styles des éléments du dashboard, menu pour laptop, l'affichage d'offre, ... */
+
+.suggest_container{
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 15px;
+}
+.suggest_block{
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: white;
+  border-left: 3px solid var(--color-secondary);
+  border-radius: 0 var(--border-radius-size) var(--border-radius-size) 0;
+}
+.suggest_block:hover{
+  box-shadow: 0px 0px 6px var(--color-text);
+}
+.suggest_block i{
+  font-size: 1.1em;
+  margin-bottom: 0.2em;
+}
+.margin-right-5{
+  margin-right: 5px;
+}
+.background-primary{
+  color: var(--color-primary);
+}
+.suggest_row{
+  padding: 5px;
+}
+.suggest_col{
+  display: inline-block;
+}
+.suggest_title{
+  max-width: 100%;
+  max-height: 1.4em;
+  overflow: hidden;
+  display: inline-block;
+  font-weight: bold;
+}
+
+/* *** */
 
 /***** Media Query *****/
 

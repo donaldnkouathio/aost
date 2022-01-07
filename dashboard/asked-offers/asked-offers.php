@@ -1,4 +1,4 @@
-<h2 class="margin-top-none" style="display: inline-block">Demandes d'offre</h2>
+<h2 class="margin-top-none" style="display: inline-block">Candidatures</h2>
 
 <?php
 $candidacies = $candidacy->getCandidacys();
@@ -75,7 +75,7 @@ $candidacies = $candidacy->getCandidacys();
       </div>
 
       <div class="item_modal_header">
-        <div class="item_modal_header_right" id="btnSeeCVClose<?php echo $candidacy->getId(); ?>" title="Annuler">
+        <div class="btn" id="btnSeeCVClose<?php echo $candidacy->getId(); ?>" title="Annuler">
           Annuler
         </div>
       </div>
@@ -93,10 +93,10 @@ $candidacies = $candidacy->getCandidacys();
 
       </div>
       <div class="item_deleteModal_footer">
-        <div class="item_deleteModal_left" id="btnDeleteCandidacyConfirm<?php echo $candidacy->getId(); ?>">
+        <div class="btn btn-danger" id="btnDeleteCandidacyConfirm<?php echo $candidacy->getId(); ?>">
           Supprimer
         </div>
-        <div class="item_deleteModal_right" id="btnDeleteCandidacyClose<?php echo $candidacy->getId(); ?>" title="Annuler">
+        <div class="btn" id="btnDeleteCandidacyClose<?php echo $candidacy->getId(); ?>" title="Annuler">
           Annuler
         </div>
       </div>
@@ -126,9 +126,10 @@ $candidacies = $candidacy->getCandidacys();
 					url: _ROOT_PATH+path,
 					type: "POST",
 					data:	"id="+id_val,
-					beforeSend : function(){
-						btn.html("chargement...");
-					},
+          beforeSend : function(){
+            btn.after('<span class="btn btn-danger btn-loading"><span class="loader"></span></span>');
+            btn.hide();
+          },
 					success : function(ret){
 						window.location.reload();
 					}

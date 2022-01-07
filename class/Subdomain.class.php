@@ -8,6 +8,7 @@ class Subdomain
 
    /*PROPRIETES*/
    private $_id;
+   private $_id_admin;
    private $_id_domain;
    private $_name;
    private $_color;
@@ -35,6 +36,15 @@ public function setId($id){
 
 public function getId(){
     return $this->_id;
+}
+
+
+public function setId_admin($id_admin){
+    $this->_id_admin=$id_admin;
+}
+
+public function getId_admin(){
+    return $this->_id_admin;
 }
 
 
@@ -102,9 +112,10 @@ public function getAdded_at(){
 public function addSubdomain(Subdomain $subdomain){
     include(_APP_PATH."bd/server-connect.php");
 
-    $query=$db->prepare("INSERT INTO subdomains VALUES (?,?,?,?,?,?)");
+    $query=$db->prepare("INSERT INTO subdomains VALUES (?,?,?,?,?,?,?)");
 
     $id=0;
+    $id_admin=$subdomain->getId_admin();
     $id_domain=$subdomain->getId_domain();
     $name=$subdomain->getName();
     $color=$subdomain->getColor();
@@ -112,11 +123,12 @@ public function addSubdomain(Subdomain $subdomain){
     $added_at=$subdomain->getAdded_at();
 
     $query->bindParam(1,$id);
-    $query->bindParam(2,$id_domain);
-    $query->bindParam(3,$name);
-    $query->bindParam(4,$color);
-    $query->bindParam(5,$image);
-    $query->bindParam(6,$added_at);
+    $query->bindParam(2,$id_admin);
+    $query->bindParam(3,$id_domain);
+    $query->bindParam(4,$name);
+    $query->bindParam(5,$color);
+    $query->bindParam(6,$image);
+    $query->bindParam(7,$added_at);
 
 
     if($query->execute()){
@@ -235,6 +247,8 @@ public function editSubdomain(Subdomain $subdomain) {
 
     $query=$db->prepare("UPDATE subdomains
        SET name=?,
+       id_admin=?,
+       id_domain=?,
        color=?,
        image=?
        WHERE id=?
@@ -242,14 +256,18 @@ public function editSubdomain(Subdomain $subdomain) {
        ");
 
     $id=$subdomain->getId();
+    $id_admin=$subdomain->getId_admin();
+    $id_domain=$subdomain->getId_domain();
     $name=$subdomain->getName();
     $color=$subdomain->getColor();
     $image=$subdomain->getImage();
 
     $query->bindParam(1,$name);
-    $query->bindParam(2,$color);
-    $query->bindParam(3,$image);
-    $query->bindParam(4,$id);
+    $query->bindParam(2,$id_admin);
+    $query->bindParam(3,$id_domain);
+    $query->bindParam(4,$color);
+    $query->bindParam(5,$image);
+    $query->bindParam(6,$id);
 
     if($query->execute()){
 
