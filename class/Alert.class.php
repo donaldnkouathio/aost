@@ -8,7 +8,7 @@ class Alert
 
  /*PROPRIETES*/
  private $_id;
- private $_id_city;
+ private $_city;
  private $_email;
  private $_domain;
  private $_name;
@@ -87,12 +87,12 @@ public function getPhone(){
 }
 
 
-public function setId_city($id_city){
- $this->_id_city=intval($id_city);
+public function setCity($city){
+ $this->_city=htmlentities(strval($city));
 }
 
-public function getId_city(){
-  return $this->_id_city;
+public function getCity(){
+  return $this->_city;
 }
 
 
@@ -144,7 +144,7 @@ public function addAlert(Alert $alert){
 
   $id=0;
   $email=$alert->getEmail();
-  $id_city=$alert->getId_city();
+  $city=$alert->getCity();
   $domain=$alert->getDomain();
   $name=$alert->getName();
   $first_name=$alert->getFirst_name();
@@ -154,7 +154,7 @@ public function addAlert(Alert $alert){
   $added_at=$alert->getAdded_at();
 
   $query->bindParam(1,$id);
-  $query->bindParam(2,$id_city);
+  $query->bindParam(2,$city);
   $query->bindParam(3,$email);
   $query->bindParam(4,$domain);
   $query->bindParam(5,$name);
