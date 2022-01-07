@@ -398,9 +398,10 @@ $i++; } ?>
 	         +"&deleted="+deleted_val
 	         +"&expired="+expired_val
 	         +"&deadline="+deadline_val,
-	         beforeSend : function(){
-	           btn.html("chargement...");
-	         },
+					 beforeSend : function(){
+             btn.after('<span class="btn btn-primary btn-loading">Chargement...</span>');
+             btn.hide();
+           },
 	         success : function(ret){
 	          window.location.reload();
 	        }
@@ -421,8 +422,9 @@ $i++; } ?>
 					type: "POST",
 					data:	"id="+id_val,
 					beforeSend : function(){
-						btn.html("chargement...");
-					},
+            btn.after('<span class="btn btn-danger btn-loading">Chargement...</span>');
+            btn.hide();
+          },
 					success : function(ret){
 						window.location.reload();
 					}

@@ -237,7 +237,7 @@
 					type: "POST",
 					data:	"id="+id_val,
           beforeSend : function(){
-            btn.after('<span class="btn btn-primary btn-loading">Chargement...</span>');
+            btn.after('<span class="btn btn-danger btn-loading">Chargement...</span>');
             btn.hide();
           },
           success : function(ret){

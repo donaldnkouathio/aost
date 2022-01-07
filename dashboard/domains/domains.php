@@ -179,9 +179,10 @@ $domains = $domain->getDomains();
                   +"&name="+name_val
                   +"&image="
                   +"&color="+color_val,
-  					beforeSend : function(){
-  						btn.html("chargement...");
-  					},
+            beforeSend : function(){
+              btn.after('<span class="btn btn-primary btn-loading">Chargement...</span>');
+              btn.hide();
+            },
   					success : function(ret){
   						window.location.reload();
   					}
@@ -202,9 +203,10 @@ $domains = $domain->getDomains();
 					url: _ROOT_PATH+path,
 					type: "POST",
 					data:	"id="+id_val,
-					beforeSend : function(){
-						btn.html("chargement...");
-					},
+          beforeSend : function(){
+            btn.after('<span class="btn btn-danger btn-loading">Chargement...</span>');
+            btn.hide();
+          },
 					success : function(ret){
 						window.location.reload();
 					}
