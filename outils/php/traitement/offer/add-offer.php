@@ -48,7 +48,7 @@ if($offer->addOffer($offer)){
 	$last_offer=$offer->getLastOffer();
 
 	$admin=new Admin($current_admin);
-	$admin=$admin->getAdmin(1);
+	$admin=$admin->getAdmin($_SESSION['id']);
 
 	$subdomain=new Subdomain($current_subdomain);
 	$subdomain=$subdomain->getSubdomain($offer->getId_subdomain());
@@ -56,7 +56,7 @@ if($offer->addOffer($offer)){
 	// AJOUT DANS L'HISTORIQUE
 	$current_history=[
 		'id'=>0,
-		'id_admin'=>1,
+		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$last_offer->getId(),
 		'action'=>"add offer",
 		'description'=>$admin->getName()." a ajouté une offre dans la catégorie ".$subdomain->getName(),

@@ -152,7 +152,7 @@ class domain
 public function getLastDomain(){
     include(_APP_PATH."bd/server-connect.php");
 
-    $query=$db->prepare("SELECT * FROM domains WHERE id=(SELECT MAX(id) FROM domain)");
+    $query=$db->prepare("SELECT * FROM domains WHERE id=(SELECT MAX(id) FROM domains)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
         return (new Domain($data));

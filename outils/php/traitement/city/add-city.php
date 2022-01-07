@@ -17,7 +17,25 @@ $current_city=[
 
 $city=new City($current_city);
 
-echo $city->addCity($city);
+if($city->addCity($city)){
+
+	$last_city=$city->getLastCity();
+
+	$admin=new Admin($current_admin);
+	$admin=$admin->getAdmin($_SESSION['id']);
+
+	$current_history=[
+		'id'=>0,
+		'id_admin'=>$_SESSION['id'],
+		'id_target'=>$last_city->getId(),
+		'action'=>"add city",
+		'description'=>$admin->getName()." a ajouté la ville ".$city->getName(),
+		'added_at'=>date("Y-m-d H:i:s")
+	];
+
+	$history=new History($current_history);
+	$history->addHistory($history);
+}
 
 
 

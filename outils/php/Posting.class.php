@@ -128,18 +128,16 @@ class Posting{
           <textarea name="about" ></textarea>
         </div>
 
-        <?php if($offer->getCv() == 1){ ?>
         <div class="input-block text-area-block">
           <label for="cv_file">Joindre mon CV (au format PDF)<span class="form-required"> </span> :</label>
           <input type="file" name="cv_file" required value="">
         </div>
-        <?php } ?>
 
         <?php if($offer->getMotivation() == 1){ ?>
-        <div class="input-block text-area-block">
-          <label for="motivation_file">Joindre ma lettre de motivation (au format PDF)<span class="form-required"> </span> :</label>
-          <input type="file" name="motivation_file" required value="">
-        </div>
+          <div class="input-block text-area-block">
+            <label for="motivation_file">Joindre ma lettre de motivation (au format PDF)<span class="form-required"> </span> :</label>
+            <input type="file" name="motivation_file" required value="">
+          </div>
         <?php } ?>
 
         <div class="checkbox-block">

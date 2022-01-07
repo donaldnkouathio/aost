@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 04 jan. 2022 à 23:52
+-- Généré le :  ven. 07 jan. 2022 à 07:03
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -38,14 +38,15 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='Table des administrateurs de la plateforme';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Table des administrateurs de la plateforme';
 
 --
 -- Déchargement des données de la table `admins`
 --
 
 INSERT INTO `admins` (`id`, `email`, `password`, `role`, `name`, `added_at`) VALUES
-(1, 'dimcompte@gmail.com', 0x0000000000000000000000000000000000000000, 'super', 'Ego Buster', '2021-12-29 03:58:01');
+(1, 'dimcompte@gmail.com', 0x70352f41061eda4ff3c322094af068ba70c3b38b, 'super', 'Ego Buster', '2022-01-07 02:38:56'),
+(2, 'dnk@gmail.com', 0xbfe54caa6d483cc3887dce9d1b8eb91408f1ea7a, 'moderateur', 'Donald K', '2022-01-07 03:25:35');
 
 -- --------------------------------------------------------
 
@@ -56,7 +57,7 @@ INSERT INTO `admins` (`id`, `email`, `password`, `role`, `name`, `added_at`) VAL
 DROP TABLE IF EXISTS `alerts`;
 CREATE TABLE IF NOT EXISTS `alerts` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_city` bigint(20) NOT NULL,
+  `city` varchar(80) NOT NULL,
   `email` varchar(255) NOT NULL,
   `domain` longtext NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -65,9 +66,15 @@ CREATE TABLE IF NOT EXISTS `alerts` (
   `about` longtext,
   `cv_file` varchar(255) NOT NULL,
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `fk_city` (`id_city`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `alerts`
+--
+
+INSERT INTO `alerts` (`id`, `city`, `email`, `domain`, `name`, `first_name`, `phone`, `about`, `cv_file`, `added_at`) VALUES
+(3, 'Yaounde', 'dimcompte@gmail.com', 'chauffeurs,commis entrepot', 'Black', 'Light', '0692503797', 'candidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacy', 'Candidature_Cv_Black.pdf', '2022-01-07 06:58:48');
 
 -- --------------------------------------------------------
 
@@ -198,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `domains` (
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_admin` (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `domains`
@@ -223,7 +230,8 @@ INSERT INTO `domains` (`id`, `id_admin`, `name`, `color`, `image`, `added_at`) V
 (17, 1, 'Securite', '', '', '2021-12-13 17:48:16'),
 (18, 1, 'Hotellerie, restauration, evenements speciaux', '', '', '2021-12-13 17:48:16'),
 (19, 1, 'Pharmaceutique', '', '', '2021-12-13 17:48:16'),
-(3, 1, 'Soutien aux familles ', '', '', '2021-12-13 17:48:16');
+(3, 1, 'Soutien aux familles ', '', '', '2021-12-13 17:48:16'),
+(23, 1, 'Agricultures', '', '', '2022-01-07 03:45:56');
 
 -- --------------------------------------------------------
 
@@ -241,7 +249,26 @@ CREATE TABLE IF NOT EXISTS `history` (
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_admin` (`id_admin`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table qui concervera l''ensemble des actions effectuées par les administrateurs';
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COMMENT='Table qui concervera l''ensemble des actions effectuées par les administrateurs';
+
+--
+-- Déchargement des données de la table `history`
+--
+
+INSERT INTO `history` (`id`, `id_admin`, `id_target`, `action`, `description`, `added_at`) VALUES
+(1, 1, 1, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-06 17:05:08'),
+(2, 1, 2, 'add admin', 'Ego Buster a ajout&eacute; l\'administrateur Donald de role moderateur', '2022-01-07 03:25:35'),
+(3, 1, 2, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie chauffeurs', '2022-01-07 03:26:43'),
+(4, 1, 6, 'delete candidacy', 'Ego Buster a supprim&eacute; une candidature ', '2022-01-07 03:27:14'),
+(6, 1, 20, 'delete domain', 'Ego Buster a supprim&eacute; le domaine Agriculture', '2022-01-07 03:41:15'),
+(7, 1, 21, 'delete domain', 'Ego Buster a supprim&eacute; le domaine Agriculture', '2022-01-07 03:43:50'),
+(8, 1, 22, 'delete domain', 'Ego Buster a supprim&eacute; le domaine agriculture', '2022-01-07 03:45:49'),
+(9, 1, 23, 'add domain', 'Ego Buster a ajout&eacute; le domaine Agriculture', '2022-01-07 03:45:56'),
+(10, 1, 23, 'edit domain', 'Ego Buster a modifier le domaine Agriculture en Agricultures', '2022-01-07 03:49:44'),
+(11, 1, 90, 'add subdomain', 'Ego Buster a ajout&eacute; le sous-domaine planteur dans le domaine Agricultures', '2022-01-07 03:54:51'),
+(12, 1, 90, 'delete domain', 'Ego Buster a supprim&eacute; le sous-domaine planteur', '2022-01-07 03:56:54'),
+(13, 1, 2, 'edit admin', 'Ego Buster a modifier les informations de l\'administrateur Donald', '2022-01-07 04:02:29'),
+(14, 1, 2, 'edit password', 'Ego Buster a modifi&eacute; le mot de passe de Donald K', '2022-01-07 04:04:47');
 
 -- --------------------------------------------------------
 
@@ -270,16 +297,14 @@ CREATE TABLE IF NOT EXISTS `offers` (
   KEY `fk_city` (`id_city`),
   KEY `fk_subdomain` (`id_subdomain`),
   KEY `fk_admin` (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COMMENT='Table qui contient les differentes offres';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Table qui contient les differentes offres';
 
 --
 -- Déchargement des données de la table `offers`
 --
 
 INSERT INTO `offers` (`id`, `id_admin`, `id_subdomain`, `id_city`, `compagny`, `description`, `missions`, `skill`, `candidate_profile`, `cv`, `motivation`, `deleted`, `expired`, `deadline`, `added_at`) VALUES
-(1, 1, 21, 2, 'Black-Sarl', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, 0, 0, 0, '2021-12-22 00:00:00', '2021-12-29 04:24:51'),
-(3, 1, 21, 1, 'DNK-Sarl', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, 0, 0, 0, '2021-12-13 00:00:00', '2021-12-29 16:40:32'),
-(5, 1, 6, 2, 'Black-Sarl', '<p>description test</p>', '<p>missions test</p>', '<p>competences test</p>', '<p>profil test</p>', 1, 1, 0, 0, '2022-01-11 00:00:00', '2022-01-04 23:20:09');
+(2, 1, 10, 1, 'Black-Sarl', '<p>test</p>', '<p>test</p>', '<p>test</p>', '<p>test</p>', 1, 0, 0, 0, '2022-03-11 03:26:42', '2022-01-07 03:26:42');
 
 -- --------------------------------------------------------
 
@@ -301,7 +326,14 @@ CREATE TABLE IF NOT EXISTS `requests` (
   `deleted` int(1) DEFAULT '0',
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `requests`
+--
+
+INSERT INTO `requests` (`id`, `compagny`, `email`, `city`, `compagny_type`, `person`, `phone`, `fax_phone`, `need`, `deleted`, `added_at`) VALUES
+(1, 'Black-Sarl', 'dimcompte@gmail.com', 'Yaounde', 'High-Tech', 'Ego Buster', '0692503797', '0692503797', 'lorem BLABLA TEST', 0, '2022-01-07 01:26:46');
 
 -- --------------------------------------------------------
 
@@ -321,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `subdomains` (
   PRIMARY KEY (`id`),
   KEY `id_domain` (`id_domain`),
   KEY `fk_admin` (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=91 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `subdomains`

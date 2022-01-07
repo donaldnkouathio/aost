@@ -21,8 +21,8 @@ if($offer->removeOffer($_POST['id'])){
 
 	$current_history=[
 		'id'=>0,
-		'id_admin'=>1,
-		'id_target'=>0,
+		'id_admin'=>$_SESSION['id'],
+		'id_target'=>$_POST['id'],
 		'action'=>"delete offer",
 		'description'=>$admin->getName()." a supprimé une offre de la catégorie ".$subdomain->getName(),
 		'added_at'=>date("Y-m-d H:i:s")

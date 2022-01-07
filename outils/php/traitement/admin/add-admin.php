@@ -21,7 +21,23 @@ $current_admin=[
 $admin=new Admin($current_admin);
 
 if($admin->addAdmin($admin)){
-	
+
+	$last_admin=$admin->getLastAdmin();
+
+	$admin=new Admin($current_admin);
+	$admin=$admin->getAdmin($_SESSION['id']);
+
+	$current_history=[
+		'id'=>0,
+		'id_admin'=>$_SESSION['id'],
+		'id_target'=>$last_admin->getId(),
+		'action'=>"add admin",
+		'description'=>$admin->getName()." a ajouté l'administrateur ".$last_admin->getName()." de role ".$last_admin->getRole(),
+		'added_at'=>date("Y-m-d H:i:s")
+	];
+
+	$history=new History($current_history);
+	$history->addHistory($history);
 }
 
 

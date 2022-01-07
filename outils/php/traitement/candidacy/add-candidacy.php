@@ -59,7 +59,7 @@ if($_POST['request_type']=="have_cv"){
 		$data="CV manquant... Veuillez insérer votre CV (au format PDF)";
 	}
 
-	/* MOTIVATION FILE PART
+	/* MOTIVATION FILE PART */
 	if($data==1){
 		if(isset($_FILES['motivation_file'])){
 			$filename=basename($_FILES['motivation_file']['name']);
@@ -82,7 +82,6 @@ if($_POST['request_type']=="have_cv"){
 			}
 		}
 	}
-	*/
 
 	if($data==1){
 		if($candidacy->addCandidacy($candidacy)){
@@ -102,7 +101,7 @@ if($_POST['request_type']=="have_cv"){
 
 				if(isset($_FILES['motivation_file'])){
 
-					/*MOTIVATION UPLOAD PART
+					/*MOTIVATION UPLOAD PART*/
 					$tmp_motivation=$_FILES['motivation_file']['tmp_name'];
 					
 					if(move_uploaded_file($tmp_motivation, $candidacy_folder."/".$motivation_renamed)){
@@ -110,7 +109,6 @@ if($_POST['request_type']=="have_cv"){
 					}else{
 						$data="Erreur lors de l'upload de la lettre de motivation... Veuillez réessayer !";		
 					}
-					*/
 				}else{
 					$data=true;
 				}
@@ -128,50 +126,175 @@ if($_POST['request_type']=="have_cv"){
 
 }else if($_POST['request_type']=="make_cv"){
 	
-	require('../../fpdf/fpdf.php');
+	require('../../mpdf/vendor/autoload.php');
+	$mpdf= new \Mpdf\Mpdf();
 
-	/* CREATION/GENERATION DU CV */
+	
 
+	
 	$candidacy->setCv_file("Candidature_Cv_".$candidacy->getName().".pdf");
 	$cv_renamed="Candidature_Cv_".$candidacy->getName().".pdf";
 
-	$pdf = new FPDF();
+	$mpdf->SetTitle("Candidature_Cv_".$candidacy->getName());
+	$mpdf->SetAuthor("AOST");
+	$mpdf->SetCreator("AOST");
+	$mpdf->showImageErrors = true;
+	$mpdf->SetSubject("CV made by AOST");
 
-	$pdf->AddPage();
 
-	//set font to arial, bold, 14pt
-	$pdf->SetFont('Arial',false,14);
+	$html='
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+	.content-cv{
+		width: 95%;
+		height: auto;
+		margin: auto;
+		padding-bottom: 50px;
+	}
 
-	//Cell(width , height , text , border , end line , [align] )
+	.head-cv{
+		width: 100%;
+		height: auto;
+		display: flex;
+	}
 
-	$pdf->Cell(190,10,'CURRICULUM VITAE',0,1,'C');
-	$pdf->Cell(190,20,'PRESENTATION',0,1,'C');
-	$pdf->Cell(190,10,'Nom: '.$candidacy->getName(),0,1,'L');
-	$pdf->Cell(190,10,utf8_decode('Prénom: ').utf8_decode($candidacy->getFirst_name()),0,1,'L');
-	$pdf->Cell(190,10,utf8_decode('Téléphone: ').$candidacy->getPhone(),0,1,'L');
-	$pdf->Cell(190,10,'Ville: '.utf8_decode($candidacy->getCity()),0,1,'L');
-	$pdf->Cell(190,10,'Email: '.$candidacy->getEmail(),0,1,'L');
-	$pdf->Cell(190,10,'Domaine: '.utf8_decode($candidacy->getDomains()),0,1,'L');
-	$pdf->Cell(190,20,'',0,1,'L');
-	$pdf->Write(5,utf8_decode($candidacy->getAbout()));
+	.image-cv{
+		width: 20%;
+		height: 200px;
+		text-align: center;
+	}
+
+	.image-cv img{
+		max-height: 100%;
+		max-width: 100%;
+	}
+
+	.title-cv{
+		width: 100%;
+		padding-top: -60px;
+		text-align: center;
+		font-size: 26px;
+		font-weight: bolder;
+		color: #003068;
+	}
+
+
+	.body-cv{
+		width: 100%;
+		height: auto;
+	}
+
+	.ttl-line{
+		width: 100%;
+		height: 30px;
+		font-size: 20px;
+		border-bottom: solid 2px #003068;
+		color: #003068;
+		margin-top: 30px;
+	}
+
+	.line-content{
+		width: 96%;
+		padding-left: 4%;
+		height: auto;
+		margin-top: 10px;
+	}
+
+	.table-cv td{
+		width: 60%;
+		height: 35px;
+	}
+	.profile{
+		padding-top: 15px;
+	}
+
+	.footer-cv{
+		width:80%;
+		height:auto;
+		position:absolute;
+		bottom:50px;
+		text-align: right;
+		border-bottom: solid 1px #003068;
+	}
+
+
+	</style>
+	<title>Document</title>
+	</head>
+	<body>
+	<div class="content-cv">
+	<div class="head-cv">
+	<div class="image-cv">
+	<img src="'._APP_PATH.'img/logo.png" alt="">
+	</div>
+	<div class="title-cv">CURRICULUM VITAE</div>
+	</div>
+	<div class="body-cv">
+	<div class="ttl-line">Détails personnels</div>
+	<div class="line-content">
+	<table border="0" class="table-cv">
+	<tr>
+	<td>Nom</td>
+	<td>'.$candidacy->getName().'</td>
+	</tr>
+	<tr>
+	<td>Prénom</td>
+	<td>'.$candidacy->getFirst_name().'</td>
+	</tr>
+	<tr>
+	<td>Téléphone</td>
+	<td>'.$candidacy->getPhone().'</td>
+	</tr>
+	<tr>
+	<td>Email</td>
+	<td>'.$candidacy->getEmail().'</td>
+	</tr>
+	<tr>
+	<td>Ville</td>
+	<td>'.$candidacy->getCity().'</td>
+	</tr>
+	<tr>
+	<td>Catégorie d\'emploi</td>
+	<td>'.$candidacy->getDomains().'</td>
+	</tr>
+	</table>
+	</div>
+	<div class="ttl-line">Description du profil</div>
+	<div class="line-content profile">
+	'.$candidacy->getAbout().'
+	</div>
+	</div>
+	</div>
+
+	<div class="footer-cv"><i>Made by AOST</i></div>
+	</body>
+	</html>
+	';
+
+	$mpdf->WriteHTML($html);
 
 	if($candidacy->addCandidacy($candidacy)){
 
 		$last_candidacy=$candidacy->getLastCandidacy();
 
+		if(!file_exists(_APP_PATH."files/candidacy")){
+			mkdir(_APP_PATH."files/candidacy");
+		}
+
 		$candidacy_folder=_APP_PATH."files/candidacy/".$last_candidacy->getId();
 
 		mkdir($candidacy_folder);
 
-		if($pdf->Output($candidacy_folder."/".$cv_renamed,'F')){
-			$data=true;
-		}else{
-			$data="Erreur lors de la création de votre CV... Veuillez réessayer !";
-		}	
+		$mpdf->Output($candidacy_folder."/".$cv_renamed);
+		$data=true;
+		
 	}else{
 		$data="Erreur lors d'execution, Veuillez réessayer !";
 	}
-
 
 }else{
 	echo "Valeur de retour inconnue !";
