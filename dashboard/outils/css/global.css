@@ -7,6 +7,12 @@
 
 .item_container{
 }
+.item_inline_input{
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: white;
+  border: none;
+}
 
 table{
   border-collapse: collapse;
@@ -156,10 +162,12 @@ tr:hover, tr:nth-child(even):hover{
   box-sizing: border-box;
   padding: 15px;
   text-align: center;
+  overflow: auto;
 }
 .item_editPwdModal_body{
   box-sizing: border-box;
   padding: 15px;
+  overflow: auto;
 }
 .item_editPwdModal_body .item_modal_input{
   width: 100%;
@@ -344,6 +352,11 @@ tr:hover, tr:nth-child(even):hover{
   }
   .item_editPwdModal_body{
     height: 80%;
+  }
+
+
+  .item_inline_input{
+    margin-left: 5px;
   }
 }
 

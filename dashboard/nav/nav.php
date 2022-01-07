@@ -19,7 +19,7 @@
     <li><a href="<?php echo _DASHBOARD_PATH; ?>offers/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="offers"){echo "dashboard_nav_link_hover";} ?>"><i class="material-icons vertical-align-bottom">business_center</i> Offres d'emploi</a></li>
     <li><a href="<?php echo _DASHBOARD_PATH; ?>asked-offers/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="asked-offers"){echo "dashboard_nav_link_hover";} ?>"><i class="material-icons vertical-align-bottom">work</i> Candidatures</a></li>
     <li><a href="<?php echo _DASHBOARD_PATH; ?>domains/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="domains"){echo "dashboard_nav_link_hover";} ?>"><i class="material-icons vertical-align-bottom">domain</i> Domaines</a></li>
-    <li><a href="#" class="dashboard_nav_link"><i class="material-icons vertical-align-bottom">folder_open</i> Sous domaines</a></li>
+    <li><a href="<?php echo _DASHBOARD_PATH; ?>subdomains/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="subdomains"){echo "dashboard_nav_link_hover";} ?>"><i class="material-icons vertical-align-bottom">folder_open</i> Sous-domaines</a></li>
     <li><a href="#" class="dashboard_nav_link"><i class="material-icons vertical-align-bottom">phone</i> Contacts</a></li>
     <li><a href="#" class="dashboard_nav_link"><i class="material-icons vertical-align-bottom">history</i> Historique</a></li>
 
