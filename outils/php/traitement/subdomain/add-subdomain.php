@@ -23,7 +23,28 @@ $current_subdomain=[
 
 $subdomain=new Subdomain($current_subdomain);
 
-echo $subdomain->addSubdomain($subdomain);
+if($subdomain->addSubdomain($subdomain)){
+
+	$last_subdomain=$subdomain->getLastSubdomain();
+
+	$domain=new Domain($current_domain);
+	$domain=$domain->getDomain($subdomain->getId_domain());
+
+	$admin=new Admin($current_admin);
+	$admin=$admin->getAdmin($_SESSION['id']);
+
+	$current_history=[
+		'id'=>0,
+		'id_admin'=>$_SESSION['id'],
+		'id_target'=>$last_subdomain->getId(),
+		'action'=>"add subdomain",
+		'description'=>$admin->getName()." a ajouté le sous-domaine ".$subdomain->getName()." dans le domaine ".$domain->getName(),
+		'added_at'=>date("Y-m-d H:i:s")
+	];
+
+	$history=new History($current_history);
+	$history->addHistory($history);
+}
 
 
 
