@@ -59,6 +59,32 @@
   width: 80px;
   height: 80px;
 }
+
+/* Loader */
+.btn-loading{
+  position: relative;
+  box-sizing: border-box;
+}
+.loader{
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  border: 2px solid var(--color-shadow);
+  border-top: 2px solid var(--color-danger);
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
 /* *** */
 .goToTop_block{
 

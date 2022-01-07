@@ -263,7 +263,7 @@ $admins = $admin->getAdmins();
                   +"&name="+name_val
                   +"&role="+role_val,
             beforeSend : function(){
-              btn.after('<span class="btn btn-primary btn-loading">Chargement...</span>');
+              btn.after('<span class="btn btn-primary btn-loading"><span class="loader"></span></span>');
               btn.hide();
             },
   					success : function(ret){
@@ -296,7 +296,7 @@ $admins = $admin->getAdmins();
       					data:	"id="+id_val
                       +"&password="+pwd_val,
                 beforeSend : function(){
-                  btn.after('<span class="btn btn-primary btn-loading">Chargement...</span>');
+                  btn.after('<span class="btn btn-primary btn-loading"><span class="loader"></span></span>');
                   btn.hide();
                 },
       					success : function(ret){
@@ -326,7 +326,7 @@ $admins = $admin->getAdmins();
 					type: "POST",
 					data:	"id="+id_val,
 					beforeSend : function(){
-            btn.after('<span class="btn btn-danger btn-loading">Chargement...</span>');
+            btn.after('<span class="btn btn-danger btn-loading"><span class="loader"></span></span>');
             btn.hide();
           },
 					success : function(ret){
