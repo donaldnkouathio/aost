@@ -22,7 +22,25 @@ $current_domain=[
 
 $domain=new Domain($current_domain);
 
-echo $domain->addDomain($domain);
+if($domain->addDomain($domain)){
+
+	$last_domain=$domain->getLastDomain();
+
+	$admin=new Admin($current_admin);
+	$admin=$admin->getAdmin($_SESSION['id']);
+
+	$current_history=[
+		'id'=>0,
+		'id_admin'=>$_SESSION['id'],
+		'id_target'=>$last_domain->getId(),
+		'action'=>"add domain",
+		'description'=>$admin->getName()." a ajouté le domaine ".$domain->getName(),
+		'added_at'=>date("Y-m-d H:i:s")
+	];
+
+	$history=new History($current_history);
+	$history->addHistory($history);
+}
 
 
 

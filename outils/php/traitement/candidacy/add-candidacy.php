@@ -59,7 +59,7 @@ if($_POST['request_type']=="have_cv"){
 		$data="CV manquant... Veuillez insérer votre CV (au format PDF)";
 	}
 
-	/* MOTIVATION FILE PART
+	/* MOTIVATION FILE PART */
 	if($data==1){
 		if(isset($_FILES['motivation_file'])){
 			$filename=basename($_FILES['motivation_file']['name']);
@@ -82,7 +82,6 @@ if($_POST['request_type']=="have_cv"){
 			}
 		}
 	}
-	*/
 
 	if($data==1){
 		if($candidacy->addCandidacy($candidacy)){
@@ -102,7 +101,7 @@ if($_POST['request_type']=="have_cv"){
 
 				if(isset($_FILES['motivation_file'])){
 
-					/*MOTIVATION UPLOAD PART
+					/*MOTIVATION UPLOAD PART*/
 					$tmp_motivation=$_FILES['motivation_file']['tmp_name'];
 					
 					if(move_uploaded_file($tmp_motivation, $candidacy_folder."/".$motivation_renamed)){
@@ -110,7 +109,6 @@ if($_POST['request_type']=="have_cv"){
 					}else{
 						$data="Erreur lors de l'upload de la lettre de motivation... Veuillez réessayer !";		
 					}
-					*/
 				}else{
 					$data=true;
 				}

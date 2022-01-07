@@ -6,32 +6,32 @@ include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
 class Subdomain
 {
 
-   /*PROPRIETES*/
-   private $_id;
-   private $_id_admin;
-   private $_id_domain;
-   private $_name;
-   private $_color;
-   private $_image;
-   private $_added_at;
+ /*PROPRIETES*/
+ private $_id;
+ private $_id_admin;
+ private $_id_domain;
+ private $_name;
+ private $_color;
+ private $_image;
+ private $_added_at;
 
-   /*CONSTRUCTEUR*/
-   public function __construct(array $data){
+ /*CONSTRUCTEUR*/
+ public function __construct(array $data){
 
     foreach ($data as $key => $value) {
-     $method='set'.ucfirst($key);
+       $method='set'.ucfirst($key);
 
-     if(method_exists($this, $method)){
-      $this->$method($value);
+       if(method_exists($this, $method)){
+          $this->$method($value);
+      }
   }
-}
 }
 
 
 /*SETTERS & GETTERS*/
 
 public function setId($id){
- $this->_id=intval($id);
+   $this->_id=intval($id);
 }
 
 public function getId(){
@@ -49,7 +49,7 @@ public function getId_admin(){
 
 
 public function setId_domain($id_domain){
- $this->_id_domain=intval($id_domain);
+   $this->_id_domain=intval($id_domain);
 }
 
 public function getId_domain(){
@@ -58,7 +58,7 @@ public function getId_domain(){
 
 
 public function setName($name){
-   $this->_name=htmlentities(strval($name));
+ $this->_name=htmlentities(strval($name));
 }
 
 public function getName(){
@@ -68,7 +68,7 @@ public function getName(){
 
 
 public function setColor($color){
-   $this->_color=htmlentities(strval($color));
+ $this->_color=htmlentities(strval($color));
 }
 
 public function getColor(){
@@ -78,7 +78,7 @@ public function getColor(){
 
 
 public function setImage($image){
-   $this->_image=htmlentities(strval($image));
+ $this->_image=htmlentities(strval($image));
 }
 
 public function getImage(){
@@ -88,7 +88,7 @@ public function getImage(){
 
 
 public function setAdded_at($added_at){
-   $this->_added_at=htmlentities(strval($added_at));
+ $this->_added_at=htmlentities(strval($added_at));
 }
 
 public function getAdded_at(){
@@ -166,13 +166,13 @@ public function removeSubdomain($id_subdomain){
 public function getLastSubdomain(){
     include(_APP_PATH."bd/server-connect.php");
 
-    $query=$db->prepare("SELECT * FROM subdomains WHERE id=(SELECT MAX(id) FROM subdomain)");
+    $query=$db->prepare("SELECT * FROM subdomains WHERE id=(SELECT MAX(id) FROM subdomains)");
     if($query->execute() && $query->rowCount()==1){
-       $data=$query->fetch();
-       return (new subdomain($data));
-   }else{
-       return false;
-   }
+     $data=$query->fetch();
+     return (new subdomain($data));
+ }else{
+     return false;
+ }
 }
 
 
@@ -205,12 +205,12 @@ public function getSubdomains() {
     $subdomain=[];
 
     if($query->execute()){
-       while($data=$query->fetch()){
-          $subdomain[]=new Subdomain($data);
-      }
-      return $subdomain;
-  }else{
-   return false;
+     while($data=$query->fetch()){
+      $subdomain[]=new Subdomain($data);
+  }
+  return $subdomain;
+}else{
+ return false;
 }
 }
 
@@ -227,12 +227,12 @@ public function getListSubdomains($id_domain) {
     $subdomain=[];
 
     if($query->execute()){
-       while($data=$query->fetch()){
-          $subdomain[]=new Subdomain($data);
-      }
-      return $subdomain;
-  }else{
-   return false;
+     while($data=$query->fetch()){
+      $subdomain[]=new Subdomain($data);
+  }
+  return $subdomain;
+}else{
+ return false;
 }
 }
 
@@ -246,14 +246,14 @@ public function editSubdomain(Subdomain $subdomain) {
     include(_APP_PATH."bd/server-connect.php");
 
     $query=$db->prepare("UPDATE subdomains
-       SET name=?,
-       id_admin=?,
-       id_domain=?,
-       color=?,
-       image=?
-       WHERE id=?
+     SET name=?,
+     id_admin=?,
+     id_domain=?,
+     color=?,
+     image=?
+     WHERE id=?
 
-       ");
+     ");
 
     $id=$subdomain->getId();
     $id_admin=$subdomain->getId_admin();
@@ -271,11 +271,11 @@ public function editSubdomain(Subdomain $subdomain) {
 
     if($query->execute()){
 
-       return true;
+     return true;
 
-   }else{
-       return false;
-   }
+ }else{
+     return false;
+ }
 }
 
 
