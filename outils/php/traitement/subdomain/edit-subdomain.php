@@ -21,7 +21,7 @@ $subdomain->setColor($_POST['color']);
 $subdomain->setImage($_POST['image']);
 
 
-if($subdomain->editSubdomain($subdomain){
+if($subdomain->editSubdomain($subdomain)){
 
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);

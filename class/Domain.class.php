@@ -164,6 +164,21 @@ public function getLastDomain(){
 
 
 
+public function getIdFirstDomain(){
+    include(_APP_PATH."bd/server-connect.php");
+
+    $query=$db->prepare("SELECT * FROM domains WHERE name=(SELECT MIN(name) FROM domains)");
+    if($query->execute() && $query->rowCount()==1){
+     $data=$query->fetch();
+
+     $domain = new subdomain($data);
+     return ($domain->getId());
+ }else{
+     return false;
+ }
+}
+
+
 public function getDomain($id){
     include(_APP_PATH."bd/server-connect.php");
 
