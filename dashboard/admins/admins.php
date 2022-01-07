@@ -3,7 +3,7 @@
 <?php // Button for add modal ?>
 <?php if($_SESSION["role"] == $session->getRole_1()){ ?>
 <span class="btnAdd btnAddAdmin" id="btnAdd">
-  <i class="material-icons vertical-align-bottom margin-right-5" style="font-size : 1.2em; margin-bottom: 1.6em">person_add</i>
+  <i class="material-icons vertical-align-bottom margin-right-5">person_add</i>
   <span class="">Ajouter un administrateur</span>
 </span>
 <?php } ?>

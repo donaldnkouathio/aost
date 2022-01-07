@@ -2,7 +2,7 @@
 
 <?php // Button for add modal ?>
 <span class="btnAdd btnAddAdmin" id="btnAdd">
-  <i class="material-icons vertical-align-bottom margin-right-5" style="font-size : 1.2em; margin-bottom: 1.6em">add</i>
+  <i class="material-icons vertical-align-bottom margin-right-5">add</i>
   <span class="">Ajouter un sous-domaine</span>
 </span>
 

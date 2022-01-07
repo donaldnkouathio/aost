@@ -1,8 +1,8 @@
 <h2 class="margin-top-none" style="display: inline-block">Offres d'emploi</h2>
 
 <?php // Button for add modal ?>
-<span class="btnAdd" id="btnAdd">
-  <i class="material-icons" style="font-size : 1em;">add</i>
+<span class="btnAdd btnAddAdmin" id="btnAdd">
+  <i class="material-icons vertical-align-bottom margin-right-5">add</i>
   <span class="">Ajouter une offre d'emploi</span>
 </span>
 

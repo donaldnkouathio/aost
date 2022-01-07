@@ -293,6 +293,18 @@ tr:hover, tr:nth-child(even):hover{
     margin-right: 15px !important;
     margin-bottom : 15px;
   }
+
+  .btnAdd{
+    width: 100%;
+    margin-left: 0 !important;
+  }
+  .btnAdd i{
+    font-size : 1.2em;
+  }
+
+  .item_inline_input{
+    width: 100%;
+  }
 }
 
 /* Tablette */
@@ -357,6 +369,12 @@ tr:hover, tr:nth-child(even):hover{
 
   .item_inline_input{
     margin-left: 5px;
+  }
+
+
+  .btnAdd i{
+    font-size : 1.2em;
+    margin-bottom: 1.6em;
   }
 }
 
