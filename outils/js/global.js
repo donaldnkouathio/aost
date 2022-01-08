@@ -20,9 +20,9 @@ $(document).ready(function(){
         //alert("bottom"+($(window).height()-header.height()-179));
         //alert(($(window).height()-header.height())+" - "+(aside_block.height()+268));
         if((aside_block.height()) >= ($(window).height()-header.height()-268)){ //alert("grand");
-          aside_block.removeClass("aside-block-fixed");
-          aside_block.addClass("aside-block-absolute");
-        }else {
+        aside_block.removeClass("aside-block-fixed");
+        aside_block.addClass("aside-block-absolute");
+      }else {
           //alert("petit");
         }
 
@@ -56,4 +56,6 @@ $(document).ready(function(){
     }
 
   });
+
+
 });

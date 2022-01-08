@@ -364,6 +364,25 @@ if($query->execute()){
 /* *** */
 
 
+public function setOffersExpired() {
+    include(_APP_PATH."bd/server-connect.php");
+
+    $query=$db->prepare("UPDATE offers SET expired=? WHERE deadline<NOW()");
+
+    $expired=1;
+
+    $query->bindParam(1,$expired);
+
+    if($query->execute()){
+
+        return true;
+
+    }else{
+        return false;
+    }
+}
+
+
 public function editOffer(Offer $offer) {
     include(_APP_PATH."bd/server-connect.php");
 
