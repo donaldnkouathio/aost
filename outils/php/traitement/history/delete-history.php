@@ -11,7 +11,7 @@ require_once _APP_PATH.'outils/php/import_class.php';
 $history=new History($current_history);
 $history=$history->getHistory($_POST['id']);
 
-echo $history->removeHistory($_POST['id']));
+echo $history->removeHistory($_POST['id']);
 
 
 
