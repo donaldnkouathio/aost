@@ -76,7 +76,7 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
     }
 
     $icon="";
-    if(preg_match("/admin/i", $history->getAction())){
+    if(preg_match("/admin/i", $history->getAction()) || preg_match("/password/i", $history->getAction())){
       $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">people_outline</i> Admins';
     }
     elseif(preg_match("/offer/i", $history->getAction())){
