@@ -23,7 +23,7 @@ if($domain->removeDomain($_POST['id'])){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"delete domain",
-		'description'=>$admin->getName()." a supprimé le domaine ".$deleted_domain->getName(),
+		'description'=>$admin->getName()." a supprimé le domaine \" ".$deleted_domain->getName()." \"",
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

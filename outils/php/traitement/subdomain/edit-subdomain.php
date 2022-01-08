@@ -30,7 +30,7 @@ if($subdomain->editSubdomain($subdomain)){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"edit subdomain",
-		'description'=>$admin->getName()." a modifier le domaine ".$preview_subdomain->getName()." en ".$subdomain->getName(),
+		'description'=>$admin->getName()." a modifier le sous-domaine \" ".$preview_subdomain->getName()." \" en \" ".$subdomain->getName()." \"",
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 
