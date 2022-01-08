@@ -41,43 +41,43 @@ class History
     public function setId_admin($id_admin){
         $this->_id_admin=intval($id_admin);
     }
-    
+
     public function getId_admin(){
         return $this->_id_admin;
     }
 
-    
+
     public function setId_target($id_target){
         $this->_id_target=intval($id_target);
     }
-    
+
     public function getId_target(){
         return $this->_id_target;
     }
 
-    
+
     public function setAction($action){
         $this->_action=htmlentities(strval($action));
     }
-    
+
     public function getAction(){
         return $this->_action;
     }
 
-    
+
     public function setDescription($description){
         $this->_description=htmlentities(strval($description));
     }
-    
+
     public function getDescription(){
         return $this->_description;
     }
 
-    
+
     public function setAdded_at($added_at){
         $this->_added_at=htmlentities(strval($added_at));
     }
-    
+
     public function getAdded_at(){
         return $this->_added_at;
     }
@@ -99,7 +99,7 @@ class History
 
     public function addHistory(History $history){
         include(_APP_PATH."bd/server-connect.php");
-        
+
         $query=$db->prepare("INSERT INTO history VALUES (?,?,?,?,?,?)");
 
         $id=0;
@@ -129,7 +129,7 @@ class History
 
   public function removeHistory($id_history){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $id_history=intval($id_history);
     $req=$db->prepare("DELETE FROM history WHERE id=?");
 
@@ -140,7 +140,7 @@ class History
     }else{
         return false;
     }
-    
+
 }
 
 
@@ -163,11 +163,68 @@ public function clearHistory(){
 
 public function getLastHistory(){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $query=$db->prepare("SELECT * FROM history WHERE id=(SELECT MAX(id) FROM history)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new History($data)); 
+        return (new History($data));
+    }else{
+        return false;
+    }
+}
+
+
+public function getHistorysPerMonth(){
+    include(_APP_PATH."bd/server-connect.php");
+
+    $query=$db->prepare("SELECT * FROM history GROUP BY DATE_FORMAT(added_at, '%M-%Y') ORDER BY added_at DESC");
+
+    $history=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $history[]=new History($data);
+        }
+        return $history;
+    }else{
+        return false;
+    }
+}
+
+
+public function getHistorysByMonth($month){
+    include(_APP_PATH."bd/server-connect.php");
+
+    $query=$db->prepare("SELECT * FROM history WHERE added_at LIKE '%$month%'");
+
+    $history=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $history[]=new History($data);
+        }
+        return $history;
+    }else{
+        return false;
+    }
+}
+
+
+public function getHistorysByMonthLimit($month, $start){
+    include(_APP_PATH."bd/server-connect.php");
+
+    $start=intval($start);
+    $end=10;
+
+    $query=$db->prepare("SELECT * FROM history WHERE added_at LIKE '%$month%' ORDER BY added_at DESC LIMIT $start,$end");
+
+    $history=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $history[]=new History($data);
+        }
+        return $history;
     }else{
         return false;
     }
@@ -178,13 +235,13 @@ public function getLastHistory(){
 
 public function getHistory($id){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     if(is_int($id)){
         $query=$db->prepare("SELECT * FROM history WHERE id=?");
         $query->bindParam(1,$id);
         if($query->execute() && $query->rowCount()==1){
             $data=$query->fetch();
-            return (new History($data));   
+            return (new History($data));
         }else{
             return false;
         }
@@ -199,7 +256,7 @@ public function getHistory($id){
 
 public function getHistorys() {
     include(_APP_PATH."bd/server-connect.php");
-    
+
 
     $query=$db->prepare("SELECT * FROM history ORDER BY id ASC");
 

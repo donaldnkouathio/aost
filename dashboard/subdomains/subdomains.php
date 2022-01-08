@@ -10,8 +10,8 @@
   Domaine
   <select class="item_inline_input" name="" id="domain">
     <?php
-      $id_domain = isset($_GET["domain"]) ? $_GET["domain"] : 0;
       $domains = $domain->getDomains();
+      $id_domain = isset($_GET["domain"]) ? $_GET["domain"] : $domain->getIdFirstDomain();
       foreach($domains as $domain){
     ?>
     <option value="<?php echo $domain->getId(); ?>" <?php if($id_domain == $domain->getId()){echo "selected";} ?>><?php echo htmlspecialchars_decode($domain->getName()); ?></option>
@@ -210,7 +210,6 @@
             data:	"id="+id_val
                   +"&id_domain="+id_domain_val
                   +"&name="+name_val
-                  +"&image="
                   +"&color="+color_val,
             beforeSend : function(){
               btn.after('<span class="btn btn-primary btn-loading"><span class="loader"></span></span>');

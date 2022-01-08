@@ -13,7 +13,7 @@
   <div class="right">
     <h2>Vous avez une question ?</h2>
 
-    <form class="" action="../outils/php/traitement/request/add-request.php" method="post">
+    <form class="" id="contact_form">
       <div class="input-block">
         <label for="compagnie">Compagnie :</label>
         <input type="text" name="compagny" required value="">
@@ -48,9 +48,62 @@
       </div>
 
       <div class="button-block">
-        <button type="submit" class="btn btn-primary" name="button">Envoyer</button>
+        <button type="submit" id="btn_submit_contact" class="btn btn-primary" name="button">Envoyer</button>
       </div>
     </form>
   </div>
 
 </div>
+
+<div class="alert_modal_shadow">
+  <div class="alert_modal_block">
+    <div class="alert_modal_body">
+      <i class="material-icons">check_circle</i>
+      <span>Envoyé avec success</span>
+    </div>
+
+    <div class="alert_modal_footer">
+      <button type="button" class="btn alert_modal_close" name="button">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    // hide modal
+   function hideModal(modal, modal_btn_close){
+     modal_btn_close.click(function(){
+       modal.fadeOut();
+     });
+    }
+
+    hideModal($(".alert_modal_shadow"), $(".alert_modal_close"));
+
+    var btn_submit_contact = $('#btn_submit_contact');
+
+    //form for contact us
+    $('#contact_form').submit(function(ev){
+      ev.preventDefault();
+      var formData = new FormData($('#contact_form')[0]);
+
+      $.ajax({
+        url: "../outils/php/traitement/request/add-request.php",
+        type: "POST",
+        data: formData,
+        beforeSend: function(){
+          btn_submit_contact.prop("disabled", true);
+          btn_submit_contact.html('<span class="btn-loading"><span class="loader"></span></span>');
+        },
+        success: function(ret){
+          btn_submit_contact.prop("disabled", false);
+          btn_submit_contact.html("Envoyer");
+          $(".alert_modal_shadow").fadeIn();
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+      });
+    });
+
+  });
+</script>
