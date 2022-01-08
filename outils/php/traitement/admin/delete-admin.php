@@ -12,24 +12,26 @@ $admin=new Admin($current_admin);
 
 $deleted_admin=$admin->getAdmin($_POST['id']);
 
-if($admin->removeAdmin($_POST['id'])){
+if($_SESSION['role']=="super"){
 
-	$admin=$admin->getAdmin($_SESSION['id']);
+	if($admin->removeAdmin($_POST['id'])){
 
-	$current_history=[
-		'id'=>0,
-		'id_admin'=>$_SESSION['id'],
-		'id_target'=>$_POST['id'],
-		'action'=>"delete admin",
-		'description'=>$admin->getName()." a supprimé l'administrateur ".$deleted_admin->getName()." de role ".$deleted_admin->getRole(),
-		'added_at'=>date("Y-m-d H:i:s")
-	];
+		$admin=$admin->getAdmin($_SESSION['id']);
 
-	$history=new History($current_history);
-	$history->addHistory($history);
+		$current_history=[
+			'id'=>0,
+			'id_admin'=>$_SESSION['id'],
+			'id_target'=>$_POST['id'],
+			'action'=>"delete admin",
+			'description'=>$admin->getName()." a supprimé l'administrateur ".$deleted_admin->getName()." de role ".$deleted_admin->getRole(),
+			'added_at'=>date("Y-m-d H:i:s")
+		];
+
+		$history=new History($current_history);
+		echo $history->addHistory($history);
+	}
+
 }
-
-
 
 
 

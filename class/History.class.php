@@ -145,6 +145,22 @@ class History
 
 
 
+
+public function clearHistory(){
+    include(_APP_PATH."bd/server-connect.php");
+    
+    $req=$db->prepare("DELETE FROM history");
+
+    if($req->execute()){
+        return true;
+    }else{
+        return false;
+    }
+    
+}
+
+
+
 public function getLastHistory(){
     include(_APP_PATH."bd/server-connect.php");
 

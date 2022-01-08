@@ -21,7 +21,7 @@ if($subdomain->removeSubdomain($_POST['id'])){
 		'id'=>0,
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
-		'action'=>"delete domain",
+		'action'=>"delete subdomain",
 		'description'=>$admin->getName()." a supprimé le sous-domaine ".$deleted_subdomain->getName(),
 		'added_at'=>date("Y-m-d H:i:s")
 	];
