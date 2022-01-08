@@ -181,6 +181,9 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
 
     //Show or hide modal
    function toggleModal(modal, modal_btn, modal_btn_close){
+     $(".item_deleteModal").click(function(ev){
+       ev.stopPropagation();
+     });
      modal_btn.click(function(){
        modal.fadeIn();
      });
@@ -211,7 +214,7 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
 
     <?php foreach ($histories as $history) { ?>
       //for delete
-      toggleModal($("#deleteModal<?php echo $history->getId(); ?>"), $("#btnDelete<?php echo $history->getId(); ?>"), $("#btnDeleteClose<?php echo $history->getId(); ?>"));
+      toggleModal($("#deleteModal<?php echo $history->getId(); ?>"), $("#btnDelete<?php echo $history->getId(); ?>"), $("#btnDeleteClose<?php echo $history->getId(); ?>, .item_deleteModal_shadow"));
 
       deleteInBD($("#btnDeleteConfirm<?php echo $history->getId(); ?>"), "outils/php/traitement/history/delete-history.php", "<?php echo $history->getId(); ?>");
 
