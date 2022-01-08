@@ -92,7 +92,7 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
       $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">folder_open</i> Sous-domaines';
     }
     elseif(preg_match("/city/i", $history->getAction())){
-      $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">business_center</i> Villes';
+      $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">location_city</i> Villes';
     }
     elseif(preg_match("/contact/i", $history->getAction())){
       $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">phone</i> Contacts';
