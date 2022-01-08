@@ -20,7 +20,7 @@ $subdomain->setName($_POST['name']);
 $subdomain->setColor($_POST['color']);
 
 
-if($subdomain->editSubdomain($subdomain){
+if($subdomain->editSubdomain($subdomain)){
 
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);

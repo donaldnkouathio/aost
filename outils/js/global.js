@@ -57,5 +57,12 @@ $(document).ready(function(){
 
   });
 
-
+  //Set offers expired
+  var time = 1 * 1000; //1sec
+  setInterval(function(){
+    $.ajax({
+      url: _ROOT_PATH+"outils/php/traitement/offer/set-offers-expired.php",
+      type: "POST"
+    });
+  }, time);
 });

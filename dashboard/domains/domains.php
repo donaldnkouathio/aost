@@ -177,7 +177,6 @@ $domains = $domain->getDomains();
   					type: "POST",
   					data:	"id="+id_val
                   +"&name="+name_val
-                  +"&image="
                   +"&color="+color_val,
             beforeSend : function(){
               btn.after('<span class="btn btn-primary btn-loading"><span class="loader"></span></span>');
