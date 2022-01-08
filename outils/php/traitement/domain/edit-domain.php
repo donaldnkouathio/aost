@@ -17,7 +17,6 @@ $domain=$domain->getDomain($_POST['id']);
 $domain->setId_admin($_SESSION['id']);
 $domain->setName($_POST['name']);
 $domain->setColor($_POST['color']);
-$domain->setImage($_POST['image']);
 
 
 if($domain->editDomain($domain)){
