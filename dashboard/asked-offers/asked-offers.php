@@ -128,6 +128,9 @@ $candidacies = $candidacy->getCandidacys();
   $(document).ready(function(){
   	//Show or hide modal
    function toggleModal(modal, modal_btn, modal_btn_close){
+     $(".item_deleteModal, .item_modal").click(function(ev){
+       ev.stopPropagation();
+     });
      modal_btn.click(function(){
        modal.fadeIn();
      });
@@ -158,12 +161,12 @@ $candidacies = $candidacy->getCandidacys();
 
     <?php foreach ($candidacies as $candidacy) { ?>
       //for delete
-      toggleModal($("#deleteCandidacyModal<?php echo $candidacy->getId(); ?>"), $("#btnDeleteCandidacy<?php echo $candidacy->getId(); ?>"), $("#btnDeleteCandidacyClose<?php echo $candidacy->getId(); ?>"));
+      toggleModal($("#deleteCandidacyModal<?php echo $candidacy->getId(); ?>"), $("#btnDeleteCandidacy<?php echo $candidacy->getId(); ?>"), $("#btnDeleteCandidacyClose<?php echo $candidacy->getId(); ?>, .item_deleteModal_shadow"));
 
       deleteCandidacyInBD($("#btnDeleteCandidacyConfirm<?php echo $candidacy->getId(); ?>"), "outils/php/traitement/candidacy/delete-candidacy.php", $("#id<?php echo $candidacy->getId(); ?>"));
 
       //for edit
-      toggleModal($("#seeCVModal<?php echo $candidacy->getId(); ?>"), $("#btnSeeCV<?php echo $candidacy->getId(); ?>"), $("#btnSeeCVClose<?php echo $candidacy->getId(); ?>"));
+      toggleModal($("#seeCVModal<?php echo $candidacy->getId(); ?>"), $("#btnSeeCV<?php echo $candidacy->getId(); ?>"), $("#btnSeeCVClose<?php echo $candidacy->getId(); ?>, .item_modal_shadow"));
       toggleModal($("#seeMotivationModal<?php echo $candidacy->getId(); ?>"), $("#btnSeeMotivation<?php echo $candidacy->getId(); ?>"), $("#btnSeeMotivationClose<?php echo $candidacy->getId(); ?>"));
     <?php } ?>
   });

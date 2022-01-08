@@ -339,6 +339,9 @@ $i++; } ?>
     $(document).ready(function(){
 		//Show or hide modal
    function toggleModal(modal, modal_btn, modal_btn_close){
+     $(".item_deleteModal, .item_modal").click(function(ev){
+       ev.stopPropagation();
+     });
      modal_btn.click(function(){
        modal.fadeIn();
      });
@@ -436,12 +439,12 @@ $i++; } ?>
     $i = 0;
     foreach ($offers as $offer) { ?>
 				//for delete
-        toggleModal($("#deleteModal<?php echo $i;?>"), $("#btnDelete<?php echo $i;?>"), $("#btnDeleteClose<?php echo $i;?>"));
+        toggleModal($("#deleteModal<?php echo $i;?>"), $("#btnDelete<?php echo $i;?>"), $("#btnDeleteClose<?php echo $i;?>, .item_deleteModal_shadow"));
 
         deleteInBD($("#btnDeleteConfirm<?php echo $i; ?>"), "outils/php/traitement/offer/delete-offer.php", $("#id<?php echo $i; ?>"));
 
         //for edit
-        toggleModal($("#editModal<?php echo $i;?>"), $("#btnEdit<?php echo $i;?>"), $("#btnEditClose<?php echo $i;?>"));
+        toggleModal($("#editModal<?php echo $i;?>"), $("#btnEdit<?php echo $i;?>"), $("#btnEditClose<?php echo $i;?>, .item_modal_shadow"));
 
         setTrumbowyg($(".description<?php echo $i; ?>"), `<?php echo htmlspecialchars_decode($offer->getDescription()); ?>`);
         setTrumbowyg($(".missions<?php echo $i; ?>"), `<?php echo htmlspecialchars_decode($offer->getMissions()); ?>`);
@@ -455,7 +458,7 @@ $i++; } ?>
       ?>
 
     //for add
-    toggleModal($("#addModal"), $("#btnAdd"), $("#btnAddClose"));
+    toggleModal($("#addModal"), $("#btnAdd"), $("#btnAddClose, .item_modal_shadow"));
 
     setTrumbowyg($(".description"), ``);
     setTrumbowyg($(".missions"), ``);

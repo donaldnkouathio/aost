@@ -144,6 +144,9 @@ $domains = $domain->getDomains();
   $(document).ready(function(){
   	//Show or hide modal
    function toggleModal(modal, modal_btn, modal_btn_close){
+     $(".item_deleteModal").click(function(ev){
+       ev.stopPropagation();
+     });
      modal_btn.click(function(){
        modal.fadeIn();
      });
@@ -215,18 +218,18 @@ $domains = $domain->getDomains();
 
     <?php foreach ($domains as $domain) { ?>
       //for delete
-      toggleModal($("#deleteDomainModal<?php echo $domain->getId(); ?>"), $("#btnDeleteDomain<?php echo $domain->getId(); ?>"), $("#btnDeleteDomainClose<?php echo $domain->getId(); ?>"));
+      toggleModal($("#deleteDomainModal<?php echo $domain->getId(); ?>"), $("#btnDeleteDomain<?php echo $domain->getId(); ?>"), $("#btnDeleteDomainClose<?php echo $domain->getId(); ?>, #deleteDomainModal<?php echo $domain->getId(); ?>"));
 
       deleteInBD($("#btnDeleteDomainConfirm<?php echo $domain->getId(); ?>"), "outils/php/traitement/domain/delete-domain.php", $("#id<?php echo $domain->getId(); ?>"));
 
       //for edit
-      toggleModal($("#editDomainModal<?php echo $domain->getId(); ?>"), $("#btnEditDomain<?php echo $domain->getId(); ?>"), $("#btnEditDomainClose<?php echo $domain->getId(); ?>"));
+      toggleModal($("#editDomainModal<?php echo $domain->getId(); ?>"), $("#btnEditDomain<?php echo $domain->getId(); ?>"), $("#btnEditDomainClose<?php echo $domain->getId(); ?>, #editDomainModal<?php echo $domain->getId(); ?>"));
 
       putInBD($("#btnEditDomainConfirm<?php echo $domain->getId(); ?>"), "outils/php/traitement/domain/edit-domain.php", $("#id<?php echo $domain->getId(); ?>").val(), $("#name<?php echo $domain->getId(); ?>"), $("#edit_domainIndicator<?php echo $domain->getId(); ?>"));
     <?php } ?>
 
     //for add
-    toggleModal($("#addDomainModal"), $("#btnAddDomain"), $("#btnAddDomainClose"));
+    toggleModal($("#addDomainModal"), $("#btnAddDomain"), $("#btnAddDomainClose, #addDomainModal"));
 
     putInBD($("#btnAddDomainConfirm"), "outils/php/traitement/domain/add-domain.php", "", $("#name"), $("#add_domainIndicator"));
   });

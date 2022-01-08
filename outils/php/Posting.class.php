@@ -154,63 +154,65 @@ class Posting{
       </form>
     </div>
 
-    <!-- Modal des sous domains -->
-    <div class="sub_domain_modal modal_cv">
-      <div class="sub_domain_modal_body">
+    <div class="sub_domain_modal_shadow">
+      <!-- Modal des sous domains -->
+      <div class="sub_domain_modal modal_cv">
+        <div class="sub_domain_modal_body">
 
-        <?php
-        $domains = $domain->getDomains();
-        foreach($domains as $domain){
-          $subdomains = $subdomain->getListSubdomains($domain->getId());
-          ?>
-          <div class="sub_domain_modal_item_group">
-            <span class="sub_domain_modal_item_title"><?php echo $domain->getName(); ?></span>
+          <?php
+          $domains = $domain->getDomains();
+          foreach($domains as $domain){
+            $subdomains = $subdomain->getListSubdomains($domain->getId());
+            ?>
+            <div class="sub_domain_modal_item_group">
+              <span class="sub_domain_modal_item_title"><?php echo $domain->getName(); ?></span>
 
-            <?php foreach($subdomains as $subdomain){ ?>
-              <div class="sub_domain_modal_item">
-                <label for="<?php echo $subdomain->getName().$domain->getId(); ?>"><?php echo $subdomain->getName(); ?></label>
-                <input class="sd_item" type="checkbox" id="<?php echo $subdomain->getName().$domain->getId(); ?>" name="<?php echo $subdomain->getName(); ?>" value="<?php echo $subdomain->getName(); ?>" onchange="fillSubDomain(this)">
-              </div>
-            <?php } ?>
-          </div>
-        <?php }?>
+              <?php foreach($subdomains as $subdomain){ ?>
+                <div class="sub_domain_modal_item">
+                  <label for="<?php echo $subdomain->getName().$domain->getId(); ?>"><?php echo $subdomain->getName(); ?></label>
+                  <input class="sd_item" type="checkbox" id="<?php echo $subdomain->getName().$domain->getId(); ?>" name="<?php echo $subdomain->getName(); ?>" value="<?php echo $subdomain->getName(); ?>" onchange="fillSubDomain(this)">
+                </div>
+              <?php } ?>
+            </div>
+          <?php }?>
 
+        </div>
+
+        <div class="sub_domain_modal_footer">
+          <button type="button" class="btn btn-primary sub_domain_modal_btn_close modal_btn_cv" name="button">Fermer</button>
+        </div>
       </div>
+      <!-- *** -->
 
-      <div class="sub_domain_modal_footer">
-        <button type="button" class="btn btn-primary sub_domain_modal_btn_close modal_btn_cv" name="button">Fermer</button>
+      <!-- Modal des sous domains pour l'onglet Créer un CV -->
+      <div class="sub_domain_modal modal_no_cv">
+        <div class="sub_domain_modal_body">
+
+          <?php
+          $domains = $domain->getDomains();
+          foreach($domains as $domain){
+            $subdomains = $subdomain->getListSubdomains($domain->getId());
+            ?>
+            <div class="sub_domain_modal_item_group">
+              <span class="sub_domain_modal_item_title"><?php echo $domain->getName(); ?></span>
+
+              <?php foreach($subdomains as $subdomain){ ?>
+                <div class="sub_domain_modal_item">
+                  <label for="<?php echo $subdomain->getName()."-".$domain->getId(); ?>"><?php echo $subdomain->getName(); ?></label>
+                  <input class="sd_item" type="checkbox" id="<?php echo $subdomain->getName()."-".$domain->getId(); ?>" name="<?php echo $subdomain->getName(); ?>" value="<?php echo $subdomain->getName(); ?>" onchange="fillSubDomainNoCv(this)">
+                </div>
+              <?php } ?>
+            </div>
+          <?php }?>
+
+        </div>
+
+        <div class="sub_domain_modal_footer">
+          <button type="button" class="btn btn-primary sub_domain_modal_btn_close modal_btn_no_cv" name="button">Fermer</button>
+        </div>
       </div>
+      <!-- *** -->
     </div>
-    <!-- *** -->
-
-    <!-- Modal des sous domains pour l'onglet Créer un CV -->
-    <div class="sub_domain_modal modal_no_cv">
-      <div class="sub_domain_modal_body">
-
-        <?php
-        $domains = $domain->getDomains();
-        foreach($domains as $domain){
-          $subdomains = $subdomain->getListSubdomains($domain->getId());
-          ?>
-          <div class="sub_domain_modal_item_group">
-            <span class="sub_domain_modal_item_title"><?php echo $domain->getName(); ?></span>
-
-            <?php foreach($subdomains as $subdomain){ ?>
-              <div class="sub_domain_modal_item">
-                <label for="<?php echo $subdomain->getName()."-".$domain->getId(); ?>"><?php echo $subdomain->getName(); ?></label>
-                <input class="sd_item" type="checkbox" id="<?php echo $subdomain->getName()."-".$domain->getId(); ?>" name="<?php echo $subdomain->getName(); ?>" value="<?php echo $subdomain->getName(); ?>" onchange="fillSubDomainNoCv(this)">
-              </div>
-            <?php } ?>
-          </div>
-        <?php }?>
-
-      </div>
-
-      <div class="sub_domain_modal_footer">
-        <button type="button" class="btn btn-primary sub_domain_modal_btn_close modal_btn_no_cv" name="button">Fermer</button>
-      </div>
-    </div>
-    <!-- *** -->
 
     <div class="alert_modal_shadow">
       <div class="alert_modal_block">
@@ -231,12 +233,15 @@ class Posting{
       $(document).ready(function(){
         // hide modal
        function hideModal(modal, modal_btn_close){
+         $(".alert_modal_block").click(function(ev){
+           ev.stopPropagation();
+         });
          modal_btn_close.click(function(){
            modal.fadeOut();
          });
         }
 
-        hideModal($(".alert_modal_shadow"), $(".alert_modal_close"));
+        hideModal($(".alert_modal_shadow"), $(".alert_modal_close, .alert_modal_shadow"));
 
         var btn_submit_make_cv = $('#btn_submit_make_cv');
         var btn_submit_have_cv = $('#btn_submit_have_cv');
@@ -258,6 +263,8 @@ class Posting{
               btn_submit_make_cv.prop("disabled", false);
               btn_submit_make_cv.html("postuler");
               $(".alert_modal_shadow").fadeIn();
+
+              $('#make_cv_form')[0].reset();
             },
             cache: false,
             contentType: false,
@@ -282,6 +289,8 @@ class Posting{
               btn_submit_have_cv.prop("disabled", false);
               btn_submit_have_cv.html("postuler");
               $(".alert_modal_shadow").fadeIn();
+
+              $('#have_cv_form')[0].reset();
             },
             cache: false,
             contentType: false,
