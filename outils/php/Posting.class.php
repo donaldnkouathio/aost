@@ -52,7 +52,7 @@ class Posting{
     </div>
 
     <div class="make_cv_block">
-      <form class="" action="<?php echo _ROOT_PATH; ?><?php echo $this->pageTraitement; ?>" method="post">
+      <form id="make_cv_form" class="">
         <div class="input-block">
           <label for="name">Nom<span class="form-required"> </span> :</label>
           <input type="text" name="name" required value="">
@@ -88,7 +88,7 @@ class Posting{
         </div>
 
         <div class="button-block">
-          <button type="submit" class="btn btn-primary" name="button"><?php echo $this->btnTitle; ?></button>
+          <button type="submit" id="btn_submit_make_cv" class="btn btn-primary" name="button"><?php echo $this->btnTitle; ?></button>
         </div>
 
         <input type="hidden" name="request_type" value="make_cv">
@@ -98,7 +98,7 @@ class Posting{
 
     <!-- block j'ai un CV -->
     <div class="have_cv_block">
-      <form class="" action="<?php echo _ROOT_PATH; ?><?php echo $this->pageTraitement; ?>" method="post" enctype="multipart/form-data">
+      <form class="" id="have_cv_form" enctype="multipart/form-data">
         <div class="input-block">
           <label for="name">Nom<span class="form-required"> </span> :</label>
           <input type="text" name="name" required value="">
@@ -146,7 +146,7 @@ class Posting{
         </div>
 
         <div class="button-block">
-          <button type="submit" class="btn btn-primary" name="button"><?php echo $this->btnTitle; ?></button>
+          <button type="submit" id="btn_submit_have_cv" class="btn btn-primary" name="button"><?php echo $this->btnTitle; ?></button>
         </div>
 
         <input type="hidden" name="request_type" value="have_cv">
@@ -212,7 +212,85 @@ class Posting{
     </div>
     <!-- *** -->
 
+    <div class="alert_modal_shadow">
+      <div class="alert_modal_block">
+        <div class="alert_modal_body">
+          <i class="material-icons">check_circle</i>
+          <span>Candidature soumise avec success</span>
+        </div>
+
+        <div class="alert_modal_footer">
+          <button type="button" class="btn alert_modal_close" name="button">Fermer</button>
+        </div>
+      </div>
+    </div>
+
     <script src="<?php echo _ROOT_PATH."outils/js/posting.js" ?>"></script>
+
+    <script>
+      $(document).ready(function(){
+        // hide modal
+       function hideModal(modal, modal_btn_close){
+         modal_btn_close.click(function(){
+           modal.fadeOut();
+         });
+        }
+
+        hideModal($(".alert_modal_shadow"), $(".alert_modal_close"));
+
+        var btn_submit_make_cv = $('#btn_submit_make_cv');
+        var btn_submit_have_cv = $('#btn_submit_have_cv');
+
+        //form to make cv
+        $('#make_cv_form').submit(function(ev){
+          ev.preventDefault();
+          var formData = new FormData($('#make_cv_form')[0]);
+
+          $.ajax({
+            url: "<?php echo _ROOT_PATH; ?><?php echo $this->pageTraitement; ?>",
+            type: "POST",
+            data: formData,
+            beforeSend: function(){
+              btn_submit_make_cv.prop("disabled", true);
+              btn_submit_make_cv.html('<span class="btn-loading"><span class="loader"></span></span>');
+            },
+            success: function(ret){
+              btn_submit_make_cv.prop("disabled", false);
+              btn_submit_make_cv.html("postuler");
+              $(".alert_modal_shadow").fadeIn();
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        });
+
+        //For have cv
+        $('#have_cv_form').submit(function(ev){
+          ev.preventDefault();
+          var formData = new FormData($('#have_cv_form')[0]);
+
+          $.ajax({
+            url: "<?php echo _ROOT_PATH; ?><?php echo $this->pageTraitement; ?>",
+            type: "POST",
+            data: formData,
+            beforeSend: function(){
+              btn_submit_have_cv.prop("disabled", true);
+              btn_submit_have_cv.html('<span class="btn-loading"><span class="loader"></span></span>');
+            },
+            success: function(ret){
+              btn_submit_have_cv.prop("disabled", false);
+              btn_submit_have_cv.html("postuler");
+              $(".alert_modal_shadow").fadeIn();
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        });
+
+      });
+    </script>
   <?php }
 }
 
