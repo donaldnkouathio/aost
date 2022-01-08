@@ -239,6 +239,9 @@ $admins = $admin->getAdmins();
   $(document).ready(function(){
   	//Show or hide modal
    function toggleModal(modal, modal_btn, modal_btn_close){
+     $(".item_deleteModal, .item_modal").click(function(ev){
+       ev.stopPropagation();
+     });
      modal_btn.click(function(){
        modal.fadeIn();
      });
@@ -340,17 +343,17 @@ $admins = $admin->getAdmins();
 
       foreach ($admins as $admin) { ?>
 				//for delete
-        toggleModal($("#deleteModal<?php echo $admin->getId(); ?>"), $("#btnDelete<?php echo $admin->getId(); ?>"), $("#btnDeleteClose<?php echo $admin->getId(); ?>"));
+        toggleModal($("#deleteModal<?php echo $admin->getId(); ?>"), $("#btnDelete<?php echo $admin->getId(); ?>"), $("#btnDeleteClose<?php echo $admin->getId(); ?>, .item_deleteModal_shadow"));
 
 				deleteAdminInBD($("#btnDeleteConfirm<?php echo $admin->getId(); ?>"), "outils/php/traitement/admin/delete-admin.php", $("#id<?php echo $admin->getId(); ?>"));
 
         //for edit
-				toggleModal($("#editModal<?php echo $admin->getId(); ?>"), $("#btnEdit<?php echo $admin->getId(); ?>"), $("#btnEditClose<?php echo $admin->getId(); ?>"));
+				toggleModal($("#editModal<?php echo $admin->getId(); ?>"), $("#btnEdit<?php echo $admin->getId(); ?>"), $("#btnEditClose<?php echo $admin->getId(); ?>, .item_modal_shadow"));
 
 				putAdminInBD($("#btnEditConfirm<?php echo $admin->getId(); ?>"), "outils/php/traitement/admin/edit-admin.php", $("#id<?php echo $admin->getId(); ?>").val(), $("#email<?php echo $admin->getId(); ?>"), $("#name<?php echo $admin->getId(); ?>"), $("#role<?php echo $admin->getId(); ?>"));
 
         //for edit password
-        toggleModal($("#editPwdModal<?php echo $admin->getId(); ?>"), $("#btnEditPwd<?php echo $admin->getId(); ?>"), $("#btnEditPWDClose<?php echo $admin->getId(); ?>"));
+        toggleModal($("#editPwdModal<?php echo $admin->getId(); ?>"), $("#btnEditPwd<?php echo $admin->getId(); ?>"), $("#btnEditPWDClose<?php echo $admin->getId(); ?>, .item_deleteModal_shadow"));
 
         editPwdInBD($("#btnEditPwdConfirm<?php echo $admin->getId(); ?>"), "outils/php/traitement/admin/edit-password.php", $("#id<?php echo $admin->getId(); ?>"), $("#edit_password<?php echo $admin->getId(); ?>"), $("#confirm_edit_password<?php echo $admin->getId(); ?>"), $("#pwdIndicator<?php echo $admin->getId(); ?>"));
     <?php
@@ -358,7 +361,7 @@ $admins = $admin->getAdmins();
     }
     ?>
     //for add
-    toggleModal($("#addModal"), $("#btnAdd"), $("#btnAddClose"));
+    toggleModal($("#addModal"), $("#btnAdd"), $("#btnAddClose, .item_modal_shadow"));
 
     putAdminInBD($("#btnAddConfirm"), "outils/php/traitement/admin/add-admin.php", "0", $("#email"), $("#name"), $("#role"));
 

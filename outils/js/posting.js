@@ -1,4 +1,4 @@
-$(document).ready(function(){ 
+$(document).ready(function(){
   var have_cv_btn = $('.have_cv_btn');
   var make_cv_btn = $('.make_cv_btn');
   var have_cv_block = $('.have_cv_block');
@@ -17,8 +17,8 @@ $(document).ready(function(){
   toggleCv(make_cv_btn, have_cv_btn, make_cv_block, have_cv_block);
 
 
-  var sd_modal = $(".modal_cv");
-  var sd_btn_close = $(".modal_btn_cv");
+  var sd_modal = $(".modal_cv, .sub_domain_modal_shadow");
+  var sd_btn_close = $(".modal_btn_cv, .sub_domain_modal_shadow");
   var job_block = $(".job-block-cv");
 
   sd_btn_close.click(function() {
@@ -28,8 +28,8 @@ $(document).ready(function(){
     sd_modal.fadeIn();
   });
 
-  var sd_modal_no_cv = $(".modal_no_cv");
-  var sd_btn_close_no_cv = $(".modal_btn_no_cv");
+  var sd_modal_no_cv = $(".modal_no_cv, .sub_domain_modal_shadow");
+  var sd_btn_close_no_cv = $(".modal_btn_no_cv, .sub_domain_modal_shadow");
   var job_block_no_cv = $(".job-block-no_cv");
 
   sd_btn_close_no_cv.click(function() {
@@ -37,6 +37,11 @@ $(document).ready(function(){
   });
   job_block_no_cv.click(function() {
     sd_modal_no_cv.fadeIn();
+  });
+
+
+  $(".modal_no_cv, .modal_cv").click(function(ev){
+    ev.stopPropagation();
   });
 
 });
