@@ -1,0 +1,3 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule ^p/(.*)$ ?prompt=$1 [L]
