@@ -288,7 +288,7 @@ public function getOffers() {
     include(_APP_PATH."bd/server-connect.php");
 
 
-    $query=$db->prepare("SELECT * FROM offers ORDER BY id ASC");
+    $query=$db->prepare("SELECT * FROM offers WHERE expired=0 ORDER BY id ASC");
 
     $offers=[];
 
@@ -310,7 +310,7 @@ public function getOffersLimit($start) {
 
     $start=intval($start);
     $end=$start+10;
-    $query=$db->prepare("SELECT * FROM offers ORDER BY id DESC LIMIT $start,$end");
+    $query=$db->prepare("SELECT * FROM offers WHERE expired=0 ORDER BY id DESC LIMIT $start,$end");
 
     $offers=[];
 
