@@ -15,7 +15,15 @@
 <nav class="nav_block">
   <ul>
     <li><a href="<?php echo _DASHBOARD_PATH; ?>home/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="home"){echo "dashboard_nav_link_hover";} ?>"><i class="material-icons vertical-align-bottom">home</i> Accueil</a></li>
-    <li><a href="<?php echo _DASHBOARD_PATH; ?>admins/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="admins"){echo "dashboard_nav_link_hover";} ?>" class="dashboard_nav_link"><i class="material-icons vertical-align-bottom">people_outline</i> Admins</a></li>
+
+    <li><a href="<?php echo _DASHBOARD_PATH; ?>admins/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="admins"){echo "dashboard_nav_link_hover";} ?>" class="dashboard_nav_link">
+      <i class="material-icons vertical-align-bottom">people_outline</i>
+       Admins
+       <?php if(isset($_SESSION["id"])){ ?>
+       <span title="Vous ête en ligne - <?php echo htmlspecialchars_decode(ucfirst($_SESSION["name"])); ?>" class="online-user-indicator"></span>
+       <?php } ?>
+     </a></li>
+
     <li><a href="<?php echo _DASHBOARD_PATH; ?>offers/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="offers"){echo "dashboard_nav_link_hover";} ?>"><i class="material-icons vertical-align-bottom">business_center</i> Offres d'emploi</a></li>
     <li><a href="<?php echo _DASHBOARD_PATH; ?>asked-offers/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="asked-offers"){echo "dashboard_nav_link_hover";} ?>"><i class="material-icons vertical-align-bottom">work</i> Candidatures</a></li>
     <li><a href="#" class="dashboard_nav_link"><i class="material-icons vertical-align-bottom">phone</i> Contacts</a></li>
