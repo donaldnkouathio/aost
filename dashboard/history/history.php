@@ -20,20 +20,6 @@
   $histories_count = $history->getHistorysByMonth($month);
 ?>
 
-<span class="stat" style="display: block">
-  <?php
-  if(count($histories_count) > 1){
-    echo count($histories_count)." évènements trouvés";
-  }else {
-    if(count($histories_count) > 0){
-      echo "Un évènement trouvé";
-    }else {
-      echo "Aucun évènement trouvé";
-    }
-  }
-  ?>
-</span>
-
 <?php
 /* */
 $actuParPage= 10; // actu par page
@@ -58,6 +44,21 @@ $premiereEntree=($pageActuelle-1)*$actuParPage; // On calcule la première entr�
 $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
 ?>
 
+
+<span class="stat" style="display: block">
+  <?php
+  if(count($histories_count) > 1){
+    $txt = count($histories_count) > $actuParPage ? (count($histories)+$actuParPage*($pageActuelle-1))."/".count($histories_count) : count($histories_count);
+    echo $txt." évènements trouvés";
+  }else {
+    if(count($histories_count) > 0){
+      echo "Un évènement trouvé";
+    }else {
+      echo "Aucun évènement trouvé";
+    }
+  }
+  ?>
+</span>
 
 <?php // New style for domains show ?>
 <div class="suggest_container">
@@ -91,7 +92,7 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
       $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">folder_open</i> Sous-domaines';
     }
     elseif(preg_match("/city/i", $history->getAction())){
-      $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">business_center</i> Villes';
+      $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">location_city</i> Villes';
     }
     elseif(preg_match("/contact/i", $history->getAction())){
       $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">phone</i> Contacts';

@@ -173,7 +173,7 @@ $i++; } ?>
                   $subdomains = $subdomain->getListSubdomains($domain->getId());
                   foreach ($subdomains as $subdomain) {
                     ?>
-                    <option value="<?php echo $subdomain->getId(); ?>" <?php if(ucwords($subdomain->getName()) == ucwords($subdomain_thisOffer->getName())){echo "selected";} ?>><?php echo ucfirst($subdomain->getName()); ?></option>
+                    <option value="<?php echo $subdomain->getId(); ?>" <?php if(ucwords($subdomain->getName()) == ucwords($subdomain_thisOffer->getName())){echo "selected";} ?>><?php echo htmlspecialchars_decode(ucfirst($subdomain->getName())); ?></option>
                   <?php } ?>
                 </optgroup>
               <?php } ?>
@@ -186,7 +186,7 @@ $i++; } ?>
               $citys = $city->getCitys();
               foreach ($citys as $city) {
                 ?>
-                <option value="<?php echo $city->getId(); ?>" <?php if($city->getId() == $offer->getId_city()){echo "selected";} ?>><?php echo ucfirst($city->getName()); ?></option>
+                <option value="<?php echo $city->getId(); ?>" <?php if($city->getId() == $offer->getId_city()){echo "selected";} ?>><?php echo htmlspecialchars_decode(ucfirst($city->getName())); ?></option>
               <?php } ?>
             </select>
           </div>
@@ -276,7 +276,7 @@ $i++; } ?>
                 $subdomains = $subdomain->getListSubdomains($domain->getId());
                 foreach ($subdomains as $subdomain) {
                   ?>
-                  <option value="<?php echo $subdomain->getId(); ?>" ><?php echo ucfirst($subdomain->getName()); ?></option>
+                  <option value="<?php echo $subdomain->getId(); ?>" ><?php echo htmlspecialchars_decode(ucfirst($subdomain->getName())); ?></option>
                 <?php } ?>
               </optgroup>
             <?php } ?>
@@ -289,7 +289,7 @@ $i++; } ?>
             $citys = $city->getCitys();
             foreach ($citys as $city) {
               ?>
-              <option value="<?php echo $city->getId(); ?>"><?php echo ucfirst($city->getName()); ?></option>
+              <option value="<?php echo $city->getId(); ?>"><?php echo htmlspecialchars_decode(ucfirst($city->getName())); ?></option>
             <?php } ?>
           </select>
         </div>
