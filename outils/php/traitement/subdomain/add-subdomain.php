@@ -37,7 +37,7 @@ if($subdomain->addSubdomain($subdomain)){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$last_subdomain->getId(),
 		'action'=>"add subdomain",
-		'description'=>$admin->getName()." a ajouté le sous-domaine ".$subdomain->getName()." dans le domaine ".$domain->getName(),
+		'description'=>$admin->getName()." a ajouté le sous-domaine \" ".$subdomain->getName()." \" dans le domaine ".$domain->getName(),
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 
