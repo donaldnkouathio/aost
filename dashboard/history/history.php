@@ -84,7 +84,7 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
     elseif(preg_match("/candidacy/i", $history->getAction())){
       $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">work</i> Candidatures';
     }
-    elseif(preg_match("/domain/i", $history->getAction())){
+    elseif(preg_match("/\bdomain/i", $history->getAction())){
       $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">domain</i> Domaines';
     }
     elseif(preg_match("/subdomain/i", $history->getAction())){

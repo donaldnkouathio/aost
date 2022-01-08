@@ -210,7 +210,6 @@
             data:	"id="+id_val
                   +"&id_domain="+id_domain_val
                   +"&name="+name_val
-                  +"&image="
                   +"&color="+color_val,
             beforeSend : function(){
               btn.after('<span class="btn btn-primary btn-loading"><span class="loader"></span></span>');
