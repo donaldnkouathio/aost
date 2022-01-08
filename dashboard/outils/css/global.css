@@ -253,6 +253,41 @@ tr:hover, tr:nth-child(even):hover{
 }
 /* *** */
 
+.online-user-indicator{
+  background-color: var(--color-success);
+  display: inline-block;
+  margin-left: 5px;
+  height: 3px;
+  width: 3px;
+  border: 5px solid var(--color-success);
+  border-radius: 50%;
+  float: right;
+  margin-top: 10px;
+}
+
+
+/* BTN */
+.btn{
+  background-color: white;
+}
+.btn:hover{
+  box-shadow: 0 0 4px var(--color-text);
+}
+.btn-primary{
+  color: var(--btn-primary-text-color);
+  background-color: var(--btn-primary-bg-color);
+}
+.btn-primary:hover{
+  background-color: var(--btn-primary-bg-hover-color);
+}
+.btn-danger{
+  color: var(--btn-danger-text-color);
+  background-color: var(--btn-danger-bg-color);
+}
+.btn-danger:hover{
+  background-color: var(--btn-danger-bg-hover-color);
+}
+
 /***** Media Query *****/
 
 /* Mobile */
