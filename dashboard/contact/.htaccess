@@ -1,0 +1,3 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule ^c/(.*)$ ?contact=$1 [L]

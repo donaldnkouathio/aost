@@ -1,6 +1,7 @@
-<h2 class="margin-top-none" style="display: inline-block">Candidatures</h2>
+<h2 class="margin-top-none">Candidatures</h2>
 
-<div class="" style="margin-bottom: 15px;">
+<div class="show_auther_page_indicateur">
+  <i class="material-icons vertical-align-bottom background-primary">info</i>
   <label for="prompt">Afficher les candidatures spontanées </label>
   <input type="checkbox" name="prompt" id="prompt" value="" <?php if(isset($_GET["prompt"])){echo "checked";} ?>>
 </div>
@@ -65,7 +66,7 @@ $candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $alert->
         </span>
         <?php }} ?>
 
-        <span class="btnDelete" id="btnDeleteCandidacy<?php echo $candidacy->getId(); ?>" title="Supprimer cette candidature">
+        <span class="btnDelete float-right" id="btnDeleteCandidacy<?php echo $candidacy->getId(); ?>" title="Supprimer cette candidature">
           <i class="material-icons vertical-align-bottom">close</i>
         </span>
       </div>

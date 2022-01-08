@@ -128,6 +128,9 @@ $admins = $admin->getAdmins();
           <option value="<?php echo $session->getRole_2(); ?>" <?php if($admin->getRole() == $session->getRole_2()){echo "selected";} ?>>Modérateur</option>
         </select>
       </div>
+
+      <span class="item_modal_indicator" style="display: block" id="edit_indicator<?php echo $admin->getId(); ?>"></span>
+
       <?php } ?>
     </div>
 
@@ -179,7 +182,7 @@ $admins = $admin->getAdmins();
           <input type="text" name="" value=""  id="confirm_edit_password<?php echo $admin->getId(); ?>">
       </div>
 
-      <span class="item_modal_indicator" id="pwdIndicator<?php echo $admin->getId(); ?>"></span>
+      <span class="item_modal_indicator" style="display: block" id="pwdIndicator<?php echo $admin->getId(); ?>"></span>
 
     </div>
     <div class="item_deleteModal_footer">
@@ -222,6 +225,8 @@ $admins = $admin->getAdmins();
           <option value="moderateur" selected>Modérateur</option>
         </select>
       </div>
+
+      <span class="item_modal_indicator" id="add_indicator"></span>
     </div>
 
     <div class="item_modal_header">
@@ -251,19 +256,21 @@ $admins = $admin->getAdmins();
     }
 
     //For delete offer in DB
-		function putAdminInBD(btn, path, id, email, name, role){
+		function putAdminInBD(btn, path, id, password, email, name, role, indicator){
 			btn.click(function(){
 				var id_val = id,
   				  email_val = email.val(),
   				  name_val = name.val(),
+  				  password_val = password.val(),
   				  role_val = role.val();
-				if(email_val != "" && name_val != ""){
+				if(email_val != "" && name_val != "" && password_val != ""){
           $.ajax({
   					url: _ROOT_PATH+path,
   					type: "POST",
   					data:	"id="+id_val
                   +"&email="+email_val
                   +"&name="+name_val
+                  +"&password="+password_val
                   +"&role="+role_val,
             beforeSend : function(){
               btn.after('<span class="btn btn-primary btn-loading"><span class="loader"></span></span>');
@@ -273,6 +280,8 @@ $admins = $admin->getAdmins();
   						window.location.reload();
   					}
   				});
+        }else {
+          indicator.text("Les champs ne doivent pas être vide !");
         }
       });
     }
@@ -350,7 +359,7 @@ $admins = $admin->getAdmins();
         //for edit
 				toggleModal($("#editModal<?php echo $admin->getId(); ?>"), $("#btnEdit<?php echo $admin->getId(); ?>"), $("#btnEditClose<?php echo $admin->getId(); ?>, .item_modal_shadow"));
 
-				putAdminInBD($("#btnEditConfirm<?php echo $admin->getId(); ?>"), "outils/php/traitement/admin/edit-admin.php", $("#id<?php echo $admin->getId(); ?>").val(), $("#email<?php echo $admin->getId(); ?>"), $("#name<?php echo $admin->getId(); ?>"), $("#role<?php echo $admin->getId(); ?>"));
+				putAdminInBD($("#btnEditConfirm<?php echo $admin->getId(); ?>"), "outils/php/traitement/admin/edit-admin.php", $("#id<?php echo $admin->getId(); ?>").val(), $("#password<?php echo $admin->getId(); ?>"), $("#email<?php echo $admin->getId(); ?>"), $("#name<?php echo $admin->getId(); ?>"), $("#role<?php echo $admin->getId(); ?>"), $("#edit_indicator<?php echo $admin->getId(); ?>"));
 
         //for edit password
         toggleModal($("#editPwdModal<?php echo $admin->getId(); ?>"), $("#btnEditPwd<?php echo $admin->getId(); ?>"), $("#btnEditPWDClose<?php echo $admin->getId(); ?>, .item_deleteModal_shadow"));
@@ -363,7 +372,7 @@ $admins = $admin->getAdmins();
     //for add
     toggleModal($("#addModal"), $("#btnAdd"), $("#btnAddClose, .item_modal_shadow"));
 
-    putAdminInBD($("#btnAddConfirm"), "outils/php/traitement/admin/add-admin.php", "0", $("#email"), $("#name"), $("#role"));
+    putAdminInBD($("#btnAddConfirm"), "outils/php/traitement/admin/add-admin.php", "0", $("#password"), $("#email"), $("#name"), $("#role"), $("#add_indicator"));
 
   });
 </script>

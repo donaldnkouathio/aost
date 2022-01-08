@@ -46,12 +46,14 @@ $domains = $domain->getDomains();
       <div class="suggest_row">
         <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($domain->getAdded_at()); ?></span>
 
-        <span class="btnEdit" id="btnEditDomain<?php echo $domain->getId(); ?>" title="Modifier cet domaine">
-          <i class="material-icons vertical-align-bottom">edit</i>
-        </span>
-        <span class="btnDelete" id="btnDeleteDomain<?php echo $domain->getId(); ?>" title="Supprimer ce domaine">
-          <i class="material-icons vertical-align-bottom">close</i>
-        </span>
+        <div class="suggest_col float-right">
+          <span class="btnEdit" id="btnEditDomain<?php echo $domain->getId(); ?>" title="Modifier cet domaine">
+            <i class="material-icons vertical-align-bottom">edit</i>
+          </span>
+          <span class="btnDelete" id="btnDeleteDomain<?php echo $domain->getId(); ?>" title="Supprimer ce domaine">
+            <i class="material-icons vertical-align-bottom">close</i>
+          </span>
+        </div>
       </div>
     </div>
   <?php $i++;} ?>

@@ -120,7 +120,7 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
       <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($history->getAdded_at()); ?></span>
 
       <?php if($_SESSION["role"] == $session->getRole_1()){ ?>
-      <span class="btnDelete" id="btnDelete<?php echo $history->getId(); ?>" title="Supprimer">
+      <span class="btnDelete float-right" id="btnDelete<?php echo $history->getId(); ?>" title="Supprimer">
         <i class="material-icons vertical-align-bottom">close</i>
         Supprimer
       </span>

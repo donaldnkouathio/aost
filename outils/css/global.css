@@ -306,6 +306,8 @@ citaion{
 }
 .suggest_row{
   padding: 5px;
+  padding-left: 0;
+  padding-right: 0;
 }
 .suggest_col{
   display: inline-block;
