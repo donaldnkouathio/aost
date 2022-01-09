@@ -76,8 +76,11 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
     }
 
     $icon="";
-    if(preg_match("/admin/i", $history->getAction()) || preg_match("/password/i", $history->getAction())){
+    if(preg_match("/admin/i", $history->getAction())){
       $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">people_outline</i> Admins';
+    }
+    elseif(preg_match("/password/i", $history->getAction())){
+      $icon = '<i class="material-icons vertical-align-bottom background-primary">people_outline</i> <i class="material-icons vertical-align-bottom background-primary">arrow_forward</i> <i class="material-icons vertical-align-bottom margin-right-5 background-primary">lock_outline</i> Admins';
     }
     elseif(preg_match("/offer/i", $history->getAction())){
       $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">business_center</i> Offres d\'emploi';
