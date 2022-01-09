@@ -107,7 +107,7 @@ $admins = $admin->getAdmins();
   <div class="item_modal">
 
     <div class="item_modal_body">
-      <h3 style="font-weight: normal">Administrateur <strong>No <?php echo $admin->getId(); ?></strong></h3>
+      <h2 style="font-weight: normal">Administrateur <strong>No <?php echo $admin->getId(); ?></strong></h2>
 
       <div class="item_modal_input">
         <label for="email<?php echo $admin->getId(); ?>">Email </label>
@@ -118,7 +118,7 @@ $admins = $admin->getAdmins();
         <input type="text" name="" value="<?php echo htmlspecialchars_decode($admin->getName()); ?>"  id="name<?php echo $admin->getId(); ?>">
       </div>
 
-      <input type="hidden" name="" value="mdp"  id="password<?php echo $admin->getId(); ?>">
+      <input type="hidden" name="" value="<?php echo $admin->getPassword(); ?>"  id="password<?php echo $admin->getId(); ?>">
 
       <?php if($_SESSION["role"] == $session->getRole_1()){ ?>
       <div class="item_modal_input">
@@ -128,10 +128,12 @@ $admins = $admin->getAdmins();
           <option value="<?php echo $session->getRole_2(); ?>" <?php if($admin->getRole() == $session->getRole_2()){echo "selected";} ?>>Modérateur</option>
         </select>
       </div>
+    <?php }else{ ?>
+      <input type="hidden" name="" value="<?php echo $admin->getRole(); ?>" id="role<?php echo $admin->getId(); ?>">
+    <?php } ?>
 
       <span class="item_modal_indicator" style="display: block" id="edit_indicator<?php echo $admin->getId(); ?>"></span>
 
-      <?php } ?>
     </div>
 
     <div class="item_modal_header">
@@ -204,7 +206,7 @@ $admins = $admin->getAdmins();
   <div class="item_modal">
 
     <div class="item_modal_body">
-      <h3 style="font-weight: normal">Veillez remplir ce formulaire pour ajouter un nouvel administrateur</h3>
+      <h2 style="font-weight: normal">Ajouter un administrateur</h2>
 
       <div class="item_modal_input">
         <label for="email">Email </label>
@@ -255,7 +257,7 @@ $admins = $admin->getAdmins();
      });
     }
 
-    //For delete offer in DB
+    //For add in DB
 		function putAdminInBD(btn, path, id, password, email, name, role, indicator){
 			btn.click(function(){
 				var id_val = id,
@@ -293,7 +295,7 @@ $admins = $admin->getAdmins();
     				pwd_val = pwd.val(),
 				    confirm_pwd_val = confirm_pwd.val();
 
-				if(pwd_val != "" || confirm_pwd_val != ""){
+				if(pwd_val != "" && confirm_pwd_val != ""){
 
           if(pwd_val == confirm_pwd_val){
 

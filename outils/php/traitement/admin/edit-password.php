@@ -16,27 +16,25 @@ $admin=$admin->getAdmin($_POST['id']);
 
 $admin->setPassword($_POST['password']);
 
-if($_SESSION['role']=="super"){
 
-	if($admin->editAdmin($admin)){
+if($admin->editPassword($admin)){
 
-		$admin=new Admin($current_admin);
-		$admin=$admin->getAdmin($_SESSION['id']);
+	$admin=new Admin($current_admin);
+	$admin=$admin->getAdmin($_SESSION['id']);
 
-		$current_history=[
-			'id'=>0,
-			'id_admin'=>$_SESSION['id'],
-			'id_target'=>$_POST['id'],
-			'action'=>"edit password",
-			'description'=>$admin->getName()." a modifié le mot de passe de ".$edited_admin->getName(),
-			'added_at'=>date("Y-m-d H:i:s")
-		];
+	$current_history=[
+		'id'=>0,
+		'id_admin'=>$_SESSION['id'],
+		'id_target'=>$_POST['id'],
+		'action'=>"edit password",
+		'description'=>$admin->getName()." a modifié le mot de passe de ".$edited_admin->getName(),
+		'added_at'=>date("Y-m-d H:i:s")
+	];
 
-		$history=new History($current_history);
-		echo $history->addHistory($history);
-	}
-
+	$history=new History($current_history);
+	echo $history->addHistory($history);
 }
+
 
 
 

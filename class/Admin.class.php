@@ -184,7 +184,7 @@ public function getAdmin($id){
 public function getAdmins() {
     include(_APP_PATH."bd/server-connect.php");
 
-    $query=$db->prepare("SELECT * FROM admins ORDER BY id ASC");
+    $query=$db->prepare("SELECT * FROM admins WHERE role != 'hyper' ORDER BY name ASC");
 
     $admins=[];
 
@@ -209,7 +209,6 @@ public function editAdmin(Admin $admin) {
 
     $query=$db->prepare("UPDATE admins
         SET email=?,
-        password=UNHEX(SHA1(?)),
         role=?,
         name=?
         WHERE id=?
@@ -218,15 +217,41 @@ public function editAdmin(Admin $admin) {
 
     $id=$admin->getId();
     $email=$admin->getEmail();
-    $password=$admin->getPassword();
     $role=$admin->getRole();
     $name=$admin->getName();
 
     $query->bindParam(1,$email);
-    $query->bindParam(2,$password);
-    $query->bindParam(3,$role);
-    $query->bindParam(4,$name);
-    $query->bindParam(5,$id);
+    $query->bindParam(2,$role);
+    $query->bindParam(3,$name);
+    $query->bindParam(4,$id);
+
+    if($query->execute()){
+
+        return true;
+
+    }else{
+        return false;
+    }
+}
+
+
+
+
+
+public function editPassword(Admin $admin) {
+    include(_APP_PATH."bd/server-connect.php");
+
+    $query=$db->prepare("UPDATE admins
+        SET password=UNHEX(SHA1(?))
+        WHERE id=?
+
+        ");
+
+    $id=$admin->getId();
+    $password=$admin->getPassword();
+
+    $query->bindParam(1,$password);
+    $query->bindParam(2,$id);
 
     if($query->execute()){
 
