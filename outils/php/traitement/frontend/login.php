@@ -2,21 +2,22 @@
 session_start();
 require_once '../../init.php';
 require_once _APP_PATH.'outils/php/functions.php';
+require_once _APP_PATH.'outils/php/Session.class.php';
 require_once _APP_PATH.'outils/php/import_class.php';
 
 if(isset($_POST["email"]) && isset($_POST["password"])){
 
   $admin = new Admin($current_admin);
+  $session = new Session();
 
   $admin->setEmail($_POST['email']);
   $admin->setPassword($_POST['password']);
 
-  if ($admin->logIn($admin)) {
-      //header('location:'.$_POST["current_page"]);
+  if ($admin->logIn($admin) == 1) {
+    $_SESSION["role"] = $_SESSION["role"] == "hyper" ? $session->getRole_1() : $_SESSION["role"];
     echo "ok";
   }else {
-      //header('location:'.$_POST["current_page"]);
-    echo "not";
+    echo "not found";
   }
 }else {
   header('location:/');

@@ -39,12 +39,14 @@ $cities = $city->getCitys();
       <div class="suggest_row">
         <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($city->getAdded_at()); ?></span>
 
-        <span class="btnEdit" id="btnEdit<?php echo $city->getId(); ?>" title="Modifier cette ville">
-          <i class="material-icons vertical-align-bottom">edit</i>
-        </span>
-        <span class="btnDelete" id="btnDelete<?php echo $city->getId(); ?>" title="Supprimer cette ville">
-          <i class="material-icons vertical-align-bottom">close</i>
-        </span>
+        <div class="suggest_col float-right">
+          <span class="btnEdit" id="btnEdit<?php echo $city->getId(); ?>" title="Modifier cette ville">
+            <i class="material-icons vertical-align-bottom">edit</i>
+          </span>
+          <span class="btnDelete" id="btnDelete<?php echo $city->getId(); ?>" title="Supprimer cette ville">
+            <i class="material-icons vertical-align-bottom">close</i>
+          </span>
+        </div>
       </div>
     </div>
   <?php } ?>

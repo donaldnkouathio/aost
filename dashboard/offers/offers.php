@@ -159,7 +159,7 @@ $i++; } ?>
       <div class="item_modal">
         <div class="item_modal_body">
           <?php $admin = $admin->getAdmin($offer->getId_admin()); ?>
-          <h3 style="font-weight: normal">Offre d'emploi <strong>No <?php echo $offer->getId(); ?></strong>, ajoutée par <strong><?php echo $admin->getName(); ?></strong> <?php get_elapsed_time($offer->getAdded_at()); ?></h3>
+          <h2 style="font-weight: normal">Offre d'emploi <strong>No <?php echo $offer->getId(); ?></strong>, ajoutée par <strong><?php echo $admin->getName(); ?></strong> <?php get_elapsed_time($offer->getAdded_at()); ?></h2>
 
           <div class="item_modal_input">
             <label for="id_subdomain<?php echo $i; ?>">profession</label>
@@ -207,16 +207,16 @@ $i++; } ?>
             <label for="motivation<?php echo $i; ?>"> Lettre de motivation obligatoire</label>
           </div>
 
-          <h2 class="margin-bottom-none" title="Description globale de la demande">Description</h2>
+          <h3 class="margin-bottom-none" title="Description globale de la demande">Description</h3>
           <div class="description<?php echo $i; ?>"></div>
 
-          <h2 class="margin-bottom-none" title="description détaillée (par mission) de la demande">Missions</h2>
+          <h3 class="margin-bottom-none" title="description détaillée (par mission) de la demande">Missions</h3>
           <div class="missions<?php echo $i; ?>"></div>
 
-          <h2 class="margin-bottom-none" title="compétences requises du postulant ">Compétences</h2>
+          <h3 class="margin-bottom-none" title="compétences requises du postulant ">Compétences</h3>
           <div class="skill<?php echo $i; ?>"></div>
 
-          <h2 class="margin-bottom-none" title="Informations requises du postulant (age, annee d'experience, caractere etc...)">Profil</h2>
+          <h3 class="margin-bottom-none" title="Informations requises du postulant (age, annee d'experience, caractere etc...)">Profil</h3>
           <div class="candidate_profile<?php echo $i; ?>"></div>
 
           <input type="hidden" name="id<?php echo $i; ?>" id="id<?php echo $i; ?>" value="<?php echo $offer->getId(); ?>">
@@ -263,7 +263,7 @@ $i++; } ?>
     <div class="item_modal">
 
       <div class="item_modal_body">
-        <h3 style="font-weight: normal">Veillez remplir ce formulaire pour ajouter une nouvelle offre d'emploi</h3>
+        <h2 style="font-weight: normal">Ajouter une offre d'emploi</h2>
 
         <div class="item_modal_input">
           <label for="id_subdomain">profession</label>
@@ -310,16 +310,16 @@ $i++; } ?>
           <label for="motivation"> Lettre de motivation obligatoire</label>
         </div>
 
-        <h2 class="margin-bottom-none" title="Description globale de la demande">Description</h2>
+        <h3 class="margin-bottom-none" title="Description globale de la demande">Description</h3>
         <div class="description"></div>
 
-        <h2 class="margin-bottom-none" title="description détaillée (par mission) de la demande">Missions</h2>
+        <h3 class="margin-bottom-none" title="description détaillée (par mission) de la demande">Missions</h3>
         <div class="missions"></div>
 
-        <h2 class="margin-bottom-none" title="compétences requises du postulant ">Compétences</h2>
+        <h3 class="margin-bottom-none" title="compétences requises du postulant ">Compétences</h3>
         <div class="skill"></div>
 
-        <h2 class="margin-bottom-none" title="Informations requises du postulant (age, annee d'experience, caractere etc...)">Profil</h2>
+        <h3 class="margin-bottom-none" title="Informations requises du postulant (age, annee d'experience, caractere etc...)">Profil</h3>
         <div class="candidate_profile"></div>
       </div>
 
@@ -350,12 +350,20 @@ $i++; } ?>
      });
    }
 
+	 function serializeText(txt){
+		 var regex_space = /&nbsp;/ig;
+		 txt = txt.replaceAll(regex_space, " ");
+
+		 return txt;
+	 }
+
 	  //Set div or textarea to WYSIWYG editor
 	  function setTrumbowyg(div, defautTxt){
      div.trumbowyg({
        autogrow: false,
+			 semantic: false,
        lang: "fr",
-       btns: [['p'],
+       btns: [['viewHTML','p'],
        ['bold', 'italic', 'strikethrough', 'underline'],
        ['superscript', 'subscript'], ['unorderedList', 'orderedList']]
      });
@@ -373,10 +381,10 @@ $i++; } ?>
         id_subdomain_val = id_subdomain.val(),
         id_city_val = id_city.val(),
         compagny_val = compagny.val(),
-        description_val = description.trumbowyg('html'),
-        mission_val = mission.trumbowyg('html'),
-        skill_val = skill.trumbowyg('html'),
-        candidate_profile_val = candidate_profile.trumbowyg('html'),
+        description_val = serializeText(description.trumbowyg('html')),
+        mission_val = serializeText(mission.trumbowyg('html')),
+        skill_val = serializeText(skill.trumbowyg('html')),
+        candidate_profile_val = serializeText(candidate_profile.trumbowyg('html')),
         deleted_val = deleted,
         expired_val = expired,
         deadline_val = deadline.val();
