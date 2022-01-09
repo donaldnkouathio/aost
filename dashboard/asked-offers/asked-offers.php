@@ -2,7 +2,11 @@
 
 <div class="show_auther_page_indicateur">
   <i class="material-icons vertical-align-bottom background-primary">info</i>
-  <label for="prompt">Afficher les candidatures spontanées </label>
+  <label for="prompt">Afficher les candidatures spontanées
+    <?php if(!isset($_GET["prompt"])){ $alerts = $alert->getAlerts(); ?>
+    <span style="color: var(--color-primary)">(<?php echo count($alerts) ?>)</span>
+    <?php } ?>
+  </label>
   <input type="checkbox" name="prompt" id="prompt" value="" <?php if(isset($_GET["prompt"])){echo "checked";} ?>>
 </div>
 

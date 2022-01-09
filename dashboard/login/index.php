@@ -14,9 +14,11 @@
         <input type="password" name="password" value=""  id="password" required>
     </div>
 
+    <span class="item_modal_indicator" style="margin-bottom: 15px" id="indicator"></span>
+
     <input type="hidden" name="current_page" id="current_page" value="<?php echo __FILE__; ?>">
 
-    <button type="submit" class="btn btn-primary" name="button" id="log_btn">Se connecter</button>
+    <button type="submit" class="btn btn-primary btn-loading" name="button" id="log_btn">Se connecter</button>
   </div>
 
 </div>

@@ -61,11 +61,11 @@ $domains = $domain->getDomains();
 
 
 <?php // Modal for add ?>
-<div class="item_deleteModal_shadow" id="addDomainModal">
-  <div class="item_deleteModal">
-    <div class="item_editPwdModal_body">
+<div class="item_modal_shadow" id="addDomainModal">
+  <div class="item_modal">
+    <div class="item_modal_body">
 
-      <h3 class="margin-top-none">Ajouter un domaine</h3>
+      <h2 class="margin-top-none">Ajouter un domaine</h2>
 
       <div class="item_modal_input">
           <label for="name">Nom </label>
@@ -75,7 +75,7 @@ $domains = $domain->getDomains();
       <span class="item_modal_indicator" id="add_domainIndicator"></span>
 
     </div>
-    <div class="item_deleteModal_footer">
+    <div class="item_modal_header">
       <div class="btn btn-primary" id="btnAddDomainConfirm">
         Ajouter
       </div>
@@ -90,16 +90,14 @@ $domains = $domain->getDomains();
   <input type="hidden" name="" value="<?php echo $domain->getId(); ?>"  id="id<?php echo $domain->getId(); ?>">
 
   <?php // Modal for Edit ?>
-  <div class="item_deleteModal_shadow" id="editDomainModal<?php echo $domain->getId(); ?>">
-    <div class="item_deleteModal">
-      <div class="item_editPwdModal_body">
+  <div class="item_modal_shadow" id="editDomainModal<?php echo $domain->getId(); ?>">
+    <div class="item_modal">
+      <div class="item_modal_body">
 
-        <h3 class="margin-top-none">Modifier le domaine</h3>
+        <h2 class="margin-top-none">Modifier le domaine No <?php echo $domain->getId(); ?></h2>
 
         <?php $admin = $admin->getAdmin($domain->getId_admin()); ?>
         <p>
-          Domaine No <?php echo $domain->getId(); ?>
-          <br>
           Ajouté par <?php echo $admin->getName()." ".get_elapsed_time($domain->getAdded_at()); ?>
         </p>
 
@@ -111,7 +109,7 @@ $domains = $domain->getDomains();
         <span class="item_modal_indicator" id="edit_domainIndicator<?php echo $domain->getId(); ?>"></span>
 
       </div>
-      <div class="item_deleteModal_footer">
+      <div class="item_modal_header">
         <div class="btn btn-primary" id="btnEditDomainConfirm<?php echo $domain->getId(); ?>">
           Modifier
         </div>

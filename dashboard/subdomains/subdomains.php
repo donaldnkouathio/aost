@@ -68,11 +68,11 @@
 </div>
 
 <?php // Modal for add ?>
-<div class="item_deleteModal_shadow" id="addModal">
-  <div class="item_deleteModal">
-    <div class="item_editPwdModal_body">
+<div class="item_modal_shadow" id="addModal">
+  <div class="item_modal">
+    <div class="item_modal_body">
 
-      <h3 class="margin-top-none">Ajouter un sous-domaine</h3>
+      <h2 class="margin-top-none">Ajouter un sous-domaine</h2>
 
       <div class="item_modal_input">
           <label for="id_domain">Choisir son domaine </label>
@@ -92,7 +92,7 @@
       <span class="item_modal_indicator" id="add_indicator"></span>
 
     </div>
-    <div class="item_deleteModal_footer">
+    <div class="item_modal_header">
       <div class="btn btn-primary" id="btnAddConfirm">
         Ajouter
       </div>
@@ -107,16 +107,14 @@
 <input type="hidden" name="" value="<?php echo $subdomain->getId(); ?>"  id="id<?php echo $subdomain->getId(); ?>">
 
 <?php // Modal for edit ?>
-<div class="item_deleteModal_shadow" id="editModal<?php echo $subdomain->getId(); ?>">
-  <div class="item_deleteModal">
-    <div class="item_editPwdModal_body">
+<div class="item_modal_shadow" id="editModal<?php echo $subdomain->getId(); ?>">
+  <div class="item_modal">
+    <div class="item_modal_body">
 
-      <h3 class="margin-top-none">Modifier ce sous-domaine</h3>
+      <h2 class="margin-top-none">Modifier le sous-domaine No <?php echo $subdomain->getId(); ?></h2>
 
       <?php $admin = $admin->getAdmin($subdomain->getId_admin()); ?>
       <p>
-        Domaine No <?php echo $subdomain->getId(); ?>
-        <br>
         Ajouté par <?php echo $admin->getName()." ".get_elapsed_time($subdomain->getAdded_at()); ?>
       </p>
 
@@ -138,7 +136,7 @@
       <span class="item_modal_indicator" id="edit_indicator<?php echo $subdomain->getId(); ?>"></span>
 
     </div>
-    <div class="item_deleteModal_footer">
+    <div class="item_modal_header">
       <div class="btn btn-primary" id="btnEditConfirm<?php echo $subdomain->getId(); ?>">
         Modifier
       </div>
