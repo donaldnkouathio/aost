@@ -33,8 +33,27 @@
     <li><a href="<?php echo _DASHBOARD_PATH; ?>history/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="history"){echo "dashboard_nav_link_hover";} ?>"><i class="material-icons vertical-align-bottom">history</i> Historique</a></li>
 
     <?php if(isset($_SESSION["email"])){ ?>
-      <li><a class="dashboard_nav_link background-danger" id="log_out_btn"><i class="material-icons vertical-align-bottom">logout</i> Se déconecter</a></li>
+      <li><a class="dashboard_nav_link background-danger" id="btnLogOut"><i class="material-icons vertical-align-bottom">logout</i> Se déconecter</a></li>
     <?php } ?>
 
   </ul>
 </nav>
+
+<?php // Modal for logOut ?>
+<div class="item_deleteModal_shadow" id="logOutModal">
+  <div class="item_deleteModal">
+    <div class="item_deleteModal_body">
+      <i class="material-icons">warning</i>
+      <span>Voulez vous vraiment vous déconnecter ?</span>
+
+    </div>
+    <div class="item_deleteModal_footer">
+      <div class="btn btn-danger" id="btnLogOutConfirm">
+        Se déconnecter
+      </div>
+      <div class="btn" id="btnLogOutClose" title="Annuler">
+        Annuler
+      </div>
+    </div>
+  </div>
+</div>
