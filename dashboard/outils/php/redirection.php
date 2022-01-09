@@ -15,6 +15,9 @@
   $admin = new Admin($current_admin);
   $candidacy = new Candidacy($current_candidacy);
   $history = new History($current_history);
+  $alert = new Alert($current_alert);
+  $request = new Request($current_request);
+  $contact = new Contact($current_contact);
 
   function redirection($title, $pageContain, $currentPage, $currentSubPage, $css, $js){
     //$title : titre de la page
@@ -36,6 +39,9 @@
     global $admin;
     global $candidacy;
     global $history;
+    global $alert;
+    global $request;
+    global $contact;
 
     $session->setCurrentPage($currentPage); //Page actuellement visitée par l'utilisateur
     $session->setCurrentSubPage($currentSubPage); //Page actuellement visitée par l'utilisateur

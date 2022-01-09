@@ -175,6 +175,7 @@ tr:hover, tr:nth-child(even):hover{
 .item_modal_indicator{
   color: var(--color-danger);
   font-size: 0.9em;
+  display: block;
 }
 .item_deleteModal_body i{
   display: block;
@@ -342,6 +343,17 @@ tr:hover, tr:nth-child(even):hover{
   }
 }
 
+.show_auther_page_indicateur{
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: var(--border-radius-size);
+  background-color: white;
+}
+.show_auther_page_indicateur label, .show_auther_page_indicateur input{
+  cursor: pointer;
+}
+
 /* Tablette */
 @media (max-width: 991px) {
   .item_block{
@@ -363,6 +375,10 @@ tr:hover, tr:nth-child(even):hover{
     z-index: 15!important;
   }
 
+  .item_deleteModal{
+    left: 20%;
+    width: 60%;
+  }
 }
 
 /* Tablette et laptop */
@@ -385,17 +401,13 @@ tr:hover, tr:nth-child(even):hover{
   /* modal delete for laptop */
   .item_deleteModal{
     border-radius: var(--border-radius-size);
-    top: 20%;
-    left: 35%;
-    height: 60%;
-    width: 30%;
+    top: 5%;
   }
   .item_deleteModal_footer .btn{
     margin-top: 5%;
     margin-bottom: 5%;
   }
   .item_deleteModal_body{
-    height: 80%;
   }
   .item_editPwdModal_body{
     height: 80%;
@@ -437,6 +449,10 @@ tr:hover, tr:nth-child(even):hover{
     left: 0;
     width: 100%;
     height: 100%;
+  }
+  .item_deleteModal{
+    left: 35%;
+    width: 30%;
   }
 }
 
