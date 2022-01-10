@@ -11,13 +11,26 @@ header("Content-Type: text/html;charset=utf-8");
 
 $data=0;
 
-$offer=new Offer($current_offer);
-$offer=$offer->getOffer($_POST['id_offer']);
+
+$id_offer=NULL;
+$id_subdomain=NULL;
+
+if(isset($_POST['id_offer']) || $_POST['id_offer']!=""){
+	$id_offer=$_POST['id_offer'];
+
+	$offer=new Offer($current_offer);
+	$offer=$offer->getOffer($_POST['id_offer']);
+
+	$id_subdomain=$offer->getId_subdomain();
+
+}
+
+
 
 $current_candidacy=[
 	'id'=>0,
-	'id_offer'=>$offer->getId(),
-	'id_subdomain'=>$offer->getId_subdomain(),
+	'id_offer'=>$id_offer,
+	'id_subdomain'=>$id_subdomain,
 	'city'=>$_POST['city'],
 	'name'=>$_POST['name'],
 	'first_name'=>$_POST['first_name'],
@@ -27,6 +40,7 @@ $current_candidacy=[
 	'about'=>$_POST['about'],
 	'cv_file'=>"",
 	'motivation_file'=>"",
+	'alert'=>$_POST['alert'],
 	'deleted'=>0,
 	'added_at'=>date("Y-m-d H:i:s")
 ];

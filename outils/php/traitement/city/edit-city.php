@@ -26,7 +26,7 @@ if($city->editCity($city)){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"edit city",
-		'description'=>$admin->getName()." a supprimé la ville ".$preview_city->getName(),
+		'description'=>$admin->getName()." a modifié la ville \"".$preview_city->getName()."\" en ".$city->getName(),
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

@@ -19,6 +19,7 @@ class Candidacy
     private $_about;
     private $_cv_file;
     private $_motivation_file;
+    private $_alert;
     private $_deleted;
     private $_added_at;
 
@@ -47,7 +48,7 @@ class Candidacy
 
 
     public function setId_offer($id_offer){
-        $this->_id_offer=intval($id_offer);
+        $this->_id_offer=$id_offer;
     }
     
     public function getId_offer(){
@@ -56,7 +57,7 @@ class Candidacy
 
     
     public function setId_subdomain($id_subdomain){
-        $this->_id_subdomain=intval($id_subdomain);
+        $this->_id_subdomain=$id_subdomain;
     }
     
     public function getId_subdomain(){
@@ -154,6 +155,15 @@ class Candidacy
     }
 
 
+    public function setAlert($alert){
+        $this->_alert=intval($alert);
+    }
+
+    public function getAlert(){
+        return $this->_alert;
+    }
+
+
 
     public function setAdded_at($added_at){
         $this->_added_at=htmlentities(strval($added_at));
@@ -182,7 +192,7 @@ class Candidacy
     public function addCandidacy(Candidacy $candidacy){
         include(_APP_PATH."bd/server-connect.php");
 
-        $query=$db->prepare("INSERT INTO candidacy VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $query=$db->prepare("INSERT INTO candidacy VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $id=0;
         $id_offer=$candidacy->getId_offer();
@@ -196,6 +206,7 @@ class Candidacy
         $about=$candidacy->getAbout();
         $cv_file=$candidacy->getCv_file();
         $motivation_file=$candidacy->getMotivation_file();
+        $alert=$candidacy->getAlert();
         $deleted=$candidacy->getDeleted();
         $added_at=$candidacy->getAdded_at();
 
@@ -211,8 +222,9 @@ class Candidacy
         $query->bindParam(10,$about);
         $query->bindParam(11,$cv_file);
         $query->bindParam(12,$motivation_file);
-        $query->bindParam(13,$deleted);
-        $query->bindParam(14,$added_at);
+        $query->bindParam(13,$alert);
+        $query->bindParam(14,$deleted);
+        $query->bindParam(15,$added_at);
 
 
         if($query->execute()){
@@ -286,6 +298,26 @@ public function getCandidacys() {
     
 
     $query=$db->prepare("SELECT * FROM candidacy ORDER BY id ASC");
+
+    $candidacy=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $candidacy[]=new Candidacy($data);
+        }
+        return $candidacy;
+    }else{
+        return false;
+    }
+}
+
+
+
+public function getAlertsCandidacy($domain) {
+    include(_APP_PATH."bd/server-connect.php");
+    
+
+    $query=$db->prepare("SELECT * FROM candidacy WHERE alert=1 AND domains LIKE '%$domain%' GROUP BY email");
 
     $candidacy=[];
 
