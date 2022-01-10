@@ -228,16 +228,6 @@ tr:hover, tr:nth-child(even):hover{
 .log_container{
   position: relative;
 }
-.log_slogan{
-  width: 45%;
-  position: absolute;
-  top: 40%;
-  right: 0%;
-}
-.log_block{
-  width: 50%;
-  padding: 15px;
-}
 .log_input label{
   display: block;
 }
@@ -341,6 +331,14 @@ tr:hover, tr:nth-child(even):hover{
   .item_inline_input{
     width: 100%;
   }
+
+  .log_slogan{
+    position: relative;
+    display: block;
+  }
+  .log_block{
+    width: 100%;
+  }
 }
 
 .show_auther_page_indicateur{
@@ -422,6 +420,17 @@ tr:hover, tr:nth-child(even):hover{
   .btnAdd i{
     font-size : 1.2em;
     margin-bottom: 1.6em;
+  }
+
+  .log_slogan{
+    width: 45%;
+    position: absolute;
+    top: 40%;
+    right: 0%;
+  }
+  .log_block{
+    width: 50%;
+    padding: 15px;
   }
 }
 

@@ -7,14 +7,16 @@
   </div>
 
   <div class="header_right">
-    <span class="hide-on-laptop navMobileBtn"><i class="material-icons vertical-align-bottom">menu</i></span>
+    <span class="hide-on-laptop navMobileBtn navMobileBtnShow"><i class="material-icons vertical-align-bottom">menu</i></span>
     <span class="hide-on-mobile">V 0.1</span>
   </div>
 </header>
 
 <nav class="nav_block">
   <ul>
-    <li><a href="<?php echo _DASHBOARD_PATH; ?>home/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="home"){echo "dashboard_nav_link_hover";} ?>"><i class="material-icons vertical-align-bottom">home</i> Accueil</a></li>
+    <li class=""><a class="dashboard_nav_menu hide-on-laptop">Menu <i class="material-icons vertical-align-bottom float-right navMobileBtnClose">close</i></a></li>
+
+    <li style="display:none"><a href="<?php echo _DASHBOARD_PATH; ?>home/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="home"){echo "dashboard_nav_link_hover";} ?>"><i class="material-icons vertical-align-bottom">home</i> Accueil</a></li>
 
     <li><a href="<?php echo _DASHBOARD_PATH; ?>admins/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="admins"){echo "dashboard_nav_link_hover";} ?>" class="dashboard_nav_link">
       <i class="material-icons vertical-align-bottom">people_outline</i>
