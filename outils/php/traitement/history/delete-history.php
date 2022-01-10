@@ -8,11 +8,14 @@ require_once _APP_PATH.'outils/php/Session.class.php';
 require_once _APP_PATH.'outils/php/import_class.php';
 
 
-$history=new History($current_history);
-$history=$history->getHistory($_POST['id']);
+if($_SESSION['role']=="super"){
 
-echo $history->removeHistory($_POST['id']);
+	$history=new History($current_history);
+	$history=$history->getHistory($_POST['id']);
 
+	echo $history->removeHistory($_POST['id']);
+
+}
 
 
 
