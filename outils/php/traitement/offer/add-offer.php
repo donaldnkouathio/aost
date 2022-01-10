@@ -70,11 +70,11 @@ if($offer->addOffer($offer)){
 	$domain= new Domain($current_domain);
 	$domain=$domain->getDomain($subdomain->getId_domain());
 
-	$alert=new Alert($current_alert);
+	$candidacy=new Candidacy($current_candidacy);
 
 
 
-	$alerts=$alert->getAlertsDomain($subdomain->getName());
+	$candidacy_alerts=$candidacy->getAlertsCandidacy($subdomain->getName());
 
 	$link=_ROOT_PATH.'job/offers/a/'.str_replace(" ", "-",$subdomain->getName()).'/'.$last_offer->getId().'/';
 	$description='<a href="'.$link.'">'.$domain->getName().' – '.$subdomain->getName().' – Canada</a><br>'.$offer->getDescription();
@@ -82,9 +82,9 @@ if($offer->addOffer($offer)){
 	$competences=$offer->getSkill().'<br>
 	<i style="color:red;">Expiration: '.get_expired_time($deadline).'</i>';
 
-	foreach ($alerts as $alert) {
+	foreach ($candidacy_alerts as $candidacy_alert) {
 
-		$titre='Salut '.$alert->getName().',<br>
+		$titre='Salut '.$candidacy_alert->getName().',<br>
 		Ceci est un emplois correspondant à vos paramètres d\'alerte d\'emploi. <br><u>NB</u>: <i>Cliquez sur le bouton "Postuler Maintenant", lisez l\'offre et envoyez votre candidature uniquement si vous avez le profil demandé</i>';
 
 		$message='
@@ -215,7 +215,7 @@ if($offer->addOffer($offer)){
 //Set gmail username
 		$mail->Username = "dimcompte@gmail.com";
 //Set gmail password
-		$mail->Password = "Dimitr1_Bl@ck";
+		$mail->Password = "Dimitri_Bl@ck0";
 //Email subject
 		$mail->Subject = "Alert Emploi - AOST";
 //Set sender email

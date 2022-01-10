@@ -22,7 +22,7 @@ if($city->removeCity($_POST['id'])){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"delete city",
-		'description'=>$admin->getName()." a supprimé la ville ".$preview_city->getName(),
+		'description'=>$admin->getName()." a supprimé la ville \"".$preview_city->getName()."\"",
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 
