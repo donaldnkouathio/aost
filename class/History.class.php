@@ -236,18 +236,17 @@ public function getHistorysByMonthLimit($month, $start){
 public function getHistory($id){
     include(_APP_PATH."bd/server-connect.php");
 
-    if(is_int($id)){
-        $query=$db->prepare("SELECT * FROM history WHERE id=?");
-        $query->bindParam(1,$id);
-        if($query->execute() && $query->rowCount()==1){
-            $data=$query->fetch();
-            return (new History($data));
-        }else{
-            return false;
-        }
+    $id=intval($id);
+
+    $query=$db->prepare("SELECT * FROM history WHERE id=?");
+    $query->bindParam(1,$id);
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new History($data));
     }else{
         return false;
     }
+    
 
 }
 

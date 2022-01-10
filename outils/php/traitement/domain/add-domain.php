@@ -33,7 +33,7 @@ if($domain->addDomain($domain)){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$last_domain->getId(),
 		'action'=>"add domain",
-		'description'=>$admin->getName()." a ajouté le domaine ".$domain->getName(),
+		'description'=>$admin->getName()." a ajouté le domaine \" ".$domain->getName()." \"",
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

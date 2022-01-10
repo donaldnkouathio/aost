@@ -8,9 +8,12 @@ require_once _APP_PATH.'outils/php/Session.class.php';
 require_once _APP_PATH.'outils/php/import_class.php';
 
 
-echo $history->clearHistory();
+if($_SESSION['role']=="super"){
+	
+	$history=new History($current_history);
+	echo $history->clearHistory();
 
-
+}
 
 
 

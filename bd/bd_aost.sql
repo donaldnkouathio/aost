@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 07 jan. 2022 à 23:51
+-- Généré le :  lun. 10 jan. 2022 à 02:33
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -50,42 +50,14 @@ INSERT INTO `admins` (`id`, `email`, `password`, `role`, `name`, `added_at`) VAL
 -- --------------------------------------------------------
 
 --
--- Structure de la table `alerts`
---
-
-DROP TABLE IF EXISTS `alerts`;
-CREATE TABLE IF NOT EXISTS `alerts` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `city` varchar(80) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `domain` longtext NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `first_name` varchar(100) DEFAULT NULL,
-  `phone` varchar(100) DEFAULT NULL,
-  `about` longtext,
-  `cv_file` varchar(255) NOT NULL,
-  `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `alerts`
---
-
-INSERT INTO `alerts` (`id`, `city`, `email`, `domain`, `name`, `first_name`, `phone`, `about`, `cv_file`, `added_at`) VALUES
-(3, 'Yaounde', 'dimcompte@gmail.com', 'chauffeurs,commis entrepot', 'Black', 'Light', '0692503797', 'candidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacycandidacy', 'Candidature_Cv_Black.pdf', '2022-01-07 06:58:48');
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `candidacy`
 --
 
 DROP TABLE IF EXISTS `candidacy`;
 CREATE TABLE IF NOT EXISTS `candidacy` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_offer` bigint(20) NOT NULL,
-  `id_subdomain` bigint(20) NOT NULL,
+  `id_offer` bigint(20) DEFAULT NULL,
+  `id_subdomain` bigint(20) DEFAULT NULL,
   `city` varchar(100) DEFAULT NULL COMMENT 'Ville du postulant',
   `name` varchar(100) NOT NULL,
   `first_name` varchar(100) DEFAULT NULL,
@@ -95,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `candidacy` (
   `about` longtext,
   `cv_file` varchar(255) DEFAULT NULL,
   `motivation_file` varchar(255) DEFAULT NULL,
+  `alert` int(11) NOT NULL DEFAULT '0',
   `deleted` int(2) NOT NULL DEFAULT '0' COMMENT 'Vaudra 1 si supprimé par un admin',
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -127,28 +100,6 @@ INSERT INTO `city` (`id`, `name`, `added_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `compagny`
---
-
-DROP TABLE IF EXISTS `compagny`;
-CREATE TABLE IF NOT EXISTS `compagny` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_user` bigint(20) NOT NULL,
-  `id_domain` bigint(20) NOT NULL,
-  `other_domain` varchar(20) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `country` varchar(50) NOT NULL,
-  `city` varchar(100) NOT NULL,
-  `address` varchar(200) NOT NULL,
-  `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `id_user` (`id_user`),
-  KEY `fk_domain_1` (`id_domain`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table contenant les entreprises';
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `contact`
 --
 
@@ -161,32 +112,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `phone` varchar(50) DEFAULT NULL,
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table des differentes sortes de contact de la plateforme';
-
--- --------------------------------------------------------
-
---
--- Structure de la table `customers`
---
-
-DROP TABLE IF EXISTS `customers`;
-CREATE TABLE IF NOT EXISTS `customers` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_user` bigint(20) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `phone_1` varchar(30) DEFAULT NULL,
-  `phone_2` varchar(30) DEFAULT NULL,
-  `first_name` varchar(50) DEFAULT NULL COMMENT 'Prénom',
-  `date_birth` date DEFAULT NULL COMMENT 'Date de naissance',
-  `country` varchar(50) DEFAULT NULL,
-  `city` varchar(100) DEFAULT NULL,
-  `address` varchar(200) DEFAULT NULL COMMENT 'Quartier (numero de rue etc...)',
-  `sex` varchar(20) DEFAULT NULL,
-  `about` longtext COMMENT 'A savoir sur l''utilisateur (sera visible par les admins)',
-  `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `fk_user` (`id_user`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table qui regroupe les personnes pouvant postuler pour un job';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='Table des differentes sortes de contact de la plateforme';
 
 -- --------------------------------------------------------
 
@@ -214,7 +140,6 @@ INSERT INTO `domains` (`id`, `id_admin`, `name`, `color`, `added_at`) VALUES
 (2, 1, 'Commerce de detail & de gros', 'fa1254', '2021-12-13 17:48:16'),
 (4, 1, 'Ressources humaines', '', '2021-12-13 17:48:16'),
 (5, 1, 'Marketing', '', '2021-12-13 17:48:16'),
-(6, 1, 'Administration', '', '2021-12-13 17:48:16'),
 (7, 1, 'Construction et metiers specialises', '', '2021-12-13 17:48:16'),
 (8, 1, 'Finances et comptabilite', '', '2021-12-13 17:48:16'),
 (9, 1, 'Assurances', '', '2021-12-13 17:48:16'),
@@ -246,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `history` (
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_admin` (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COMMENT='Table qui concervera l''ensemble des actions effectuées par les administrateurs';
+) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=latin1 COMMENT='Table qui concervera l''ensemble des actions effectuées par les administrateurs';
 
 --
 -- Déchargement des données de la table `history`
@@ -258,7 +183,31 @@ INSERT INTO `history` (`id`, `id_admin`, `id_target`, `action`, `description`, `
 (17, 1, 23, 'delete domain', 'Ego Buster a supprim&eacute; le domaine Agriculture', '2022-01-07 23:44:14'),
 (18, 1, 24, 'add domain', 'Ego Buster a ajout&eacute; le domaine agriculture', '2022-01-07 23:48:06'),
 (19, 1, 91, 'add subdomain', 'Ego Buster a ajout&eacute; le sous-domaine Planteur dans le domaine agriculture', '2022-01-07 23:50:24'),
-(20, 1, 24, 'delete domain', 'Ego Buster a supprim&eacute; le domaine agriculture', '2022-01-07 23:50:31');
+(21, 1, 2, 'edit offer', 'Ego Buster a modifi&eacute; une offre dans la cat&eacute;gorie chauffeurs', '2022-01-08 02:26:25'),
+(22, 1, 6, 'delete domain', 'Ego Buster a supprim&eacute; le domaine Administration', '2022-01-08 02:34:29'),
+(23, 1, 92, 'add subdomain', 'Ego Buster a ajout&eacute; le sous-domaine &quot;test&quot; dans le domaine Administration', '2022-01-08 02:35:11'),
+(24, 1, 92, 'delete subdomain', 'Ego Buster a supprim&eacute; le sous-domaine &quot; test &quot;', '2022-01-08 02:36:52'),
+(25, 1, 2, 'edit offer', 'Ego Buster a modifi&eacute; une offre dans la cat&eacute;gorie chauffeurs', '2022-01-10 00:34:41'),
+(26, 1, 1, 'edit city', 'Ego Buster a modifi&eacute; la ville Quebec en Quebe', '2022-01-10 00:37:07'),
+(27, 1, 3, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-10 01:01:24'),
+(28, 1, 4, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie coordonnateur marchandisage', '2022-01-10 01:14:01'),
+(29, 1, 4, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie coordonnateur marchandisage', '2022-01-10 01:14:38'),
+(30, 1, 5, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie coordonnateur marchandisage', '2022-01-10 01:15:02'),
+(31, 1, 5, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie coordonnateur marchandisage', '2022-01-10 01:15:36'),
+(32, 1, 6, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie coordonnateur marchandisage', '2022-01-10 01:15:50'),
+(33, 1, 7, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-10 01:17:41'),
+(34, 1, 1, 'delete candidacy', 'Ego Buster a supprim&eacute; une candidature ', '2022-01-10 02:00:41'),
+(35, 1, 2, 'delete candidacy', 'Ego Buster a supprim&eacute; une candidature ', '2022-01-10 02:00:43'),
+(36, 1, 3, 'delete candidacy', 'Ego Buster a supprim&eacute; une candidature ', '2022-01-10 02:00:52'),
+(37, 1, 4, 'delete candidacy', 'Ego Buster a supprim&eacute; une candidature ', '2022-01-10 02:00:58'),
+(38, 1, 5, 'delete candidacy', 'Ego Buster a supprim&eacute; une candidature ', '2022-01-10 02:01:04'),
+(39, 1, 6, 'delete candidacy', 'Ego Buster a supprim&eacute; une candidature ', '2022-01-10 02:01:10'),
+(40, 1, 7, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie analyste', '2022-01-10 02:01:58'),
+(41, 1, 6, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie coordonnateur marchandisage', '2022-01-10 02:02:02'),
+(42, 1, 3, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie analyste', '2022-01-10 02:02:05'),
+(43, 1, 1, 'edit city', 'Ego Buster a modifi&eacute; la ville &quot;Quebe&quot; en Quebec', '2022-01-10 02:02:28'),
+(44, 1, 1, 'add contact', 'Ego Buster a ajout&eacute; un nouveau contact de role Secretaire', '2022-01-10 02:07:59'),
+(45, 1, 1, 'delete contact', 'Ego Buster a supprim&eacute; le contact Light Black', '2022-01-10 02:08:38');
 
 -- --------------------------------------------------------
 
@@ -287,14 +236,14 @@ CREATE TABLE IF NOT EXISTS `offers` (
   KEY `fk_city` (`id_city`),
   KEY `fk_subdomain` (`id_subdomain`),
   KEY `fk_admin` (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Table qui contient les differentes offres';
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COMMENT='Table qui contient les differentes offres';
 
 --
 -- Déchargement des données de la table `offers`
 --
 
 INSERT INTO `offers` (`id`, `id_admin`, `id_subdomain`, `id_city`, `compagny`, `description`, `missions`, `skill`, `candidate_profile`, `cv`, `motivation`, `deleted`, `expired`, `deadline`, `added_at`) VALUES
-(2, 1, 10, 1, 'Black-Sarl', '<p>test</p>', '<p>test</p>', '<p>test</p>', '<p>test</p>', 1, 0, 0, 0, '2022-03-11 03:26:42', '2022-01-07 03:26:42');
+(2, 1, 10, 1, 'Black-Sarl', '<p>test</p>', '<p>test</p>', '<p>test</p>', '<p>test</p>', 1, 0, 0, 0, '2022-03-11 00:00:00', '2022-01-07 03:26:42');
 
 -- --------------------------------------------------------
 
@@ -342,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `subdomains` (
   PRIMARY KEY (`id`),
   KEY `id_domain` (`id_domain`),
   KEY `fk_admin` (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=92 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=93 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `subdomains`
@@ -383,26 +332,6 @@ INSERT INTO `subdomains` (`id`, `id_admin`, `id_domain`, `name`, `color`, `added
 (33, 1, 5, 'reception et developpement', 'e1e6ff', '2021-12-13 18:03:12'),
 (34, 1, 5, 'conseiller(ere)', 'e1e6ff', '2021-12-13 18:03:12'),
 (35, 1, 5, 'marketing et communication', 'e1e6ff', '2021-12-13 18:03:12');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) NOT NULL,
-  `password` binary(20) NOT NULL,
-  `profile` varchar(255) NOT NULL,
-  `blocked` int(2) NOT NULL DEFAULT '0' COMMENT 'vaudra 1 si il a été bloqué par un admin',
-  `token_checked` varchar(255) DEFAULT NULL COMMENT 'Token de vérification de l''email',
-  `verified_at` datetime DEFAULT NULL COMMENT 'date de vérification du compte',
-  `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table contenant tous les utilisateurs (client / entreprise) de la plateforme (hors mis les admins)';
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

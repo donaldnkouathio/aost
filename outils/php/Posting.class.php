@@ -232,19 +232,19 @@ class Posting{
     <script>
       $(document).ready(function(){
         // hide modal
-       function hideModal(modal, modal_btn_close){
+        function hideModal(modal, modal_btn_close){
          $(".alert_modal_block").click(function(ev){
            ev.stopPropagation();
          });
          modal_btn_close.click(function(){
            modal.fadeOut();
          });
-        }
+       }
 
-        hideModal($(".alert_modal_shadow"), $(".alert_modal_close, .alert_modal_shadow"));
+       hideModal($(".alert_modal_shadow"), $(".alert_modal_close, .alert_modal_shadow"));
 
-        var btn_submit_make_cv = $('#btn_submit_make_cv');
-        var btn_submit_have_cv = $('#btn_submit_have_cv');
+       var btn_submit_make_cv = $('#btn_submit_make_cv');
+       var btn_submit_have_cv = $('#btn_submit_have_cv');
 
         //form to make cv
         $('#make_cv_form').submit(function(ev){
