@@ -1,17 +1,17 @@
-<h2 class="margin-top-none">Candidatures</h2>
+<h2 class="margin-top-none">Candidatures <?php if(isset($_GET["prompt"])){ echo "spontanées";} ?></h2>
 
 <div class="show_auther_page_indicateur">
   <i class="material-icons vertical-align-bottom background-primary">info</i>
   <label for="prompt">Afficher les candidatures spontanées
-    <?php if(!isset($_GET["prompt"])){ $alerts = $alert->getAlerts(); ?>
-    <span style="color: var(--color-primary)">(<?php echo count($alerts) ?>)</span>
+    <?php if(!isset($_GET["prompt"])){ $prompts = $candidacy->getPromptCandidacys(); ?>
+    <span style="color: var(--color-primary)">(<?php echo count($prompts) ?>)</span>
     <?php } ?>
   </label>
   <input type="checkbox" name="prompt" id="prompt" value="" <?php if(isset($_GET["prompt"])){echo "checked";} ?>>
 </div>
 
 <?php
-$candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $alert->getAlerts();
+$candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $candidacy->getPromptCandidacys();
 ?>
 
 <span class="stat" style="display: block">
@@ -39,9 +39,9 @@ $candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $alert->
         <span class="suggest_title"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">person</i> <?php echo htmlspecialchars_decode($candidacy->getName())." ".htmlspecialchars_decode($candidacy->getFirst_name()); ?></span>
       </div>
       <div class="suggest_row">
-        <span class="suggest_col" style="max-width: 100%; overflow: hidden; height: 1.4em;" title="Domaines : <?php echo str_replace(",", " - ", htmlspecialchars_decode(isset($_GET["prompt"]) ? $candidacy->getDomain() : $candidacy->getDomains())); ?>">
+        <span class="suggest_col" style="max-width: 100%; overflow: hidden; height: 1.4em;" title="Domaines : <?php echo str_replace(",", " - ", htmlspecialchars_decode($candidacy->getDomains())); ?>">
           <i class="material-icons vertical-align-bottom margin-right-5 background-primary">domain</i>
-          Domaines : <?php echo str_replace(",", " - ", htmlspecialchars_decode(isset($_GET["prompt"]) ? $candidacy->getDomain() : $candidacy->getDomains())); ?>
+          Domaines : <?php echo str_replace(",", " - ", htmlspecialchars_decode($candidacy->getDomains())); ?>
         </span>
       </div>
       <?php if(!isset($_GET["prompt"])){ ?>
@@ -86,11 +86,8 @@ $candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $alert->
       <div class="item_modal_body">
       <!--  <h3 style="font-weight: normal">Candidature <strong>No <?php echo $candidacy->getId(); ?></strong>, posté <?php get_elapsed_time($candidacy->getAdded_at()); ?></h3> -->
 
-      <?php if(!isset($_GET["prompt"])){ ?>
         <embed src="<?php echo _ROOT_PATH."files/candidacy/".$candidacy->getId()."/".htmlspecialchars_decode($candidacy->getCv_file()) ?>" width="100%" height="98%" type="application/pdf" />
-      <?php }else{ ?>
-        <embed src="<?php echo _ROOT_PATH."files/alerts/".$candidacy->getId()."/".htmlspecialchars_decode($candidacy->getCv_file()) ?>" width="100%" height="98%" type="application/pdf" />
-      <?php } ?>
+
       </div>
 
       <div class="item_modal_header">
@@ -192,13 +189,9 @@ $candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $alert->
       //for delete
       toggleModal($("#deleteCandidacyModal<?php echo $candidacy->getId(); ?>"), $("#btnDeleteCandidacy<?php echo $candidacy->getId(); ?>"), $("#btnDeleteCandidacyClose<?php echo $candidacy->getId(); ?>, .item_deleteModal_shadow"));
 
-      <?php if(!isset($_GET["prompt"])){ ?>
-        deleteCandidacyInBD($("#btnDeleteCandidacyConfirm<?php echo $candidacy->getId(); ?>"), "outils/php/traitement/candidacy/delete-candidacy.php", $("#id<?php echo $candidacy->getId(); ?>"));
-      <?php }else{ ?>
-        deleteCandidacyInBD($("#btnDeleteCandidacyConfirm<?php echo $candidacy->getId(); ?>"), "outils/php/traitement/candidacy/delete-alert.php", $("#id<?php echo $candidacy->getId(); ?>"));
-      <?php } ?>
+      deleteCandidacyInBD($("#btnDeleteCandidacyConfirm<?php echo $candidacy->getId(); ?>"), "outils/php/traitement/candidacy/delete-candidacy.php", $("#id<?php echo $candidacy->getId(); ?>"));
 
-      //for edit
+      //for see
       toggleModal($("#seeCVModal<?php echo $candidacy->getId(); ?>"), $("#btnSeeCV<?php echo $candidacy->getId(); ?>"), $("#btnSeeCVClose<?php echo $candidacy->getId(); ?>, .item_modal_shadow"));
       toggleModal($("#seeMotivationModal<?php echo $candidacy->getId(); ?>"), $("#btnSeeMotivation<?php echo $candidacy->getId(); ?>"), $("#btnSeeMotivationClose<?php echo $candidacy->getId(); ?>"));
     <?php } ?>

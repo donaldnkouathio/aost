@@ -87,6 +87,11 @@ class Posting{
           <label for="EULA">J'accepte des informations sur les services offerts de Alpha Omega Solutions Travail Inc. (Vous pouvez, à tout moment, retirer son consentement).</label>
         </div>
 
+        <div class="checkbox-block">
+          <input type="checkbox" id="make_cv_alert" name="alert" value="">
+          <label for="make_cv_alert">Je veux être notifier par mail si des emplois correspondants à mon profils sont ajoutés</label>
+        </div>
+
         <div class="button-block">
           <button type="submit" id="btn_submit_make_cv" class="btn btn-primary" name="button"><?php echo $this->btnTitle; ?></button>
         </div>
@@ -133,7 +138,7 @@ class Posting{
           <input type="file" name="cv_file" required value="">
         </div>
 
-        <?php if($offer->getMotivation() == 1){ ?>
+        <?php if($offer->getMotivation() == 1 && $this->id_offer != ""){ ?>
           <div class="input-block text-area-block">
             <label for="motivation_file">Joindre ma lettre de motivation (au format PDF)<span class="form-required"> </span> :</label>
             <input type="file" name="motivation_file" required value="">
@@ -143,6 +148,11 @@ class Posting{
         <div class="checkbox-block">
           <input type="checkbox" id="EULA2" name="" value="" required>
           <label for="EULA2">J'accepte des informations sur les services offerts de Alpha Omega Solutions Travail Inc. (Vous pouvez, à tout moment, retirer son consentement).</label>
+        </div>
+
+        <div class="checkbox-block">
+          <input type="checkbox" id="have_cv_alert" name="alert" value="">
+          <label for="have_cv_alert">Je veux être notifier par mail si des emplois correspondants à mon profils sont ajoutés</label>
         </div>
 
         <div class="button-block">
@@ -218,7 +228,7 @@ class Posting{
       <div class="alert_modal_block">
         <div class="alert_modal_body">
           <i class="material-icons">check_circle</i>
-          <span>Candidature soumise avec success</span>
+          <span class="indicator"></span>
         </div>
 
         <div class="alert_modal_footer">
@@ -251,6 +261,12 @@ class Posting{
           ev.preventDefault();
           var formData = new FormData($('#make_cv_form')[0]);
 
+          if($("#make_cv_alert").prop("checked")){
+            formData.set("alert","1");
+          }else{
+            formData.set("alert","0");
+          }
+
           $.ajax({
             url: "<?php echo _ROOT_PATH; ?><?php echo $this->pageTraitement; ?>",
             type: "POST",
@@ -263,8 +279,13 @@ class Posting{
               btn_submit_make_cv.prop("disabled", false);
               btn_submit_make_cv.html("postuler");
               $(".alert_modal_shadow").fadeIn();
+              if(ret == 1){
+                $(".indicator").text("Candidature soumise avec success");
 
-              $('#make_cv_form')[0].reset();
+                $('#make_cv_form')[0].reset();
+              }else {
+                $(".indicator").text(ret);
+              }
             },
             cache: false,
             contentType: false,
@@ -276,6 +297,12 @@ class Posting{
         $('#have_cv_form').submit(function(ev){
           ev.preventDefault();
           var formData = new FormData($('#have_cv_form')[0]);
+
+          if($("#have_cv_alert").prop("checked")){
+            formData.set("alert","1");
+          }else{
+            formData.set("alert","0");
+          }
 
           $.ajax({
             url: "<?php echo _ROOT_PATH; ?><?php echo $this->pageTraitement; ?>",
@@ -289,8 +316,13 @@ class Posting{
               btn_submit_have_cv.prop("disabled", false);
               btn_submit_have_cv.html("postuler");
               $(".alert_modal_shadow").fadeIn();
+              if(ret == 1){
+                $(".indicator").text("Candidature soumise avec success");
 
-              $('#have_cv_form')[0].reset();
+                $('#have_cv_form')[0].reset();
+              }else {
+                $(".indicator").text(ret);
+              }
             },
             cache: false,
             contentType: false,

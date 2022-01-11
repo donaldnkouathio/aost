@@ -256,13 +256,13 @@
       deleteInBD($("#btnDeleteConfirm<?php echo $subdomain->getId(); ?>"), "outils/php/traitement/subdomain/delete-subdomain.php", $("#id<?php echo $subdomain->getId(); ?>"));
 
       //for edit
-      toggleModal($("#editModal<?php echo $subdomain->getId(); ?>"), $("#btnEdit<?php echo $subdomain->getId(); ?>"), $("#btnEditClose<?php echo $subdomain->getId(); ?>, .item_deleteModal_shadow"));
+      toggleModal($("#editModal<?php echo $subdomain->getId(); ?>"), $("#btnEdit<?php echo $subdomain->getId(); ?>"), $("#btnEditClose<?php echo $subdomain->getId(); ?>, .item_modal_shadow"));
 
       putInBD($("#btnEditConfirm<?php echo $subdomain->getId(); ?>"), "outils/php/traitement/subdomain/edit-subdomain.php", $("#id<?php echo $subdomain->getId(); ?>").val(), $("#name<?php echo $subdomain->getId(); ?>"), $("#id_domain<?php echo $subdomain->getId(); ?>"), $("#edit_indicator<?php echo $subdomain->getId(); ?>"));
     <?php } ?>
 
     //for add
-    toggleModal($("#addModal"), $("#btnAdd"), $("#btnAddClose, .item_deleteModal_shadow"));
+    toggleModal($("#addModal"), $("#btnAdd"), $("#btnAddClose, .item_modal_shadow"));
 
     putInBD($("#btnAddConfirm"), "outils/php/traitement/subdomain/add-subdomain.php", "", $("#name"), $("#id_domain"), $("#add_indicator"));
   });
