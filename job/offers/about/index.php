@@ -1,4 +1,4 @@
-<?php include($_SERVER["DOCUMENT_ROOT"]."/aost/outils/php/redirection.php");
+<?php include("../../../outils/php/redirection.php");
   if (isset($_GET["id"])) {
 
     $offer = $offer->getOffer($_GET["id"]);

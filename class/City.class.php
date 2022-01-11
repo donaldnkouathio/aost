@@ -1,7 +1,5 @@
 <?php
 
-include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
-
 
 class City
 {
@@ -38,17 +36,17 @@ class City
     public function setName($name){
         $this->_name=htmlentities(strval($name));
     }
-    
+
     public function getName(){
         return $this->_name;
     }
 
-    
-    
+
+
     public function setAdded_at($added_at){
         $this->_added_at=strval($added_at);
     }
-    
+
     public function getAdded_at(){
         return $this->_added_at;
     }
@@ -72,7 +70,7 @@ class City
 
     public function addCity(City $city){
         include(_APP_PATH."bd/server-connect.php");
-        
+
         $query=$db->prepare("INSERT INTO city VALUES (?,?,?)");
 
         $id=0;
@@ -109,7 +107,7 @@ class City
     }else{
         return false;
     }
-    
+
 }
 
 
@@ -120,7 +118,7 @@ public function getLastCity(){
     $query=$db->prepare("SELECT * FROM city WHERE id=(SELECT MAX(id) FROM city)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new City($data)); 
+        return (new City($data));
     }else{
         return false;
     }
@@ -137,7 +135,7 @@ public function getCity($id){
     $query->bindParam(1,$id);
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new City($data));   
+        return (new City($data));
     }else{
         return false;
     }

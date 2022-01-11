@@ -1,4 +1,4 @@
-<div class="container-box" style="background-image: url('/aost/img/bg/bg1.jpg');">
+<div class="container-box" style="background-image: url('<?php echo _ROOT_PATH; ?>img/bg/bg1.jpg');">
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body" style="">
       <div class="container-title"><?php echo ucwords($session->getCurrentDomain()); ?></div>

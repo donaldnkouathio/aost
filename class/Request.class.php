@@ -1,7 +1,5 @@
 <?php
 
-include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
-
 
 class Request
 {
@@ -42,89 +40,89 @@ class Request
         return $this->_id;
     }
 
-    
+
     public function setCompagny($compagny){
         $this->_compagny=htmlentities(strval($compagny));
     }
-    
+
     public function getCompagny(){
         return $this->_compagny;
     }
 
-    
+
     public function setEmail($email){
         $this->_email=strval($email);
     }
-    
+
     public function getEmail(){
         return $this->_email;
     }
-    
+
     public function setCity($city){
         $this->_city=htmlentities(strval($city));
     }
-    
+
     public function getCity(){
         return $this->_city;
     }
 
-    
+
     public function setCompagny_type($compagny_type){
         $this->_compagny_type=htmlentities(strval($compagny_type));
     }
-    
+
     public function getCompagny_type(){
         return $this->_compagny_type;
     }
 
-    
+
     public function setPerson($person){
         $this->_person=htmlentities(strval($person));
     }
-    
+
     public function getPerson(){
         return $this->_person;
     }
 
-    
+
     public function setPhone($phone){
         $this->_phone=htmlentities(strval($phone));
     }
-    
+
     public function getPhone(){
         return $this->_phone;
     }
 
-    
+
     public function setFax_phone($fax_phone){
         $this->_fax_phone=htmlentities(strval($fax_phone));
     }
-    
+
     public function getFax_phone(){
         return $this->_fax_phone;
     }
-    
+
     public function setNeed($need){
         $this->_need=htmlentities(strval($need));
     }
-    
+
     public function getNeed(){
         return $this->_need;
     }
-    
+
     public function setDeleted($deleted){
         $this->_deleted=intval($deleted);
     }
-    
+
     public function getDeleted(){
         return $this->_deleted;
     }
 
-    
+
     public function setAdded_at($added_at){
         $this->_added_at=htmlentities(strval($added_at));
     }
-    
+
     public function getAdded_at(){
         return $this->_added_at;
     }
@@ -145,7 +143,7 @@ class Request
 
     public function addRequest(Request $request){
         include(_APP_PATH."bd/server-connect.php");
-        
+
         $query=$db->prepare("INSERT INTO requests VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 
         $id=0;
@@ -185,7 +183,7 @@ class Request
 
   public function removeRequest($id_request){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $id_request=intval($id_request);
     $req=$db->prepare("DELETE FROM requests WHERE id=?");
 
@@ -196,18 +194,18 @@ class Request
     }else{
         return false;
     }
-    
+
 }
 
 
 
 public function getLastRequest(){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $query=$db->prepare("SELECT * FROM requests WHERE id=(SELECT MAX(id) FROM requests)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new Request($data)); 
+        return (new Request($data));
     }else{
         return false;
     }
@@ -218,13 +216,13 @@ public function getLastRequest(){
 
 public function getRequest($id){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $id=intval($id);
     $query=$db->prepare("SELECT * FROM requests WHERE id=?");
     $query->bindParam(1,$id);
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new Request($data));   
+        return (new Request($data));
     }else{
         return false;
     }
@@ -236,7 +234,7 @@ public function getRequest($id){
 
 public function getRequests() {
     include(_APP_PATH."bd/server-connect.php");
-    
+
 
     $query=$db->prepare("SELECT * FROM requests ORDER BY id ASC");
 
@@ -257,7 +255,7 @@ public function getRequests() {
 
 public function getRequestsLimit($start) {
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $start=intval($start);
     $end=$start+10;
     $query=$db->prepare("SELECT * FROM requests ORDER BY id DESC LIMIT $start,$end");
@@ -284,7 +282,7 @@ public function getRequestsLimit($start) {
 
 public function editRequest(Request $request) {
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $query=$db->prepare("UPDATE requests
         SET compagny=?,
         email=?,

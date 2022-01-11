@@ -16,13 +16,16 @@ $(document).ready(function(){
   if(window.matchMedia('(min-width: 992px)').matches){ //si on sur un desktop
     $(window).scroll(function(){
 
-      if(($(window).scrollTop() + $(window).height()) + footer.height()-150 > $(document).height()){ //bottom
+      if(($(window).scrollTop() + $(window).height()) + header.height() + 50 > $(document).height()){ //bottom
         //alert("bottom"+($(window).height()-header.height()-179));
-        //alert(($(window).height()-header.height())+" - "+(aside_block.height()+268));
-        if((aside_block.height()) >= ($(window).height()-header.height()-268)){ //alert("grand");
-        aside_block.removeClass("aside-block-fixed");
-        aside_block.addClass("aside-block-absolute");
-      }else {
+        var surplus = footer.height() + 250;
+        //alert(header.height());
+        //alert(($(window).height()-header.height()-surplus)+" - "+(aside_block.height()));
+        if((aside_block.height()) >= ($(window).height()-header.height()-surplus)){
+          //alert("grand");
+          aside_block.removeClass("aside-block-fixed");
+          aside_block.addClass("aside-block-absolute");
+        }else {
           //alert("petit");
         }
 

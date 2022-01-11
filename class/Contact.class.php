@@ -1,7 +1,5 @@
 <?php
 
-include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
-
 
 class Contact
 {
@@ -41,43 +39,43 @@ class Contact
     public function setRole($role){
         $this->_role=htmlentities(strval($role));
     }
-    
+
     public function getRole(){
         return $this->_role;
     }
 
-    
+
     public function setEmail($email){
         $this->_email=htmlentities(trim(strval($email)," "));
     }
-    
+
     public function getEmail(){
         return $this->_email;
     }
 
-    
+
     public function setName($name){
         $this->_name=htmlentities(trim(strval($name)," "));
     }
-    
+
     public function getName(){
         return $this->_name;
     }
 
-    
+
     public function setPhone($phone){
         $this->_phone=htmlentities(strval($phone));
     }
-    
+
     public function getPhone(){
         return $this->_phone;
     }
 
-    
+
     public function setAdded_at($added_at){
         $this->_added_at=strval($added_at);
     }
-    
+
     public function getAdded_at(){
         return $this->_added_at;
     }
@@ -101,7 +99,7 @@ class Contact
 
     public function addContact(Contact $contact){
         include(_APP_PATH."bd/server-connect.php");
-        
+
         $query=$db->prepare("INSERT INTO contact VALUES (?,?,?,?,?,?)");
 
         $id=0;
@@ -144,7 +142,7 @@ class Contact
     }else{
         return false;
     }
-    
+
 }
 
 
@@ -155,7 +153,7 @@ public function getLastContact(){
     $query=$db->prepare("SELECT * FROM contact WHERE id=(SELECT MAX(id) FROM contact)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new Contact($data)); 
+        return (new Contact($data));
     }else{
         return false;
     }
@@ -172,7 +170,7 @@ public function getContact($id){
     $query->bindParam(1,$id);
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new Contact($data));   
+        return (new Contact($data));
     }else{
         return false;
     }

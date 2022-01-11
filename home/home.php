@@ -1,4 +1,4 @@
-<div class="container-box" style="background-image: url('/aost/img/bg/bg1.jpg');">
+<div class="container-box" style="background-image: url('<?php echo _ROOT_PATH; ?>img/bg/bg1.jpg');">
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body" style="">
       <div class="container-title">L'agence qui facilite votre recherche d'emploi</div>
@@ -48,7 +48,7 @@
   <br>
 </div>
 
-<div class="container-box" style="background-image: url('/aost/img/bg/bg4.jpg');">
+<div class="container-box" style="background-image: url('<?php echo _ROOT_PATH; ?>img/bg/bg4.jpg');">
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body">
       <div class="container-title container-text_1-title">Vous chercher de l'emploi ? </div>
@@ -72,7 +72,7 @@
 
     <div class="emplois-populaires-container">
       <?php
-      $offers = $offer->getOffers();
+      $offers = $offer->getOffersFromLast(4);
 
       foreach ($offers as $offer) {
         $city = $city->getCity($offer->getId_city());
