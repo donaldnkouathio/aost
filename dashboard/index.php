@@ -1,3 +1,3 @@
 <?php
-    include($_SERVER["DOCUMENT_ROOT"]."/aost/dashboard/home/index.php");
+    include($_SERVER["DOCUMENT_ROOT"]."/aost/dashboard/admins/index.php");
 ?>

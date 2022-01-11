@@ -15,14 +15,15 @@ $data=0;
 $id_offer=NULL;
 $id_subdomain=NULL;
 
-if(isset($_POST['id_offer']) || $_POST['id_offer']!=""){
-	$id_offer=$_POST['id_offer'];
+if(isset($_POST['id_offer'])){
+	if($_POST['id_offer']!=""){
+		$id_offer=$_POST['id_offer'];
 
-	$offer=new Offer($current_offer);
-	$offer=$offer->getOffer($_POST['id_offer']);
+		$offer=new Offer($current_offer);
+		$offer=$offer->getOffer($_POST['id_offer']);
 
-	$id_subdomain=$offer->getId_subdomain();
-
+		$id_subdomain=$offer->getId_subdomain();
+	}
 }
 
 
@@ -117,11 +118,11 @@ if($_POST['request_type']=="have_cv"){
 
 					/*MOTIVATION UPLOAD PART*/
 					$tmp_motivation=$_FILES['motivation_file']['tmp_name'];
-					
+
 					if(move_uploaded_file($tmp_motivation, $candidacy_folder."/".$motivation_renamed)){
 						$data=true;
 					}else{
-						$data="Erreur lors de l'upload de la lettre de motivation... Veuillez réessayer !";		
+						$data="Erreur lors de l'upload de la lettre de motivation... Veuillez réessayer !";
 					}
 				}else{
 					$data=true;
@@ -139,13 +140,13 @@ if($_POST['request_type']=="have_cv"){
 
 
 }else if($_POST['request_type']=="make_cv"){
-	
+
 	require('../../mpdf/vendor/autoload.php');
 	$mpdf= new \Mpdf\Mpdf();
 
-	
 
-	
+
+
 	$candidacy->setCv_file("Candidature_Cv_".$candidacy->getName().".pdf");
 	$cv_renamed="Candidature_Cv_".$candidacy->getName().".pdf";
 
@@ -305,7 +306,7 @@ if($_POST['request_type']=="have_cv"){
 
 		$mpdf->Output($candidacy_folder."/".$cv_renamed);
 		$data=true;
-		
+
 	}else{
 		$data="Erreur lors d'execution, Veuillez réessayer !";
 	}

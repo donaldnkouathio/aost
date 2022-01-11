@@ -11,6 +11,7 @@
   $subdomain = new Subdomain($current_subdomain);
   $offer = new Offer($current_offer);
   $city = new City($current_city);
+  $contact = new Contact($current_contact);
 
   function redirection($title, $pageContain, $currentPage, $currentSubPage, $css, $js){
     //$title : titre de la page
@@ -29,6 +30,7 @@
     global $subdomain;
     global $offer;
     global $city;
+    global $contact;
 
     $session->setCurrentPage($currentPage); //Page actuellement visitée par l'utilisateur
     $session->setCurrentSubPage($currentSubPage); //Page actuellement visitée par l'utilisateur

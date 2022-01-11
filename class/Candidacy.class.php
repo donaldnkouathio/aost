@@ -50,93 +50,93 @@ class Candidacy
     public function setId_offer($id_offer){
         $this->_id_offer=$id_offer;
     }
-    
+
     public function getId_offer(){
         return $this->_id_offer;
     }
 
-    
+
     public function setId_subdomain($id_subdomain){
         $this->_id_subdomain=$id_subdomain;
     }
-    
+
     public function getId_subdomain(){
         return $this->_id_subdomain;
     }
 
-    
+
     public function setCity($city){
         $this->_city=htmlentities(strval($city));
     }
-    
+
     public function getCity(){
         return $this->_city;
     }
 
-    
+
     public function setName($name){
         $this->_name=htmlentities(strval($name));
     }
-    
+
     public function getName(){
         return $this->_name;
     }
 
-    
+
     public function setFirst_name($first_name){
         $this->_first_name=htmlentities(strval($first_name));
     }
-    
+
     public function getFirst_name(){
         return $this->_first_name;
     }
 
-    
+
     public function setPhone($phone){
         $this->_phone=htmlentities(strval($phone));
     }
-    
+
     public function getPhone(){
         return $this->_phone;
     }
 
-    
+
     public function setEmail($email){
         $this->_email=htmlentities(strval($email));
     }
-    
+
     public function getEmail(){
         return $this->_email;
     }
 
-    
+
     public function setDomains($domains){
         $this->_domains=htmlentities(strval($domains));
     }
-    
+
     public function getDomains(){
         return $this->_domains;
     }
 
-    
+
     public function setAbout($about){
         $this->_about=htmlentities(strval($about));
     }
-    
+
     public function getAbout(){
         return $this->_about;
     }
 
-    
+
     public function setCv_file($cv_file){
         $this->_cv_file=strval($cv_file);
     }
-    
+
     public function getCv_file(){
         return $this->_cv_file;
     }
 
-    
+
     public function setMotivation_file($motivation_file){
         $this->_motivation_file=strval($motivation_file);
     }
@@ -242,7 +242,7 @@ class Candidacy
 
   public function removeCandidacy($id_offer){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $id_offer=intval($id_offer);
     $req=$db->prepare("DELETE FROM candidacy WHERE id=?");
 
@@ -253,8 +253,8 @@ class Candidacy
     }else{
         return false;
     }
-    
-    
+
+
 }
 
 
@@ -262,11 +262,11 @@ class Candidacy
 
 public function getLastCandidacy(){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $query=$db->prepare("SELECT * FROM candidacy WHERE id=(SELECT MAX(id) FROM candidacy)");
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new Candidacy($data)); 
+        return (new Candidacy($data));
     }else{
         return false;
     }
@@ -277,13 +277,13 @@ public function getLastCandidacy(){
 
 public function getCandidacy($id){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $id=intval($id);
     $query=$db->prepare("SELECT * FROM candidacy WHERE id=?");
     $query->bindParam(1,$id);
     if($query->execute() && $query->rowCount()==1){
         $data=$query->fetch();
-        return (new Candidacy($data));   
+        return (new Candidacy($data));
     }else{
         return false;
     }
@@ -295,9 +295,30 @@ public function getCandidacy($id){
 
 public function getCandidacys() {
     include(_APP_PATH."bd/server-connect.php");
-    
 
-    $query=$db->prepare("SELECT * FROM candidacy ORDER BY id ASC");
+
+    $query=$db->prepare("SELECT * FROM candidacy WHERE ISNULL(id_offer) = false ORDER BY id DESC");
+
+    $candidacy=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $candidacy[]=new Candidacy($data);
+        }
+        return $candidacy;
+    }else{
+        return false;
+    }
+}
+
+
+
+
+public function getPromptCandidacys() {
+    include(_APP_PATH."bd/server-connect.php");
+
+
+    $query=$db->prepare("SELECT * FROM candidacy WHERE ISNULL(id_offer) = true ORDER BY id DESC");
 
     $candidacy=[];
 
@@ -315,7 +336,7 @@ public function getCandidacys() {
 
 public function getAlertsCandidacy($domain) {
     include(_APP_PATH."bd/server-connect.php");
-    
+
 
     $query=$db->prepare("SELECT * FROM candidacy WHERE alert=1 AND domains LIKE '%$domain%' GROUP BY email");
 
@@ -339,7 +360,7 @@ public function getAlertsCandidacy($domain) {
 
 public function editCandidacy(Candidacy $candidacy) {
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $query=$db->prepare("UPDATE candidacy
         SET id_offer=?,
         id_subdomain=?,
