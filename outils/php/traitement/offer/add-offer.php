@@ -225,7 +225,7 @@ if($offer->addOffer($offer)){
 //Email body
 		$mail->Body = $message;
 //Add recipient
-		$mail->addAddress('dimcompte@gmail.com');
+		$mail->addAddress($candidacy_alert->getEmail());
 //Finally send email
 		if ( $mail->send() ) {
 			echo "Email Sent..!";
