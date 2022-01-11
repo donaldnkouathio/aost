@@ -1,7 +1,5 @@
 <?php
 
-include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
-
 
 class Offer
 {
@@ -289,6 +287,27 @@ public function getOffers() {
 
 
     $query=$db->prepare("SELECT * FROM offers WHERE expired=0 ORDER BY id ASC");
+
+    $offers=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $offers[]=new Offer($data);
+        }
+        return $offers;
+    }else{
+        return false;
+    }
+}
+
+
+
+
+public function getOffersFromLast($limit) {
+    include(_APP_PATH."bd/server-connect.php");
+
+
+    $query=$db->prepare("SELECT * FROM offers WHERE expired=0 ORDER BY id DESC LIMIT $limit");
 
     $offers=[];
 

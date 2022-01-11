@@ -1,7 +1,5 @@
 <?php
 
-include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
-
 
 class Subdomain
 {

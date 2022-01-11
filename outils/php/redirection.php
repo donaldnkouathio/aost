@@ -47,6 +47,78 @@
       <?php $session->preloader(); // Indicateur de chargement des pages ?>
 
       <div class="" style="margin-top: 70px;">
+        <?php
+          switch ($currentPage) {
+            case 'Offres d\'emplois':
+              $newCurrentPage = "Emploi";
+              break;
+            case 'domains':
+              $newCurrentPage = "domaines";
+              break;
+            case 'partners':
+              $newCurrentPage = "partenaires";
+              break;
+
+            default:
+              $newCurrentPage = $currentPage;
+              break;
+          }
+
+          switch ($currentSubPage) {
+            case 'candidates':
+              $newCurrentSubPage = "Candidats";
+              break;
+            case 'prompt-application':
+              $newCurrentSubPage = "Candidatures spontanée";
+              break;
+            case 'hiring-process':
+              $newCurrentSubPage = "processus d'embauche";
+              break;
+            case 'accident':
+              $newCurrentSubPage = "En cas d'accident";
+              break;
+            case 'pay-vacation':
+              $newCurrentSubPage = "paies & vaccances";
+              break;
+            case 't4-releve1':
+              $newCurrentSubPage = "t4 et relevé 1";
+              break;
+
+            default:
+              $newCurrentSubPage = $currentSubPage;
+              break;
+          }
+
+          if($newCurrentPage != "home"){
+        ?>
+            <div class="offset-10-laptop current_page_indicator">
+
+            	<span class="margin-right-5">Vous êtes ici :</span>
+
+            	<a href="/"><i class="material-icons vertical-align-bottom">home</i></a>
+
+            	<i class="material-icons vertical-align-bottom">chevron_right</i>
+
+              <?php echo ucfirst($newCurrentPage); } ?>
+
+            	<?php
+                if($newCurrentSubPage != ""){
+              ?>
+
+              	<i class="material-icons vertical-align-bottom">chevron_right</i>
+
+                <?php if(isset($_GET["id_offer"])){ ?>
+
+                  <a href="<?php echo _ROOT_PATH; ?>job/offers/"><?php echo ucfirst($newCurrentSubPage); ?></a>
+
+                  <i class="material-icons vertical-align-bottom">chevron_right</i>
+
+                  <?php echo ucfirst($subdomain->getName()); ?>
+
+                <?php }else{ echo ucfirst($newCurrentSubPage); } ?>
+              <?php } ?>
+        </div>
+
         <?php include($pageContain); // Contenu ?>
       </div>
 

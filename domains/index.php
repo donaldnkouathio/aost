@@ -1,5 +1,5 @@
 <?php
-	include($_SERVER["DOCUMENT_ROOT"]."/aost/outils/php/redirection.php");
+	include("../outils/php/redirection.php");
 	if(isset($_GET['id'])){
 
 		$domain = new Domain($current_domain);
