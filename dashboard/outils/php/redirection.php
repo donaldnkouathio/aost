@@ -15,7 +15,6 @@
   $admin = new Admin($current_admin);
   $candidacy = new Candidacy($current_candidacy);
   $history = new History($current_history);
-  $alert = new Alert($current_alert);
   $request = new Request($current_request);
   $contact = new Contact($current_contact);
 
@@ -39,7 +38,6 @@
     global $admin;
     global $candidacy;
     global $history;
-    global $alert;
     global $request;
     global $contact;
 

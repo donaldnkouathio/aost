@@ -139,7 +139,7 @@ $contacts = $contact->getContacts();
       </div>
       <div class="item_modal_header">
         <div class="btn btn-primary" id="btnEditConfirm<?php echo $contact->getId(); ?>">
-          Ajouter
+          Modifier
         </div>
         <div class="btn" id="btnEditClose<?php echo $contact->getId(); ?>" title="Annuler">
           Annuler
