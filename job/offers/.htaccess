@@ -1,4 +1,4 @@
 Options +FollowSymlinks
 RewriteEngine On
 RewriteRule ^p/(.*)$ ?page=$1 [L]
-RewriteRule ^a/(.*)/(.*)/$ about/?name=$1&id=$2 [L]
+RewriteRule ^a/(.*)/(.*)/$ about/?name=$1&id_offer=$2 [L]

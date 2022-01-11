@@ -1,14 +1,14 @@
 <?php
 
-include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Admin.class.php");
-include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Candidacy.class.php");
-include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Contact.class.php");
-include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Domain.class.php");
-include($_SERVER["DOCUMENT_ROOT"]."/aost/class/History.class.php");
-include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Offer.class.php");
-include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Request.class.php");
-include($_SERVER["DOCUMENT_ROOT"]."/aost/class/Subdomain.class.php");
-include($_SERVER["DOCUMENT_ROOT"]."/aost/class/City.class.php");
+include(_APP_PATH."class/Admin.class.php");
+include(_APP_PATH."class/Candidacy.class.php");
+include(_APP_PATH."class/Contact.class.php");
+include(_APP_PATH."class/Domain.class.php");
+include(_APP_PATH."class/History.class.php");
+include(_APP_PATH."class/Offer.class.php");
+include(_APP_PATH."class/Request.class.php");
+include(_APP_PATH."class/Subdomain.class.php");
+include(_APP_PATH."class/City.class.php");
 
 
 $current_request=[

@@ -1,7 +1,5 @@
 <?php
 
-include($_SERVER["DOCUMENT_ROOT"]."/aost/bd/server-connect.php");
-
 
 class History
 {
@@ -148,7 +146,7 @@ class History
 
 public function clearHistory(){
     include(_APP_PATH."bd/server-connect.php");
-    
+
     $req=$db->prepare("DELETE FROM history");
 
     if($req->execute()){
@@ -156,7 +154,7 @@ public function clearHistory(){
     }else{
         return false;
     }
-    
+
 }
 
 
@@ -246,7 +244,7 @@ public function getHistory($id){
     }else{
         return false;
     }
-    
+
 
 }
 
