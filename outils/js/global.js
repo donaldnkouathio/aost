@@ -10,18 +10,19 @@ $(document).ready(function(){
   var footer = $('footer');
   var header = $('header');
   var aside_block = $('.aside-block');
+  var current_page_indicator = $('.current_page_indicator');
 
 
   //Le but de ce code est de faire floter l'aside sur le côté
-  if(window.matchMedia('(min-width: 992px)').matches){ //si on sur un desktop
+  /*if(window.matchMedia('(min-width: 992px)').matches){ //si on sur un desktop
     $(window).scroll(function(){
+      var surplus = footer.height() + 50;
 
-      if(($(window).scrollTop() + $(window).height()) + header.height() + 50 > $(document).height()){ //bottom
+      if(($(window).scrollTop() + $(window).height()) + header.height() + surplus - 4050 > $(document).height()){ //bottom
         //alert("bottom"+($(window).height()-header.height()-179));
-        var surplus = footer.height() + 250;
-        //alert(header.height());
+        //alert(current_page_indicator.height());
         //alert(($(window).height()-header.height()-surplus)+" - "+(aside_block.height()));
-        if((aside_block.height()) >= ($(window).height()-header.height()-surplus)){
+        if((aside_block.height()) >= ($(window).height()-header.height() -surplus)){
           //alert("grand");
           aside_block.removeClass("aside-block-fixed");
           aside_block.addClass("aside-block-absolute");
@@ -40,7 +41,7 @@ $(document).ready(function(){
     });
   }else {
 
-  }
+  } */
 
   goToTop_btn = $(".goToTop_btn");
 

@@ -175,12 +175,12 @@ class Posting{
             $subdomains = $subdomain->getListSubdomains($domain->getId());
             ?>
             <div class="sub_domain_modal_item_group">
-              <span class="sub_domain_modal_item_title"><?php echo $domain->getName(); ?></span>
+              <span class="sub_domain_modal_item_title"><?php echo ucfirst(htmlspecialchars_decode($domain->getName())); ?></span>
 
               <?php foreach($subdomains as $subdomain){ ?>
                 <div class="sub_domain_modal_item">
-                  <label for="<?php echo $subdomain->getName().$domain->getId(); ?>"><?php echo $subdomain->getName(); ?></label>
-                  <input class="sd_item" type="checkbox" id="<?php echo $subdomain->getName().$domain->getId(); ?>" name="<?php echo $subdomain->getName(); ?>" value="<?php echo $subdomain->getName(); ?>" onchange="fillSubDomain(this)">
+                  <label for="<?php echo ucfirst(htmlspecialchars_decode($subdomain->getName())).$domain->getId(); ?>"><?php echo ucfirst(htmlspecialchars_decode($subdomain->getName())); ?></label>
+                  <input class="sd_item" type="checkbox" id="<?php echo ucfirst(htmlspecialchars_decode($subdomain->getName())).$domain->getId(); ?>" name="<?php echo ucfirst(htmlspecialchars_decode($subdomain->getName())); ?>" value="<?php echo ucfirst(htmlspecialchars_decode($subdomain->getName())); ?>" onchange="fillSubDomain(this)">
                 </div>
               <?php } ?>
             </div>
@@ -204,12 +204,12 @@ class Posting{
             $subdomains = $subdomain->getListSubdomains($domain->getId());
             ?>
             <div class="sub_domain_modal_item_group">
-              <span class="sub_domain_modal_item_title"><?php echo $domain->getName(); ?></span>
+              <span class="sub_domain_modal_item_title"><?php echo ucfirst(htmlspecialchars_decode($domain->getName())); ?></span>
 
               <?php foreach($subdomains as $subdomain){ ?>
                 <div class="sub_domain_modal_item">
-                  <label for="<?php echo $subdomain->getName()."-".$domain->getId(); ?>"><?php echo $subdomain->getName(); ?></label>
-                  <input class="sd_item" type="checkbox" id="<?php echo $subdomain->getName()."-".$domain->getId(); ?>" name="<?php echo $subdomain->getName(); ?>" value="<?php echo $subdomain->getName(); ?>" onchange="fillSubDomainNoCv(this)">
+                  <label for="<?php echo ucfirst(htmlspecialchars_decode($subdomain->getName()))."-".$domain->getId(); ?>"><?php echo ucfirst(htmlspecialchars_decode($subdomain->getName())); ?></label>
+                  <input class="sd_item" type="checkbox" id="<?php echo ucfirst(htmlspecialchars_decode($subdomain->getName()))."-".$domain->getId(); ?>" name="<?php echo ucfirst(htmlspecialchars_decode($subdomain->getName())); ?>" value="<?php echo ucfirst(htmlspecialchars_decode($subdomain->getName())); ?>" onchange="fillSubDomainNoCv(this)">
                 </div>
               <?php } ?>
             </div>
@@ -282,6 +282,8 @@ class Posting{
               if(ret == 1){
                 $(".indicator").text("Candidature soumise avec success");
 
+                $(".sd_item").prop("checked", false);
+
                 $('#make_cv_form')[0].reset();
               }else {
                 $(".indicator").text(ret);
@@ -318,6 +320,8 @@ class Posting{
               $(".alert_modal_shadow").fadeIn();
               if(ret == 1){
                 $(".indicator").text("Candidature soumise avec success");
+
+                $(".sd_item").prop("checked", false);
 
                 $('#have_cv_form')[0].reset();
               }else {

@@ -85,6 +85,10 @@
   }
 }
 
+.background-white{
+  background-color: white;
+}
+
 /* *** */
 .goToTop_block{
 
@@ -364,6 +368,14 @@ citaion{
 }
 /* *** */
 
+
+/* current_page_indicator */
+.current_page_indicator{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+/* *** */
+
 /***** Media Query *****/
 
 /* Mobile */
@@ -420,6 +432,13 @@ citaion{
     right: 25%;
     border-radius: var(--border-radius-size);
   }
+
+  /* current_page_indicator */
+  .current_page_indicator{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  /* *** */
 }
 
 /* Laptop */
@@ -434,6 +453,10 @@ citaion{
     margin-left: 10%;
     margin-right: 10%;
     width: 80%;
+  }
+  .padding-horizontal{
+    padding-left: 15px;
+    padding-right: 15px;
   }
   .container-title{
     font-size: 2.5em;
@@ -487,6 +510,10 @@ citaion{
   /* Aside block */
   .aside{
     position: relative;
+  }
+  .aside-block{
+    position: absolute;
+    top: -50px;
   }
   .aside-block-fixed{
     position: fixed !important;
