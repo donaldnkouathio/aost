@@ -10,7 +10,7 @@
       <ul class="margin-top-none">
         <li>	<strong>Alpha Omega Solutions Travail Inc.</strong> vous trouvera un emploi idéal  (permanent ou temporaire) et vous offrira un autre le plus tôt possible.</li>
         <li>	Vous aurez droit à  une formation pré-emploi et à une formation gratuite.</li>
-        <li>	Nous ferons vérifications pré-emploi.</li>
+        <li>	Nous ferons des vérifications pré-emploi.</li>
         <li>	Vous devez remplir des formulaires.</li>
         <li>	Votre charge varie si vous êtes temporaire.</li>
         <li>	Votre rémunération est fixée par heure.</li>

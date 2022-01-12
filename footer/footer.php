@@ -11,7 +11,7 @@
           <h3>A propos</h3>
           <p>
             AOST est une agence de recrutement, de formation et de placement
-            du personnel pour les entreprises québécoises et canadiennes enregistrée
+            du personnel pour les entreprises québécoises et canadiennes enregistrées
             sous le NEQ 1173599367 au Registraire des entreprises du Québec.
           </p>
         </div>

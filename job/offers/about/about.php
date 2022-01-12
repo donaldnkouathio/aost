@@ -34,12 +34,12 @@
         </div>
 
         <div class="infos_text_item">
-          <span>Mis en ligne</span>
+          <span>Mise en ligne</span>
           <p><?php echo get_elapsed_time($offer->getAdded_at()); ?></p>
         </div>
 
         <div class="infos_text_item">
-          <span>Expire</span>
+          <span>Expiration</span>
           <p><?php echo get_expired_time($offer->getDeadline()); ?></p>
         </div>
       </div>
@@ -69,7 +69,7 @@
       </div>
 
       <div class="about_block">
-        <h2 class="margin-bottom-none" style="margin-top: 40px;">Profil réchercher</h2>
+        <h2 class="margin-bottom-none" style="margin-top: 40px;">Profil recherché</h2>
         <div class="about_text">
           <?php echo htmlspecialchars_decode($offer->getCandidate_profile()); ?>
         </div>
@@ -81,7 +81,7 @@
   <div class="offset-10-laptop background-white padding-horizontal" style="margin-top: 15px; padding-top: 15px">
     <div class="posting-block">
       <?php
-      $Posting = new Posting("outils/php/traitement/candidacy/add-candidacy.php", "Postuler à cet offre", "Postuler", $offer->getId());
+      $Posting = new Posting("outils/php/traitement/candidacy/add-candidacy.php", "Postuler à cette offre", "Postuler", $offer->getId());
       echo $Posting->getPostingSection();
       ?>
     </div>
