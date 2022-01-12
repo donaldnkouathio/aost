@@ -84,12 +84,12 @@ class Posting{
 
         <div class="checkbox-block">
           <input type="checkbox" id="EULA" name="" value="" required>
-          <label for="EULA">J'accepte des informations sur les services offerts de Alpha Omega Solutions Travail Inc. (Vous pouvez, à tout moment, retirer son consentement).</label>
+          <label for="EULA">J'accepte les informations sur les services offerts de Alpha Omega Solutions Travail Inc. (Vous pouvez à tout moment retirer son consentement).</label>
         </div>
 
         <div class="checkbox-block">
           <input type="checkbox" id="make_cv_alert" name="alert" value="">
-          <label for="make_cv_alert">Je veux être notifier par mail si des emplois correspondants à mon profils sont ajoutés</label>
+          <label for="make_cv_alert">Je veux être notifié par mail si des emplois correspondants à mon profil sont ajoutés</label>
         </div>
 
         <div class="button-block">
@@ -147,12 +147,12 @@ class Posting{
 
         <div class="checkbox-block">
           <input type="checkbox" id="EULA2" name="" value="" required>
-          <label for="EULA2">J'accepte des informations sur les services offerts de Alpha Omega Solutions Travail Inc. (Vous pouvez, à tout moment, retirer son consentement).</label>
+          <label for="EULA2">J'accepte les informations sur les services offerts de Alpha Omega Solutions Travail Inc. (Vous pouvez à tout moment retirer son consentement).</label>
         </div>
 
         <div class="checkbox-block">
           <input type="checkbox" id="have_cv_alert" name="alert" value="">
-          <label for="have_cv_alert">Je veux être notifier par mail si des emplois correspondants à mon profils sont ajoutés</label>
+          <label for="have_cv_alert">Je veux être notifié par mail si des emplois correspondants à mon profil sont ajoutés</label>
         </div>
 
         <div class="button-block">

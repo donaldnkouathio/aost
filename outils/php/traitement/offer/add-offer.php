@@ -203,29 +203,30 @@ if($offer->addOffer($offer)){
 //Create instance of PHPMailer
 		$mail = new PHPMailer();
 //Set mailer to use smtp
-		$mail->isSMTP();
+		//$mail->isSMTP();
 //Define smtp host
-		$mail->Host = "smtp.gmail.com";
+		$mail->Host = 'smtp.gmail.com';
 //Enable smtp authentication
 		$mail->SMTPAuth = true;
 //Set smtp encryption type (ssl/tls)
-		$mail->SMTPSecure = "tls";
+		$mail->SMTPSecure = 'tls';
 //Port to connect smtp
-		$mail->Port = "587";
+		$mail->Port = 587;
 //Set gmail username
-		$mail->Username = "dimcompte@gmail.com";
+		$mail->Username = 'dimcompte@gmail.com';
 //Set gmail password
-		$mail->Password = "Dimitri_Bl@ck0";
+		$mail->Password = 'D1m_bl@ck';
 //Email subject
-		$mail->Subject = "Alert Emploi - AOST";
+		$mail->Subject = 'Alert Emploi - AOST';
 //Set sender email
-		$mail->setFrom('dimcompte@gmail.com');
+		$mail->setFrom('dimcompte@gmail.com','AOST');
 //Enable HTML
 		$mail->isHTML(true);
 //Email body
 		$mail->Body = $message;
 //Add recipient
 		$mail->addAddress($candidacy_alert->getEmail());
+		$mail->addReplyTo('dimcompte@gmail.com');
 //Finally send email
 		if ( $mail->send() ) {
 			echo "Email Sent..!";
