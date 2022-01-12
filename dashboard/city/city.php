@@ -165,6 +165,7 @@ $cities = $city->getCitys();
               btn.hide();
             },
   					success : function(ret){
+              alert("effectué avec succès");
   						window.location.reload();
   					}
   				});
@@ -189,6 +190,7 @@ $cities = $city->getCitys();
             btn.hide();
           },
 					success : function(ret){
+            alert("Supprimé avec succès");
 						window.location.reload();
 					}
 				});

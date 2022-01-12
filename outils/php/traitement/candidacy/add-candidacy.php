@@ -11,6 +11,7 @@ header("Content-Type: text/html;charset=utf-8");
 
 $data=0;
 
+$type= "prompt application";
 
 $id_offer=NULL;
 $id_subdomain=NULL;
@@ -23,6 +24,8 @@ if(isset($_POST['id_offer'])){
 		$offer=$offer->getOffer($_POST['id_offer']);
 
 		$id_subdomain=$offer->getId_subdomain();
+
+		$type= "candidacy";
 	}
 }
 
@@ -108,7 +111,7 @@ if($_POST['request_type']=="have_cv"){
 			$current_notification=[
 				'id'=>0,
 				'id_target'=>$last_candidacy->getId(),
-				'type'=>"candidacy",
+				'type'=>$type,
 				'viewed'=>0,
 				'added_at'=>date("Y-m-d H:i:s")
 			];
@@ -306,10 +309,12 @@ if($_POST['request_type']=="have_cv"){
 	if($candidacy->addCandidacy($candidacy)){
 
 
+		$last_candidacy=$candidacy->getLastCandidacy();
 
 		$current_notification=[
 			'id'=>0,
-			'type'=>"candidacy",
+			'id_target'=>$last_candidacy->getId(),
+			'type'=>$type,
 			'viewed'=>0,
 			'added_at'=>date("Y-m-d H:i:s")
 		];

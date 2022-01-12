@@ -107,7 +107,9 @@ header{
 
 /* Mobile */
 @media (max-width: 575px) {
-
+  .nav-logo span{
+    font-size: 0.8em !important;
+  }
 }
 
 /* Tablette */
@@ -119,6 +121,14 @@ header{
   .nav-logo img{
     height: 40px;
     margin-top: 10px;
+  }
+  .nav-logo span{
+    display: inline-block;
+    color: white;
+    position: absolute;
+    top: 22px;
+    font-size: 1em;
+    left: 60px;
   }
 }
 

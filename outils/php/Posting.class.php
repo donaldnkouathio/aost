@@ -109,24 +109,24 @@ class Posting{
           <input type="text" name="name" required value="">
         </div>
         <div class="input-block">
-          <label for="first_name">Prénom :</label>
-          <input type="text" name="first_name" value="">
+          <label for="first_name">Prénom <span class="form-required"> </span> :</label>
+          <input type="text" name="first_name" required value="">
         </div>
         <div class="input-block">
-          <label for="phone">Téléphone :</label>
-          <input type="text" name="phone" value="">
+          <label for="phone">Téléphone <span class="form-required"> </span> :</label>
+          <input type="text" name="phone" required value="">
         </div>
         <div class="input-block">
           <label for="email">Courriel personnel<span class="form-required"> </span> :</label>
-          <input type="text" name="email" value="">
+          <input type="text" name="email" required value="">
         </div>
         <div class="input-block job-block-cv">
           <label for="job-category-cv">Catégorie d'emploi<span class="form-required"> </span> :</label>
           <input type="text" class="job-category" id="job-category-cv" name="domain" readonly required>
         </div>
         <div class="input-block">
-          <label for="city">Ville :</label>
-          <input type="text" name="city" value="">
+          <label for="city">Ville <span class="form-required"> </span> :</label>
+          <input type="text" name="city" required value="">
         </div>
         <div class="input-block text-area-block">
           <label for="about">Lettre de présentation ou commentaires :</label>

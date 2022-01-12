@@ -414,11 +414,12 @@ $i++; } ?>
              btn.hide();
            },
 	         success : function(ret){
+             alert("Effectué avec succès");
 	          window.location.reload();
 	        }
 	      });
 			}else {
-				alert("Les champs ne doivent pas être nuls");
+				alert("Les champs ne doivent pas être vides");
 			}
       });
     }
@@ -437,6 +438,7 @@ $i++; } ?>
             btn.hide();
           },
 					success : function(ret){
+            alert("Supprimé avec succès");
 						window.location.reload();
 					}
 				});

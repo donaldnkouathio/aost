@@ -214,6 +214,7 @@ $contacts = $contact->getContacts();
               btn.hide();
             },
             success : function(ret){
+              alert("effectué avec succès");
               window.location.reload();
             }
           });
@@ -238,6 +239,7 @@ $contacts = $contact->getContacts();
             btn.hide();
           },
           success : function(ret){
+            alert("Supprimé avec succès");
             window.location.reload();
           }
         });
