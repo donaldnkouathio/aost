@@ -7,8 +7,7 @@
       <h2 class="margin-bottom-none">EN CAS D’ACCIDENT DE TRAVAIL QUE FAISONS-NOUS ? </h2>
 
       <p class="margin-top-none">
-        Nous assistons rapidement la victime d’un accident de travail une de nos priorités. Leur réintégration nous tient vivement à cœur. Nous tenons également à contribuer à la réduction des couts liés à la
-        CNESST.
+        Nous assistons rapidement la victime d’un accident de travail et en faisons une de nos priorités. Leur réintégration nous tient vivement à cœur. Nous tenons également à contribuer à la réduction des coûts liés à la CNESST.
       </p>
       <p>
         Nous prendrons des mesures pour vous assister dans l’élaboration de vos dossiers et pour arriver à une réduction des coûts au minimum. De plus, nous vous accompagnerons dans la gestion de vos dossiers CNESST depuis la date de l’événement jusqu’à la fermeture complète du dossier.
