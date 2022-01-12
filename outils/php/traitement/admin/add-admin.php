@@ -16,12 +16,15 @@ if($_SESSION['role']=="super"){
 		'password'=>$_POST['password'],
 		'role'=>$_POST['role'],
 		'name'=>$_POST['name'],
+		'last_seen'=>date("Y-m-d H:i:s"),
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 
 
 
 	$admin=new Admin($current_admin);
+
+	$admin->updateLastSeen($_SESSION['id']);
 
 	if($admin->addAdmin($admin)){
 
