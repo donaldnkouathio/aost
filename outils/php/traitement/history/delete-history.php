@@ -11,7 +11,10 @@ require_once _APP_PATH.'outils/php/import_class.php';
 if($_SESSION['role']=="super"){
 
 	$history=new History($current_history);
-	$history=$history->getHistory($_POST['id']);
+
+	
+	$admin=new Admin($current_admin);
+	$admin->updateLastSeen($_SESSION['id']);
 
 	echo $history->removeHistory($_POST['id']);
 

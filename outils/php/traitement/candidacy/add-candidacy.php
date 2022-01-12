@@ -105,6 +105,17 @@ if($_POST['request_type']=="have_cv"){
 
 			$last_candidacy=$candidacy->getLastCandidacy();
 
+			$current_notification=[
+				'id'=>0,
+				'id_target'=>$last_candidacy->getId(),
+				'type'=>"candidacy",
+				'viewed'=>0,
+				'added_at'=>date("Y-m-d H:i:s")
+			];
+
+			$notification=new Notification($current_notification);
+			$notification->addNotification($notification);
+
 			$candidacy_folder=_APP_PATH."files/candidacy/".$last_candidacy->getId();
 
 			$cv_renamed="Candidature_Cv_".$candidacy->getName().".".$ext;
@@ -293,6 +304,19 @@ if($_POST['request_type']=="have_cv"){
 	$mpdf->WriteHTML($html);
 
 	if($candidacy->addCandidacy($candidacy)){
+
+
+
+		$current_notification=[
+			'id'=>0,
+			'type'=>"candidacy",
+			'viewed'=>0,
+			'added_at'=>date("Y-m-d H:i:s")
+		];
+
+		$notification=new Notification($current_notification);
+		$notification->addNotification($notification);
+
 
 		$last_candidacy=$candidacy->getLastCandidacy();
 

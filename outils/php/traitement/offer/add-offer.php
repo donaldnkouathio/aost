@@ -50,6 +50,8 @@ if($offer->addOffer($offer)){
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
 
+	$admin->updateLastSeen($_SESSION['id']);
+
 	$subdomain=new Subdomain($current_subdomain);
 	$subdomain=$subdomain->getSubdomain($offer->getId_subdomain());
 
@@ -203,7 +205,7 @@ if($offer->addOffer($offer)){
 //Create instance of PHPMailer
 		$mail = new PHPMailer();
 //Set mailer to use smtp
-		//$mail->isSMTP();
+		$mail->isSMTP();
 //Define smtp host
 		$mail->Host = 'smtp.gmail.com';
 //Enable smtp authentication
@@ -213,20 +215,20 @@ if($offer->addOffer($offer)){
 //Port to connect smtp
 		$mail->Port = 587;
 //Set gmail username
-		$mail->Username = 'dimcompte@gmail.com';
+		$mail->Username = 'pierrekod2@gmail.com';
 //Set gmail password
-		$mail->Password = 'D1m_bl@ck';
+		$mail->Password = 'Matchinda12';
 //Email subject
-		$mail->Subject = 'Alert Emploi - AOST';
+		$mail->Subject = 'Alerte Emploi - AOST';
 //Set sender email
-		$mail->setFrom('dimcompte@gmail.com','AOST');
+		$mail->setFrom('pierrekod2@gmail.com','AOST');
 //Enable HTML
 		$mail->isHTML(true);
 //Email body
 		$mail->Body = $message;
 //Add recipient
 		$mail->addAddress($candidacy_alert->getEmail());
-		$mail->addReplyTo('dimcompte@gmail.com');
+		$mail->addReplyTo('pierrekod2@gmail.com');
 //Finally send email
 		if ( $mail->send() ) {
 			echo "Email Sent..!";
