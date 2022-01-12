@@ -210,6 +210,7 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
             btn.hide();
           },
           success : function(ret){
+            alert("Supprimé avec succès");
             window.location.reload();
           }
 				});

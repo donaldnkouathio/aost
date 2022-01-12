@@ -162,6 +162,7 @@ $requests = $request->getRequests();
             btn.hide();
           },
           success : function(ret){
+            alert("Supprimé avec succès");
             window.location.reload();
           }
 				});

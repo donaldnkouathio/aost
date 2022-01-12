@@ -42,7 +42,7 @@
 </nav>
 
 <?php // Modal for logOut ?>
-<div class="item_deleteModal_shadow" id="logOutModal">
+<div class="item_deleteModal_shadow" id="logOutModal" style="z-index: 60">
   <div class="item_deleteModal">
     <div class="item_deleteModal_body">
       <i class="material-icons">warning</i>

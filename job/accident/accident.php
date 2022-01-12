@@ -17,7 +17,7 @@
       </p>
 
       <ul>
-        <li>	Un coaching et un suivi réguliers auprès de la personne-ressource d’<strong>Alpha Omega Solutions Travail Inc.</strong>;</li>
+        <li>	Un coaching et un suivi réguliers auprès de la personne-ressource d’<b>Alpha Omega Solutions Travail Inc.</b>;</li>
         <li>	Une analyse minutieuse des dossiers actifs suivie des recommandations,</li>
         <li>	Une intervention rapide auprès de la CNESST;</li>
         <li>	 Des expertises médicales;</li>
@@ -29,7 +29,7 @@
       </ul>
 
       <p>
-        Si vous avez des questions, veuillez <a href="<?php echo _ROOT_PATH; ?>contact-us/contact-us/">communiquer</a> sans délai avec notre responsable de la gestion SST.
+        Si vous avez des questions, veuillez <a href="<?php echo _ROOT_PATH; ?>contact-us/">communiquer</a> sans délai avec notre responsable de la gestion SST.
       </p>
     </div>
   </div>

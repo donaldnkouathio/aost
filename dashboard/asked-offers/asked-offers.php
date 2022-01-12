@@ -69,9 +69,13 @@ $candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $candida
           Lettre de motivation
         </span>
         <?php }} ?>
+      </div>
+      <div class="suggest_row">
+        <span><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($candidacy->getAdded_at()); ?></span>
 
         <span class="btnDelete float-right" id="btnDeleteCandidacy<?php echo $candidacy->getId(); ?>" title="Supprimer cette candidature">
           <i class="material-icons vertical-align-bottom">close</i>
+          Supprimer
         </span>
       </div>
     </div>
@@ -179,6 +183,7 @@ $candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $candida
             btn.hide();
           },
 					success : function(ret){
+            alert("Supprimé avec succès");
 						window.location.reload();
 					}
 				});

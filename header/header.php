@@ -1,7 +1,10 @@
 <header>
   <nav class="nav-container offset-10-laptop" style="">
     <div class="nav-logo" style="">
-      <a href="<?php echo _ROOT_PATH; ?>"><img src="<?php echo _ROOT_PATH; ?>img/logo.png" alt="logo AOST"></a>
+      <a href="<?php echo _ROOT_PATH; ?>">
+        <img src="<?php echo _ROOT_PATH; ?>img/logo.png" alt="logo AOST">
+      </a>
+      <span class="hide-on-laptop">Alpha Omega Solutions Travail</span>
     </div>
 
     <ul class="nav-contain-left hide-on-mobile" style="">

@@ -279,7 +279,15 @@ $admins = $admin->getAdmins();
               btn.hide();
             },
   					success : function(ret){
-  						window.location.reload();
+              $('.btn-loading').hide();
+              btn.show();
+
+              if(ret == 1){
+                alert("effectué avec succès");
+                window.location.reload();
+              }else {
+                indicator.text("Cet email est déjà utilisée !");
+              }
   					}
   				});
         }else {
@@ -314,6 +322,7 @@ $admins = $admin->getAdmins();
                   btn.hide();
                 },
       					success : function(ret){
+                  alert("Modifié avec succès");
       						window.location.reload();
       					}
       				});
@@ -344,6 +353,7 @@ $admins = $admin->getAdmins();
             btn.hide();
           },
 					success : function(ret){
+            alert("Supprimé avec succès");
 						window.location.reload();
 					}
 				});
