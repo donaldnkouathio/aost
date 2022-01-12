@@ -17,6 +17,9 @@ if($city->removeCity($_POST['id'])){
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
 
+	
+	$admin->updateLastSeen($_SESSION['id']);
+
 	$current_history=[
 		'id'=>0,
 		'id_admin'=>$_SESSION['id'],

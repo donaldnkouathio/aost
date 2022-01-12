@@ -10,6 +10,8 @@ require_once _APP_PATH.'outils/php/import_class.php';
 
 $admin=new Admin($current_admin);
 
+$admin->updateLastSeen($_SESSION['id']);
+
 $deleted_admin=$admin->getAdmin($_POST['id']);
 
 if($_SESSION['role']=="super"){

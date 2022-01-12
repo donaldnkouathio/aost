@@ -10,6 +10,7 @@ class Admin
     private $_password;
     private $_role;
     private $_name;
+    private $_last_seen;
     private $_added_at;
 
     /*CONSTRUCTEUR*/
@@ -65,11 +66,20 @@ class Admin
 
 
     public function setName($name){
-        $this->_name=htmlentities(trim(strval($name)," "));
+        $this->_name=strval($name);
     }
 
     public function getName(){
         return $this->_name;
+    }
+
+
+    public function setLast_seen($last_seen){
+        $this->_last_seen=$last_seen;
+    }
+
+    public function getLast_seen(){
+        return $this->_last_seen;
     }
 
 
@@ -97,13 +107,14 @@ class Admin
 
     public function addAdmin(Admin $admin){
         include(_APP_PATH."bd/server-connect.php");
-        $query=$db->prepare("INSERT INTO admins VALUES (?,?,UNHEX(SHA1(?)),?,?,?)");
+        $query=$db->prepare("INSERT INTO admins VALUES (?,?,UNHEX(SHA1(?)),?,?,?,?)");
 
         $id=0;
         $email=$admin->getEmail();
         $password=$admin->getPassword();
         $role=$admin->getRole();
         $name=$admin->getName();
+        $last_seen=$admin->getLast_seen();
         $added_at=$admin->getAdded_at();
 
         $query->bindParam(1,$id);
@@ -111,7 +122,8 @@ class Admin
         $query->bindParam(3,$password);
         $query->bindParam(4,$role);
         $query->bindParam(5,$name);
-        $query->bindParam(6,$added_at);
+        $query->bindParam(6,$last_seen);
+        $query->bindParam(7,$added_at);
 
 
         if($query->execute()){
@@ -208,7 +220,8 @@ public function editAdmin(Admin $admin) {
     $query=$db->prepare("UPDATE admins
         SET email=?,
         role=?,
-        name=?
+        name=?,
+        last_seen=?
         WHERE id=?
 
         ");
@@ -217,11 +230,34 @@ public function editAdmin(Admin $admin) {
     $email=$admin->getEmail();
     $role=$admin->getRole();
     $name=$admin->getName();
+    $last_seen=$admin->getLast_seen();
 
     $query->bindParam(1,$email);
     $query->bindParam(2,$role);
     $query->bindParam(3,$name);
-    $query->bindParam(4,$id);
+    $query->bindParam(4,$last_seen);
+    $query->bindParam(5,$id);
+
+    if($query->execute()){
+
+        return true;
+
+    }else{
+        return false;
+    }
+}
+
+
+
+public function updateLastSeen($id) {
+    include(_APP_PATH."bd/server-connect.php");
+
+    $last_seen=date("Y-m-d H:i:s");
+
+    $query=$db->prepare("UPDATE admins SET last_seen=? WHERE id=?");
+    
+    $query->bindParam(1,$last_seen);
+    $query->bindParam(2,$id);
 
     if($query->execute()){
 

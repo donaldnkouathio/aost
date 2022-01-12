@@ -8,16 +8,20 @@ require_once _APP_PATH.'outils/php/Session.class.php';
 require_once _APP_PATH.'outils/php/import_class.php';
 
 
-if($_SESSION['role']=="super"){
-	
-	$history=new History($current_history);
+$notification=new notification($current_notification);
+
+$notification=$notification->getNotification($_POST['id']);
+
+
+if($notification->setAllNotificationsViewed()){
 
 	$admin=new Admin($current_admin);
+	$admin=$admin->getAdmin($_SESSION['id']);
+	
 	$admin->updateLastSeen($_SESSION['id']);
-
-	echo $history->clearHistory();
-
 }
+
+
 
 
 
