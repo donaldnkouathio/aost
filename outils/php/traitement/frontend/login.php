@@ -15,6 +15,8 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 
   if ($admin->logIn($admin) == 1) {
     $_SESSION["role"] = $_SESSION["role"] == "hyper" ? $session->getRole_1() : $_SESSION["role"];
+
+    $admin->updateLastSeen($_SESSION["id"]);
     echo "ok";
   }else {
     echo "not found";

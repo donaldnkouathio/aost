@@ -219,6 +219,7 @@
               btn.hide();
             },
             success : function(ret){
+              alert("Effectué avec succès");
               window.location.reload();
             }
           });
@@ -243,6 +244,7 @@
             btn.hide();
           },
           success : function(ret){
+            alert("Supprimé avec succès");
             window.location.reload();
           }
 				});

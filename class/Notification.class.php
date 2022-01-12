@@ -39,7 +39,7 @@ class Notification
         $this->_id_target=intval($id_target);
     }
 
-    public function getId_target(){
+      public function getId_target(){
         return $this->_id_target;
     }
 
@@ -154,13 +154,29 @@ public function clearNotifications(){
 
 
 
+public function clearNotificationsByType($type){
+    include(_APP_PATH."bd/server-connect.php");
+
+    $query=$db->prepare("DELETE FROM notifications WHERE type=?");
+    $query->bindParam(1,$type);
+
+    if($query->execute()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
+
+
 public function setNotificationViewed($id){
     include(_APP_PATH."bd/server-connect.php");
 
     $viewed=1;
 
     $query=$db->prepare("UPDATE notifications SET viewed=? WHERE id=?");
-    
+
     $query->bindParam(1,$viewed);
     $query->bindParam(2,$id);
 
@@ -223,6 +239,27 @@ public function getNotification($id){
 
 
 
+public function getNotificationByTarget($type, $id_target){
+  include(_APP_PATH."bd/server-connect.php");
+
+  $type= strval($type);
+  $id_target= intval($id_target);
+
+  $query=$db->prepare("SELECT * FROM notifications WHERE id_target=? AND type=?");
+  $query->bindParam(1,$id_target);
+  $query->bindParam(2,$type);
+
+  if($query->execute() && $query->rowCount()==1){
+      $data=$query->fetch();
+      return true;
+  }else{
+      return false;
+  }
+
+}
+
+
+
 
 public function getNotifications() {
     include(_APP_PATH."bd/server-connect.php");
@@ -243,16 +280,42 @@ public function getNotifications() {
 }
 
 
+
+public function getNotificationsByType($type) {
+    include(_APP_PATH."bd/server-connect.php");
+
+
+    $query=$db->prepare("SELECT * FROM notifications WHERE type=? ORDER BY id DESC");
+    $query->bindParam(1,$type);
+
+    $notification=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $notification[]=new Notification($data);
+        }
+        return $notification;
+    }else{
+        return false;
+    }
+}
+
+
 public function countNewNotifications($type) {
     include(_APP_PATH."bd/server-connect.php");
 
 
-    $query=$db->prepare("SELECT id FROM notifications WHERE type=? ORDER BY id DESC");
+    $query=$db->prepare("SELECT * FROM notifications WHERE type=? ORDER BY id DESC");
 
     $query->bindParam(1,$type);
 
+    $notification=[];
+
     if($query->execute()){
-        return $query->rowCount();
+        while($data=$query->fetch()){
+            $notification[]=new Notification($data);
+        }
+        return $notification;
     }else{
         return false;
     }

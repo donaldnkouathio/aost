@@ -255,7 +255,7 @@ public function updateLastSeen($id) {
     $last_seen=date("Y-m-d H:i:s");
 
     $query=$db->prepare("UPDATE admins SET last_seen=? WHERE id=?");
-    
+
     $query->bindParam(1,$last_seen);
     $query->bindParam(2,$id);
 

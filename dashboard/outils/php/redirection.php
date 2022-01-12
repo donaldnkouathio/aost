@@ -17,6 +17,7 @@
   $history = new History($current_history);
   $request = new Request($current_request);
   $contact = new Contact($current_contact);
+  $notification = new Notification($current_notification);
 
   function redirection($title, $pageContain, $currentPage, $currentSubPage, $css, $js){
     //$title : titre de la page
@@ -40,6 +41,7 @@
     global $history;
     global $request;
     global $contact;
+    global $notification;
 
     $session->setCurrentPage($currentPage); //Page actuellement visitée par l'utilisateur
     $session->setCurrentSubPage($currentSubPage); //Page actuellement visitée par l'utilisateur
