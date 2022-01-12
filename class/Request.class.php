@@ -236,7 +236,7 @@ public function getRequests() {
     include(_APP_PATH."bd/server-connect.php");
 
 
-    $query=$db->prepare("SELECT * FROM requests ORDER BY id ASC");
+    $query=$db->prepare("SELECT * FROM requests ORDER BY id DESC");
 
     $requests=[];
 

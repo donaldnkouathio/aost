@@ -3,8 +3,8 @@
 <div class="show_auther_page_indicateur">
   <i class="material-icons vertical-align-bottom background-primary">info</i>
   <label for="prompt">Afficher les candidatures spontanées
-    <?php if(!isset($_GET["prompt"])){ $prompts = $candidacy->getPromptCandidacys(); ?>
-    <span style="color: var(--color-primary)">(<?php echo count($prompts) ?>)</span>
+    <?php if(!isset($_GET["prompt"])){ ?>
+      <sup style="color: var(--color-danger)" class="prompt-application-indicator"></sup>
     <?php } ?>
   </label>
   <input type="checkbox" name="prompt" id="prompt" value="" <?php if(isset($_GET["prompt"])){echo "checked";} ?>>
@@ -28,10 +28,33 @@ $candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $candida
   ?>
 </span>
 
+<span class="stat" style="display: block; color: var(--color-success)">
+  <?php
+  $type = isset($_GET["prompt"]) ? "prompt application" : "candidacy";
+  $notifications = $notification->getNotificationsByType($type);
+  if(count($notifications) > 1){
+    echo "Vous avez réçu ".count($notifications)." nouvelles candidatures";
+  }else {
+    if(count($notifications) > 0){
+      echo "Vous avez réçu une nouvelle candidature";
+    }else {
+      echo "";
+    }
+  }
+  ?>
+</span>
+
 <?php // New style for asked offers show ?>
 <div class="suggest_container">
-  <?php foreach ($candidacies as $candidacy) { ?>
-    <div class="suggest_block">
+  <?php
+    foreach ($candidacies as $candidacy) {
+      if($notification->getNotificationByTarget($type, $candidacy->getId())){
+        $border = "border-color: var(--color-success); ";
+      }else {
+        $border="";
+      }
+  ?>
+    <div class="suggest_block" style="<?php echo $border; ?>">
       <div class="suggest_row">
         <span class="suggest_col">Candidature No <?php echo $candidacy->getId(); ?></span>
       </div>
@@ -79,7 +102,9 @@ $candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $candida
         </span>
       </div>
     </div>
-  <?php } ?>
+  <?php }
+    $notification->clearNotificationsByType($type);
+  ?>
 </div>
 
 <?php foreach ($candidacies as $candidacy) { ?>

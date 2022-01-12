@@ -24,10 +24,33 @@ $requests = $request->getRequests();
   ?>
 </span>
 
+<span class="stat" style="display: block; color: var(--color-success)">
+  <?php
+  $type = "request";
+  $notifications = $notification->getNotificationsByType($type);
+  if(count($notifications) > 1){
+    echo "Vous avez réçu ".count($notifications)." nouvelles requetes";
+  }else {
+    if(count($notifications) > 0){
+      echo "Vous avez réçu une nouvelle requete";
+    }else {
+      echo "";
+    }
+  }
+  ?>
+</span>
+
 <?php // New style for asked offers show ?>
 <div class="suggest_container">
-  <?php foreach ($requests as $request) { ?>
-    <div class="suggest_block">
+  <?php foreach ($requests as $request) {
+    if($notification->getNotificationByTarget($type, $request->getId())){
+      $border = "border-color: var(--color-success); ";
+    }else {
+      $border="";
+    }
+  ?>
+
+    <div class="suggest_block" style="<?php echo $border; ?>">
       <div class="suggest_row">
         <span class="suggest_col">Requête No <?php echo $request->getId(); ?></span>
       </div>
@@ -51,7 +74,9 @@ $requests = $request->getRequests();
         </span>
       </div>
     </div>
-  <?php } ?>
+  <?php }
+    $notification->clearNotificationsByType($type);
+  ?>
 </div>
 
 

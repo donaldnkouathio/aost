@@ -42,9 +42,9 @@ $admins = $admin->getAdmins();
       <span class="suggest_col float-right">Rôle : <?php echo ucfirst(htmlspecialchars_decode($_SESSION['role'])); ?></span>
     </div>
     <div class="suggest_row">
-      <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($_SESSION['added_at']); ?></span>
+      <span class="suggest_col" title="Compte crée"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($_SESSION['added_at']); ?></span>
       <div class="suggest_col float-right">
-        <span class="btnEdit" id="btnEditPwd<?php echo $_SESSION["id"]; ?>" title="Changer le mot de passe">
+        <span class="btnEdit" id="btnEditPwd<?php echo $_SESSION["id"]; ?>" title="Changer de mot de passe">
           <i class="material-icons vertical-align-bottom">lock</i>
         </span>
         <span class="btnEdit" id="btnEdit<?php echo $_SESSION["id"]; ?>" title="Modifier">
@@ -57,6 +57,9 @@ $admins = $admin->getAdmins();
         </span>
         <?php } ?>
 
+      </div>
+      <div class="suggest_row">
+        <span class="suggest_col">Vous ête en ligne</span>
       </div>
     </div>
   </div>
@@ -77,7 +80,7 @@ $admins = $admin->getAdmins();
 				<span class="suggest_col float-right">Rôle : <?php echo ucfirst(htmlspecialchars_decode($admin->getRole())); ?></span>
 			</div>
 			<div class="suggest_row">
-				<span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($admin->getAdded_at()); ?></span>
+				<span class="suggest_col" title="Compte crée"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($admin->getAdded_at()); ?></span>
 
         <?php if($_SESSION["role"] == $session->getRole_1()){ ?>
         <div class="suggest_col float-right">
@@ -94,6 +97,9 @@ $admins = $admin->getAdmins();
         <?php } ?>
 
 			</div>
+      <div class="suggest_row">
+        <span class="suggest_col">Dernière connexion : <?php echo get_elapsed_time($admin->getLast_seen()); ?></span>
+      </div>
 		</div>
 	<?php
     }} ?>
@@ -155,6 +161,9 @@ $admins = $admin->getAdmins();
     <div class="item_deleteModal_body">
       <i class="material-icons">warning</i>
       <span>Voulez vous vraiment supprimer l'administrateur No <?php echo $admin->getId(); ?> ?</span>
+      <?php if($_SESSION["id"] == $admin->getId()){ ?>
+        <br><span>Il s'agit de votre compte</span>
+      <?php } ?>
 
     </div>
     <div class="item_deleteModal_footer">
@@ -173,15 +182,19 @@ $admins = $admin->getAdmins();
   <div class="item_deleteModal">
     <div class="item_editPwdModal_body">
 
-      <h3 class="margin-top-none">Changer le mot de passe</h3>
+      <?php if($_SESSION["id"] == $admin->getId()){ ?>
+        <h3 class="margin-top-none">Changer votre mot de passe</h3>
+      <?php }else{ ?>
+        <h3 class="margin-top-none">Changer le mot de passe de l'admin No <?php echo $admin->getId(); ?></h3>
+      <?php } ?>
 
       <div class="item_modal_input">
           <label for="edit_password<?php echo $admin->getId(); ?>">Nouveau mot de passe </label>
-          <input type="text" name="" value=""  id="edit_password<?php echo $admin->getId(); ?>">
+          <input type="password" name="" value=""  id="edit_password<?php echo $admin->getId(); ?>">
       </div>
       <div class="item_modal_input">
           <label for="confirm_edit_password<?php echo $admin->getId(); ?>">Confirmer le mot de passe </label>
-          <input type="text" name="" value=""  id="confirm_edit_password<?php echo $admin->getId(); ?>">
+          <input type="password" name="" value=""  id="confirm_edit_password<?php echo $admin->getId(); ?>">
       </div>
 
       <span class="item_modal_indicator" style="display: block" id="pwdIndicator<?php echo $admin->getId(); ?>"></span>
