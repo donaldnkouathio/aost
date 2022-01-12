@@ -14,7 +14,9 @@ $offer=$offer->getOffer($_POST['id']);
 if($offer->removeOffer($_POST['id'])){
 
 	$admin=new Admin($current_admin);
-	$admin=$admin->getAdmin(1);
+	$admin=$admin->getAdmin($_SESSION['id']);
+	
+	$admin->updateLastSeen($_SESSION['id']);
 
 	$subdomain=new Subdomain($current_subdomain);
 	$subdomain=$subdomain->getSubdomain($offer->getId_subdomain());

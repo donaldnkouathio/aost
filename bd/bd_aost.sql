@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 10 jan. 2022 à 02:33
+-- Généré le :  mer. 12 jan. 2022 à 07:02
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `password` binary(20) NOT NULL,
   `role` varchar(50) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `last_seen` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
@@ -44,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `admins` (
 -- Déchargement des données de la table `admins`
 --
 
-INSERT INTO `admins` (`id`, `email`, `password`, `role`, `name`, `added_at`) VALUES
-(1, 'dimcompte@gmail.com', 0x70352f41061eda4ff3c322094af068ba70c3b38b, 'super', 'Ego Buster', '2022-01-07 02:38:56');
+INSERT INTO `admins` (`id`, `email`, `password`, `role`, `name`, `last_seen`, `added_at`) VALUES
+(1, 'dimcompte@gmail.com', 0x70352f41061eda4ff3c322094af068ba70c3b38b, 'super', 'Ego Buster', '2022-01-12 07:01:42', '2022-01-07 02:38:56');
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,15 @@ CREATE TABLE IF NOT EXISTS `candidacy` (
   PRIMARY KEY (`id`),
   KEY `id_job` (`id_offer`),
   KEY `fk_subdomain` (`id_subdomain`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table contenant les candidatures des clients';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Table contenant les candidatures des clients';
+
+--
+-- Déchargement des données de la table `candidacy`
+--
+
+INSERT INTO `candidacy` (`id`, `id_offer`, `id_subdomain`, `city`, `name`, `first_name`, `phone`, `email`, `domains`, `about`, `cv_file`, `motivation_file`, `alert`, `deleted`, `added_at`) VALUES
+(1, NULL, NULL, 'Yaounde', 'Black', 'Light', '0692503797', 'dimcompte@gmail.com', 'assistant gerant,chauffeurs,analyste', 'lorem', 'Candidature_Cv_Black.pdf', '', 1, 0, '2022-01-11 03:01:57'),
+(2, NULL, NULL, 'Yaounde', 'Black', 'Light', '0692503797', 'dimcompte@gmail.com', 'Gestionnaire des ventes,Manutentionnaire,Analyste', 'sadasdasda', 'Candidature_Cv_Black.pdf', '', 1, 0, '2022-01-11 20:48:06');
 
 -- --------------------------------------------------------
 
@@ -171,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `history` (
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_admin` (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=latin1 COMMENT='Table qui concervera l''ensemble des actions effectuées par les administrateurs';
+) ENGINE=MyISAM AUTO_INCREMENT=70 DEFAULT CHARSET=latin1 COMMENT='Table qui concervera l''ensemble des actions effectuées par les administrateurs';
 
 --
 -- Déchargement des données de la table `history`
@@ -207,7 +216,54 @@ INSERT INTO `history` (`id`, `id_admin`, `id_target`, `action`, `description`, `
 (42, 1, 3, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie analyste', '2022-01-10 02:02:05'),
 (43, 1, 1, 'edit city', 'Ego Buster a modifi&eacute; la ville &quot;Quebe&quot; en Quebec', '2022-01-10 02:02:28'),
 (44, 1, 1, 'add contact', 'Ego Buster a ajout&eacute; un nouveau contact de role Secretaire', '2022-01-10 02:07:59'),
-(45, 1, 1, 'delete contact', 'Ego Buster a supprim&eacute; le contact Light Black', '2022-01-10 02:08:38');
+(45, 1, 1, 'delete contact', 'Ego Buster a supprim&eacute; le contact Light Black', '2022-01-10 02:08:38'),
+(46, 1, 8, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie assistant gerant', '2022-01-11 03:04:01'),
+(47, 1, 9, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie chauffeurs', '2022-01-11 03:05:42'),
+(48, 1, 10, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie chauffeurs', '2022-01-11 03:07:05'),
+(49, 1, 11, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-12 06:44:58'),
+(50, 1, 11, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie analyste', '2022-01-12 06:47:30'),
+(51, 1, 12, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-12 06:48:07'),
+(52, 1, 13, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-12 06:50:29'),
+(53, 1, 14, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-12 06:51:21'),
+(54, 1, 15, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-12 06:51:51'),
+(55, 1, 16, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-12 06:52:23'),
+(56, 1, 16, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie analyste', '2022-01-12 06:52:46'),
+(57, 1, 15, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie analyste', '2022-01-12 06:52:55'),
+(58, 1, 14, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie analyste', '2022-01-12 06:52:58'),
+(59, 1, 13, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie analyste', '2022-01-12 06:53:00'),
+(60, 1, 12, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie analyste', '2022-01-12 06:53:03'),
+(61, 1, 10, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie chauffeurs', '2022-01-12 06:53:06'),
+(62, 1, 9, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie chauffeurs', '2022-01-12 06:53:10'),
+(63, 1, 17, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-12 06:54:36'),
+(64, 1, 18, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-12 06:55:13'),
+(65, 1, 19, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-12 07:00:44'),
+(66, 1, 20, 'add offer', 'Ego Buster a ajout&eacute; une offre dans la cat&eacute;gorie analyste', '2022-01-12 07:01:20'),
+(67, 1, 20, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie analyste', '2022-01-12 07:01:37'),
+(68, 1, 19, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie analyste', '2022-01-12 07:01:39'),
+(69, 1, 18, 'delete offer', 'Ego Buster a supprim&eacute; une offre de la cat&eacute;gorie analyste', '2022-01-12 07:01:42');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `notifications`
+--
+
+DROP TABLE IF EXISTS `notifications`;
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_target` bigint(20) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `viewed` int(1) NOT NULL DEFAULT '0',
+  `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `id_target`, `type`, `viewed`, `added_at`) VALUES
+(1, 2, 'candidacy', 0, '2022-01-11 20:48:06');
 
 -- --------------------------------------------------------
 
@@ -236,13 +292,15 @@ CREATE TABLE IF NOT EXISTS `offers` (
   KEY `fk_city` (`id_city`),
   KEY `fk_subdomain` (`id_subdomain`),
   KEY `fk_admin` (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COMMENT='Table qui contient les differentes offres';
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COMMENT='Table qui contient les differentes offres';
 
 --
 -- Déchargement des données de la table `offers`
 --
 
 INSERT INTO `offers` (`id`, `id_admin`, `id_subdomain`, `id_city`, `compagny`, `description`, `missions`, `skill`, `candidate_profile`, `cv`, `motivation`, `deleted`, `expired`, `deadline`, `added_at`) VALUES
+(17, 1, 6, 2, 'Black-Sarl', '<p>asdasdasd</p>', '<p>asasdasdasd</p>', '<p>asdasdasdasd</p>', '<p>asdasdasd</p>', 1, 0, 0, 0, '2022-03-12 06:54:36', '2022-01-12 06:54:36'),
+(8, 1, 5, 2, 'Black-Sarl', '<p>asdasdads</p>', '<p>asdasdasd</p>', '<p>asdasdasdasd</p>', '<p>asdasdasdasdasd</p>', 1, 0, 0, 0, '2022-03-11 03:04:01', '2022-01-11 03:04:01'),
 (2, 1, 10, 1, 'Black-Sarl', '<p>test</p>', '<p>test</p>', '<p>test</p>', '<p>test</p>', 1, 0, 0, 0, '2022-03-11 00:00:00', '2022-01-07 03:26:42');
 
 -- --------------------------------------------------------

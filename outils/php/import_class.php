@@ -9,6 +9,7 @@ include(_APP_PATH."class/Offer.class.php");
 include(_APP_PATH."class/Request.class.php");
 include(_APP_PATH."class/Subdomain.class.php");
 include(_APP_PATH."class/City.class.php");
+include(_APP_PATH."class/Notification.class.php");
 
 
 $current_request=[
@@ -109,6 +110,7 @@ $current_admin=[
 	'password'=>"",
 	'role'=>"",
 	'name'=>"",
+	'last_seen'=>"",
 	'added_at'=>""
 ];
 
@@ -116,6 +118,15 @@ $current_admin=[
 $current_city=[
 	'id'=>0,
 	'name'=>"",
+	'added_at'=>""
+];
+
+
+$current_notification=[
+	'id'=>0,
+	'id_target'=>0,
+	'type'=>"",
+	'viewed'=>0,
 	'added_at'=>""
 ];
 

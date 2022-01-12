@@ -25,7 +25,21 @@ $current_request=[
 
 $request=new Request($current_request);
 
-echo $request->addRequest($request);
+if($request->addRequest($request)){
+
+	$last_request=$request->getLastRequest();
+
+	$current_notification=[
+		'id'=>0,
+		'id_target'=>$last_request->getId(),
+		'type'=>"request",
+		'viewed'=>0,
+		'added_at'=>date("Y-m-d H:i:s")
+	];
+
+	$notification=new Notification($current_notification);
+	$notification->addNotification($notification);
+}
 
 
 

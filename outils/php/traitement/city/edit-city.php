@@ -20,6 +20,8 @@ if($city->editCity($city)){
 
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
+	
+	$admin->updateLastSeen($_SESSION['id']);
 
 	$current_history=[
 		'id'=>0,
