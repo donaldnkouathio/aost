@@ -215,7 +215,7 @@ if($offer->addOffer($offer)){
 //Set gmail username
 		$mail->Username = "dimcompte@gmail.com";
 //Set gmail password
-		$mail->Password = "Dimitri_Bl@ck0";
+		$mail->Password = "D1m_bl@ck";
 //Email subject
 		$mail->Subject = "Alert Emploi - AOST";
 //Set sender email
