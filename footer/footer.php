@@ -35,9 +35,9 @@
     </div>
 
     <div class="footer-bottom">
-      <span style="padding: 15px">
-        © <?php echo date('Y', strtotime("TODAY")); ?> AOST,
-        <span style="margin-left: 5px">by Donald Nk & D!m!tr! Bl@ck</span>
+      <span style="">
+        <span class="copyright">Tous droits réservés © <?php echo date('Y', strtotime("TODAY")); ?> - AOST</span>
+        <span class="authors">Conçu et dévéloppé par Donald Nk & D!m!tr! Bl@ck</span>
       </span>
     </div>
   </footer>

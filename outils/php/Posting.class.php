@@ -63,11 +63,11 @@ class Posting{
         </div>
         <div class="input-block">
           <label for="phone">Téléphone<span class="form-required"> </span> :</label>
-          <input type="text" name="phone" required value="">
+          <input type="number" name="phone" required value="">
         </div>
         <div class="input-block">
           <label for="email">Courriel personnel<span class="form-required"> </span> :</label>
-          <input type="text" name="email" required value="">
+          <input type="email" name="email" required value="">
         </div>
         <div class="input-block job-block-no_cv">
           <label for="job-category-no-cv">Catégorie d'emploi <span class="form-required"> </span> :</label>
@@ -114,11 +114,11 @@ class Posting{
         </div>
         <div class="input-block">
           <label for="phone">Téléphone <span class="form-required"> </span> :</label>
-          <input type="text" name="phone" required value="">
+          <input type="number" name="phone" required value="">
         </div>
         <div class="input-block">
           <label for="email">Courriel personnel<span class="form-required"> </span> :</label>
-          <input type="text" name="email" required value="">
+          <input type="email" name="email" required value="">
         </div>
         <div class="input-block job-block-cv">
           <label for="job-category-cv">Catégorie d'emploi<span class="form-required"> </span> :</label>

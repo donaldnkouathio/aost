@@ -23,36 +23,36 @@
 
     <form class="" id="contact_form">
       <div class="input-block">
-        <label for="compagnie">Compagnie :</label>
+        <label for="compagnie">Compagnie <span class="form-required"> </span> :</label>
         <input type="text" name="compagny" required value="">
       </div>
       <div class="input-block">
-        <label for="ville">Ville où vous êtes :</label>
+        <label for="ville">Ville où vous êtes <span class="form-required"> </span> :</label>
         <input type="text" name="city" required value="">
       </div>
       <div class="input-block">
-        <label for="industrie">Type d'industrie :</label>
+        <label for="industrie">Type d'industrie <span class="form-required"> </span> :</label>
         <input type="text" name="compagny_type" required value="">
       </div>
       <div class="input-block">
-        <label for="personneRessource">Personne-ressource :</label>
+        <label for="personneRessource">Personne-ressource <span class="form-required"> </span> :</label>
         <input type="text" name="person" required value="">
       </div>
       <div class="input-block">
-        <label for="telephone">Téléphone :</label>
+        <label for="telephone">Téléphone <span class="form-required"> </span> :</label>
         <input type="number" name="phone" required value="">
       </div>
       <div class="input-block">
-        <label for="telecopieur">Télécopieur :</label>
+        <label for="telecopieur">Télécopieur <span class="form-required"> </span> :</label>
         <input type="number" name="fax_phone" required value="">
       </div>
       <div class="input-block">
-        <label for="courriel">Courriel :</label>
+        <label for="courriel">Courriel <span class="form-required"> </span> :</label>
         <input type="email" name="email" required value="">
       </div>
       <div class="input-block text-area-block">
-        <label for="besoin">Décrivez votre besoin :</label>
-        <textarea name="need" ></textarea>
+        <label for="besoin">Décrivez votre besoin <span class="form-required"> </span> :</label>
+        <textarea name="need" required></textarea>
       </div>
 
       <div class="button-block">

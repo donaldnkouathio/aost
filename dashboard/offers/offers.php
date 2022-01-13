@@ -118,17 +118,18 @@ $offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
     <div class="suggest_row">
       <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
       <div class="suggest_col float-right">
-       <span class="btnEdit" id="btnEdit<?php echo $i; ?>" title="Modifier">
-        <i class="material-icons vertical-align-bottom">mode_edit</i>
-      </span>
-      <span class="btnDelete" id="btnDelete<?php echo $i; ?>" title="Supprimer">
-        <i class="material-icons vertical-align-bottom">close</i>
-      </span>
+        <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
+        <span class="btnEdit" id="btnEdit<?php echo $i; ?>" title="Modifier">
+          <i class="material-icons vertical-align-bottom">mode_edit</i>
+        </span>
+        <span class="btnDelete" id="btnDelete<?php echo $i; ?>" title="Supprimer">
+          <i class="material-icons vertical-align-bottom">close</i>
+        </span>
+        <?php } ?>
+      </div>
     </div>
   </div>
-</div>
-<?php
-$i++; } ?>
+<?php $i++; } ?>
 </div>
 
 

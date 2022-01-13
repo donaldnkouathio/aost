@@ -4,7 +4,7 @@
 .input-block label{
   display: block;
 }
-.input-block input[type="text"], .input-block input[type="file"], select, .input-block textarea{
+.input-block input[type="text"], .input-block input[type="number"], .input-block input[type="email"], .input-block input[type="file"], select, .input-block textarea{
   border: none;
   padding: 15px;
   box-sizing: border-box !important;
@@ -14,7 +14,7 @@
 .input-block textarea{
 
 }
-.input-block input[type="text"], .input-block input[type="file"], select{
+.input-block input[type="text"], .input-block input[type="number"], .input-block input[type="email"], .input-block input[type="file"], select{
 
 }
 .checkbox-block{
@@ -133,7 +133,7 @@
     padding: 15px !important;
     padding-top: 0;
   }
-  .input-block input[type="text"], .input-block input[type="file"], select, .input-block textarea{
+  .input-block input[type="text"], .input-block input[type="number"], .input-block input[type="email"], .input-block input[type="file"], select, .input-block textarea{
     box-sizing: border-box;
     min-width: 100%;
     max-width: 100%;
@@ -182,7 +182,7 @@
     width: 100% !important;
     box-sizing: border-box;
   }
-  .input-block input[type="text"], .input-block input[type="file"], select, .input-block textarea{
+  .input-block input[type="text"], .input-block input[type="number"], .input-block input[type="email"], .input-block input[type="file"], select, .input-block textarea{
     min-width: 100%;
     max-width: 100%;
     box-sizing: border-box;

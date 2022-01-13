@@ -55,12 +55,14 @@
         <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($subdomain->getAdded_at()); ?></span>
 
         <div class="suggest_col float-right">
+          <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
           <span class="btnEdit" id="btnEdit<?php echo $subdomain->getId(); ?>" title="Modifier cet sous-domaine">
             <i class="material-icons vertical-align-bottom">edit</i>
           </span>
           <span class="btnDelete" id="btnDelete<?php echo $subdomain->getId(); ?>" title="Supprimer ce sous-domaine">
             <i class="material-icons vertical-align-bottom">close</i>
           </span>
+          <?php } ?>
         </div>
       </div>
     </div>
