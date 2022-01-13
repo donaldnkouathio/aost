@@ -363,7 +363,7 @@ $i++; } ?>
        autogrow: false,
 			 semantic: false,
        lang: "fr",
-       btns: [['viewHTML','p'],
+       btns: [['p'],
        ['bold', 'italic', 'strikethrough', 'underline'],
        ['superscript', 'subscript'], ['unorderedList', 'orderedList']]
      });
