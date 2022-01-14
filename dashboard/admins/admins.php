@@ -44,6 +44,7 @@ $admins = $admin->getAdmins();
     <div class="suggest_row">
       <span class="suggest_col" title="Compte crée"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($_SESSION['added_at']); ?></span>
       <div class="suggest_col float-right">
+        <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
         <span class="btnEdit" id="btnEditPwd<?php echo $_SESSION["id"]; ?>" title="Changer de mot de passe">
           <i class="material-icons vertical-align-bottom">lock</i>
         </span>
@@ -55,7 +56,7 @@ $admins = $admin->getAdmins();
         <span class="btnDelete" id="btnDelete<?php echo $_SESSION["id"]; ?>" title="Supprimer">
           <i class="material-icons vertical-align-bottom">close</i>
         </span>
-        <?php } ?>
+        <?php }} ?>
 
       </div>
       <div class="suggest_row">
@@ -84,7 +85,8 @@ $admins = $admin->getAdmins();
 
         <?php if($_SESSION["role"] == $session->getRole_1()){ ?>
         <div class="suggest_col float-right">
-					<span class="btnEdit" id="btnEditPwd<?php echo $admin->getId(); ?>" title="Changer le mot de passe">
+          <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
+          <span class="btnEdit" id="btnEditPwd<?php echo $admin->getId(); ?>" title="Changer le mot de passe">
 						<i class="material-icons vertical-align-bottom">lock</i>
 					</span>
 					<span class="btnEdit" id="btnEdit<?php echo $admin->getId(); ?>" title="Modifier">
@@ -93,6 +95,7 @@ $admins = $admin->getAdmins();
 					<span class="btnDelete" id="btnDelete<?php echo $admin->getId(); ?>" title="Supprimer">
 						<i class="material-icons vertical-align-bottom">close</i>
 					</span>
+          <?php } ?>
 				</div>
         <?php } ?>
 

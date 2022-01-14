@@ -29,7 +29,6 @@ footer{
 .footer-bottom{
   background-color: var(--footer-bg-color-dark);
   padding: 15px 0;
-  text-align: center;
   font-size: 0.8em;
 }
 
@@ -45,6 +44,17 @@ footer{
   }
   .contact_us{
     padding-left: 0px !important;
+  }
+  .authors{
+    display: block;
+    margin: 0;
+  }
+  .copyright{
+
+  }
+
+  .footer-bottom{
+    text-align: center;
   }
 }
 
@@ -73,6 +83,21 @@ footer{
   }
 }
 
+/* Tablette & Laptop */
+@media (min-width: 576px) {
+  .authors{
+    float: right;
+    margin-right: 15px;
+  }
+  .copyright{
+
+  }
+
+  .footer-bottom{
+    padding: 15px;
+    text-align: left;
+  }
+}
 /* Laptop */
 @media (min-width: 992px) {
   .footer-body{
