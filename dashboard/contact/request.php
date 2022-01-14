@@ -68,14 +68,18 @@ $requests = $request->getRequests();
       <div class="suggest_row">
         <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($request->getAdded_at()); ?></span>
 
+        <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
         <span class="btnDelete float-right" id="btnDelete<?php echo $request->getId(); ?>" title="Supprimer">
           <i class="material-icons vertical-align-bottom">close</i>
           Supprimer
         </span>
+        <?php } ?>
       </div>
     </div>
   <?php }
-    $notification->clearNotificationsByType($type);
+    if($_SESSION["role"] != $session->getRole_3()){
+      $notification->clearNotificationsByType($type);
+    }
   ?>
 </div>
 

@@ -9,14 +9,16 @@
     private $currentDomain; // Domain courante
     private $role_1; //Superadmin
     private $role_2; //Modérateur
+    private $role_3; //Hyper, réservé pour les développeurs
 
-    function __construct($currentPage = "home", $currentSubPage = "", $currentDomain = "", $role_1 = "super", $role_2 = "moderateur")
+    function __construct($currentPage = "home", $currentSubPage = "", $currentDomain = "", $role_1 = "super", $role_2 = "moderateur", $role_3 = "hyper")
     {
       $this->currentPage = $currentPage;
       $this->currentSubPage = $currentSubPage;
       $this->currentDomain = $currentDomain;
       $this->role_1 = $role_1;
       $this->role_2 = $role_2;
+      $this->role_3 = $role_3;
     }
 
     public function getCurrentPage(){
@@ -33,6 +35,9 @@
     }
     public function getRole_2(){
       return $this->role_2;
+    }
+    public function getRole_3(){
+      return $this->role_3;
     }
 
     public function setCurrentPage($currentPage){

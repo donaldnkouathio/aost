@@ -193,8 +193,10 @@ public function getAdmin($id){
 
 public function getAdmins() {
     include(_APP_PATH."bd/server-connect.php");
-
-    $query=$db->prepare("SELECT * FROM admins WHERE role != 'hyper' ORDER BY name ASC");
+    $session = new Session();
+    $role= strval($session->getRole_3());
+    $query=$db->prepare("SELECT * FROM admins WHERE role != ? ORDER BY name ASC");
+    $query->bindParam(1,$role);
 
     $admins=[];
 

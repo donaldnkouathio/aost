@@ -98,7 +98,7 @@
   color: white;
   padding: 10px;
   position: fixed;
-  bottom: 5%;
+  bottom: 10%;
   right: 5%;
   box-shadow: 4px 4px 8px #333;
   border-radius: var(--border-radius-size);
