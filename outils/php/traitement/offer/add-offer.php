@@ -195,7 +195,7 @@ if($offer->addOffer($offer)){
 		<i>COMPETENCES REQUISES</i></div>
 		<div class="auto-div-email data-email">
 		'.$competences.'
-		</div>
+		</div> 
 		<div class="auto-div-email">
 		<center><a href="'.$link.'"><button class="btn-candidate">POSTULER MAINTENANT</button></a></center>
 		</div>
