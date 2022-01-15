@@ -86,6 +86,12 @@ if($offer->addOffer($offer)){
 
 	foreach ($candidacy_alerts as $candidacy_alert) {
 
+		$link_off_alert='www.aost.ca/outils/php/traitement/candidacy/delete-alert-candidacy.php?email='.$candidacy_alert->getEmail().'&id_subdomain='.$offer->getId_subdomain();
+
+
+		$link_off_alerts='www.aost.ca/outils/php/traitement/candidacy/delete-alerts-candidacy.php?email='.$candidacy_alert->getEmail();
+
+
 		$titre='Salut '.$candidacy_alert->getName().',<br>
 		Ceci est un emplois correspondant à vos paramètres d\'alerte d\'emploi. <br><u>NB</u>: <i>Cliquez sur le bouton "Postuler Maintenant", lisez l\'offre et envoyez votre candidature uniquement si vous avez le profil demandé</i>';
 
@@ -189,6 +195,10 @@ if($offer->addOffer($offer)){
 		<i>COMPETENCES REQUISES</i></div>
 		<div class="auto-div-email data-email">
 		'.$competences.'
+		</div>
+		<div class="auto-div-email data-email">
+		<a href="'.$link_off_alert.'">Désactiver l\'alerte emploi pour cette catégorie</a><br>
+		<a href="asdasd">Je ne veux plus recevoir d\'alert emploi</a>
 		</div>
 		<div class="auto-div-email">
 		<center><a href="'.$link.'"><button class="btn-candidate">POSTULER MAINTENANT</button></a></center>

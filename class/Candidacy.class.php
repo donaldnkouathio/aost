@@ -258,6 +258,56 @@ class Candidacy
 
 
 
+
+public function deleteCandidacyAlert($email,$subdomain){
+    include(_APP_PATH."bd/server-connect.php");
+
+    $alert=1;
+
+    $subdomains=$db->prepare("SELECT domains FROM candidacy WHERE email=? AND alert=?");
+    $subdomains->bindParam(1,$email);
+    $subdomains->bindParam(2,$alert);
+    $subdomains->execute();
+
+    $subdomains=$subdomains->fetch();
+    $subdomains=trim($subdomains['domains'], $subdomain);
+
+
+    $req=$db->prepare("UPDATE candidacy SET domains=? WHERE email=? AND alert=?");
+    $req->bindParam(1,$subdomains);
+    $req->bindParam(2,$email);
+    $req->bindParam(3,$alert);
+
+    if($req->execute()){
+        return true;
+    }else{
+        return false;
+    }
+
+
+}
+
+public function deleteCandidacyAlerts($email){
+    include(_APP_PATH."bd/server-connect.php");
+
+    $alert=1;
+
+    $req=$db->prepare("DELETE FROM candidacy WHERE email=? AND alert=?");
+
+    $req->bindParam(1,$alert);
+
+    if($req->execute()){
+        return true;
+    }else{
+        return false;
+    }
+
+
+}
+
+
+
+
 public function getLastCandidacy(){
     include(_APP_PATH."bd/server-connect.php");
 
