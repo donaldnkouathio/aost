@@ -51,14 +51,14 @@
 <div class="container-box" style="background-image: url('<?php echo _ROOT_PATH; ?>img/bg/bg4.jpg');">
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body">
-      <div class="container-title container-text_1-title"><h1>Vous chercher un emploi ? </h1></div>
+      <div class="container-title container-text_1-title"><h3>Vous chercher un emploi ? </h3></div>
       <div class="left_right_container">
         <div class="container-text_1 left-block">
           <span>Consultez notre catalogue d'offres d'emploi et postulez</span>
           <a href="<?php echo _ROOT_PATH; ?>job/offers/">catalogue d'offres</a>
         </div>
         <div class="container-text_1 right-block">
-          <span>Voulez-Vous que nous vous trouvons un emploi fait pour vous ?<br> Envoyez-nous votre CV</span>
+          <span>Voulez-Vous que nous trouvons un emploi fait pour vous ?<br> Envoyez-nous votre CV</span>
           <a href="<?php echo _ROOT_PATH; ?>job/prompt-application/" class="">Candidature spontanée</a>
         </div>
       </div>
