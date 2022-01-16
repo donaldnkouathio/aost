@@ -63,7 +63,7 @@
 
 </div>
 
-<div class="alert_modal_shadow">
+<div class="alert_modal_shadow alert_modal_shadow_request">
   <div class="alert_modal_block">
     <div class="alert_modal_body">
       <i class="material-icons">check_circle</i>
@@ -88,7 +88,7 @@
      });
     }
 
-    hideModal($(".alert_modal_shadow"), $(".alert_modal_close, .alert_modal_shadow"));
+    hideModal($(".alert_modal_shadow_request"), $(".alert_modal_close, .alert_modal_shadow"));
 
     var btn_submit_contact = $('#btn_submit_contact');
 
@@ -108,7 +108,7 @@
         success: function(ret){
           btn_submit_contact.prop("disabled", false);
           btn_submit_contact.html("Envoyer");
-          $(".alert_modal_shadow").fadeIn();
+          $(".alert_modal_shadow_request").fadeIn();
 
           $('#contact_form')[0].reset();
         },
