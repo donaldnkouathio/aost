@@ -224,7 +224,7 @@ class Posting{
       <!-- *** -->
     </div>
 
-    <div class="alert_modal_shadow">
+    <div class="alert_modal_shadow alert_modal_shadow_candidacy">
       <div class="alert_modal_block">
         <div class="alert_modal_body">
           <i class="material-icons">check_circle</i>
@@ -251,7 +251,7 @@ class Posting{
          });
        }
 
-       hideModal($(".alert_modal_shadow"), $(".alert_modal_close, .alert_modal_shadow"));
+       hideModal($(".alert_modal_shadow_candidacy"), $(".alert_modal_close, .alert_modal_shadow"));
 
        var btn_submit_make_cv = $('#btn_submit_make_cv');
        var btn_submit_have_cv = $('#btn_submit_have_cv');
@@ -278,7 +278,7 @@ class Posting{
             success: function(ret){
               btn_submit_make_cv.prop("disabled", false);
               btn_submit_make_cv.html("postuler");
-              $(".alert_modal_shadow").fadeIn();
+              $(".alert_modal_shadow_candidacy").fadeIn();
               if(ret == 1){
                 $(".indicator").text("Candidature soumise avec success");
 
@@ -317,7 +317,7 @@ class Posting{
             success: function(ret){
               btn_submit_have_cv.prop("disabled", false);
               btn_submit_have_cv.html("postuler");
-              $(".alert_modal_shadow").fadeIn();
+              $(".alert_modal_shadow_candidacy").fadeIn();
               if(ret == 1){
                 $(".indicator").text("Candidature soumise avec success");
 

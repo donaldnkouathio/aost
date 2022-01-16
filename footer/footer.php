@@ -81,7 +81,7 @@
     <div class="alert_modal_body" style="padding: 15px;">
       <img height="80" style="border-radius: 100%;" src="<?php echo _ROOT_PATH; ?>img/authors/dim.jpeg" alt="Dimitry Beyene picture">
       <br>
-      <b style="margin-bottom: 15px; display: inline-block">Dimitry BEYENE</b>
+      <b style="margin-bottom: 15px; display: inline-block">Dimitri BEYENE</b>
       <br>
       <span class="material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
       <a href='tel:+237 692 503 797'> +237 692 503 797</a>
