@@ -1,10 +1,13 @@
 <h2 class="margin-top-none" style="display: inline-block">Villes</h2>
 
 <?php // Button for add modal ?>
+
+<?php if($_SESSION["role"] != $session->getRole_3()){ ?>
 <span class="btnAdd btnAddAdmin" id="btnAdd">
   <i class="material-icons vertical-align-bottom margin-right-5">add</i>
   <span class="">Ajouter une ville</span>
 </span>
+<?php } ?>
 
 <?php
 $cities = $city->getCitys();

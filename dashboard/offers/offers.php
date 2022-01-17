@@ -1,10 +1,12 @@
 <h2 class="margin-top-none" style="display: inline-block">Offres d'emploi</h2>
 
 <?php // Button for add modal ?>
+<?php if($_SESSION["role"] != $session->getRole_3()){ ?>
 <span class="btnAdd btnAddAdmin" id="btnAdd">
   <i class="material-icons vertical-align-bottom margin-right-5">add</i>
   <span class="">Ajouter une offre d'emploi</span>
 </span>
+<?php } ?>
 
 <?php
 	//Pour compter le nombre d'offres et déterminer le nombre de sous pages
