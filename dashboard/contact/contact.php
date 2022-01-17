@@ -2,10 +2,12 @@
   <h2 class="margin-top-none" style="display: inline-block">Contacts</h2>
 
   <?php // Button for add modal ?>
+  <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
   <span class="btnAdd btnAddAdmin" id="btnAdd">
     <i class="material-icons vertical-align-bottom margin-right-5">add</i>
     <span class="">Ajouter un contact</span>
   </span>
+  <?php } ?>
 </div>
 
 <div class="show_auther_page_indicateur">

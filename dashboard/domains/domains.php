@@ -1,10 +1,12 @@
 <h2 class="margin-top-none" style="display: inline-block">Domaines</h2>
 
 <?php // Button for add modal ?>
+<?php if($_SESSION["role"] != $session->getRole_3()){ ?>
 <span class="btnAdd btnAddAdmin" id="btnAddDomain">
   <i class="material-icons vertical-align-bottom margin-right-5">add</i>
   <span class="">Ajouter un domaine</span>
 </span>
+<?php } ?>
 
 <?php
 $domains = $domain->getDomains();
