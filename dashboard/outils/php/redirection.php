@@ -47,7 +47,7 @@
     $session->setCurrentSubPage($currentSubPage); //Page actuellement visitée par l'utilisateur
   ?>
 
-  		<title><?php echo $title; ?> - Dashboard - Alpha Omega Solutions Travail</title>
+  		<title><?php echo $title; ?> - Alpha Omega Solutions Travail</title>
 
       <link rel="stylesheet" href="<?php echo $css; ?>"/>
 

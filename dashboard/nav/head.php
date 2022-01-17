@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.3">
 
-    <link rel="shortcut icon" href="<?php echo _ROOT_PATH; ?>img/logo.png"/>
-    <link rel="icon" sizes="144x144" href="<?php echo _ROOT_PATH; ?>img/icon_dashboard.png"/>
+    <link rel="icon" sizes="144x144" href="<?php echo _ROOT_PATH; ?>img/icon_dashboard.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="<?php echo _ROOT_PATH; ?>img/logo_dashboard.png" type="image/x-icon"/>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>

@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.3">  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.3">
   <meta name="author" content="Pierre Kodjio">
   <meta http-equiv="Reply-to" content="pierrekod2@gmail.com">
 
@@ -13,8 +13,8 @@
   <meta name="robots" content="Follow">
   <meta http-equiv="Content-language" content="fr">
 
-  <link rel="shortcut icon" href="<?php echo _ROOT_PATH; ?>img/logo.png"/>
-  <link rel="icon" sizes="144x144" href="<?php echo _ROOT_PATH; ?>img/icon.png"/>
+  <link rel="icon" sizes="144x144" href="<?php echo _ROOT_PATH; ?>img/icon.png" type="image/x-icon"/>
+  <link rel="shortcut icon" href="<?php echo _ROOT_PATH; ?>img/logo.png" type="image/x-icon"/>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato'>
