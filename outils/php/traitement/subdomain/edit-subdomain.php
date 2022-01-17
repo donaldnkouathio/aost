@@ -24,7 +24,7 @@ if($subdomain->editSubdomain($subdomain)){
 
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
-	
+
 	$admin->updateLastSeen($_SESSION['id']);
 
 	$current_history=[
@@ -32,7 +32,7 @@ if($subdomain->editSubdomain($subdomain)){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"edit subdomain",
-		'description'=>$admin->getName()." a modifier le sous-domaine \" ".$preview_subdomain->getName()." \" en \" ".$subdomain->getName()." \"",
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a modifier le sous-domaine \" ".ucfirst(htmlspecialchars_decode($preview_subdomain->getName()))." \" en \" ".ucfirst(htmlspecialchars_decode($subdomain->getName()))." \"",
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

@@ -61,7 +61,7 @@ if($offer->addOffer($offer)){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$last_offer->getId(),
 		'action'=>"add offer",
-		'description'=>$admin->getName()." a ajouté une offre dans la catégorie ".$subdomain->getName(),
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a ajouté une offre dans la catégorie ".ucfirst(htmlspecialchars_decode($subdomain->getName())),
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 
@@ -195,7 +195,7 @@ if($offer->addOffer($offer)){
 		<i>COMPETENCES REQUISES</i></div>
 		<div class="auto-div-email data-email">
 		'.$competences.'
-		</div> 
+		</div>
 		<div class="auto-div-email">
 		<center><a href="'.$link.'"><button class="btn-candidate">POSTULER MAINTENANT</button></a></center>
 		</div>

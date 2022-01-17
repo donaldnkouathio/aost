@@ -38,7 +38,7 @@ if($_SESSION['role']=="super"){
 			'id_admin'=>$_SESSION['id'],
 			'id_target'=>$last_admin->getId(),
 			'action'=>"add admin",
-			'description'=>$admin->getName()." a ajouté l'administrateur ".$last_admin->getName()." de role ".$last_admin->getRole(),
+			'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a ajouté l'administrateur ".ucfirst(htmlspecialchars_decode($last_admin->getName()))." de role ".ucfirst(htmlspecialchars_decode($last_admin->getRole())),
 			'added_at'=>date("Y-m-d H:i:s")
 		];
 

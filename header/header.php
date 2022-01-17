@@ -31,8 +31,8 @@
           foreach ($domains as $domain) {
             $domainColor = $domain->getColor()==""? "66BFDE" : $domain -> getColor();
             ?>
-            <a href="<?php echo _ROOT_PATH; ?>domains/<?php echo (str_replace(" ", "-", $domain->getName()))."/".$domain->getId(); ?>" class="domain-block <?php if($session->getCurrentSubPage()==$domain->getName()){echo "sub-link-hover";} ?>" style="border-left : 3px solid #<?php echo $domainColor; ?>">
-              <span><?php echo $domain->getName(); ?></span>
+            <a href="<?php echo _ROOT_PATH; ?>domains/<?php echo (str_replace(" ", "-", ucfirst(htmlspecialchars_decode($domain->getName()))))."/".$domain->getId(); ?>" class="domain-block <?php if($session->getCurrentSubPage()==ucfirst(htmlspecialchars_decode($domain->getName()))){echo "sub-link-hover";} ?>" style="border-left : 3px solid #<?php echo $domainColor; ?>">
+              <span><?php echo ucfirst(htmlspecialchars_decode($domain->getName())); ?></span>
             </a>
           <?php } ?>
 
@@ -108,8 +108,8 @@
         foreach ($domains as $domain) {
           $domainColor = $domain->getColor()==""? "66BFDE" : $domain -> getColor();
           ?>
-          <li><a href="<?php echo _ROOT_PATH; ?>domains/<?php echo (str_replace(" ", "-", $domain->getName()))."/".$domain->getId(); ?>" class="<?php if($session->getCurrentSubPage()==$domain->getName()){echo "link-mobile-hover";} ?>">
-            <?php echo $domain->getName(); ?>
+          <li><a href="<?php echo _ROOT_PATH; ?>domains/<?php echo (str_replace(" ", "-", ucfirst(htmlspecialchars_decode($domain->getName()))))."/".$domain->getId(); ?>" class="<?php if($session->getCurrentSubPage()==ucfirst(htmlspecialchars_decode($domain->getName()))){echo "link-mobile-hover";} ?>">
+            <?php echo ucfirst(htmlspecialchars_decode($domain->getName())); ?>
           </a></li>
         <?php } ?>
       </ul>

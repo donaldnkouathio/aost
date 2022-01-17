@@ -20,7 +20,7 @@ if($city->editCity($city)){
 
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
-	
+
 	$admin->updateLastSeen($_SESSION['id']);
 
 	$current_history=[
@@ -28,7 +28,7 @@ if($city->editCity($city)){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"edit city",
-		'description'=>$admin->getName()." a modifié la ville \"".$preview_city->getName()."\" en ".$city->getName(),
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a modifié la ville \"".ucfirst(htmlspecialchars_decode($preview_city->getName()))."\" en ".ucfirst(htmlspecialchars_decode($city->getName())),
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

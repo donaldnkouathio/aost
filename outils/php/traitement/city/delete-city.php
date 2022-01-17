@@ -17,7 +17,7 @@ if($city->removeCity($_POST['id'])){
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
 
-	
+
 	$admin->updateLastSeen($_SESSION['id']);
 
 	$current_history=[
@@ -25,7 +25,7 @@ if($city->removeCity($_POST['id'])){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"delete city",
-		'description'=>$admin->getName()." a supprimé la ville \"".$preview_city->getName()."\"",
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a supprimé la ville \"".ucfirst(htmlspecialchars_decode($preview_city->getName()))."\"",
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

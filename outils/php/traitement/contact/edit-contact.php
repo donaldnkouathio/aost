@@ -23,7 +23,7 @@ if($contact->editContact($contact)){
 
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
-	
+
 	$admin->updateLastSeen($_SESSION['id']);
 
 	$current_history=[
@@ -31,7 +31,7 @@ if($contact->editContact($contact)){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"edit contact",
-		'description'=>$admin->getName()." a modifié les informations du contact ".$preview_contact->getName(),
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a modifié les informations du contact ".ucfirst(htmlspecialchars_decode($preview_contact->getName())),
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

@@ -31,7 +31,7 @@ if($city->addCity($city)){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$last_city->getId(),
 		'action'=>"add city",
-		'description'=>$admin->getName()." a ajouté la ville \"".$city->getName()."\"",
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a ajouté la ville \"".ucfirst(htmlspecialchars_decode($city->getName()))."\"",
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

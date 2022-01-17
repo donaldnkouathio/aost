@@ -15,7 +15,7 @@ if($contact->removeContact($_POST['id'])){
 
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
-	
+
 	$admin->updateLastSeen($_SESSION['id']);
 
 	$current_history=[
@@ -23,7 +23,7 @@ if($contact->removeContact($_POST['id'])){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"delete contact",
-		'description'=>$admin->getName()." a supprimé le contact ".$contact->getName(),
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a supprimé le contact ".ucfirst(htmlspecialchars_decode($contact->getName())),
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 
