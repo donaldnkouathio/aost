@@ -69,12 +69,12 @@
         <span class="authors">Conçu et dévéloppé par
           <span class="">
             <u style="cursor: pointer" class="show_about_author_dnk">Donald Nkouathio</u>
-             ,
-             <u style="cursor: pointer" class="show_about_author_dim">D!m!tr! Bl@ck</u>
-             &
-             <u style="cursor: pointer" class="show_about_author_dil">Dilane Ohno</u>
+            ,
+            <u style="cursor: pointer" class="show_about_author_dim">D!m!tr! Bl@ck</u>
+            &
+            <u style="cursor: pointer" class="show_about_author_dil">Dilane Ohno</u>
           </span>
-         </span>
+        </span>
       </span>
     </div>
   </footer>
@@ -149,7 +149,7 @@
 <script>
   $(document).ready(function(){
     //Show or hide modal
-   function toggleModal(modal, modal_btn, modal_btn_close){
+    function toggleModal(modal, modal_btn, modal_btn_close){
      $(".alert_modal_block").click(function(ev){
        ev.stopPropagation();
      });
@@ -159,10 +159,10 @@
      modal_btn_close.click(function(){
        modal.fadeOut();
      });
-    }
+   }
 
-    toggleModal($(".dnk"), $(".show_about_author_dnk"), $(".alert_modal_close, .alert_modal_shadow"));
-    toggleModal($(".dim"), $(".show_about_author_dim"), $(".alert_modal_close, .alert_modal_shadow"));
-    toggleModal($(".dil"), $(".show_about_author_dil"), $(".alert_modal_close, .alert_modal_shadow"));
+   toggleModal($(".dnk"), $(".show_about_author_dnk"), $(".alert_modal_close, .alert_modal_shadow"));
+   toggleModal($(".dim"), $(".show_about_author_dim"), $(".alert_modal_close, .alert_modal_shadow"));
+   toggleModal($(".dil"), $(".show_about_author_dil"), $(".alert_modal_close, .alert_modal_shadow"));
  });
 </script>

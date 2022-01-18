@@ -9,6 +9,37 @@
   text-align: center;
   z-index: 100;
 }
+
+.btn-google-translate{
+  position: fixed;
+  right: 0px;
+}
+
+.goog-logo-link{
+ display:none !important;
+}
+
+.current_page_indicator{
+  margin-top: -35px;
+}
+
+.goog-te-banner-frame,.goog-te-banner{
+  visibility: hidden;
+  display: none;
+  margin-top: -30px;
+
+}
+
+.goog-te-gadget {
+ color: transparent !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+  box-shadow: 2px 2px 5px;
+  height: 30px;
+  border-radius: 5px;
+}
+
 .spinner-block{
   cursor: wait;
   display: inline-block;
@@ -381,10 +412,10 @@ citaion{
 /* Mobile */
 @media (max-width: 575px) {
   /* Pour les textes de présentation des page contenue dans la classe Session::presentationPage() */
-    .presentaion_page_text{
-      padding: 50px 15px !important;
-      font-size: 1.5em;
-    }
+  .presentaion_page_text{
+    padding: 50px 15px !important;
+    font-size: 1.5em;
+  }
   /* *** */
 
 
@@ -399,10 +430,10 @@ citaion{
 /* Tablette */
 @media (max-width: 991px) {
   .hide-on-mobile{
-      display: none !important;
+    display: none !important;
   }
   .hide-on-laptop{
-      display: inline-block !important;
+    display: inline-block !important;
   }
   .container-title{
     font-size: 1.5em;
@@ -444,10 +475,10 @@ citaion{
 /* Laptop */
 @media (min-width: 992px) {
   .hide-on-mobile{
-      display: inline-block !important;
+    display: inline-block !important;
   }
   .hide-on-laptop{
-      display: none !important;
+    display: none !important;
   }
   .offset-10-laptop{
     margin-left: 10%;
@@ -501,10 +532,10 @@ citaion{
   }
 
   /* Pour les textes de présentation des page contenue dans la classe Session::presentationPage() */
-    .presentaion_page_text{
-      padding: 100px 15px;
-      font-size: 2.5em;
-    }
+  .presentaion_page_text{
+    padding: 100px 15px;
+    font-size: 2.5em;
+  }
   /* *** */
 
   /* Aside block */
