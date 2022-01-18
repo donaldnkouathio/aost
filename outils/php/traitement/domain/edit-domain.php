@@ -23,7 +23,7 @@ if($domain->editDomain($domain)){
 
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
-	
+
 	$admin->updateLastSeen($_SESSION['id']);
 
 	$current_history=[
@@ -31,7 +31,7 @@ if($domain->editDomain($domain)){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"edit domain",
-		'description'=>$admin->getName()." a modifier le domaine ".$preview_domain->getName()." en ".$domain->getName(),
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a modifier le domaine ".ucfirst(htmlspecialchars_decode($preview_domain->getName()))." en ".ucfirst(htmlspecialchars_decode($domain->getName())),
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

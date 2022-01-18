@@ -16,7 +16,7 @@ if($subdomain->removeSubdomain($_POST['id'])){
 
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
-	
+
 	$admin->updateLastSeen($_SESSION['id']);
 
 	$current_history=[
@@ -24,7 +24,7 @@ if($subdomain->removeSubdomain($_POST['id'])){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"delete subdomain",
-		'description'=>$admin->getName()." a supprimé le sous-domaine \" ".$deleted_subdomain->getName()." \"",
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a supprimé le sous-domaine \" ".ucfirst(htmlspecialchars_decode($deleted_subdomain->getName()))." \"",
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

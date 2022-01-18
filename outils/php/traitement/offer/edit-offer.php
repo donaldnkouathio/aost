@@ -28,7 +28,7 @@ $offer->setDeadline($_POST['deadline']);
 if($offer->editOffer($offer)){
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
-	
+
 	$admin->updateLastSeen($_SESSION['id']);
 
 	$subdomain=new Subdomain($current_subdomain);
@@ -39,7 +39,7 @@ if($offer->editOffer($offer)){
 		'id_admin'=>1,
 		'id_target'=>$offer->getId(),
 		'action'=>"edit offer",
-		'description'=>$admin->getName()." a modifié une offre dans la catégorie ".$subdomain->getName(),
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a modifié une offre dans la catégorie ".ucfirst(htmlspecialchars_decode($subdomain->getName())),
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

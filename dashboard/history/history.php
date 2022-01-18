@@ -117,7 +117,7 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
       <span class="suggest_col"><?php echo $icon; ?></span>
     </div>
     <div class="suggest_row">
-      <span class=""  style="max-width: 100%; min-height: 3em; display: inline-block;font-weight:bold" title="<?php echo ucfirst(htmlspecialchars_decode($history->getDescription())); ?>"> <?php echo ucfirst(htmlspecialchars_decode($history->getDescription())); ?></span>
+      <span class=""  style="max-width: 100%; min-height: 3em; display: inline-block;font-weight:bold" title="<?php echo ucfirst(htmlspecialchars_decode(str_replace("&amp;","&",$history->getDescription()))); ?>"> <?php echo ucfirst(htmlspecialchars_decode(str_replace("&amp;","&",$history->getDescription()))); ?></span>
     </div>
     <div class="suggest_row">
       <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($history->getAdded_at()); ?></span>

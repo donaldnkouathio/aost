@@ -6,9 +6,9 @@
 
 		$domain = $domain->getDomain($_GET["id"]);
 
-		$session->setCurrentDomain(str_replace("-", " ", $domain->getName()));
+		$session->setCurrentDomain(str_replace("-", " ", ucfirst(htmlspecialchars_decode($domain->getName()))));
 
-		redirection($session->getCurrentDomain()." | Alpha Omega Solutions Travail", _APP_PATH."domains/domains.php", "domains", $domain->getName(), _ROOT_PATH."domains/domains.css", _ROOT_PATH."domains/domains.js");
+		redirection($session->getCurrentDomain()." | Alpha Omega Solutions Travail", _APP_PATH."domains/domains.php", "domains", ucfirst(htmlspecialchars_decode($domain->getName())), _ROOT_PATH."domains/domains.css", _ROOT_PATH."domains/domains.js");
 	}else {
 		echo "erreur 404 Page pas trouvés";
 	}

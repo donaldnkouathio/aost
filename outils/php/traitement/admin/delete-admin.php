@@ -25,7 +25,7 @@ if($_SESSION['role']=="super"){
 			'id_admin'=>$_SESSION['id'],
 			'id_target'=>$_POST['id'],
 			'action'=>"delete admin",
-			'description'=>$admin->getName()." a supprimé l'administrateur ".$deleted_admin->getName()." de role ".$deleted_admin->getRole(),
+			'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a supprimé l'administrateur ".ucfirst(htmlspecialchars_decode($deleted_admin->getName()))." de role ".$deleted_admin->getRole(),
 			'added_at'=>date("Y-m-d H:i:s")
 		];
 

@@ -13,8 +13,8 @@
       foreach($subdomains as $subdomain) {
     ?>
       <form class="domain-item" action="<?php echo _ROOT_PATH; ?>job/offers/" method="post">
-        <input type="hidden" name="keyword" value="<?php echo $subdomain->getName(); ?>">
-        <input type="submit" name="" value="<?php echo $subdomain->getName(); ?>">
+        <input type="hidden" name="keyword" value="<?php echo ucfirst(htmlspecialchars_decode($subdomain->getName())); ?>">
+        <input type="submit" name="" value="<?php echo ucfirst(htmlspecialchars_decode($subdomain->getName())); ?>">
       </form>
     <?php } ?>
   </div>
