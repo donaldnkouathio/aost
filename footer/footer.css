@@ -51,6 +51,9 @@ footer{
     display: block;
     margin: 0;
   }
+  .authors span{
+    display: block;
+  }
   .copyright{
 
   }
