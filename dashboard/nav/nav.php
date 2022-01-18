@@ -43,7 +43,7 @@
 
     <li><a href="<?php echo _DASHBOARD_PATH; ?>contact/" class="dashboard_nav_link <?php if($session->getCurrentPage()=="contact"){echo "dashboard_nav_link_hover";} ?>">
       <i class="material-icons vertical-align-bottom">phone</i>
-      Contacts
+      Requêtes
       <?php if(isset($_SESSION["id"])){ ?>
         <sup title="Nouvelle requête envoyée; ?>" style="color: var(--color-danger)" class="request-indicator"></sup>
       <?php } ?>

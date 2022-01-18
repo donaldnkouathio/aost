@@ -1,6 +1,6 @@
 <h2 class="margin-top-none">Requêtes d'entreprises</h2>
 
-<div class="show_auther_page_indicateur">
+<div style="display:none" class="show_auther_page_indicateur">
   <i class="material-icons vertical-align-bottom background-primary">info</i>
   <label for="contact">Afficher les contacts d'AOST </label>
   <input type="checkbox" name="contact" id="contact" value="" <?php if(isset($_GET["contact"])){echo "checked";} ?>>
