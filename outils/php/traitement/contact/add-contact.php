@@ -26,7 +26,7 @@ if($contact->addContact($contact)){
 
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
-	
+
 	$admin->updateLastSeen($_SESSION['id']);
 
 	$current_history=[
@@ -34,7 +34,7 @@ if($contact->addContact($contact)){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$last_contact->getId(),
 		'action'=>"add contact",
-		'description'=>$admin->getName()." a ajouté un nouveau contact de role ".$contact->getRole(),
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a ajouté un nouveau contact de role ".ucfirst(htmlspecialchars_decode($contact->getRole())),
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

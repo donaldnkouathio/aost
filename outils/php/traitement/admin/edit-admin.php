@@ -35,7 +35,7 @@ if($admin->editAdmin($admin)){
   $admin=new Admin($current_admin);
   $admin=$admin->getAdmin($_SESSION['id']);
 
-  $description = $_SESSION["id"] != $deleted_admin->getId() ? $admin->getName()." a modifier les informations de ".$deleted_admin->getName() : $deleted_admin->getName()." a modifier ses informations";
+  $description = $_SESSION["id"] != $deleted_admin->getId() ? ucfirst(htmlspecialchars_decode($admin->getName()))." a modifier les informations de ".ucfirst(htmlspecialchars_decode($deleted_admin->getName())) : ucfirst(htmlspecialchars_decode($deleted_admin->getName()))." a modifier ses informations";
 
   $current_history=[
     'id'=>0,

@@ -25,7 +25,7 @@ if($admin->editPassword($admin)){
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
 
-	$description = $_SESSION["id"] != $edited_admin->getId() ? $admin->getName()." a modifié le mot de passe de ".$edited_admin->getName() : $edited_admin->getName()." a modifié son mot de passe";
+	$description = $_SESSION["id"] != $edited_admin->getId() ? ucfirst(htmlspecialchars_decode($admin->getName()))." a modifié le mot de passe de ".ucfirst(htmlspecialchars_decode($edited_admin->getName())) : ucfirst(htmlspecialchars_decode($edited_admin->getName()))." a modifié son mot de passe";
 
 	$current_history=[
 		'id'=>0,

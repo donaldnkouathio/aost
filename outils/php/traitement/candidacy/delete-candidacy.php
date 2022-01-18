@@ -21,7 +21,7 @@ if($candidacy->removeCandidacy($_POST['id'])){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"delete candidacy",
-		'description'=>$admin->getName()." a supprimé une candidature ",
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a supprimé une candidature ",
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

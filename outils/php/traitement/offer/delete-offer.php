@@ -15,7 +15,7 @@ if($offer->removeOffer($_POST['id'])){
 
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
-	
+
 	$admin->updateLastSeen($_SESSION['id']);
 
 	$subdomain=new Subdomain($current_subdomain);
@@ -26,7 +26,7 @@ if($offer->removeOffer($_POST['id'])){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$_POST['id'],
 		'action'=>"delete offer",
-		'description'=>$admin->getName()." a supprimé une offre de la catégorie ".$subdomain->getName(),
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a supprimé une offre de la catégorie ".ucfirst(htmlspecialchars_decode($subdomain->getName())),
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

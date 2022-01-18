@@ -27,7 +27,7 @@ if($domain->addDomain($domain)){
 
 	$admin=new Admin($current_admin);
 	$admin=$admin->getAdmin($_SESSION['id']);
-	
+
 	$admin->updateLastSeen($_SESSION['id']);
 
 	$current_history=[
@@ -35,7 +35,7 @@ if($domain->addDomain($domain)){
 		'id_admin'=>$_SESSION['id'],
 		'id_target'=>$last_domain->getId(),
 		'action'=>"add domain",
-		'description'=>$admin->getName()." a ajouté le domaine \" ".$domain->getName()." \"",
+		'description'=>ucfirst(htmlspecialchars_decode($admin->getName()))." a ajouté le domaine \" ".ucfirst(htmlspecialchars_decode($domain->getName()))." \"",
 		'added_at'=>date("Y-m-d H:i:s")
 	];
 

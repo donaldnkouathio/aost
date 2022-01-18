@@ -13,9 +13,6 @@ footer{
 .footer-logo img{
   height: 40px;
 }
-.footer-container{
-  margin-top: 15px;
-}
 .footer-contain{
   display: inline-block;
 }
@@ -53,6 +50,9 @@ footer{
   .authors{
     display: block;
     margin: 0;
+  }
+  .authors span{
+    display: block;
   }
   .copyright{
 
@@ -108,8 +108,11 @@ footer{
   .footer-body{
     padding: 0;
   }
+  .footer-logo{
+    margin-bottom: 0px !important;
+  }
   .footer-logo h1{
-    font-size: 1.6em;
+    font-size: 1.4em;
   }
   .footer-contain p{
     font-size: 1em;
@@ -121,7 +124,7 @@ footer{
     width: 32%;
     vertical-align: top;
     box-sizing: border-box;
-    padding-left: 2%;
+    padding-top: none !important;
   }
   .contact_us{
     padding-left: 90px !important;

@@ -8,28 +8,52 @@
       <div class="footer-container">
 
         <div class="footer-contain">
-          <h3 class="margin-bottom-none">A propos</h3>
+          <h3 class="margin-bottom-none">Bureau principal</h3>
+
           <p class="margin-top-none">
-            AOST est une agence de recrutement, de formation et de placement
-            du personnel pour les entreprises québécoises et canadiennes enregistrées
-            sous le NEQ 1173599367 au Registraire des entreprises du Québec.
+            <span class="material-icons vertical-align-bottom margin-right-5">phone</span>
+            <a style="color: white" href='tel:+1 514-612-0043'>+1 514-612-0043</a> - Bureau
+            <br>
+            <span class="material-icons vertical-align-bottom margin-right-5">phone</span>
+            <a style="color: white" href='tel:+1 514-559-7850'>+1 514-559-7850</a> - Direction
+            <br>
+            <span class="material-icons vertical-align-bottom margin-right-5">phone</span>
+            <a style="color: white" href='tel:+1 514-621-7850'>+1 514-621-7850</a> - Direction
+            <br>
+            <span style="margin-top: 10px;" class="material-icons vertical-align-bottom margin-right-5">email</span>
+            <a style="color: white" href='mailto:info@alphaomegasolutionstravail.ca'> Info@alphaomegasolutionstravail.ca</a>
+            <br>
+            <span class="material-icons vertical-align-bottom margin-right-5">email</span>
+            <a style="color: white" href='mailto:rh@alphaomegasolutionstravail.ca'> RH@alphaomegasolutionstravail.ca</a>
+            <br>
+            <span class="material-icons vertical-align-bottom margin-right-5">email</span>
+            <a style="color: white" href='mailto:paie@alphaomegasolutionstravail.ca'> Paie@alphaomegasolutionstravail.ca</a>
+            <br>
+            <span class="material-icons vertical-align-bottom margin-right-5">email</span>
+            <a style="color: white" href='mailto:dr@alphaomegasolutionstravail.ca'> DR@alphaomegasolutionstravail.ca</a>
+            <br>
+            <span class="material-icons vertical-align-bottom margin-right-5">email</span>
+            <a style="color: white" href='mailto:partenaires@alphaomegasolutionstravail.ca'> Partenaires@alphaomegasolutionstravail.ca</a>
+            <br>
+            <span style="margin-top: 10px;" class="material-icons vertical-align-bottom margin-right-5">location_on</span>
+            880 BOULEVARD DECARIE, H4L1M3, Montréal, Saint-Laurent, Québec, Canada
+            <br>
           </p>
         </div>
 
-        <div class="footer-contain contact_us">
-          <h3 class="margin-bottom-none">Contactez-nous</h3>
+        <div class="footer-contain">
+          <h3 class="margin-bottom-none">Siège social</h3>
           <p class="margin-top-none">
-            <span class="material-icons vertical-align-bottom margin-right-5">location_on</span>
+            <span class="material-icons vertical-align-bottom margin-right-5">phone</span>
+            <a style="color: white" href='tel:+1 438-289-5095'> +1 438-289-5095</a>
+            <br>
+            <span class="material-icons vertical-align-bottom margin-right-5">phone</span>
+            <a style="color: white" href='tel:+1 438-938-8292'> +1 438-938-8292</a>
+            <br>
+            <span style="margin-top: 10px;" class="material-icons vertical-align-bottom margin-right-5">location_on</span>
             2232 Rue Noel, H4M1R9 Montréal
-            <br>
-            <span class="material-icons vertical-align-bottom margin-right-5">phone</span>
-            <a style="color: white" href='tel:438-289-5095'> 438-289-5095</a>
-            <br>
-            <span class="material-icons vertical-align-bottom margin-right-5">phone</span>
-            <a style="color: white" href='tel:438-938-8292'> 438-938-8292</a>
           </p>
         </div>
-
 
         <div class="footer-contain">
           <h3 class="margin-bottom-none">Suivez-nous</h3>
@@ -43,9 +67,13 @@
       <span style="">
         <span class="copyright">Tous droits réservés © <?php echo date('Y', strtotime("TODAY")); ?> - AOST</span>
         <span class="authors">Conçu et dévéloppé par
-          <u style="cursor: pointer" class="show_about_author_dnk">Donald Nk</u>
-           &
-           <u style="cursor: pointer" class="show_about_author_dim">D!m!tr! Bl@ck</u>
+          <span class="">
+            <u style="cursor: pointer" class="show_about_author_dnk">Donald Nkouathio</u>
+             ,
+             <u style="cursor: pointer" class="show_about_author_dim">D!m!tr! Bl@ck</u>
+             &
+             <u style="cursor: pointer" class="show_about_author_dil">Dilane Ohno</u>
+          </span>
          </span>
       </span>
     </div>
@@ -96,6 +124,27 @@
   </div>
 </div>
 
+
+<div class="alert_modal_shadow dil">
+  <div class="alert_modal_block">
+    <div class="alert_modal_body" style="padding: 15px;">
+      <img height="80" style="border-radius: 100%;" src="<?php echo _ROOT_PATH; ?>img/authors/dil.jpeg" alt="Dilane Ohno picture">
+      <br>
+      <b style="margin-bottom: 15px; display: inline-block">Dilane OHNO</b>
+      <br>
+      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
+      <a href='tel:+237 697 494 078'> +237 697 494 078</a>
+      <br>
+      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
+      <a href='mailto:ohnodilane@gmail.com'> Ohnodilane@gmail.com</a>
+    </div>
+
+    <div class="alert_modal_footer">
+      <button type="button" class="btn alert_modal_close" name="button">Fermer</button>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript" src="<?php echo _ROOT_PATH; ?>outils/js/global.js"></script>
 <script>
   $(document).ready(function(){
@@ -113,6 +162,7 @@
     }
 
     toggleModal($(".dnk"), $(".show_about_author_dnk"), $(".alert_modal_close, .alert_modal_shadow"));
-   toggleModal($(".dim"), $(".show_about_author_dim"), $(".alert_modal_close, .alert_modal_shadow"));
+    toggleModal($(".dim"), $(".show_about_author_dim"), $(".alert_modal_close, .alert_modal_shadow"));
+    toggleModal($(".dil"), $(".show_about_author_dil"), $(".alert_modal_close, .alert_modal_shadow"));
  });
 </script>
