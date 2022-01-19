@@ -4,7 +4,8 @@
       <a href="<?php echo _ROOT_PATH; ?>">
         <img src="<?php echo _ROOT_PATH; ?>img/logo.png" alt="logo AOST">
       </a>
-      <span class="hide-on-laptop">Alpha Omega Solutions Travail</span>
+      <span class="notranslate presentation_tablette">Alpha Omega Solutions Travail</span>
+      <span class="notranslate presentation_mobile">AOST</span>
     </div>
 
     <ul class="nav-contain-left hide-on-mobile" style="">
@@ -44,7 +45,7 @@
     </ul>
 
     <ul class="nav-contain-right" style="">
-      <li id="google_translate_element" class="hide-on-mobile"></li>
+      <li id="google_translate_element" class="btn-google-translate"></li>
       <li class="hide-on-laptop" id="navMobileBtn"><i class="notranslate  material-icons vertical-align-bottom"> menu </i></li>
     </ul>
 
@@ -78,7 +79,6 @@
           <i class="notranslate  material-icons vertical-align-bottom" style="float:right"> chevron_right </i>
         </a></li>
 
-        <div id="google_translate_element_mobile" style="margin-left: 15px;"></div>
       </ul>
     </div>
 
@@ -128,31 +128,16 @@
 <!-- Debut du code du traducteur de site Web de Google -->
 <script type="text/javascript">
 function googleTranslateElementInit() {
-  if($(window).width() >= 992){
-    new google.translate.TranslateElement(
-      {
-        pageLanguage: 'fr',
-        includedLanguages: 'fr,en',
-        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
-        multilanguagePage: true,
-        autoDisplay: false
-      },
-      'google_translate_element'
-    );
-  }else {
-    new google.translate.TranslateElement(
-      {
-        pageLanguage: 'fr',
-        includedLanguages: 'fr,en',
-        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
-        multilanguagePage: true,
-        autoDisplay: false
-      },
-      'google_translate_element_mobile'
-    );
-  }
+  new google.translate.TranslateElement(
+    {
+      pageLanguage: 'fr',
+      includedLanguages: 'fr,en',
+      multilanguagePage: true,
+      autoDisplay: false
+    },
+    'google_translate_element'
+  );
  }
-
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
  <!-- Fin du code du traducteur de site Web de Google -->
