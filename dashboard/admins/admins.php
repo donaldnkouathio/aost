@@ -3,7 +3,7 @@
 <?php // Button for add modal ?>
 <?php if($_SESSION["role"] == $session->getRole_1()){ ?>
 <span class="btnAdd btnAddAdmin" id="btnAdd">
-  <i class="material-icons vertical-align-bottom margin-right-5">person_add</i>
+  <i class="notranslate  material-icons vertical-align-bottom margin-right-5">person_add</i>
   <span class="">Ajouter un administrateur</span>
 </span>
 <?php } ?>
@@ -38,23 +38,23 @@ $admins = $admin->getAdmins();
       <span class="suggest_title"> <?php echo ucfirst(htmlspecialchars_decode($_SESSION['email'])); ?></span>
     </div>
     <div class="suggest_row">
-      <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">person</i><?php echo ucfirst(htmlspecialchars_decode($_SESSION['name'])); ?></span>
+      <span class="suggest_col"><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">person</i><?php echo ucfirst(htmlspecialchars_decode($_SESSION['name'])); ?></span>
       <span class="suggest_col float-right">Rôle : <?php echo ucfirst(htmlspecialchars_decode($_SESSION['role'])); ?></span>
     </div>
     <div class="suggest_row">
-      <span class="suggest_col" title="Compte crée"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($_SESSION['added_at']); ?></span>
+      <span class="suggest_col" title="Compte crée"><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($_SESSION['added_at']); ?></span>
       <div class="suggest_col float-right">
         <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
         <span class="btnEdit" id="btnEditPwd<?php echo $_SESSION["id"]; ?>" title="Changer de mot de passe">
-          <i class="material-icons vertical-align-bottom">lock</i>
+          <i class="notranslate  material-icons vertical-align-bottom">lock</i>
         </span>
         <span class="btnEdit" id="btnEdit<?php echo $_SESSION["id"]; ?>" title="Modifier">
-          <i class="material-icons vertical-align-bottom">mode_edit</i>
+          <i class="notranslate  material-icons vertical-align-bottom">mode_edit</i>
         </span>
 
         <?php if($_SESSION["role"] == $session->getRole_1()){ ?>
         <span class="btnDelete" id="btnDelete<?php echo $_SESSION["id"]; ?>" title="Supprimer">
-          <i class="material-icons vertical-align-bottom">close</i>
+          <i class="notranslate  material-icons vertical-align-bottom">close</i>
         </span>
         <?php }} ?>
 
@@ -77,23 +77,23 @@ $admins = $admin->getAdmins();
 				<span class="suggest_title"> <?php echo ucfirst(htmlspecialchars_decode($admin->getEmail())); ?></span>
 			</div>
 			<div class="suggest_row">
-				<span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">person</i><?php echo ucfirst(htmlspecialchars_decode($admin->getName())); ?></span>
+				<span class="suggest_col"><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">person</i><?php echo ucfirst(htmlspecialchars_decode($admin->getName())); ?></span>
 				<span class="suggest_col float-right">Rôle : <?php echo ucfirst(htmlspecialchars_decode($admin->getRole())); ?></span>
 			</div>
 			<div class="suggest_row">
-				<span class="suggest_col" title="Compte crée"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($admin->getAdded_at()); ?></span>
+				<span class="suggest_col" title="Compte crée"><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($admin->getAdded_at()); ?></span>
 
         <?php if($_SESSION["role"] == $session->getRole_1()){ ?>
         <div class="suggest_col float-right">
           <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
           <span class="btnEdit" id="btnEditPwd<?php echo $admin->getId(); ?>" title="Changer le mot de passe">
-						<i class="material-icons vertical-align-bottom">lock</i>
+						<i class="notranslate  material-icons vertical-align-bottom">lock</i>
 					</span>
 					<span class="btnEdit" id="btnEdit<?php echo $admin->getId(); ?>" title="Modifier">
-						<i class="material-icons vertical-align-bottom">mode_edit</i>
+						<i class="notranslate  material-icons vertical-align-bottom">mode_edit</i>
 					</span>
 					<span class="btnDelete" id="btnDelete<?php echo $admin->getId(); ?>" title="Supprimer">
-						<i class="material-icons vertical-align-bottom">close</i>
+						<i class="notranslate  material-icons vertical-align-bottom">close</i>
 					</span>
           <?php } ?>
 				</div>
@@ -162,7 +162,7 @@ $admins = $admin->getAdmins();
 <div class="item_deleteModal_shadow" id="deleteModal<?php echo $admin->getId(); ?>">
   <div class="item_deleteModal">
     <div class="item_deleteModal_body">
-      <i class="material-icons">warning</i>
+      <i class="notranslate  material-icons">warning</i>
       <span>Voulez vous vraiment supprimer l'administrateur No <?php echo $admin->getId(); ?> ?</span>
       <?php if($_SESSION["id"] == $admin->getId()){ ?>
         <br><span>Il s'agit de votre compte</span>

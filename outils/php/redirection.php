@@ -44,9 +44,15 @@
   	<body>
       <?php include(_APP_PATH."header/header.php"); // En tête ?>
 
-      <?php $session->preloader(); // Indicateur de chargement des pages ?>
+      <?php $session->preloader(); // Indicateur de chargement des pages
+        if($currentPage != "home"){
+          $marginTop = "110px";
+        }else {
+          $marginTop = "70px";
+        }
+      ?>
 
-      <div class="" style="margin-top: 70px;">
+      <div class="global_block_page" style="margin-top:<?php echo $marginTop; ?>">
         <?php
           switch ($currentPage) {
             case 'Offres d\'emplois':
@@ -95,9 +101,9 @@
 
             	<span class="margin-right-5">Vous êtes ici :</span>
 
-            	<a href="/"><i class="material-icons vertical-align-bottom">home</i></a>
+            	<a href="/"><i class="notranslate  material-icons vertical-align-bottom">home</i></a>
 
-            	<i class="material-icons vertical-align-bottom">chevron_right</i>
+            	<i class="notranslate  material-icons vertical-align-bottom">chevron_right</i>
 
               <?php echo ucfirst($newCurrentPage); } ?>
 
@@ -105,13 +111,13 @@
                 if($newCurrentSubPage != ""){
               ?>
 
-              	<i class="material-icons vertical-align-bottom">chevron_right</i>
+              	<i class="notranslate  material-icons vertical-align-bottom">chevron_right</i>
 
                 <?php if(isset($_GET["id_offer"])){ ?>
 
                   <a href="<?php echo _ROOT_PATH; ?>job/offers/"><?php echo ucfirst($newCurrentSubPage); ?></a>
 
-                  <i class="material-icons vertical-align-bottom">chevron_right</i>
+                  <i class="notranslate  material-icons vertical-align-bottom">chevron_right</i>
 
                   <?php echo ucfirst($subdomain->getName()); ?>
 

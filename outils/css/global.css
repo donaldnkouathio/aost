@@ -10,35 +10,42 @@
   z-index: 100;
 }
 
+.current_page_indicator{
+  margin-top: -35px;
+}
+
+.global_block_page{
+  /*margin-top: 70px;*/
+}
+
+/* Google Translate */
 .btn-google-translate{
   position: fixed;
   right: 0px;
 }
 
+.translated-ltr{margin-top:-40px;}
+.translated-ltr{margin-top:-40px;}
+.goog-te-banner-frame {display: none;margin-top:-20px;}
+
 .goog-logo-link{
  display:none !important;
 }
-
-.current_page_indicator{
-  margin-top: -35px;
+.goog-te-banner{
+  visibility: hidden !important;
+  display: none !important;
 }
-
-.goog-te-banner-frame,.goog-te-banner{
-  visibility: hidden;
-  display: none;
-  margin-top: -30px;
-
-}
-
 .goog-te-gadget {
  color: transparent !important;
+ margin-top: 15px;
 }
 
 .goog-te-gadget .goog-te-combo {
-  box-shadow: 2px 2px 5px;
   height: 30px;
-  border-radius: 5px;
+  border: none;
+  background-color: white;
 }
+/* *** */
 
 .spinner-block{
   cursor: wait;
@@ -147,7 +154,7 @@
 @-ms-viewport {
   width: device-width;
 }
-
+* {box-sizing: border-box;}
 a{
   color: var(--color-primary);
   cursor: pointer;

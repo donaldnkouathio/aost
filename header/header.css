@@ -67,7 +67,7 @@ header{
   top: 0;
   left: 0;
   display: none;
-  z-index: 15;
+  z-index: 55;
 }
 .nav-mobile-header{
   background-color: var(--color-primary);

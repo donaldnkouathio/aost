@@ -9,7 +9,7 @@
         <h3 class="color-primary">Vous cherchez de l'emploi ?</h3>
         <p>Nous recevons quotidiennement de nouveaux postes. <br> Consulter notre catalogue d'emplois pour postuler à celui qui vous correspond le mieux</p>
         <div class="link">
-          <a href="<?php echo _ROOT_PATH; ?>job/offers/">Voir les emplois displonible <i class="material-icons vertical-align-bottom"> chevron_right </i></a>
+          <a href="<?php echo _ROOT_PATH; ?>job/offers/">Voir les emplois displonible <i class="notranslate  material-icons vertical-align-bottom"> chevron_right </i></a>
         </div>
       </div>
 
@@ -19,7 +19,7 @@
         <h3 class="color-primary">Vous cherchez de l'emploi ?</h3>
         <p>Nous recevons quotidiennement de nouveaux postes. <br> Vous pouvez nous faire parvenir votre CV et nous vous contacterons</p>
         <div class="link">
-          <a href="<?php echo _ROOT_PATH; ?>job/prompt-application/">Candidature spontanée <i class="material-icons vertical-align-bottom"> chevron_right </i></a>
+          <a href="<?php echo _ROOT_PATH; ?>job/prompt-application/">Candidature spontanée <i class="notranslate  material-icons vertical-align-bottom"> chevron_right </i></a>
         </div>
       </div>
   <?php break;

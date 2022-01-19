@@ -77,31 +77,31 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
 
     $icon="";
     if(preg_match("/admin/i", $history->getAction())){
-      $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">people_outline</i> Admins';
+      $icon = '<i class="notranslate  material-icons vertical-align-bottom  margin-right-5 background-primary">people_outline</i> Admins';
     }
     elseif(preg_match("/password/i", $history->getAction())){
-      $icon = '<i class="material-icons vertical-align-bottom background-primary">people_outline</i> <i class="material-icons vertical-align-bottom background-primary">arrow_forward</i> <i class="material-icons vertical-align-bottom margin-right-5 background-primary">lock_outline</i> Admins';
+      $icon = '<i class="notranslate  material-icons vertical-align-bottom background-primary">people_outline</i> <i class="notranslate  material-icons vertical-align-bottom background-primary">arrow_forward</i> <i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">lock_outline</i> Admins';
     }
     elseif(preg_match("/offer/i", $history->getAction())){
-      $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">business_center</i> Offres d\'emploi';
+      $icon = '<i class="notranslate  material-icons vertical-align-bottom  margin-right-5 background-primary">business_center</i> Offres d\'emploi';
     }
     elseif(preg_match("/candidacy/i", $history->getAction())){
-      $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">work</i> Candidatures';
+      $icon = '<i class="notranslate  material-icons vertical-align-bottom  margin-right-5 background-primary">work</i> Candidatures';
     }
     elseif(preg_match("/\bdomain/i", $history->getAction())){
-      $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">domain</i> Domaines';
+      $icon = '<i class="notranslate  material-icons vertical-align-bottom  margin-right-5 background-primary">domain</i> Domaines';
     }
     elseif(preg_match("/subdomain/i", $history->getAction())){
-      $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">folder_open</i> Sous-domaines';
+      $icon = '<i class="notranslate  material-icons vertical-align-bottom  margin-right-5 background-primary">folder_open</i> Sous-domaines';
     }
     elseif(preg_match("/city/i", $history->getAction())){
-      $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">location_city</i> Villes';
+      $icon = '<i class="notranslate  material-icons vertical-align-bottom  margin-right-5 background-primary">location_city</i> Villes';
     }
     elseif(preg_match("/contact/i", $history->getAction())){
-      $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">phone</i> Contacts';
+      $icon = '<i class="notranslate  material-icons vertical-align-bottom  margin-right-5 background-primary">phone</i> Contacts';
     }
     elseif(preg_match("/history/i", $history->getAction())){
-      $icon = '<i class="material-icons vertical-align-bottom  margin-right-5 background-primary">history</i> Historique';
+      $icon = '<i class="notranslate  material-icons vertical-align-bottom  margin-right-5 background-primary">history</i> Historique';
     }
     else{
       $icon = "";
@@ -120,11 +120,11 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
       <span class=""  style="max-width: 100%; min-height: 3em; display: inline-block;font-weight:bold" title="<?php echo ucfirst(htmlspecialchars_decode(str_replace("&amp;","&",$history->getDescription()))); ?>"> <?php echo ucfirst(htmlspecialchars_decode(str_replace("&amp;","&",$history->getDescription()))); ?></span>
     </div>
     <div class="suggest_row">
-      <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($history->getAdded_at()); ?></span>
+      <span class="suggest_col"><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($history->getAdded_at()); ?></span>
 
       <?php if($_SESSION["role"] == $session->getRole_1()){ ?>
       <span class="btnDelete float-right" id="btnDelete<?php echo $history->getId(); ?>" title="Supprimer">
-        <i class="material-icons vertical-align-bottom">close</i>
+        <i class="notranslate  material-icons vertical-align-bottom">close</i>
         Supprimer
       </span>
       <?php } ?>
@@ -139,14 +139,14 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
 <div class="breadcrumb-block">
   <div class="breadcrumb-contain">
     <?php if($pageActuelle >  1){ ?>
-      <a class="breadcrumb-item" href="<?php echo _DASHBOARD_PATH."history/m/".$month; ?>/p/<?php echo $pageActuelle - 1; ?>" title="précédant"><i class="material-icons vertical-align-bottom"> chevron_left </i></a>
+      <a class="breadcrumb-item" href="<?php echo _DASHBOARD_PATH."history/m/".$month; ?>/p/<?php echo $pageActuelle - 1; ?>" title="précédant"><i class="notranslate  material-icons vertical-align-bottom"> chevron_left </i></a>
     <?php }for($i = 1; $i < $nombreDePages+1; $i++){
       if($i == $pageActuelle){ ?>
       <span class="breadcrumb-item breadcrumb-item-active"><?php echo $i; ?></span>
     <?php  }else{ ?>
       <a class="breadcrumb-item" href="<?php echo _DASHBOARD_PATH."history/m/".$month."/p/".$i; ?>"><?php echo $i; ?></a>
     <?php }}if($pageActuelle <= $nombreDePages - 1){ ?>
-      <a class="breadcrumb-item" href="<?php echo _DASHBOARD_PATH."history/m/".$month; ?>/p/<?php echo $pageActuelle + 1; ?>" title="suivant"><i class="material-icons vertical-align-bottom"> chevron_right </i></a>
+      <a class="breadcrumb-item" href="<?php echo _DASHBOARD_PATH."history/m/".$month; ?>/p/<?php echo $pageActuelle + 1; ?>" title="suivant"><i class="notranslate  material-icons vertical-align-bottom"> chevron_right </i></a>
     <?php } ?>
   </div>
 </div>
@@ -160,7 +160,7 @@ $histories = $history->getHistorysByMonthLimit($month, $premiereEntree);
   <div class="item_deleteModal_shadow" id="deleteModal<?php echo $history->getId(); ?>">
     <div class="item_deleteModal">
       <div class="item_deleteModal_body">
-        <i class="material-icons">warning</i>
+        <i class="notranslate  material-icons">warning</i>
         <span>Voulez vous vraiment supprimer l'évènement No <?php echo $history->getId(); ?> ?</span>
 
       </div>
