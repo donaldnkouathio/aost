@@ -6,6 +6,9 @@ footer{
 .footer-logo{
 
 }
+.footer-container{
+  box-sizing: border-box;
+}
 .footer-logo h1{
   display: inline-block;
   margin-left: 15px;
@@ -16,9 +19,10 @@ footer{
 .footer-contain{
   display: inline-block;
 }
-.footer-contain .h2{
-  border: 1px solid red;
+.footer-contain h3{
+  margin-top: 0;
   color: white !important;
+  text-transform: uppercase;
 }
 .footer-contain:first-child{
   margin-left: 0;
@@ -69,7 +73,7 @@ footer{
     width: 32%;
     vertical-align: top;
     box-sizing: border-box;
-    padding-left: 2%;
+    padding-left: 15px;
   }
   .contact_us{
     padding-left: 50px;
@@ -102,6 +106,10 @@ footer{
     padding: 15px;
     text-align: left;
   }
+
+  .footer-contain:last-child{
+    width: 62%;
+  }
 }
 /* Laptop */
 @media (min-width: 992px) {
@@ -125,6 +133,7 @@ footer{
     vertical-align: top;
     box-sizing: border-box;
     padding-top: none !important;
+    margin-right: 5px;
   }
   .contact_us{
     padding-left: 90px !important;

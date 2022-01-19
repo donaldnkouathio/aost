@@ -4,14 +4,14 @@
   <?php // Button for add modal ?>
   <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
   <span class="btnAdd btnAddAdmin" id="btnAdd">
-    <i class="material-icons vertical-align-bottom margin-right-5">add</i>
+    <i class="notranslate  material-icons vertical-align-bottom margin-right-5">add</i>
     <span class="">Ajouter un contact</span>
   </span>
   <?php } ?>
 </div>
 
 <div class="show_auther_page_indicateur">
-  <i class="material-icons vertical-align-bottom background-primary">info</i>
+  <i class="notranslate  material-icons vertical-align-bottom background-primary">info</i>
   <label for="contact">Afficher les contacts d'AOST </label>
   <input type="checkbox" name="contact" id="contact" value="" <?php if(isset($_GET["contact"])){echo "checked";} ?>>
 </div>
@@ -44,26 +44,26 @@ $contacts = $contact->getContacts();
       </div>
       <div class="suggest_row">
         <span class="suggest_title">
-          <i class="material-icons vertical-align-bottom margin-right-5 background-primary">phone</i>
+          <i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">phone</i>
           <?php echo $contact->getPhone(); ?>
         </span>
       </div>
       <div class="suggest_row">
         <span class="suggest_col">
-          <i class="material-icons vertical-align-bottom margin-right-5 background-primary">person</i>
+          <i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">person</i>
           <?php echo ucfirst(htmlspecialchars_decode($contact->getName()))." - ".htmlspecialchars_decode($contact->getRole()); ?>
         </span>
       </div>
       <div class="suggest_row">
-        <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($contact->getAdded_at()); ?></span>
+        <span class="suggest_col"><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($contact->getAdded_at()); ?></span>
 
         <div class="suggest_col float-right">
           <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
           <span class="btnEdit" id="btnEdit<?php echo $contact->getId(); ?>" title="Modifier cette ville">
-            <i class="material-icons vertical-align-bottom">edit</i>
+            <i class="notranslate  material-icons vertical-align-bottom">edit</i>
           </span>
           <span class="btnDelete" id="btnDelete<?php echo $contact->getId(); ?>" title="Supprimer cette ville">
-            <i class="material-icons vertical-align-bottom">close</i>
+            <i class="notranslate  material-icons vertical-align-bottom">close</i>
           </span>
           <?php } ?>
         </div>
@@ -156,7 +156,7 @@ $contacts = $contact->getContacts();
   <div class="item_deleteModal_shadow" id="deleteModal<?php echo $contact->getId(); ?>">
     <div class="item_deleteModal">
       <div class="item_deleteModal_body">
-        <i class="material-icons">warning</i>
+        <i class="notranslate  material-icons">warning</i>
         <span>Voulez vous vraiment supprimer le contact No <?php echo $contact->getId(); ?> ?</span>
 
       </div>

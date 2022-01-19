@@ -84,7 +84,7 @@ class Posting{
 
         <div class="checkbox-block">
           <input type="checkbox" id="EULA" name="" value="" required>
-          <label for="EULA">J'accepte les informations sur les services offerts de Alpha Omega Solutions Travail Inc. (Vous pouvez à tout moment retirer son consentement).</label>
+          <label for="EULA">J'accepte les informations sur les services offerts de <span class="notranslate">Alpha Omega Solutions Travail inc.</span> (Vous pouvez à tout moment retirer son consentement).</label>
         </div>
 
         <div class="checkbox-block">
@@ -147,7 +147,7 @@ class Posting{
 
         <div class="checkbox-block">
           <input type="checkbox" id="EULA2" name="" value="" required>
-          <label for="EULA2">J'accepte les informations sur les services offerts de Alpha Omega Solutions Travail Inc. (Vous pouvez à tout moment retirer son consentement).</label>
+          <label for="EULA2">J'accepte les informations sur les services offerts de <span class="notranslate">Alpha Omega Solutions Travail inc.</span> (Vous pouvez à tout moment retirer son consentement).</label>
         </div>
 
         <div class="checkbox-block">
@@ -227,7 +227,7 @@ class Posting{
     <div class="alert_modal_shadow alert_modal_shadow_candidacy">
       <div class="alert_modal_block">
         <div class="alert_modal_body">
-          <i class="material-icons">check_circle</i>
+          <i class="notranslate  material-icons">check_circle</i>
           <span class="indicator"></span>
         </div>
 
