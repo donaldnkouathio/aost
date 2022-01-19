@@ -3,7 +3,7 @@
     <?php echo $session->presentationPage("Processus d'embauche", "bg6"); ?>
 
     <div class="section-body hiring-process-block">
-      <h2 class="margin-bottom-none">QUEL EST LE PROCESSUS DE RECRUTEMENT d'Alpha Omega Solutions Travail Inc. ?</h2>
+      <h2 class="margin-bottom-none">QUEL EST LE PROCESSUS DE RECRUTEMENT d'<span class="notranslate">Alpha Omega Solutions Travail inc.</span> ?</h2>
 
       <p class="margin-top-none">
         Nous sommes une agence de placement mandatée par des entreprises et clients partenaires pour
@@ -26,9 +26,9 @@
         <li>	Nous communiquerons avec vous si votre candidature est retenue pour vous inviter à une entrevue d’embauche.</li>
         <li>	Si une entrevue est prévue par notre entreprise ou client partenaire, nous vous informerons.</li>
         <li>	Si votre entrevue est positive, nous procéderons à la vérification pré-embauche.</li>
-        <li>	Une fois les vérifications faites, nous ferons signer le contrat d’embauche entre vous et <strong>Alpha Omega Solutions Travail Inc.</strong></li>
+        <li>	Une fois les vérifications faites, nous ferons signer le contrat d’embauche entre vous et <strong><span class="notranslate">Alpha Omega Solutions Travail inc.</span></strong></li>
         <li>	Une fois ce contrat signé, vous serez embauché et commencerez 24 heures au plus tard à travailler chez notre client.</li>
-        <li>	<strong>Alpha Omega Solutions Travail Inc.</strong> offre <strong>au-delà de 24 mois</strong> de travail continu une prime et/ou des avantages en fonction de leur rendement et d’un seuil de performance prédéterminé.</li>
+        <li>	<strong><span class="notranslate">Alpha Omega Solutions Travail inc.</span></strong> offre <strong>au-delà de 24 mois</strong> de travail continu une prime et/ou des avantages en fonction de leur rendement et d’un seuil de performance prédéterminé.</li>
 
       </ul>
     </div>

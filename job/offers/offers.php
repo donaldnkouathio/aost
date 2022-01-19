@@ -38,7 +38,7 @@ $offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
 				<div class="container-title">L'agence qui facilite votre recherche d'emploi</div>
 				<form method="post" action="<?php echo _ROOT_PATH; ?>job/offers/" class="form-offres-block">
 					<div class="input-search">
-						<input type="text" name="keyword" class="" id="inputSearchInput" autocomplete="off" placeholder="Chercher un emploi..." value="<?php if(isset($_POST["keyword"])){echo $_POST["keyword"];} ?>">
+						<input type="text" name="keyword" class="" id="inputSearchInput" autocomplete="off" placeholder="Rechercher un emploi..." value="<?php if(isset($_POST["keyword"])){echo $_POST["keyword"];} ?>">
 
 						<!-- Auto Suggest -->
 						<div class="autoSuggest-block" id="autoSuggest-block">
@@ -46,7 +46,7 @@ $offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
 						</div>
 					</div>
 					<br>
-					<button id="autosuggest-btn" type="submit" class="btn btn-primary" name="button">Chercher</button>
+					<button id="autosuggest-btn" type="submit" class="btn btn-primary" name="button">Rechercher</button>
 				</form>
 			</div>
 		</div>
@@ -73,7 +73,7 @@ $offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
 		<div class="offres-filtres">
 			<div class="offres-filtres-header">
 				Filtres
-				<i class="material-icons hide-on-laptop vertical-align-bottom cursor-pointer filtresBtnClose float-right"> close</i>
+				<i class="notranslate  material-icons hide-on-laptop vertical-align-bottom cursor-pointer filtresBtnClose float-right"> close</i>
 			</div>
 			<form method="post" action="<?php echo _ROOT_PATH; ?>job/offers/" class="offres-filtres-body">
 				<div class="input-block">
@@ -121,8 +121,8 @@ $offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
 						</div>
 						<div class="ep-text">
 							<span class="ep-title"><?php echo $subdomain->getName(); ?></span>
-							<span class="ep-city"><i class="material-icons vertical-align-bottom">location_on</i><?php echo $city->getName(); ?></span>
-							<span class="ep-added_at"><i class="material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
+							<span class="ep-city"><i class="notranslate  material-icons vertical-align-bottom">location_on</i><?php echo $city->getName(); ?></span>
+							<span class="ep-added_at"><i class="notranslate  material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
 						</div>
 					</a>
 				<?php } ?>
@@ -132,14 +132,14 @@ $offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
 				<div class="breadcrumb-block">
 					<div class="breadcrumb-contain">
 						<?php if($pageActuelle >  1){ ?>
-							<a class="breadcrumb-item" href="<?php echo _ROOT_PATH; ?>job/offers/p/<?php echo $pageActuelle - 1; ?>"><i class="material-icons vertical-align-bottom"> chevron_left </i></a>
+							<a class="breadcrumb-item" href="<?php echo _ROOT_PATH; ?>job/offers/p/<?php echo $pageActuelle - 1; ?>"><i class="notranslate  material-icons vertical-align-bottom"> chevron_left </i></a>
 						<?php }for($i = 1; $i < $nombreDePages+1; $i++){
 							if($i == $pageActuelle){ ?>
 								<span class="breadcrumb-item breadcrumb-item-active"><?php echo $i; ?></span>
 							<?php  }else{ ?>
 								<a class="breadcrumb-item" href="<?php echo _ROOT_PATH; ?>job/offers/p/<?php echo $i; ?>"><?php echo $i; ?></a>
 							<?php }}if($pageActuelle <= $nombreDePages - 1){ ?>
-								<a class="breadcrumb-item" href="<?php echo _ROOT_PATH; ?>job/offers/p/<?php echo $pageActuelle + 1; ?>"><i class="material-icons vertical-align-bottom"> chevron_right </i></a>
+								<a class="breadcrumb-item" href="<?php echo _ROOT_PATH; ?>job/offers/p/<?php echo $pageActuelle + 1; ?>"><i class="notranslate  material-icons vertical-align-bottom"> chevron_right </i></a>
 							<?php } ?>
 						</div>
 					</div>

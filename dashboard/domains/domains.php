@@ -3,7 +3,7 @@
 <?php // Button for add modal ?>
 <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
 <span class="btnAdd btnAddAdmin" id="btnAddDomain">
-  <i class="material-icons vertical-align-bottom margin-right-5">add</i>
+  <i class="notranslate  material-icons vertical-align-bottom margin-right-5">add</i>
   <span class="">Ajouter un domaine</span>
 </span>
 <?php } ?>
@@ -46,15 +46,15 @@ $domains = $domain->getDomains();
         <span class="suggest_title"  style="max-width: 100%; overflow: hidden; height: 1.4em;" title="<?php echo ucfirst(htmlspecialchars_decode($domain->getName())); ?>"> <?php echo ucfirst(htmlspecialchars_decode($domain->getName())); ?></span>
       </div>
       <div class="suggest_row">
-        <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($domain->getAdded_at()); ?></span>
+        <span class="suggest_col"><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($domain->getAdded_at()); ?></span>
 
         <div class="suggest_col float-right">
           <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
           <span class="btnEdit" id="btnEditDomain<?php echo $domain->getId(); ?>" title="Modifier cet domaine">
-            <i class="material-icons vertical-align-bottom">edit</i>
+            <i class="notranslate  material-icons vertical-align-bottom">edit</i>
           </span>
           <span class="btnDelete" id="btnDeleteDomain<?php echo $domain->getId(); ?>" title="Supprimer ce domaine">
-            <i class="material-icons vertical-align-bottom">close</i>
+            <i class="notranslate  material-icons vertical-align-bottom">close</i>
           </span>
           <?php } ?>
         </div>
@@ -128,7 +128,7 @@ $domains = $domain->getDomains();
   <div class="item_deleteModal_shadow" id="deleteDomainModal<?php echo $domain->getId(); ?>">
     <div class="item_deleteModal">
       <div class="item_deleteModal_body">
-        <i class="material-icons">warning</i>
+        <i class="notranslate  material-icons">warning</i>
         <span>Voulez vous vraiment supprimer le domaine No <?php echo $domain->getId(); ?> ?</span>
 
       </div>

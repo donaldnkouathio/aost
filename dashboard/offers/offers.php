@@ -3,7 +3,7 @@
 <?php // Button for add modal ?>
 <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
 <span class="btnAdd btnAddAdmin" id="btnAdd">
-  <i class="material-icons vertical-align-bottom margin-right-5">add</i>
+  <i class="notranslate  material-icons vertical-align-bottom margin-right-5">add</i>
   <span class="">Ajouter une offre d'emploi</span>
 </span>
 <?php } ?>
@@ -82,10 +82,10 @@ $offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
         <td>
           <div class="item_setting">
             <span class="btnEdit" id="btnEdit<?php echo $i; ?>" title="Modifier">
-              <i class="material-icons vertical-align-bottom">mode_edit</i>
+              <i class="notranslate  material-icons vertical-align-bottom">mode_edit</i>
             </span>
             <span class="btnDelete" id="btnDelete<?php echo $i; ?>" title="Supprimer">
-              <i class="material-icons vertical-align-bottom">close</i>
+              <i class="notranslate  material-icons vertical-align-bottom">close</i>
             </span>
           </div>
         </td>
@@ -114,18 +114,18 @@ $offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
       <span class="suggest_title"> <?php echo ucfirst($subdomain->getName()); ?></span>
     </div>
     <div class="suggest_row">
-      <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">domain</i><?php echo ucfirst($offer->getCompagny()); ?></span>
-      <span class="suggest_col float-right"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">location_on</i><?php echo ucfirst($city->getName()); ?></span>
+      <span class="suggest_col"><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">domain</i><?php echo ucfirst($offer->getCompagny()); ?></span>
+      <span class="suggest_col float-right"><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">location_on</i><?php echo ucfirst($city->getName()); ?></span>
     </div>
     <div class="suggest_row">
-      <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
+      <span class="suggest_col"><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
       <div class="suggest_col float-right">
         <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
         <span class="btnEdit" id="btnEdit<?php echo $i; ?>" title="Modifier">
-          <i class="material-icons vertical-align-bottom">mode_edit</i>
+          <i class="notranslate  material-icons vertical-align-bottom">mode_edit</i>
         </span>
         <span class="btnDelete" id="btnDelete<?php echo $i; ?>" title="Supprimer">
-          <i class="material-icons vertical-align-bottom">close</i>
+          <i class="notranslate  material-icons vertical-align-bottom">close</i>
         </span>
         <?php } ?>
       </div>
@@ -139,14 +139,14 @@ $offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
   <div class="breadcrumb-block">
     <div class="breadcrumb-contain">
       <?php if($pageActuelle >  1){ ?>
-        <a class="breadcrumb-item" href="<?php echo _DASHBOARD_PATH; ?>offers/p/<?php echo $pageActuelle - 1; ?>"><i class="material-icons vertical-align-bottom"> chevron_left </i></a>
+        <a class="breadcrumb-item" href="<?php echo _DASHBOARD_PATH; ?>offers/p/<?php echo $pageActuelle - 1; ?>"><i class="notranslate  material-icons vertical-align-bottom"> chevron_left </i></a>
       <?php }for($i = 1; $i < $nombreDePages+1; $i++){
         if($i == $pageActuelle){ ?>
           <span class="breadcrumb-item breadcrumb-item-active"><?php echo $i; ?></span>
         <?php  }else{ ?>
           <a class="breadcrumb-item" href="<?php echo _DASHBOARD_PATH; ?>offers/p/<?php echo $i; ?>"><?php echo $i; ?></a>
         <?php }}if($pageActuelle <= $nombreDePages - 1){ ?>
-          <a class="breadcrumb-item" href="<?php echo _DASHBOARD_PATH; ?>offers/p/<?php echo $pageActuelle + 1; ?>"><i class="material-icons vertical-align-bottom"> chevron_right </i></a>
+          <a class="breadcrumb-item" href="<?php echo _DASHBOARD_PATH; ?>offers/p/<?php echo $pageActuelle + 1; ?>"><i class="notranslate  material-icons vertical-align-bottom"> chevron_right </i></a>
         <?php } ?>
       </div>
     </div>
@@ -241,7 +241,7 @@ $offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
     <div class="item_deleteModal_shadow" id="deleteModal<?php echo $i; ?>">
       <div class="item_deleteModal">
         <div class="item_deleteModal_body">
-          <i class="material-icons">warning</i>
+          <i class="notranslate  material-icons">warning</i>
           <span>Voulez vous vraiment supprimer l'orffre d'emploi No <?php echo $offer->getId(); ?> ?</span>
 
           <input type="hidden" name="id<?php echo $i; ?>" id="id<?php echo $i; ?>" value="<?php echo $offer->getId(); ?>">

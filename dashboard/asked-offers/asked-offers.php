@@ -1,7 +1,7 @@
 <h2 class="margin-top-none">Candidatures <?php if(isset($_GET["prompt"])){ echo "spontanées";} ?></h2>
 
 <div class="show_auther_page_indicateur">
-  <i class="material-icons vertical-align-bottom background-primary">info</i>
+  <i class="notranslate  material-icons vertical-align-bottom background-primary">info</i>
   <label for="prompt">Afficher les candidatures spontanées
     <?php if(!isset($_GET["prompt"])){ ?>
       <sup style="color: var(--color-danger)" class="prompt-application-indicator"></sup>
@@ -59,11 +59,11 @@ $candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $candida
         <span class="suggest_col">Candidature No <?php echo $candidacy->getId(); ?></span>
       </div>
       <div class="suggest_row">
-        <span class="suggest_title"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">person</i> <?php echo htmlspecialchars_decode($candidacy->getName())." ".htmlspecialchars_decode($candidacy->getFirst_name()); ?></span>
+        <span class="suggest_title"><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">person</i> <?php echo htmlspecialchars_decode($candidacy->getName())." ".htmlspecialchars_decode($candidacy->getFirst_name()); ?></span>
       </div>
       <div class="suggest_row">
         <span class="suggest_col" style="max-width: 100%; overflow: hidden; height: 1.4em;" title="Domaines : <?php echo str_replace(",", " - ", htmlspecialchars_decode($candidacy->getDomains())); ?>">
-          <i class="material-icons vertical-align-bottom margin-right-5 background-primary">domain</i>
+          <i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">domain</i>
           Domaines : <?php echo str_replace(",", " - ", htmlspecialchars_decode($candidacy->getDomains())); ?>
         </span>
       </div>
@@ -72,14 +72,14 @@ $candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $candida
         <span class="suggest_row">Intéréssé par l'offre No <?php echo $candidacy->getId_offer(); ?></span>
         <a href="<?php echo _ROOT_PATH."job/offers/a/Offres d'emploi/".$candidacy->getId_offer()."/" ?>" target="_blank" class="btnEdit" id="" title="Voir l'offre">
           Voir l'offre
-          <i class="material-icons vertical-align-bottom">launch</i>
+          <i class="notranslate  material-icons vertical-align-bottom">launch</i>
         </a>
       </div>
       <?php } ?>
       <div class="suggest_row">
         <?php if($candidacy->getCv_file() != ""){ ?>
         <span class="btnEdit" id="btnSeeCV<?php echo $candidacy->getId(); ?>" title="Voir le CV" style="margin-left: 5px">
-          <i class="material-icons vertical-align-bottom">insert_drive_file</i>
+          <i class="notranslate  material-icons vertical-align-bottom">insert_drive_file</i>
           CV
         </span>
         <?php } ?>
@@ -88,17 +88,17 @@ $candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $candida
             if($candidacy->getMotivation_file() != ""){
         ?>
         <span class="btnEdit" id="btnSeeMotivation<?php echo $candidacy->getId(); ?>" title="Voir la lettre de motivation">
-          <i class="material-icons vertical-align-bottom">insert_drive_file</i>
+          <i class="notranslate  material-icons vertical-align-bottom">insert_drive_file</i>
           Lettre de motivation
         </span>
         <?php }} ?>
       </div>
       <div class="suggest_row">
-        <span><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($candidacy->getAdded_at()); ?></span>
+        <span><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($candidacy->getAdded_at()); ?></span>
 
         <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
         <span class="btnDelete float-right" id="btnDeleteCandidacy<?php echo $candidacy->getId(); ?>" title="Supprimer cette candidature">
-          <i class="material-icons vertical-align-bottom">close</i>
+          <i class="notranslate  material-icons vertical-align-bottom">close</i>
           Supprimer
         </span>
         <?php } ?>
@@ -158,7 +158,7 @@ $candidacies = !isset($_GET["prompt"]) ? $candidacy->getCandidacys() :  $candida
   <div class="item_deleteModal_shadow" id="deleteCandidacyModal<?php echo $candidacy->getId(); ?>">
     <div class="item_deleteModal">
       <div class="item_deleteModal_body">
-        <i class="material-icons">warning</i>
+        <i class="notranslate  material-icons">warning</i>
         <span>Voulez vous vraiment supprimer la candidature No <?php echo $candidacy->getId(); ?> ?</span>
 
       </div>

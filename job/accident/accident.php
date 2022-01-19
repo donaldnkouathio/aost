@@ -17,7 +17,7 @@
       </p>
 
       <ul>
-        <li>	Un coaching et un suivi réguliers auprès de la personne-ressource d’<b>Alpha Omega Solutions Travail Inc.</b>;</li>
+        <li>	Un coaching et un suivi réguliers auprès de la personne-ressource d’<b><span class="notranslate">Alpha Omega Solutions Travail inc.</span></b>;</li>
         <li>	Une analyse minutieuse des dossiers actifs suivie des recommandations,</li>
         <li>	Une intervention rapide auprès de la CNESST;</li>
         <li>	 Des expertises médicales;</li>

@@ -8,7 +8,7 @@
       <h2 class="margin-bottom-none">SERVICES OFFERTS AUX CANDIDATS À UN EMPLOI</h2>
 
       <ul class="margin-top-none">
-        <li>	<strong>Alpha Omega Solutions Travail Inc.</strong> vous trouvera un emploi idéal  (permanent ou temporaire) et vous offrira un autre le plus tôt possible.</li>
+        <li>	<strong><span class="notranslate">Alpha Omega Solutions Travail inc.</span></strong> vous trouvera un emploi idéal  (permanent ou temporaire) et vous offrira un autre le plus tôt possible.</li>
         <li>	Vous aurez droit à  une formation pré-emploi et à une formation gratuite.</li>
         <li>	Nous ferons des vérifications pré-emploi.</li>
         <li>	Vous devez remplir des formulaires.</li>

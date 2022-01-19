@@ -1,7 +1,7 @@
 <h2 class="margin-top-none">Requêtes d'entreprises</h2>
 
 <div style="display:none" class="show_auther_page_indicateur">
-  <i class="material-icons vertical-align-bottom background-primary">info</i>
+  <i class="notranslate  material-icons vertical-align-bottom background-primary">info</i>
   <label for="contact">Afficher les contacts d'AOST </label>
   <input type="checkbox" name="contact" id="contact" value="" <?php if(isset($_GET["contact"])){echo "checked";} ?>>
 </div>
@@ -55,22 +55,22 @@ $requests = $request->getRequests();
         <span class="suggest_col">Requête No <?php echo $request->getId(); ?></span>
       </div>
       <div class="suggest_row">
-        <span class="suggest_title"><i class="material-icons vertical-align-bottom background-primary">business</i> <?php echo htmlspecialchars_decode($request->getCompagny()); ?></span>
+        <span class="suggest_title"><i class="notranslate  material-icons vertical-align-bottom background-primary">business</i> <?php echo htmlspecialchars_decode($request->getCompagny()); ?></span>
       </div>
       <div class="suggest_row">
-        <span class="suggest_col"><i class="material-icons vertical-align-bottom background-primary">location_on</i> <?php echo htmlspecialchars_decode($request->getCity()); ?></span>
+        <span class="suggest_col"><i class="notranslate  material-icons vertical-align-bottom background-primary">location_on</i> <?php echo htmlspecialchars_decode($request->getCity()); ?></span>
 
         <span class="btnEdit float-right" id="btnSeeMore<?php echo $request->getId(); ?>" title="Voir plus">
-         <i class="material-icons vertical-align-bottom">visibility</i>
+         <i class="notranslate  material-icons vertical-align-bottom">visibility</i>
          Voir plus
        </span>
       </div>
       <div class="suggest_row">
-        <span class="suggest_col"><i class="material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($request->getAdded_at()); ?></span>
+        <span class="suggest_col"><i class="notranslate  material-icons vertical-align-bottom margin-right-5 background-primary">today</i><?php echo get_elapsed_time($request->getAdded_at()); ?></span>
 
         <?php if($_SESSION["role"] != $session->getRole_3()){ ?>
         <span class="btnDelete float-right" id="btnDelete<?php echo $request->getId(); ?>" title="Supprimer">
-          <i class="material-icons vertical-align-bottom">close</i>
+          <i class="notranslate  material-icons vertical-align-bottom">close</i>
           Supprimer
         </span>
         <?php } ?>
@@ -136,7 +136,7 @@ $requests = $request->getRequests();
   <div class="item_deleteModal_shadow" id="deleteModal<?php echo $request->getId(); ?>">
     <div class="item_deleteModal">
       <div class="item_deleteModal_body">
-        <i class="material-icons">warning</i>
+        <i class="notranslate  material-icons">warning</i>
         <span>Voulez vous vraiment supprimer la requête No <?php echo $request->getId(); ?> ?</span>
 
       </div>

@@ -2,7 +2,7 @@
     <div class="footer-body offset-10-laptop">
       <div class="footer-logo">
         <img src="<?php echo _ROOT_PATH; ?>img/logo.png" alt="Logo AOST">
-        <h1>Alpha Omega Solutions Travail Inc</h1>
+        <h1><span class="notranslate">Alpha Omega Solutions Travail inc.</span></h1>
       </div>
 
       <div class="footer-container">
@@ -11,28 +11,28 @@
           <h3 class="margin-bottom-none">Bureau principal</h3>
 
           <p class="margin-top-none">
-            <span class="material-icons vertical-align-bottom margin-right-5">phone</span>
+            <span class="notranslate material-icons vertical-align-bottom margin-right-5">phone</span>
             <a style="color: white" href='tel:+1 514-612-0043'>+1 514-612-0043</a> - Bureau
             <br>
-            <span class="material-icons vertical-align-bottom margin-right-5">phone</span>
+            <span class="notranslate material-icons vertical-align-bottom margin-right-5">phone</span>
             <a style="color: white" href='tel:+1 514-559-7850'>+1 514-559-7850</a> - Direction
             <br>
-            <span class="material-icons vertical-align-bottom margin-right-5">phone</span>
+            <span class="notranslate material-icons vertical-align-bottom margin-right-5">phone</span>
             <a style="color: white" href='tel:+1 514-621-7850'>+1 514-621-7850</a> - Direction
             <br>
             <span style="margin-top: 10px;" class="material-icons vertical-align-bottom margin-right-5">email</span>
             <a style="color: white" href='mailto:info@alphaomegasolutionstravail.ca'> Info@alphaomegasolutionstravail.ca</a>
             <br>
-            <span class="material-icons vertical-align-bottom margin-right-5">email</span>
+            <span class="notranslate material-icons vertical-align-bottom margin-right-5">email</span>
             <a style="color: white" href='mailto:rh@alphaomegasolutionstravail.ca'> RH@alphaomegasolutionstravail.ca</a>
             <br>
-            <span class="material-icons vertical-align-bottom margin-right-5">email</span>
+            <span class="notranslate material-icons vertical-align-bottom margin-right-5">email</span>
             <a style="color: white" href='mailto:paie@alphaomegasolutionstravail.ca'> Paie@alphaomegasolutionstravail.ca</a>
             <br>
-            <span class="material-icons vertical-align-bottom margin-right-5">email</span>
+            <span class="notranslate material-icons vertical-align-bottom margin-right-5">email</span>
             <a style="color: white" href='mailto:dr@alphaomegasolutionstravail.ca'> DR@alphaomegasolutionstravail.ca</a>
             <br>
-            <span class="material-icons vertical-align-bottom margin-right-5">email</span>
+            <span class="notranslate material-icons vertical-align-bottom margin-right-5">email</span>
             <a style="color: white" href='mailto:partenaires@alphaomegasolutionstravail.ca'> Partenaires@alphaomegasolutionstravail.ca</a>
             <br>
             <span style="margin-top: 10px;" class="material-icons vertical-align-bottom margin-right-5">location_on</span>
@@ -44,10 +44,10 @@
         <div class="footer-contain">
           <h3 class="margin-bottom-none">Siège social</h3>
           <p class="margin-top-none">
-            <span class="material-icons vertical-align-bottom margin-right-5">phone</span>
+            <span class="notranslate material-icons vertical-align-bottom margin-right-5">phone</span>
             <a style="color: white" href='tel:+1 438-289-5095'> +1 438-289-5095</a>
             <br>
-            <span class="material-icons vertical-align-bottom margin-right-5">phone</span>
+            <span class="notranslate material-icons vertical-align-bottom margin-right-5">phone</span>
             <a style="color: white" href='tel:+1 438-938-8292'> +1 438-938-8292</a>
             <br>
             <span style="margin-top: 10px;" class="material-icons vertical-align-bottom margin-right-5">location_on</span>
@@ -90,10 +90,10 @@
       <br>
       <b style="margin-bottom: 15px; display: inline-block">Donald NKOUATHIO</b>
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
       <a href='tel:+237 655 203 951'> +237 655 203 951</a>
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
       <a href='mailto:donaldnkouathio@gmail.com'> Donaldnkouathio@gmail.com</a>
     </div>
 
@@ -111,10 +111,10 @@
       <br>
       <b style="margin-bottom: 15px; display: inline-block">Dimitri BEYENE</b>
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
       <a href='tel:+237 692 503 797'> +237 692 503 797</a>
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
       <a href='mailto:dimcompte@gmail.com'> Dimcompte@gmail.com</a>
     </div>
 
@@ -132,10 +132,10 @@
       <br>
       <b style="margin-bottom: 15px; display: inline-block">Dilane OHNO</b>
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
       <a href='tel:+237 697 494 078'> +237 697 494 078</a>
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
       <a href='mailto:ohnodilane@gmail.com'> Ohnodilane@gmail.com</a>
     </div>
 

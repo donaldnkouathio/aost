@@ -7,7 +7,7 @@
       <h2 class="margin-bottom-none">ENTREPRISES ET CLIENTS PARTENAIRES  </h2>
 
       <ul class="margin-top-none">
-        <li>	<strong>Alpha Omega Solutions Travail Inc.</strong> couvre en tout temps vos besoins en main d’œuvre et en ressources humaines que ce soit des travailleurs qualifiés ou non. </li>
+        <li>	<strong><span class="notranslate">Alpha Omega Solutions Travail inc.</span></strong> couvre en tout temps vos besoins en main d’œuvre et en ressources humaines que ce soit des travailleurs qualifiés ou non. </li>
         <li>	Nous formons nos employés avant de les mettre à votre disposition. </li>
         <li>	Un conseiller responsable de secteur d’activité répondra à vos besoins et vos questions.</li>
         <li>	Un conseiller vous contactera dès réception de votre demande de manière à dresser un portrait exhaustif de votre entreprise et de vos besoins.</li>
@@ -50,13 +50,13 @@
         <li>	Nous attribuons aux employés un numéro matricule et établissons une fiche de paie pour l’employé.</li>
         <li>	Nous vous communiquons avec l’entreprise ou le client partenaire durant le processus de recrutement, de sélection et d’embauche.</li>
         <li>	Nous faisons le suivi régulier après l’embauche et assurons la formation continue de l’employé par nos experts dans votre secteur de travail.</li>
-        <li>	Vous pour pouvez choisir d'embaucher un candidat fourni par <strong>Alpha Omega Solutions Travail Inc.</strong> Toutefois, cet employé temporaire doit avoir été à notre service pour une période d’au moins 750 heures dans votre entreprise pour bénéficier d’une telle embauche. Une compensation financière conforme à nos règlements doit être versée à <strong>Alpha Omega Solutions Travail Inc.</strong> par de l’entreprise ou du client partenaire pour compenser une embauche faite avant l’atteinte du nombre d’heures inférieures au quota de 750 heures de travail à notre service.  </li>
+        <li>	Vous pour pouvez choisir d'embaucher un candidat fourni par <strong><span class="notranslate">Alpha Omega Solutions Travail inc.</span></strong> Toutefois, cet employé temporaire doit avoir été à notre service pour une période d’au moins 750 heures dans votre entreprise pour bénéficier d’une telle embauche. Une compensation financière conforme à nos règlements doit être versée à <strong><span class="notranslate">Alpha Omega Solutions Travail inc.</span></strong> par de l’entreprise ou du client partenaire pour compenser une embauche faite avant l’atteinte du nombre d’heures inférieures au quota de 750 heures de travail à notre service.  </li>
         <li>	Certains des employés travaillant chez nos partenaires pourront y devenir des permanents selon des délais et des dispositions bien précises. </li>
       </ul>
 
       <p>
         <citaion>
-          Aimeriez-vous   confier la recherche de leurs employés à <strong>Alpha Omega Solutions Travail Inc.</strong>? Alors, profitez des services de nos meilleurs candidats bien formés et compétents pour combler plusieurs de vos postes temporaires ou permanents. Prenez donc rendez-vous avec nous. Merci pour votre confiance en nos services de recrutement. Faites donc affaire avec nous. Merci pour la confiance placée en nous.
+          Aimeriez-vous   confier la recherche de leurs employés à <strong><span class="notranslate">Alpha Omega Solutions Travail inc.</span></strong>? Alors, profitez des services de nos meilleurs candidats bien formés et compétents pour combler plusieurs de vos postes temporaires ou permanents. Prenez donc rendez-vous avec nous. Merci pour votre confiance en nos services de recrutement. Faites donc affaire avec nous. Merci pour la confiance placée en nous.
         </citaion>
       </p>
     </div>

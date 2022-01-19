@@ -4,7 +4,7 @@
     <h2 class="margin-bottom-none">Bureau principal</h2>
     <h3 class="margin-bottom-none margin-top-none">Coordonées</h3>
     <p class="margin-top-none">
-      <i class="material-icons vertical-align-bottom icon"> location_on </i>
+      <i class="notranslate  material-icons vertical-align-bottom icon"> location_on </i>
       880 BOULEVARD DECARIE, H4L1M3, Montréal, Saint-Laurent, Québec, Canada
     </p>
 
@@ -12,38 +12,38 @@
 
     <h3 class="margin-bottom-none margin-top-none">Contacts</h3>
     <p class="margin-top-none">
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
       <a style="" href='tel:+1 514-612-0043'>+1 514-612-0043</a> - Bureau
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
       <a style="" href='tel:+1 514-559-7850'>+1 514-559-7850</a> - Direction
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
       <a style="" href='tel:+1 514-621-7850'>+1 514-621-7850</a> - Direction
     </p>
 
     <h3 class="margin-bottom-none margin-top-none">Courriels</h3>
     <p class="margin-top-none">
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
       <a style="" href='mailto:info@alphaomegasolutionstravail.ca'> Info@alphaomegasolutionstravail.ca</a>
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
       <a style="" href='mailto:rh@alphaomegasolutionstravail.ca'> RH@alphaomegasolutionstravail.ca</a>
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
       <a style="" href='mailto:paie@alphaomegasolutionstravail.ca'> Paie@alphaomegasolutionstravail.ca</a>
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
       <a style="" href='mailto:dr@alphaomegasolutionstravail.ca'> DR@alphaomegasolutionstravail.ca</a>
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">email</span>
       <a style="" href='mailto:partenaires@alphaomegasolutionstravail.ca'> Partenaires@alphaomegasolutionstravail.ca</a>
     </p>
 
     <h2 class="margin-bottom-none">Siège social</h2>
     <h3 class="margin-bottom-none margin-top-none">Coordonées</h3>
     <p class="margin-top-none">
-      <i class="material-icons vertical-align-bottom icon"> location_on </i>
+      <i class="notranslate  material-icons vertical-align-bottom icon"> location_on </i>
       2232 Rue Noel, H4M1R9 Montréal
     </p>
 
@@ -51,10 +51,10 @@
 
     <h3 class="margin-bottom-none margin-top-none">Contacts</h3>
     <p class="margin-top-none">
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
       <a style="" href='tel:+1 438-289-5095'> +1 438-289-5095</a>
       <br>
-      <span class="material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
+      <span class="notranslate material-icons vertical-align-bottom margin-right-5 background-primary">phone</span>
       <a style="" href='tel:+1 438-938-8292'> +1 438-938-8292</a>
     </p>
   </div>
@@ -107,7 +107,7 @@
 <div class="alert_modal_shadow alert_modal_shadow_request">
   <div class="alert_modal_block">
     <div class="alert_modal_body">
-      <i class="material-icons">check_circle</i>
+      <i class="notranslate  material-icons">check_circle</i>
       <span>Envoyé avec success</span>
     </div>
 
