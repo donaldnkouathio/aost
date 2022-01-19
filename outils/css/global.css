@@ -19,10 +19,6 @@
 }
 
 /* Google Translate */
-.btn-google-translate{
-  position: fixed;
-  right: 0px;
-}
 
 .translated-ltr{margin-top:-40px;}
 .translated-ltr{margin-top:-40px;}
@@ -37,7 +33,6 @@
 }
 .goog-te-gadget {
  color: transparent !important;
- margin-top: 15px;
 }
 
 .goog-te-gadget .goog-te-combo {
@@ -432,6 +427,25 @@ citaion{
     right: 0% !important;
     border-radius: 0px !important;
   }
+
+  /* AOST */
+  .presentation_mobile{
+    display: inline-block !important;
+  }
+  .presentation_tablette{
+    display: none !important;
+  }
+}
+
+/* Tablette only */
+@media (min-width: 576px) and (max-width: 991px) {
+  /* AOST */
+  .presentation_mobile{
+    display: none !important;
+  }
+  .presentation_tablette{
+    display: inline-block !important;
+  }
 }
 
 /* Tablette */
@@ -477,6 +491,16 @@ citaion{
     padding-right: 15px;
   }
   /* *** */
+
+  .goog-te-gadget {
+    margin-bottom: 15px !important;
+    margin-right: -15px;
+  }
+  .btn-google-translate{
+    position: fixed;
+    right: 0px;
+    right: 80px;
+  }
 }
 
 /* Laptop */
@@ -487,6 +511,18 @@ citaion{
   .hide-on-laptop{
     display: none !important;
   }
+  /* AOST */
+  .presentation_mobile{
+    display: none !important;
+  }
+  .presentation_tablette{
+    display: none !important;
+  }
+
+  .goog-te-gadget {
+   margin-top: 15px;
+  }
+
   .offset-10-laptop{
     margin-left: 10%;
     margin-right: 10%;
