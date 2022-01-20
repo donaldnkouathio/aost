@@ -9,7 +9,7 @@
         <div class="footer-contain">
           <h3 class="margin-bottom-none">Siège social</h3>
           <p class="margin-top-none">
-          <span style="margin-top: 10px;" class="material-icons vertical-align-bottom margin-right-5">location_on</span>
+            <span style="margin-top: 10px;" class="material-icons vertical-align-bottom margin-right-5">location_on</span>
             2232 Rue Noel, H4M1R9 Montréal
           </p>
         </div>
@@ -26,7 +26,7 @@
 
         <div class="footer-contain">
           <h3 class="margin-bottom-none">Suivez-nous</h3>
-          <p class="margin-top-none"><a href="https://www.facebook.com/ALPHA-OMEGA-Solutions-Travail-AOST-120693572651635/" target="_blank" style="color: white">Facebook</a></p>
+          <p class="margin-top-none"><a href="https://www.facebook.com/ALPHA-OMEGA-Solutions-Travail-AOST-120693572651635/" rel="noopener" target="_blank" style="color: white">Facebook</a></p>
         </div>
 
         <div class="footer-contain">
@@ -146,7 +146,7 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="<?php echo _ROOT_PATH; ?>outils/js/global.js"></script>
+    <script type="text/javascript" src="<?php echo _ROOT_PATH; ?>outils/js/global.js" defer></script>
     <script>
       $(document).ready(function(){
         //Show or hide modal
@@ -166,10 +166,10 @@
        toggleModal($(".dim"), $(".show_about_author_dim"), $(".alert_modal_close, .alert_modal_shadow"));
        toggleModal($(".dil"), $(".show_about_author_dil"), $(".alert_modal_close, .alert_modal_shadow"));
      });
-    </script>
+   </script>
 
 
-  </footer>
+ </footer>
 
 </body>
 </html>

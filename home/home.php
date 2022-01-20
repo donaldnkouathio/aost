@@ -1,9 +1,10 @@
 <div class="container-box" style="background-image: url('<?php echo _ROOT_PATH; ?>img/bg/bg1.jpg');">
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body" style="">
-      <div class="container-title">L'agence qui facilite votre recherche d'emploi</div>
+      <div class="container-title"><h1 class="less-size-title">L'agence qui facilite votre recherche d'emploi</h1></div>
       <form method="post" action="<?php echo _ROOT_PATH; ?>job/offers/" class="form-offres-block">
         <div class="input-search">
+          <label for="inputSearchInput"></label>
           <input type="text" name="keyword" id="inputSearchInput" autocomplete="off" placeholder="Rechercher un emploi...">
 
           <!-- Auto Suggest -->

@@ -38,6 +38,7 @@ $offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
 				<div class="container-title">L'agence qui facilite votre recherche d'emploi</div>
 				<form method="post" action="<?php echo _ROOT_PATH; ?>job/offers/" class="form-offres-block">
 					<div class="input-search">
+						<label for="inputSearchInput"></label>
 						<input type="text" name="keyword" class="" id="inputSearchInput" autocomplete="off" placeholder="Rechercher un emploi..." value="<?php if(isset($_POST["keyword"])){echo $_POST["keyword"];} ?>">
 
 						<!-- Auto Suggest -->
