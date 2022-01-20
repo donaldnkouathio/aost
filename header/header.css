@@ -218,6 +218,10 @@ header{
     overflow: hidden;
     font-weight: bold;
     color: var(--color-primary) !important;
+    text-transform: lowercase;
+  }
+  .domain-block span{
+    min-height: 4.5em;
   }
   .domain-block span:hover, .job-block li a:hover{
     color: var(--color-primary) !important;

@@ -34,14 +34,19 @@
   display: inline-block;
   width: 100%;
 }
+.ep-id{
+  font-size: 0.9em;
+  display: inline-block;
+  padding: 15px 15px 0 5px;
+}
 .ep-title{
   display: block;
   word-wrap: break-word;
   overflow: hidden;
-  height: auto;
   font-weight: bold;
   color: var(--color-primary);
-  padding: 15px 15px 0 5px;
+  padding: 5px 15px 0 5px;
+  min-height: 3em;
   text-transform: capitalize;
 }
 .ep-city, .ep-added_at{

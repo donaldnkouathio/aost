@@ -3,7 +3,12 @@
   <div class="container-box" style="background-image: url('<?php echo _ROOT_PATH; ?>img/bg/bg1.jpg'); ">
     <div class="container-box-shadow">
       <div class="offset-10-laptop container-box-body" style="">
-        <div class="container-title"><?php echo ucwords(htmlspecialchars_decode($subdomain->getName())); ?></div>
+        <div class="container-title">
+          <div class="" style="font-weight: normal; font-size: 0.4em;">
+            - Offre d'emploi No <?php echo $offer->getId(); ?> -
+          </div>
+          <?php echo ucwords(htmlspecialchars_decode($subdomain->getName())); ?>
+        </div>
       </div>
     </div>
   </div>
