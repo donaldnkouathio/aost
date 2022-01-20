@@ -1,9 +1,10 @@
 <div class="container-box" style="background-image: url('<?php echo _ROOT_PATH; ?>img/bg/bg1.jpg');">
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body" style="">
-      <div class="container-title">L'agence qui facilite votre recherche d'emploi</div>
+      <div class="container-title"><h1 class="less-size-title">L'agence qui facilite votre recherche d'emploi</h1></div>
       <form method="post" action="<?php echo _ROOT_PATH; ?>job/offers/" class="form-offres-block">
         <div class="input-search">
+          <label for="inputSearchInput"></label>
           <input type="text" name="keyword" id="inputSearchInput" autocomplete="off" placeholder="Rechercher un emploi...">
 
           <!-- Auto Suggest -->
@@ -51,7 +52,7 @@
 <div class="container-box" style="background-image: url('<?php echo _ROOT_PATH; ?>img/bg/bg4.jpg');">
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body">
-      <div class="container-title container-text_1-title"><h3>Vous chercher un emploi ? </h3></div>
+      <div class="container-title container-text_1-title"><h1>Vous cherchez un emploi ? </h1></div>
       <div class="left_right_container">
         <div class="container-text_1 left-block">
           <span>Consultez notre catalogue d'offres d'emploi et postulez</span>

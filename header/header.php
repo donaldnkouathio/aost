@@ -11,7 +11,7 @@
     <ul class="nav-contain-left hide-on-mobile" style="">
       <li><a href="<?php echo _ROOT_PATH; ?>" class="<?php if($session->getCurrentPage()=="home"){echo "link-hover";} ?> nav-link">Accueil</a></li>
       <li>
-        <a class="<?php if($session->getCurrentPage()=="Offres d'emplois"){echo "link-hover";} ?> nav-link">Emplois <i class="notranslate  material-icons vertical-align-bottom"> keyboard_arrow_down </i></a>
+        <a href="#" class="<?php if($session->getCurrentPage()=="Offres d'emplois"){echo "link-hover";} ?> nav-link">Emplois <i class="notranslate  material-icons vertical-align-bottom"> keyboard_arrow_down </i></a>
 
         <ul class="job-block">
           <li><a href="<?php echo _ROOT_PATH; ?>job/offers" class="<?php if($session->getCurrentSubPage()=="Offres d'emplois"){echo "sub-link-hover";} ?>">Offres d'emploi</a></li>
@@ -24,7 +24,7 @@
         </ul>
       </li>
       <li>
-        <a class="<?php if($session->getCurrentPage()=="domains"){echo "link-hover";} ?> nav-link">Domaines <i class="notranslate  material-icons vertical-align-bottom"> keyboard_arrow_down </i></a>
+        <a href="#" class="<?php if($session->getCurrentPage()=="domains"){echo "link-hover";} ?> nav-link">Domaines <i class="notranslate  material-icons vertical-align-bottom"> keyboard_arrow_down </i></a>
 
         <ul>
           <?php
@@ -58,12 +58,12 @@
       <ul class="nav-mobile-body">
         <li><a href="<?php echo _ROOT_PATH; ?>" class="<?php if($session->getCurrentPage()=="home"){echo "link-mobile-hover";} ?>">Accueil</a></li>
 
-        <li id="subNavEmploiBtn"><a  class="<?php if($session->getCurrentPage()=="Offres d'emplois"){echo "link-mobile-hover";} ?>">
+        <li id="subNavEmploiBtn"><a href="#" class="<?php if($session->getCurrentPage()=="Offres d'emplois"){echo "link-mobile-hover";} ?>">
           Emploi
           <i class="notranslate  material-icons vertical-align-bottom" style="float:right"> chevron_right </i>
         </a></li>
 
-        <li id="subNavDomainesBtn"><a class="<?php if($session->getCurrentPage()=="domains"){echo "link-mobile-hover";} ?>">
+        <li id="subNavDomainesBtn"><a href="#" class="<?php if($session->getCurrentPage()=="domains"){echo "link-mobile-hover";} ?>">
           Domaines
           <i class="notranslate  material-icons vertical-align-bottom" style="float:right"> chevron_right </i>
         </a></li>
@@ -74,7 +74,7 @@
           Contactez-nous
         </a></li>
 
-        <li><a>
+        <li><a href="#">
           A propos de nous
           <i class="notranslate  material-icons vertical-align-bottom" style="float:right"> chevron_right </i>
         </a></li>
@@ -127,8 +127,8 @@
 
 <!-- Debut du code du traducteur de site Web de Google -->
 <script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement(
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
     {
       pageLanguage: 'fr',
       includedLanguages: 'fr,en',
@@ -136,8 +136,8 @@ function googleTranslateElementInit() {
       autoDisplay: false
     },
     'google_translate_element'
-  );
- }
+    );
+  }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
- <!-- Fin du code du traducteur de site Web de Google -->
+<!-- Fin du code du traducteur de site Web de Google -->
