@@ -51,7 +51,7 @@
 <div class="container-box" style="background-image: url('<?php echo _ROOT_PATH; ?>img/bg/bg4.jpg');">
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body">
-      <div class="container-title container-text_1-title"><h3>Vous chercher un emploi ? </h3></div>
+      <div class="container-title container-text_1-title"><h1>Vous cherchez un emploi ? </h1></div>
       <div class="left_right_container">
         <div class="container-text_1 left-block">
           <span>Consultez notre catalogue d'offres d'emploi et postulez</span>
