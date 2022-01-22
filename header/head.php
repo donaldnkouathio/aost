@@ -15,8 +15,9 @@
   <meta property="og:url" content="https://alphaomegasolutionstravail.ca" />
   <meta property="og:title" content="Trouver facilement un emploi au canada" />
   <meta property="og:image" content="<?php echo _ROOT_PATH; ?>img/logo.png" />
-
   <link rel="canonical" href="https://alphaomegasolutionstravail.ca/home/"/>
+  <link rel="alternate" hreflang="fr-ca" href="https://alphaomegasolutionstravail.ca" />
+  <link rel="alternate" hreflang="en-ca" href="https://alphaomegasolutionstravail.ca" />
 
   <link rel="icon" sizes="144x144" href="<?php echo _ROOT_PATH; ?>img/icon.png" type="image/x-icon"/>
   <link rel="shortcut icon" href="<?php echo _ROOT_PATH; ?>img/logo.png" type="image/x-icon"/>
