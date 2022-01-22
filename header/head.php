@@ -12,6 +12,9 @@
   <meta name="keywords" content="emploi,travail,offre,candidature,postuler,domain,job,work,entreprise,cv,apply,offer">
   <meta name="robots" content="Follow">
   <meta http-equiv="Content-language" content="fr">
+  <meta property="og:url" content="https://alphaomegasolutionstravail.ca" />
+  <meta property="og:title" content="Trouver facilement un emploi au canada" />
+  <meta property="og:image" content="<?php echo _ROOT_PATH; ?>img/logo.png" />
 
   <link rel="canonical" href="https://alphaomegasolutionstravail.ca/home/"/>
 
