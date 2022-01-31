@@ -71,7 +71,7 @@
   <div class="offset-10-laptop emplois-populaires">
     <h2 class="margin-top-none">Les emplois populaires</h2>
 
-    <div itemscope itemtype="https://schema.org/Product" class="emplois-populaires-container">
+    <div class="emplois-populaires-container">
       <?php
       $offers = $offer->getOffersFromLast(4);
 
@@ -82,12 +82,12 @@
         $domain = $domain->getDomain($subdomain->getId_domain());
         $domainColor = $domain->getColor()==""? "66BFDE" : $domain -> getColor();
         ?>
-        <a itemscope itemtype="https://schema.org/Offer" itemprop="offers" itemprop="url" href="<?php echo _ROOT_PATH."job/offers/a/".str_replace(" ", "-",$subdomain->getName())."/".$offer->getId()."/" ?>" class="ep-block" style="border-left : 3px solid #<?php echo $domainColor; ?>">
+        <a href="<?php echo _ROOT_PATH."job/offers/a/".str_replace(" ", "-",$subdomain->getName())."/".$offer->getId()."/" ?>" class="ep-block" style="border-left : 3px solid #<?php echo $domainColor; ?>">
           <div class="ep-text">
-            <span itemprop="gtin" class="ep-id">Offre No <?php echo $offer->getId(); ?></span>
-            <span itemprop="category" class="ep-title"><?php echo $subdomain->getName(); ?></span>
-            <span itemprop="areaServed" class="ep-city"><i class="notranslate  material-icons vertical-align-bottom">location_on</i><?php echo $city->getName(); ?></span>
-            <span itemprop="availabilityStarts" class="ep-added_at"><i class="notranslate  material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
+            <span class="ep-id">Offre No <?php echo $offer->getId(); ?></span>
+            <span class="ep-title"><?php echo $subdomain->getName(); ?></span>
+            <span class="ep-city"><i class="notranslate  material-icons vertical-align-bottom">location_on</i><?php echo $city->getName(); ?></span>
+            <span class="ep-added_at"><i class="notranslate  material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
           </div>
         </a>
       <?php } ?>
