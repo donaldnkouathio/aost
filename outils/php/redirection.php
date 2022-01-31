@@ -105,7 +105,7 @@
 
             	<i class="notranslate  material-icons vertical-align-bottom">chevron_right</i>
 
-              <?php echo ucfirst($newCurrentPage); } ?>
+              <?php echo ucwords(strtolower(htmlspecialchars_decode($newCurrentPage))); } ?>
 
             	<?php
                 if($newCurrentSubPage != ""){
@@ -115,13 +115,13 @@
 
                 <?php if(isset($_GET["id_offer"])){ ?>
 
-                  <a href="<?php echo _ROOT_PATH; ?>job/offers/"><?php echo ucfirst($newCurrentSubPage); ?></a>
+                  <a href="<?php echo _ROOT_PATH; ?>job/offers/"><?php echo ucwords(strtolower(htmlspecialchars_decode($newCurrentSubPage))); ?></a>
 
                   <i class="notranslate  material-icons vertical-align-bottom">chevron_right</i>
 
-                  <?php echo ucfirst($subdomain->getName()); ?>
+                  <?php echo ucwords(strtolower(htmlspecialchars_decode($subdomain->getName()))); ?>
 
-                <?php }else{ echo ucfirst($newCurrentSubPage); } ?>
+                <?php }else{ echo ucwords(strtolower(htmlspecialchars_decode($newCurrentSubPage))); } ?>
               <?php } ?>
         </div>
 

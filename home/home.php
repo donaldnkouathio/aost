@@ -85,8 +85,8 @@
         <a href="<?php echo _ROOT_PATH."job/offers/a/".str_replace(" ", "-",$subdomain->getName())."/".$offer->getId()."/" ?>" class="ep-block" style="border-left : 3px solid #<?php echo $domainColor; ?>">
           <div class="ep-text">
             <span class="ep-id">Offre No <?php echo $offer->getId(); ?></span>
-            <span class="ep-title"><?php echo $subdomain->getName(); ?></span>
-            <span class="ep-city"><i class="notranslate  material-icons vertical-align-bottom">location_on</i><?php echo $city->getName(); ?></span>
+            <span class="ep-title"><?php echo ucwords(strtolower(htmlspecialchars_decode($subdomain->getName()))); ?></span>
+            <span class="ep-city"><i class="notranslate  material-icons vertical-align-bottom">location_on</i><?php echo ucwords(strtolower(htmlspecialchars_decode($city->getName()))); ?></span>
             <span class="ep-added_at"><i class="notranslate  material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
           </div>
         </a>

@@ -23,7 +23,7 @@
           <p>
             <?php
             $domain = $domain->getDomain($subdomain->getId_domain());
-            echo ucfirst(htmlspecialchars_decode($domain->getName()));
+            echo ucwords(strtolower(htmlspecialchars_decode($domain->getName())));
             ?>
           </p>
         </div>
@@ -33,7 +33,7 @@
           <p>
             <?php
             $city = $city->getCity($offer->getId_city());
-            echo ucfirst(htmlspecialchars_decode($city->getName()));
+            echo ucwords(strtolower(htmlspecialchars_decode($city->getName())));
             ?>
           </p>
         </div>
