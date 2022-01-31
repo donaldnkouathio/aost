@@ -1,6 +1,5 @@
+User-Agent: *
 Sitemap: https://alphaomegasolutionstravail.ca/sitemap.xml
 Sitemap: https://alphaomegasolutionstravail.ca/sitemap2.xml
-
-User-Agent: *
 Disallow: https://alphaomegasolutionstravail.ca/dashboard/
 Disallow: /cgi-bin/
