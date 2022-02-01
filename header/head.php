@@ -10,7 +10,6 @@
   <meta name="Distribution" content="global">
   <meta name="description" content="Comment trouver rapidement un emploi au canada ? AOST vous propose des offres de travail dans tous les domaines. Postulez et nous nous occupons du reste!">
   <meta name="keywords" content="emploi,travail,offre,candidature,postuler,domain,job,work,entreprise,cv,apply,offer,offre d'emplois quebec, alpha omega solutions travail, ao solutions inc, alpha omega, alpha omega agency, agence travail, alpha et omega, offres d'emplois montréal, employeur récherche employé, offre d'emplois canada">
-  <meta name="robots" content="Follow">
   <meta http-equiv="Content-language" content="fr">
   <meta property="og:url" content="https://alphaomegasolutionstravail.ca" />
   <meta property="og:title" content="Trouver facilement un emploi au canada" />

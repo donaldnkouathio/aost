@@ -13,7 +13,7 @@
   $city = new City($current_city);
   $contact = new Contact($current_contact);
 
-  function redirection($title, $pageContain, $currentPage, $currentSubPage, $css, $js){
+  function redirection($title, $pageContain, $currentPage, $currentSubPage, $css, $js, $link){
     //$title : titre de la page
     //$pageContain : contenu de la page
     //$currentPage : nom de la page courante
@@ -35,6 +35,23 @@
     $session->setCurrentPage($currentPage); //Page actuellement visitée par l'utilisateur
     $session->setCurrentSubPage($currentSubPage); //Page actuellement visitée par l'utilisateur
   ?>
+      <?php
+
+        echo '<link rel="canonical" href="https://alphaomegasolutionstravail.ca'.$link.'"/>';
+
+        switch ($currentSubPage) {
+          case 'isIndex':
+            echo '<meta name="robots" content="Follow">';
+            break;
+          case 'isHome':
+            echo '<meta name="robots" content="noindex">';
+            break;
+
+          default:
+            echo '<meta name="robots" content="Follow">';
+            break;
+        }
+      ?>
 
   		<title><?php echo $title; ?></title>
 
@@ -88,6 +105,12 @@
               break;
             case 't4-releve1':
               $newCurrentSubPage = "t4 et relevé 1";
+              break;
+            case 'isHome':
+              $newCurrentSubPage = "";
+              break;
+            case 'isIndex':
+              $newCurrentSubPage = "";
               break;
 
             default:
