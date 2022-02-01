@@ -189,6 +189,19 @@ public function getHistorysPerMonth(){
     }
 }
 
+public function getMaxHistorysPerMonth(){
+    include(_APP_PATH."bd/server-connect.php");
+
+    $query=$db->prepare("SELECT * FROM history GROUP BY DATE_FORMAT(added_at, '%M-%Y') ORDER BY added_at DESC LIMIT 0,1");
+
+    if($query->execute() && $query->rowCount()==1){
+        $data=$query->fetch();
+        return (new History($data));
+    }else{
+        return false;
+    }
+}
+
 
 public function getHistorysByMonth($month){
     include(_APP_PATH."bd/server-connect.php");
