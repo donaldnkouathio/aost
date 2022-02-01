@@ -215,7 +215,7 @@ tr:hover, tr:nth-child(even):hover{
   display: inline-block;
   border: 1px solid var(--color-primary);
   padding: 2px 10px;
-  margin: 0 2px;
+  margin: 0 2px 5px 0px;
   box-sizing: border-box;
   background-color: white;
 }

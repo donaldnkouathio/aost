@@ -6,7 +6,9 @@
   <select class="item_inline_input" name="" id="month">
     <?php
       $histories_group = $history->getHistorysPerMonth();
-      $month = isset($_GET["month"]) ? $_GET["month"] : date("Y-m", strtotime("TODAY"));
+      $lastHistory = $history->getMaxHistorysPerMonth();
+      $default_month = $lastHistory -> getAdded_at() != "" ? date("Y-m", strtotime($lastHistory -> getAdded_at())) : date("Y-m", strtotime("TODAY"));
+      $month = isset($_GET["month"]) ? $_GET["month"] : date("Y-m", strtotime($default_month));
       foreach($histories_group as $history_group){
     ?>
     <option value="<?php echo date("Y-m", strtotime($history_group->getAdded_at())); ?>" <?php if($month == date("Y-m", strtotime($history_group->getAdded_at()))){echo "selected";} ?>>
