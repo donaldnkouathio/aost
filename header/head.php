@@ -10,15 +10,13 @@
   <meta name="Distribution" content="global">
   <meta name="description" content="Comment trouver rapidement un emploi au canada ? AOST vous propose des offres de travail dans tous les domaines. Postulez et nous nous occupons du reste!">
   <meta name="keywords" content="emploi,travail,offre,candidature,postuler,domain,job,work,entreprise,cv,apply,offer,offre d'emplois quebec, alpha omega solutions travail, ao solutions inc, alpha omega, alpha omega agency, agence travail, alpha et omega, offres d'emplois montréal, employeur récherche employé, offre d'emplois canada">
-  <meta name="robots" content="Follow">
   <meta http-equiv="Content-language" content="fr">
   <meta property="og:url" content="https://alphaomegasolutionstravail.ca" />
   <meta property="og:title" content="Trouver facilement un emploi au canada" />
-  <meta property="og:image" content="<?php echo _ROOT_PATH; ?>img/shortcut_icon.ico" />
+  <meta property="og:image" content="<?php echo _ROOT_PATH; ?>img/icon.png" />
 
-  <link rel="icon" sizes="144x144" href="<?php echo _ROOT_PATH; ?>img/icon.png" type="image/x-icon"/>
-  <link rel="shortcut icon" sizes="144x144" href="<?php echo _ROOT_PATH; ?>img/shortcut_icon.ico" type="image/x-icon"/>
-  <link rel="apple-touch-icon" sizes="144x144" href="<?php echo _ROOT_PATH; ?>img/shortcut_icon.ico" type="image/x-icon"/>
+  <link rel="icon" type="image/png" href="<?php echo _ROOT_PATH; ?>img/shortcut_icon.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="<?php echo _ROOT_PATH; ?>img/shortcut_icon.png"/>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato'>
