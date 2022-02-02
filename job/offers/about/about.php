@@ -92,3 +92,36 @@
     </div>
   </div>
 </div>
+
+<script type="application/ld+json">
+  {
+    "@context" : "https://schema.org/",
+    "@type" : "JobPosting",
+    "title" : "<?php echo ucwords(htmlspecialchars_decode($subdomain->getName())); ?>",
+    "description" : "<?php echo htmlspecialchars_decode($offer->getMissions()); ?>",
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "aost",
+      "value": "ao<?php echo $offer->getId(); ?>st"
+    },
+    "datePosted" : "<?php echo $offer->getAdded_at(); ?>",
+    "validThrough" : "<?php echo $offer->getDeadline(); ?>",
+    "employmentType" : ["FULL_TIME"],
+    "hiringOrganization" : {
+      "@type" : "Organization",
+      "name" : "Alpha Omega Solutions Travail",
+      "sameAs" : "https://alphaomegasolutionstravail.ca",
+      "logo" : "https://alphaomegasolutionstravail.ca/img/icon.png"
+    },
+    "jobLocation": {
+    "@type": "Place",
+      "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "<?php echo ucwords(strtolower(htmlspecialchars_decode($city->getName()))); ?>",
+      "addressRegion": "Québec",
+      "addressCountry": "Canada"
+      }
+    },
+    "directApply": true
+  }
+</script>
