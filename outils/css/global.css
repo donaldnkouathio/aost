@@ -16,9 +16,9 @@
 
 
 @font-face {
-  font-family: 'Pacifico'; 
+  font-family: 'Pacifico';
   src: local('Pacifico Regular'), local('Pacifico-Regular'),
-  url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2) format('woff2'); 
+  url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2) format('woff2');
 
   font-display: swap;
 }
@@ -422,6 +422,10 @@ citaion{
 }
 /* *** */
 
+textarea{
+  min-height: 200px;
+}
+
 /***** Media Query *****/
 
 /* Mobile */
@@ -448,6 +452,11 @@ citaion{
   .presentation_tablette{
     display: none !important;
   }
+}
+
+/****/
+.section-body{
+  word-wrap: break-word !important;
 }
 
 /* Tablette only */

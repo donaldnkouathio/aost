@@ -72,7 +72,7 @@
       <span style="">
         <span class="copyright">Tous droits réservés © <?php echo date('Y', strtotime("TODAY")); ?> - AOST</span>
         <span class="authors">Conçu et dévéloppé par
-          <span class="">
+          <span class="notranslate">
             <u style="cursor: pointer" class="show_about_author_dnk">Donald Nkouathio</u>
             ,
             <u style="cursor: pointer" class="show_about_author_dim">D!m!tr! Bl@ck</u>

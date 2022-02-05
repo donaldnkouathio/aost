@@ -41,7 +41,7 @@
       </li>
       <li><a href="<?php echo _ROOT_PATH; ?>partners/" class="<?php if($session->getCurrentPage()=="partners"){echo "link-hover";} ?> nav-link">Partenaires</a></li>
       <li><a href="<?php echo _ROOT_PATH; ?>contact-us/" class="<?php if($session->getCurrentPage()=="contactez-nous"){echo "link-hover";} ?> nav-link">Contactez nous</a></li>
-      <li><a href="#" class=" nav-link">A propos de nous <i class="notranslate  material-icons vertical-align-bottom"> keyboard_arrow_down </i></a></li>
+      <li style="display:none"><a href="#" class=" nav-link">A propos de nous <i class="notranslate  material-icons vertical-align-bottom"> keyboard_arrow_down </i></a></li>
     </ul>
 
     <ul class="nav-contain-right" style="">
@@ -74,7 +74,7 @@
           Contactez-nous
         </a></li>
 
-        <li><a href="#">
+        <li style="display:none"><a href="#">
           A propos de nous
           <i class="notranslate  material-icons vertical-align-bottom" style="float:right"> chevron_right </i>
         </a></li>

@@ -3,7 +3,8 @@
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
@@ -11,11 +12,12 @@
   <loc>https://alphaomegasolutionstravail.ca/</loc>
   <lastmod>2022-02-02T01:30:10+00:00</lastmod>
   <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://alphaomegasolutionstravail.ca/img/shortcut_icon.png</loc>
-  <lastmod>2022-02-02T01:30:10+00:00</lastmod>
-  <priority>0.80</priority>
+  <image:image>
+    <image:loc>https://alphaomegasolutionstravail.ca/img/shortcut_icon.png</image:loc>
+    <image:caption>Logo Alpha Omega Solutions Travail</image:caption>
+    <image:geo_location>Montreal, Quebec, Canada</image:geo_location>
+    <image:title>Logo Alpha Omega Solutions Travail</image:title>
+  </image:image>
 </url>
 <url>
   <loc>https://alphaomegasolutionstravail.ca/job/offers/</loc>
