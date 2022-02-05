@@ -302,6 +302,26 @@ public function getOffers() {
 
 
 
+public function getOffersGroup() {
+    include(_APP_PATH."bd/server-connect.php");
+
+
+    $query=$db->prepare("SELECT * FROM offers WHERE expired=0 GROUP BY id_subdomain ORDER BY id ASC");
+
+    $offers=[];
+
+    if($query->execute()){
+        while($data=$query->fetch()){
+            $offers[]=new Offer($data);
+        }
+        return $offers;
+    }else{
+        return false;
+    }
+}
+
+
+
 
 public function getOffersFromLast($limit) {
     include(_APP_PATH."bd/server-connect.php");

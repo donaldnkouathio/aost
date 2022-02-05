@@ -52,7 +52,9 @@
 <div class="container-box" style="background-image: url('<?php echo _ROOT_PATH; ?>img/bg/bg4.jpg');">
   <div class="container-box-shadow">
     <div class="offset-10-laptop container-box-body">
-      <div class="container-title container-text_1-title"><h1>Vous cherchez un emploi ? </h1></div>
+      <div class="container-title container-text_1-title">
+        <h1 class="less-size-title">Vous cherchez un emploi ? </h1>
+      </div>
       <div class="left_right_container">
         <div class="container-text_1 left-block">
           <span>Consultez notre catalogue d'offres d'emploi et postulez</span>
@@ -86,8 +88,10 @@
           <div class="ep-text">
             <span class="ep-id">Offre No <?php echo $offer->getId(); ?></span>
             <span class="ep-title"><?php echo ucwords(strtolower(htmlspecialchars_decode($subdomain->getName()))); ?></span>
-            <span class="ep-city"><i class="notranslate  material-icons vertical-align-bottom">location_on</i><?php echo ucwords(strtolower(htmlspecialchars_decode($city->getName()))); ?></span>
-            <span class="ep-added_at"><i class="notranslate  material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
+            <div class="ep-footer">
+              <span class="ep-city"><i class="notranslate  material-icons vertical-align-bottom">location_on</i><?php echo ucwords(strtolower(htmlspecialchars_decode($city->getName()))); ?></span>
+              <span class="ep-added_at"><i class="notranslate  material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
+            </div>
           </div>
         </a>
       <?php } ?>

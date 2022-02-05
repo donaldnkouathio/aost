@@ -10,11 +10,6 @@
   z-index: 100;
 }
 
-.less-size-title{
-  font-size: 40px;
-}
-
-
 @font-face {
   font-family: 'Pacifico';
   src: local('Pacifico Regular'), local('Pacifico-Regular'),
@@ -140,15 +135,18 @@
 
 }
 .goToTop_btn{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--color-secondary);
   color: white;
-  padding: 10px;
   position: fixed;
   bottom: 10%;
   right: 5%;
-  box-shadow: 4px 4px 8px #333;
-  border-radius: var(--border-radius-size);
-  display: inline-block;
+  box-shadow: 1px 1px 6px #555;
+  border-radius: 100%;
   cursor: pointer;
   z-index: 40;
 }

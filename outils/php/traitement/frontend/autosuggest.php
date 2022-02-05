@@ -7,7 +7,7 @@
   $offer = new Offer($current_offer);
   $subdomain = new Subdomain($current_subdomain);
 
-  $offers = $offer->getOffers();
+  $offers = $offer->getOffersGroup();
   $response = "";
 
   foreach ($offers as $offer) {

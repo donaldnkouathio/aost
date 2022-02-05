@@ -8,70 +8,86 @@
       <div class="footer-container">
         <div class="footer-contain">
           <h3 class="margin-bottom-none">Siège social</h3>
-          <p class="margin-top-none">
-            <span style="margin-top: 10px;" class="material-icons vertical-align-bottom margin-right-5">location_on</span>
-            2232 Rue Noel, H4M1R9 Montréal
-          </p>
+
+          <div class="footer-flex">
+            <span class="material-icons margin-right-5">location_on</span>
+            <a style="color: white" target="_blank" href='https://goo.gl/maps/rfbuu5FmwwKd8qr39'>
+              2232 Rue Noel, H4M1R9 Montréal
+            </a>
+          </div>
         </div>
 
         <div class="footer-contain">
           <h3 class="margin-bottom-none">Bureau principal</h3>
 
-          <p class="margin-top-none">
-            <span style="margin-top: 10px;" class="material-icons vertical-align-bottom margin-right-5">location_on</span>
-            880 BOULEVARD DECARIE, H4L1M3, Montréal, Saint-Laurent, Québec, Canada
-            <br>
-          </p>
+          <div class="footer-flex">
+            <span class="material-icons margin-right-5">location_on</span>
+            <a style="color: white" target="_blank" href='https://goo.gl/maps/rFA6r9KnfB9g1CHL7'>
+              880 BOULEVARD DECARIE, H4L1M3, Montréal, Saint-Laurent, Québec, Canada
+            </a>
+          </div>
         </div>
 
         <div class="footer-contain">
           <h3 class="margin-bottom-none">Suivez-nous</h3>
-          <p class="margin-top-none"><a href="https://www.facebook.com/ALPHA-OMEGA-Solutions-Travail-AOST-120693572651635/" rel="noopener" target="_blank" style="color: white">Facebook</a></p>
+
+          <div class="footer-flex">
+            <a href="https://www.facebook.com/ALPHA-OMEGA-Solutions-Travail-AOST-120693572651635/" rel="noopener" target="_blank" style="color: white">
+              Facebook
+            </a>
+          </div>
         </div>
 
         <div class="footer-contain">
           <h3 class="margin-bottom-none">Contactez-nous</h3>
 
-          <p class="margin-top-none">
-            <span style="margin-top: 10px;" class="notranslate material-icons vertical-align-bottom margin-right-5">phone</span>
+          <div class="footer-flex">
+            <span class="notranslate material-icons margin-right-5">phone</span>
             <a style="color: white" href='tel:+1 514-612-0043'>+1 514-612-0043</a> - Bureau
-            <br>
-            <span class="notranslate material-icons vertical-align-bottom margin-right-5">phone</span>
+          </div>
+          <div class="footer-flex">
+            <span class="notranslate material-icons margin-right-5">phone</span>
             <a style="color: white" href='tel:+1 514-559-7850'>+1 514-559-7850</a> - Direction
-            <br>
-            <span class="notranslate material-icons vertical-align-bottom margin-right-5">phone</span>
+          </div>
+          <div class="footer-flex">
+            <span class="notranslate material-icons margin-right-5">phone</span>
             <a style="color: white" href='tel:+1 514-621-7850'>+1 514-621-7850</a> - Direction
-          </p>
+          </div>
         </div>
 
         <div class="footer-contain">
           <h3 class="margin-bottom-none">Courriels</h3>
 
-          <p class="margin-top-none">
-            <span style="margin-top: 10px;" class="notranslate material-icons vertical-align-bottom margin-right-5">email</span>
-            <a style="color: white" class="notranslate" href='mailto:info@alphaomegasolutionstravail.ca'> Info@alphaomegasolutionstravail.ca (Informations)</a>
-            <br>
-            <span class="notranslate material-icons vertical-align-bottom margin-right-5">email</span>
+          <div class="footer-flex">
+            <span class="notranslate material-icons margin-right-5">email</span>
+            <a style="color: white;" class="notranslate" href='mailto:info@alphaomegasolutionstravail.ca'> Info@alphaomegasolutionstravail.ca (Informations)</a>
+          </div>
+          <div class="footer-flex">
+            <span class="notranslate material-icons margin-right-5">email</span>
             <a style="color: white" class="notranslate" href='mailto:rh@alphaomegasolutionstravail.ca'> RH@alphaomegasolutionstravail.ca (Demande d'emploi)</a>
-            <br>
-            <span class="notranslate material-icons vertical-align-bottom margin-right-5">email</span>
+          </div>
+          <div class="footer-flex">
+            <span class="notranslate material-icons margin-right-5">email</span>
             <a style="color: white" class="notranslate" href='mailto:paie@alphaomegasolutionstravail.ca'> Paie@alphaomegasolutionstravail.ca (Paie)</a>
-            <br>
-            <span class="notranslate material-icons vertical-align-bottom margin-right-5">email</span>
+          </div>
+          <div class="footer-flex">
+            <span class="notranslate material-icons margin-right-5">email</span>
             <a style="color: white" class="notranslate" href='mailto:dr@alphaomegasolutionstravail.ca'> DR@alphaomegasolutionstravail.ca (Directeur)</a>
-            <br>
-            <span class="notranslate material-icons vertical-align-bottom margin-right-5">email</span>
+          </div>
+          <div class="footer-flex">
+            <span class="notranslate material-icons margin-right-5">email</span>
             <a style="color: white" class="notranslate" href='mailto:partenaires@alphaomegasolutionstravail.ca'> Partenaires@alphaomegasolutionstravail.ca (Partenaires)</a>
-          </p>
+          </div>
         </div>
 
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span style="">
+      <span class="copyright-block">
         <span class="copyright">Tous droits réservés © <?php echo date('Y', strtotime("TODAY")); ?> - AOST</span>
-        <span class="authors">Conçu et dévéloppé par
+        <span class="authors">
+          <span>Conçu et dévéloppé par</span>
           <span class="notranslate">
             <u style="cursor: pointer" class="show_about_author_dnk">Donald Nkouathio</u>
             ,
