@@ -184,6 +184,9 @@ body {
   color: var(--color-text);
 }
 
+.aost-logo{
+  border-radius: 100%;
+}
 .vertical-align-bottom{
   vertical-align: bottom !important;
 }
@@ -287,6 +290,13 @@ citaion{
   text-align: center;
   color: white;
 }
+
+.presentaion_page_text > h1{
+  font-size: 1em;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 /* *** */
 
 /* Aspect général des bouttons */
@@ -296,6 +306,9 @@ citaion{
   border-radius: var(--border-radius-size);
   cursor: pointer;
   text-transform: uppercase;
+}
+.btn:active{
+  transform: scale(var(--scale_size));
 }
 .btn-primary{
   color: var(--btn-primary-text-color);

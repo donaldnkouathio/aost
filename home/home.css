@@ -34,15 +34,9 @@
 }
 .container-text_1 a{
   display: inline-block;
-  background-color: var(--color-primary);
-  padding: 10px 25px !important;
-  border-radius: var(--border-radius-size);
-  cursor: pointer;
-  text-transform: uppercase;
-  color: var(--btn-primary-text-color);
 }
 .container-text_1 a:hover{
-  background-color: var(--btn-primary-bg-hover-color);
+  color: white;
 }
 .container-text_1-title{
   text-align: left;

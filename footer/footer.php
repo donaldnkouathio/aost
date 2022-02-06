@@ -1,7 +1,7 @@
   <footer class="" style="">
     <div class="footer-body offset-10-laptop">
       <div class="footer-logo">
-        <img src="<?php echo _ROOT_PATH; ?>img/logo.png" alt="Logo AOST">
+        <img class="aost-logo" src="<?php echo _ROOT_PATH; ?>img/icon.png" alt="Logo AOST">
         <h1><span class="notranslate">Alpha Omega Solutions Travail inc.</span></h1>
       </div>
 

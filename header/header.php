@@ -2,7 +2,7 @@
   <nav class="nav-container offset-10-laptop translate" style="">
     <div class="nav-logo" style="">
       <a href="<?php echo _ROOT_PATH; ?>">
-        <img src="<?php echo _ROOT_PATH; ?>img/logo.png" alt="logo AOST">
+        <img class="aost-logo" src="<?php echo _ROOT_PATH; ?>img/icon.png" alt="logo AOST">
       </a>
       <span class="notranslate presentation_tablette">Alpha Omega Solutions Travail</span>
       <span class="notranslate presentation_mobile">AOST</span>

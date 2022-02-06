@@ -57,12 +57,12 @@
       </div>
       <div class="left_right_container">
         <div class="container-text_1 left-block">
-          <span>Consultez notre catalogue d'offres d'emploi et postulez</span>
-          <a href="<?php echo _ROOT_PATH; ?>job/offers/">catalogue d'offres</a>
+          <span>Nous disposons de plusieurs offres <br> Consultez notre catalogue d'offres d'emploi et postulez</span>
+          <a class="btn btn-primary" href="<?php echo _ROOT_PATH; ?>job/offers/">catalogue d'offres</a>
         </div>
         <div class="container-text_1 right-block">
           <span>Voulez-Vous que nous trouvons un emploi fait pour vous ?<br> Envoyez-nous votre CV</span>
-          <a href="<?php echo _ROOT_PATH; ?>job/prompt-application/" class="">Candidature spontanée</a>
+          <a class="btn btn-primary" href="<?php echo _ROOT_PATH; ?>job/prompt-application/" class="">Candidature spontanée</a>
         </div>
       </div>
     </div>

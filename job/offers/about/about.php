@@ -7,7 +7,7 @@
           <div class="" style="font-weight: normal; font-size: 0.4em;">
             - Offre d'emploi No <?php echo $offer->getId(); ?> -
           </div>
-          <?php echo ucwords(htmlspecialchars_decode($subdomain->getName())); ?>
+          <h1 class="about-title"><?php echo ucwords(htmlspecialchars_decode($subdomain->getName())); ?></h1>
         </div>
       </div>
     </div>
@@ -50,14 +50,14 @@
       </div>
 
       <div class="about_block">
-        <h2 class="margin-bottom-none">Description</h2>
+        <h1 class="margin-bottom-none">Description</h1>
         <div class="about_text">
           <?php echo htmlspecialchars_decode($offer->getDescription()); ?>
         </div>
       </div>
 
       <div class="about_block">
-        <h2 class="margin-bottom-none" style="margin-top: 40px;">Votre mission</h2>
+        <h1 class="margin-bottom-none" style="margin-top: 40px;">Votre mission</h1>
         <div class="about_text">
           <?php echo htmlspecialchars_decode($offer->getMissions()); ?>
         </div>
@@ -67,14 +67,14 @@
     <div class="aside">
 
       <div class="about_block">
-        <h2 class="margin-bottom-none">Exigences</h2>
+        <h1 class="margin-bottom-none">Exigences</h1>
         <div class="about_text">
           <?php echo htmlspecialchars_decode($offer->getSkill()); ?>
         </div>
       </div>
 
       <div class="about_block">
-        <h2 class="margin-bottom-none" style="margin-top: 40px;">Profil recherché</h2>
+        <h1 class="margin-bottom-none" style="margin-top: 40px;">Profil recherché</h1>
         <div class="about_text">
           <?php echo htmlspecialchars_decode($offer->getCandidate_profile()); ?>
         </div>

@@ -12,7 +12,7 @@
 
   foreach ($offers as $offer) {
     $subdomain = $subdomain->getSubdomain($offer->getId_subdomain());
-    $response .= $subdomain->getName().",";
+    $response .= ucwords(strtolower(htmlspecialchars_decode($subdomain->getName()))).",";
   }
 
   echo $response;
