@@ -54,7 +54,7 @@
     public function presentationPage($title, $img){ ?>
       <div class="presentaion_page_block" <?php echo "style='background-image: url(\""._ROOT_PATH."img/bg/".$img.".jpg\")'"; ?>>
         <div class="presentaion_page_text">
-          <?php echo $title; ?>
+          <h1><?php echo $title; ?></h1>
         </div>
       </div>
     <?php }

@@ -10,15 +10,10 @@
   z-index: 100;
 }
 
-.less-size-title{
-  font-size: 40px;
-}
-
-
 @font-face {
-  font-family: 'Pacifico'; 
+  font-family: 'Pacifico';
   src: local('Pacifico Regular'), local('Pacifico-Regular'),
-  url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2) format('woff2'); 
+  url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2) format('woff2');
 
   font-display: swap;
 }
@@ -140,15 +135,18 @@
 
 }
 .goToTop_btn{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--color-secondary);
   color: white;
-  padding: 10px;
   position: fixed;
   bottom: 10%;
   right: 5%;
-  box-shadow: 4px 4px 8px #333;
-  border-radius: var(--border-radius-size);
-  display: inline-block;
+  box-shadow: 1px 1px 6px #555;
+  border-radius: 100%;
   cursor: pointer;
   z-index: 40;
 }
@@ -186,6 +184,9 @@ body {
   color: var(--color-text);
 }
 
+.aost-logo{
+  border-radius: 100%;
+}
 .vertical-align-bottom{
   vertical-align: bottom !important;
 }
@@ -289,6 +290,13 @@ citaion{
   text-align: center;
   color: white;
 }
+
+.presentaion_page_text > h1{
+  font-size: 1em;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 /* *** */
 
 /* Aspect général des bouttons */
@@ -298,6 +306,9 @@ citaion{
   border-radius: var(--border-radius-size);
   cursor: pointer;
   text-transform: uppercase;
+}
+.btn:active{
+  transform: scale(var(--scale_size));
 }
 .btn-primary{
   color: var(--btn-primary-text-color);
@@ -422,6 +433,10 @@ citaion{
 }
 /* *** */
 
+textarea{
+  min-height: 200px;
+}
+
 /***** Media Query *****/
 
 /* Mobile */
@@ -448,6 +463,11 @@ citaion{
   .presentation_tablette{
     display: none !important;
   }
+}
+
+/****/
+.section-body{
+  word-wrap: break-word !important;
 }
 
 /* Tablette only */

@@ -7,7 +7,7 @@
           <div class="" style="font-weight: normal; font-size: 0.4em;">
             - Offre d'emploi No <?php echo $offer->getId(); ?> -
           </div>
-          <?php echo ucwords(htmlspecialchars_decode($subdomain->getName())); ?>
+          <h1 class="about-title"><?php echo ucwords(htmlspecialchars_decode($subdomain->getName())); ?></h1>
         </div>
       </div>
     </div>
@@ -50,14 +50,14 @@
       </div>
 
       <div class="about_block">
-        <h2 class="margin-bottom-none">Description</h2>
+        <h1 class="margin-bottom-none">Description</h1>
         <div class="about_text">
           <?php echo htmlspecialchars_decode($offer->getDescription()); ?>
         </div>
       </div>
 
       <div class="about_block">
-        <h2 class="margin-bottom-none" style="margin-top: 40px;">Votre mission</h2>
+        <h1 class="margin-bottom-none" style="margin-top: 40px;">Votre mission</h1>
         <div class="about_text">
           <?php echo htmlspecialchars_decode($offer->getMissions()); ?>
         </div>
@@ -67,14 +67,14 @@
     <div class="aside">
 
       <div class="about_block">
-        <h2 class="margin-bottom-none">Exigences</h2>
+        <h1 class="margin-bottom-none">Exigences</h1>
         <div class="about_text">
           <?php echo htmlspecialchars_decode($offer->getSkill()); ?>
         </div>
       </div>
 
       <div class="about_block">
-        <h2 class="margin-bottom-none" style="margin-top: 40px;">Profil recherché</h2>
+        <h1 class="margin-bottom-none" style="margin-top: 40px;">Profil recherché</h1>
         <div class="about_text">
           <?php echo htmlspecialchars_decode($offer->getCandidate_profile()); ?>
         </div>
@@ -93,12 +93,15 @@
   </div>
 </div>
 
+<?php
+  $subdomain = $subdomain->getSubdomain($offer->getId_subdomain());
+?>
 <script type="application/ld+json">
   {
     "@context" : "https://schema.org/",
     "@type" : "JobPosting",
     "title" : "<?php echo ucwords(htmlspecialchars_decode($subdomain->getName())); ?>",
-    "description" : "<?php echo htmlspecialchars_decode($offer->getMissions()); ?>",
+    "description" : "<?php echo htmlspecialchars_decode($offer->getDescription()); ?>",
     "identifier": {
       "@type": "PropertyValue",
       "name": "aost",
@@ -116,12 +119,23 @@
     "jobLocation": {
     "@type": "Place",
       "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "<?php echo ucwords(strtolower(htmlspecialchars_decode($city->getName()))); ?>",
-      "addressRegion": "Québec",
-      "addressCountry": "Canada"
+        "@type": "PostalAddress",
+        "streetAddress": "2232 Rue Noel, H4M1R9 Montreal",
+        "addressLocality": "<?php echo ucwords(strtolower(htmlspecialchars_decode($city->getName()))); ?>",
+        "addressRegion": "Quebec",
+        "postalCode": "00000",
+        "addressCountry": "Canada"
       }
     },
-    "directApply": true
+    "directApply": true,
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "CAD",
+      "value": {
+        "@type": "QuantitativeValue",
+        "value": 12.50,
+        "unitText": "HOUR"
+      }
+    }
   }
 </script>

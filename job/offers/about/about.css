@@ -1,6 +1,16 @@
 ul{
 }
-
+.about-title{
+  font-size: 1em;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.about_block > h1{
+  color: var(--color-primary);
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
 .infos_block{
 }
 .infos_text_item{

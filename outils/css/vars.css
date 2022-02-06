@@ -35,4 +35,5 @@
   --btn-danger-text-color: white;
   --btn-danger-bg-color : var(--color-danger);
   --btn-danger-bg-hover-color : var(--color-danger-dark);
+  --scale_size : 0.9;
 }

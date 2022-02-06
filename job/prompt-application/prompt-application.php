@@ -21,7 +21,7 @@
 
   <div class="right">
     <?php
-    $Posting = new Posting("outils/php/traitement/candidacy/add-candidacy.php", "<h1>Soumettre sa candidature spontanée</h1>", "Envoyer mon CV", "");
+    $Posting = new Posting("outils/php/traitement/candidacy/add-candidacy.php", "Soumettre sa candidature spontanée", "Envoyer mon CV", "");
     echo $Posting->getPostingSection();
     ?>
 
