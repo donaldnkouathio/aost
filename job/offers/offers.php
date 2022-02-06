@@ -123,8 +123,10 @@ $offers_count = $offer->getOffersFilterLimit($keyword, $id_domain, $date, "");
 						<div class="ep-text">
 							<span class="ep-id">Offre No <?php echo $offer->getId(); ?></span>
 							<span class="ep-title"><?php echo ucwords(strtolower(htmlspecialchars_decode($subdomain->getName()))); ?></span>
-							<span class="ep-city"><i class="notranslate  material-icons vertical-align-bottom">location_on</i><?php echo ucwords(strtolower(htmlspecialchars_decode($city->getName()))); ?></span>
-							<span class="ep-added_at"><i class="notranslate  material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
+							<div class="ep-footer">
+								<span class="ep-city"><i class="notranslate  material-icons vertical-align-bottom">location_on</i><?php echo ucwords(strtolower(htmlspecialchars_decode($city->getName()))); ?></span>
+								<span class="ep-added_at"><i class="notranslate  material-icons vertical-align-bottom"> today </i><?php echo get_elapsed_time($offer->getAdded_at()); ?></span>
+							</div>
 						</div>
 					</a>
 				<?php } ?>

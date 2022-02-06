@@ -13,13 +13,14 @@ footer{
   display: inline-block;
   margin-left: 15px;
 }
-.footer-logo img{
+.footer-logo > img{
   height: 40px;
 }
 .footer-contain{
   display: inline-block;
+  margin-top: 15px;
 }
-.footer-contain h3{
+.footer-contain > h3{
   margin-top: 0;
   color: white !important;
   text-transform: uppercase;
@@ -36,6 +37,19 @@ footer{
 .material-icons{
   font-size: 1em;
   margin-bottom: 0.2em;
+}
+.footer-flex{
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.footer-flex > span{
+  padding-top: 5px;
+}
+.footer-flex > a{
+  max-width: 90%;
+  word-wrap: break-word !important;
 }
 
 
@@ -94,12 +108,9 @@ footer{
 
 /* Tablette & Laptop */
 @media (min-width: 576px) {
-  .authors{
-    float: right;
-    margin-right: 15px;
-  }
-  .copyright{
-
+  .copyright-block{
+    display: flex;
+    justify-content: space-between;
   }
 
   .footer-bottom{
